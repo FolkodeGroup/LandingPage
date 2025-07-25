@@ -611,7 +611,7 @@
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   padding: 0;
-  margin: 1rem;
+  margin: 0rem;
   width: 100%;
   max-width: 480px;
   min-width: 320px;
@@ -620,28 +620,16 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .card-clientes {
-    flex: 1 1 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .text-clientes {
-    padding: 2rem 1rem 1rem 1rem;
-    margin-top: 55%;
-  }
-}
-
 .text-clientes{
   text-align: left;
-  padding: 3rem 1rem 7rem 1rem;
+  padding: 3rem 1rem 8rem 1rem;
   background-color: var(--color-primary);
   width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   margin-top: 65%;
+  font-size: 1.25rem;
 }
 
 .button-clientes {
@@ -666,8 +654,38 @@
   border-left: #000 solid 3px;
   border-bottom: #000 solid 3px;
   height: 55%;
+  max-height: 55%;
   object-fit: cover;
   border-top-right-radius: 37px;
   border-bottom-left-radius: 37px;
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .div-clientes {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .card-clientes {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 75vw;
+    margin: auto;
+    max-width: 240px;
+    min-width: 160px;
+  }
+
+  .text-clientes {
+    padding: 1rem 0rem 0rem 1rem;
+    margin-top: 45%;
+    font-size: 0.25rem;
+  }
+
+  .img-clientes {
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    aspect-ratio: 4 / 3;
+  }
 }
