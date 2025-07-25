@@ -8,10 +8,10 @@ import Revisteria from '@/assets/images/ProyClientes/Revisteria.png';
 
 export default function ProyClientes(){
     const proyectos = [
-        { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos' },
-        { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes' },
-        { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias y derivados' },
-        { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics' }
+        { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos', width: 200, height: 100 },
+        { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes',  width: 200, height: 100 },
+        { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias',  width: 200, height: 100 },
+        { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics',  width: 200, height: 100 }
     ];
     return (
         <section className="text-inverse section-proy-clientes">

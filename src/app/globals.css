@@ -643,7 +643,7 @@
   align-self: flex-end;
   margin: 0.3rem 0;
   margin-top: 5rem;
-  margin-bottom: -5rem;
+  margin-bottom: -6rem;
 }
 
 .img-clientes {
@@ -662,10 +662,15 @@
 }
 
 @media (max-width: 768px) {
+  .section-proy-clientes h1{
+    font-size: 1.75rem; /* 32px */
+    margin: 1rem;
+  }
+
   .div-clientes {
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 60%;
   }
 
   .card-clientes {
@@ -679,7 +684,7 @@
   }
 
   .text-clientes {
-    padding: 1rem 1rem 0rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
     margin-top: 65%;
     font-size: 0.25rem;
   }
@@ -695,7 +700,6 @@
   .img-clientes {
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    aspect-ratio: 4 / 3;
   }
 
   .button-clientes{
