@@ -13,8 +13,8 @@ import ContactFormSection from "@/components/ContactFormSection";
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col gap-6 items-start">
-      <div className="container mx-auto px-6 py-24">
         <HeroSection />
+      <div className="container mx-auto px-6 py-24">
         <QueHacemosSection />
         <AboutSection />
         <FactoryCard />

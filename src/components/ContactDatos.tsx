@@ -9,7 +9,7 @@ interface ContactCardProps {
 }
 
 export default function ContactCard({
-  email = "contacfolkode@gmail.com",
+  email = "contactofolkode@gmail.com",
   socialMedia = "folkode",
   phone = "+54 9 11 2345-6789",
   website = "fol.kode",
