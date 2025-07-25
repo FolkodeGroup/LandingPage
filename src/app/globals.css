@@ -521,7 +521,6 @@
   font-size: 1.1rem;
 }
 
-/* Ajuste de la tarjeta para centrar el contenido y evitar protrusión */
 .li-tecnologias {
   display: flex;
   flex-direction: column;
@@ -608,16 +607,16 @@
   align-items: center;
   justify-content: flex-end;
   background-color: var(--color-primary);
-  border: 3px solid var(--color-black);
+  border: 5px solid var(--color-black);
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   padding: 0;
   margin: 1rem;
   width: 100%;
-  max-width: 240px;
-  min-width: 160px;
+  max-width: 480px;
+  min-width: 320px;
   flex: 1 1 45%; /* permite que se reduzca y se acomode */
-  height: 18.125rem;
+  height: 36.250rem;
   overflow: hidden;
 }
 
@@ -636,7 +635,7 @@
 
 .text-clientes{
   text-align: left;
-  padding: 3rem 1rem 0rem 1rem;
+  padding: 3rem 1rem 7rem 1rem;
   background-color: var(--color-primary);
   width: 100%;
   z-index: 1;
@@ -648,13 +647,15 @@
 .button-clientes {
   background-color: var(--color-tertiary-hover);
   color: var(--color-text-inverse);
-  padding: 0.25rem 0.65rem;
+  padding: 0.5rem 1.30rem;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
   align-self: flex-end;
   margin: 0.3rem 0;
+  margin-top: 5rem;
+  margin-bottom: -5rem;
 }
 
 .img-clientes {
@@ -662,7 +663,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  border-left: #000 solid 1px;
+  border-left: #000 solid 3px;
   border-bottom: #000 solid 3px;
   height: 55%;
   object-fit: cover;

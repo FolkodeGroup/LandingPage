@@ -8,10 +8,10 @@ import Revisteria from '@/assets/images/ProyClientes/Revisteria.png';
 
 export default function ProyClientes(){
     const proyectos = [
-        { image: Andet, title: 'Proyecto 1', description: 'Descripción breve del proyecto 1' },
-        { image: Autopartes, title: 'Proyecto 2', description: 'Descripción breve del proyecto 2' },
-        { image: Luminova, title: 'Proyecto 3', description: 'Descripción breve del proyecto 3' },
-        { image: Revisteria, title: 'Proyecto 4', description: 'Descripción breve del proyecto 4' }
+        { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos' },
+        { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes' },
+        { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias y derivados' },
+        { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics' }
     ];
     return (
         <section className="text-inverse section-proy-clientes">
@@ -28,8 +28,8 @@ export default function ProyClientes(){
                             height={proyecto.image.height}
                         />
                         <div className='text-clientes'>
-                            <h3 className="text-2xl font-bold mt-4">{proyecto.title}</h3>
-                            <p className="text-md">{proyecto.description}</p>
+                            <h3 className="text-4xl font-bold mt-4">{proyecto.title}</h3>
+                            <p className="text-xl">{proyecto.description}</p>
                             <button className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors button-clientes">
                                 Ver
                             </button>
