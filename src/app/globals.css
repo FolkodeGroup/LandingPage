@@ -587,6 +587,16 @@
 }
 
 /* CSS para Componenete "Proyectos Clientes" */
+.section-proy-clientes{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+.section-proy-clientes h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
 .div-clientes{
   background-color: var(--color-secondary);
   border-radius: 15px;
@@ -611,7 +621,7 @@
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   padding: 0;
-  margin: 0rem;
+  margin: 2rem;
   width: 100%;
   max-width: 480px;
   min-width: 320px;
