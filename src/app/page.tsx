@@ -9,6 +9,7 @@ import Unirte from "@/components/Unirte";
 import TeamMemberSection from "@/components/TeamMemberCard";
 import FactoryCard from "@/components/FactoryCard";
 import ContactFormSection from "@/components/ContactFormSection";
+import ClientComment from "@/components/ClientComent";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
         <IconosTecnologias />
         <ProyClientes />
         <ContactFormSection />
-        
+        <ClientComment />
         
       </div>
     </main>
