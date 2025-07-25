@@ -9,11 +9,12 @@ import Unirte from "@/components/Unirte";
 import TeamMemberSection from "@/components/TeamMemberCard";
 import FactoryCard from "@/components/FactoryCard";
 import ContactFormSection from "@/components/ContactFormSection";
+import ComentariosEquipo from "@/components/ComentariosEquipo";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col gap-6 items-start">
-        <HeroSection />
+      <HeroSection />
       <div className="container mx-auto px-6 py-24">
         <QueHacemosSection />
         <AboutSection />
@@ -21,12 +22,12 @@ export default function Home() {
         <TeamMemberSection />
         <TeamMemberCard />
         <Unirte />
+        <ComentariosEquipo/>
         <Tecnologias />
         <IconosTecnologias />
         <ProyClientes />
         <ContactFormSection />
-        
-        
+       
       </div>
     </main>
   );
