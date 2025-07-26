@@ -16,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="dark" style={{ fontFamily: "'Roboto', sans-serif" }}>
-        <Navbar />
-        {children}
+        <div id="main-content" className="main-content-with-footer">
+          <Navbar />
+          <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>{children}</main>
+        </div>
         <Footer />
       </body>
     </html>

@@ -1,13 +1,36 @@
 'use client';
 import { FaGithub, FaDiscord, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Footer() {
+  // Fallback a HTMLElement si HTMLFooterElement no está disponible
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!footerRef.current) return;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const bodyHeight = document.body.offsetHeight;
+      // Si el usuario está cerca del fondo, muestra el footer
+      if (scrollY + windowHeight >= bodyHeight - 10) {
+        footerRef.current.classList.add("footer-visible");
+      } else {
+        footerRef.current.classList.remove("footer-visible");
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Ejecutar una vez al montar para el caso de scroll inicial
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <footer className="footer-folkode-dark bg-secondary text-inverse pt-0">
+    <footer ref={footerRef} className="footer-folkode-dark bg-secondary text-inverse pt-0">
       <div className="flex flex-col md:flex-row">
         {/* Logo y lema */}
-        <div className="bg-gray w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6">
+        <div className="bg-gray w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6 footer-anim-item" style={{ transitionDelay: '0.1s' }}>
           <div className="flex flex-col md:flex-row items-center justify-center mb-4 gap-4 w-full">
             <Image
               src="/folkode-oscuro-no-bg.png"
@@ -25,7 +48,7 @@ export default function Footer() {
         </div>
 
         {/* Links */}
-        <div className="w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6">
+        <div className="w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6 footer-anim-item" style={{ transitionDelay: '0.25s' }}>
           <ul className="space-y-4 text-body-md">
           <h3 className="text-h3 mb-6 text-inverse font-bold">Links</h3>
             <li className="flex items-center gap-2">
@@ -48,7 +71,7 @@ export default function Footer() {
         </div>
 
         {/* Contacto */}
-        <div className="w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6">
+        <div className="w-full md:w-1/3 flex flex-col items-center justify-center py-10 px-6 footer-anim-item" style={{ transitionDelay: '0.4s' }}>
           <ul className="space-y-5 text-body-md">
           <h3 className="text-h3 mb-6 text-inverse font-bold">Contacto</h3>
             <li className="flex items-center gap-3">
@@ -80,7 +103,7 @@ export default function Footer() {
       </div>
 
       {/* Línea inferior */}
-      <div className="terminos-footer text-center flex flex-col md:flex-row justify-between items-center px-6">
+      <div className="terminos-footer text-center flex flex-col md:flex-row justify-between items-center px-6 footer-anim-item" style={{ transitionDelay: '0.55s' }}>
         <span className="footer-left</svg>">©All Copyright 2025 by Folkode</span>
         <a href="#" className="footer-center hover:underline">Políticas de privacidad</a>
         <span className="footer-right">Diseñado por Folkode</span>

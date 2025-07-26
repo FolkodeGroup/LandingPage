@@ -1,16 +1,31 @@
-import React from "react";
+import React from 'react';
+import { FaEnvelope, FaFacebook, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
-const FactoryCard: React.FC = () => (
-  <div className="bg-secondary rounded-xl p-8 text-white max-w-3xl mx-auto shadow-lg mb-12">
-    <h2 className="text-2xl md:text-3xl font-bold mb-6">
-      ¿Qué es una software factory colaborativa?
-    </h2>
-    <p className="text-base md:text-lg leading-relaxed">
-      Un software factory colaborativa es un modelo de desarrollo que prioriza el trabajo conjunto entre especialistas técnicos y clientes para crear soluciones digitales a medida. En Folkode, esto se traduce en metodologías ágiles, comunicación constante y equipos multidisciplinarios que trabajan en sintonía para transformar ideas en productos funcionales, escalables y centrados en el usuario.
-      <br /><br />
-      Nuestro equipo trabaja junto a vos—desde la concepción hasta la implementación—asegurando que cada proyecto refleje tus objetivos reales y tu identidad de marca.
-    </p>
-  </div>
-);
-
-export default FactoryCard;
+export default function ContactDatos() {
+  return (
+    <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 flex flex-col justify-center h-full">
+      <h3 className="text-lg font-light text-gray-700 mb-2 tracking-wide">CONTÁCTANOS</h3>
+      <h2 className="text-3xl font-bold text-black mb-6 leading-tight" style={{ fontFamily: 'Roboto, sans-serif', fontStyle: 'italic' }}>
+        Contactate<br />con nuestros<br />profesionales
+      </h2>
+      <div className="flex flex-col gap-4 mt-2">
+        <div className="flex items-center gap-3 text-black text-base">
+          <FaEnvelope className="text-2xl" />
+          <span className="truncate font-medium">devcorecontacto@gmail.com</span>
+        </div>
+        <div className="flex items-center gap-3 text-black text-base">
+          <FaFacebook className="text-2xl text-[#1877f3]" />
+          <span className="truncate font-medium">devcoregroup</span>
+        </div>
+        <div className="flex items-center gap-3 text-black text-base">
+          <FaWhatsapp className="text-2xl text-[#25d366]" />
+          <span className="truncate font-medium">+54 9 11 3107-8008</span>
+        </div>
+        <div className="flex items-center gap-3 text-black text-base">
+          <FaInstagram className="text-2xl text-[#e1306c]" />
+          <span className="truncate font-medium">devcoregroup</span>
+        </div>
+      </div>
+    </div>
+  );
+}
