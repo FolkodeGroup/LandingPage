@@ -22,16 +22,16 @@ export default function Home() {
         <hr className="border-t border-secondary my-4" />
         <AboutSection />
         <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Nuestro Equipo de Desarrolladores</h1>
-        <hr className="border-t border-secondary my-4" />
         <FactoryCard />
+        <hr className="border-t border-secondary my-4" />
+        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Nuestro Equipo de Desarrolladores</h1>
         <hr className="border-t border-secondary my-4" />
         <TeamMemberSection />
         <TeamMemberCard />
         <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
-        <hr className="border-t border-secondary my-4" />
         <Unirte />
+        <hr className="border-t border-secondary my-4" />
+        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
         <hr className="border-t border-secondary my-4" />
         <Tecnologias />
         <IconosTecnologias />
