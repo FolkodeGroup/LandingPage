@@ -75,7 +75,7 @@
     --color-border: #21262d;
 
     /* Estilos Tarjeta ContacDtos */
-    
+
 
     /* Estilos Footer */
   .terminos-footer {
@@ -649,6 +649,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 65%;
+  color: var(--color-text-inverse);
 }
 
 .button-clientes {

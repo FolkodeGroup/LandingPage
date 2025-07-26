@@ -7,10 +7,10 @@ import Image from 'next/image';
 
 export default function ProyClientes(){
     const proyectos = [
-        { image: Andet, title: 'Proyecto 1', description: 'Descripción breve del proyecto 1' },
-        { image: Autopartes, title: 'Proyecto 2', description: 'Descripción breve del proyecto 2' },
-        { image: Luminova, title: 'Proyecto 3', description: 'Descripción breve del proyecto 3' },
-        { image: Revisteria, title: 'Proyecto 4', description: 'Descripción breve del proyecto 4' }
+        { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos' },
+        { image: Autopartes, title: 'Autopartes', description: 'E-commerce de autopartes' },
+        { image: Luminova, title: 'Luminova', description: 'Software empresarial de luminarias' },
+        { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics' }
     ];
     return (
         <section className="text-inverse section-proy-clientes">

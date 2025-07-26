@@ -40,13 +40,13 @@ export default function Home() {
         <ProyClientes />
         <hr className="border-t border-secondary my-4" />
         <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios De los Clientes</h1>
-        <ClientComent 
+        <ClientComent
           comment="El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel."
           author="Juan Pérez"
           role="CEO de Empresa X"
           avatarUrl="/images/avatars/juan.jpg"
         />
-        
+
         <hr className="border-t border-secondary my-4" />
         <section className="w-full flex flex-col md:flex-row gap-8 items-start justify-center py-8">
           <div className="w-full md:w-1/2 flex justify-center">
