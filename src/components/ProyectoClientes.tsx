@@ -1,10 +1,9 @@
 'use client'
-import { motion } from 'framer-motion'
-import React, { useState, useRef, useEffect } from "react";
 import Andet from '@/assets/images/ProyClientes/Andet.png';
 import Autopartes from '@/assets/images/ProyClientes/Autopartes.png';
 import Luminova from '@/assets/images/ProyClientes/Luminova.png';
 import Revisteria from '@/assets/images/ProyClientes/Revisteria.png';
+import Image from 'next/image';
 
 export default function ProyClientes(){
     const proyectos = [
@@ -21,12 +20,16 @@ export default function ProyClientes(){
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 div-clientes">
                 {proyectos.map((proyecto, index) => (
                     <div key={index} className='card-clientes'>
-                        <img className='img-clientes'
-                            src={proyecto.image.src}
+                        <div className='img-clientes'>
+                          <Image
+                            src={proyecto.image}
                             alt={proyecto.title}
                             width={proyecto.image.width}
                             height={proyecto.image.height}
-                        />
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                            priority
+                          />
+                        </div>
                         <div className='text-clientes'>
                             <h3 className="text-2xl font-bold mt-4">{proyecto.title}</h3>
                             <p className="text-md">{proyecto.description}</p>

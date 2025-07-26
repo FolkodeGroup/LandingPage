@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import React, { useState, useRef, useEffect } from "react";
 import {
   SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiGraphql, SiKotlin,
   SiHtml5, SiDjango, SiFlask, SiOpenai, SiPostgresql, SiJavascript,

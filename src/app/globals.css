@@ -74,6 +74,9 @@
     --color-border-subtle: #30363d;
     --color-border: #21262d;
 
+    /* Estilos Tarjeta ContacDtos */
+    
+
     /* Estilos Footer */
   .terminos-footer {
     background-color: var(--color-secondary-hover);
