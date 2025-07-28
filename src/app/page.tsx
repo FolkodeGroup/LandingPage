@@ -4,17 +4,18 @@ import Tecnologias from "@/components/Tecnologias";
 import QueHacemosSection from "@/components/QueHacemosSection";
 import ProyClientes from "@/components/ProyectoClientes";
 import IconosTecnologias from "@/components/IconosTecnologias";
-import TeamMemberCard from "@/components/TeamMemberCard";
 import Unirte from "@/components/Unirte";
 import TeamMemberSection from "@/components/TeamMemberSection";
 import FactoryCard from "@/components/FactoryCard";
 import ContactFormSection from "@/components/ContactFormSection";
 import ContactDatos from "@/components/ContactDatos";
 import ClientComent from "@/components/ClientComent";
+import CoverParticles from "@/components/cover-particles";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col gap-6 items-start">
+        <CoverParticles />
         <HeroSection />
       <div className="container mx-auto px-6 py-24">
         <hr className="border-t border-secondary my-4" />
