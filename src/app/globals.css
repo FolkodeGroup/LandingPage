@@ -437,13 +437,20 @@
     object-fit: contain;
     margin-bottom: 8px;
     display: block;
+    width: 150px;
+    height: 150px;
+    transition: width 0.3s, height 0.3s;
   }
 
   @media (max-width: 768px) {
     .navbar-logo-img {
-      width: 36px;
-      height: 36px;
+      width: 150px;
+      height: 150px;
       margin-bottom: 4px;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      padding: 0;
     }
   }
 
