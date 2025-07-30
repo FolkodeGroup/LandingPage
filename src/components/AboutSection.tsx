@@ -15,13 +15,16 @@ export default function AboutSection() {
           <img
             src="/Compu.png"
             alt="Código"
-            className="static md:absolute left-0 top-4 w-24 h-32 md:w-60 md:h-52 lg:w-160 lg:h-65 object-cover rounded-lg shadow-lg z-20 border-4 border-black"
-          />
+            className="static md:absolute md:left-10 md:top-5 w-24 h-32 md:w-60 md:h-56 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black" />
+           {/*  className="static md:absolute left-0 top-4 w-24 h-32 md:w-60 md:h-52 lg:w-160 lg:h-65 object-cover rounded-lg shadow-lg z-20 border-4 border-black" */}
+
+
           {/* Imagen principal (ChicoOficina) */}
           <img
             src="/ChicoOficina.png"
             alt="Trabajo en equipo"
-            className="static md:absolute left-30 top-20 w-24 h-32 md:w-60 md:h-55 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black"
+            className="static md:absolute md:left-30 md:top-20 w-32 h-32 md:w-60 md:h-56 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black"
+            /* className="static md:absolute left-30 top-20 w-24 h-32 md:w-60 md:h-55 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black" */
           />
         </div>
         {/* Texto a la derecha */}

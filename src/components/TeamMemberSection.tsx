@@ -87,6 +87,34 @@ const teamMembers: TeamMember[] = [
   },
 
 
+    {
+    
+    id: "member-6", 
+    avatar: "/Ovejero.png",
+    name: "Lucas Echavarria",
+    role: "Backend Developer",
+    description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
+    links: {
+      github: 'https://github.com/carlos',
+      linkedin: 'https://linkedin.com/in/carlos',
+    },
+    mode: "dark",
+  },
+
+      {
+    
+    id: "member-7", 
+    avatar: "/Ovejero.png",
+    name: "Fede Paal",
+    role: "Aca va el Rol",
+    description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
+    links: {
+      github: 'https://github.com/carlos',
+      linkedin: 'https://linkedin.com/in/carlos',
+    },
+    mode: "dark",
+  },
+
   // Puedes agregar más miembros según necesites
 ];
 
