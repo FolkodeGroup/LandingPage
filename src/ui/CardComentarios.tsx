@@ -5,6 +5,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import gabrielImg from '@/assets/images/gabriel.jpg'
 
+
 const personas = [
   {
     nombre: 'Gabriel Sosa',
@@ -17,6 +18,7 @@ const personas = [
     puesto: 'Backend Developer',
     comentario: 'Nos enfocamos en construir sistemas sólidos y escalables.',
     imagen: '/fotos/celina.jpg',
+
   },
 ]
 
@@ -49,6 +51,7 @@ export default function CardComentariosClient() {
 
   useEffect(() => {
     const intervalo = setInterval(siguiente, 8000)
+
     return () => clearInterval(intervalo)
   }, [])
 
@@ -151,3 +154,4 @@ export default function CardComentariosClient() {
     </motion.div>
   )
 }
+

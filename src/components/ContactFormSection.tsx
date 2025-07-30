@@ -33,15 +33,14 @@ const ContactFormSection = () => {
   return (
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="mx-auto p-6 pb-4 rounded-xl shadow-lg border border-gray-200 transition-colors duration-300 hover:bg-[#3a5a40] bg-[#5a8f6b] w-full max-w-xl"
-      style={{ overflowY: 'auto' }}
+      className="w-full max-w-md bg-[#5a6f3a] rounded-xl shadow-lg p-8 flex flex-col justify-center h-full"
       autoComplete="off"
       noValidate
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-5">
           <div className="space-y-1">
-            <label htmlFor="name" className="block text-sm font-bold text-white">
+            <label htmlFor="name" className="block text-sm font-semibold text-white mb-1">
               Nombre*
             </label>
             <Input
@@ -49,7 +48,7 @@ const ContactFormSection = () => {
               {...register("name")}
               placeholder="Tu nombre completo"
               aria-invalid={!!errors.name}
-              className="w-full bg-white border-gray-300 focus:border-gray-900 text-gray-800"
+              className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="name"
             />
             {errors.name && (
@@ -58,7 +57,7 @@ const ContactFormSection = () => {
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="email" className="block text-sm font-bold text-white">
+            <label htmlFor="email" className="block text-sm font-semibold text-white mb-1">
               Email*
             </label>
             <Input
@@ -67,7 +66,7 @@ const ContactFormSection = () => {
               {...register("email")}
               placeholder="tucorreo@ejemplo.com"
               aria-invalid={!!errors.email}
-              className="w-full bg-white border-gray-300 focus:border-gray-900 text-gray-800"
+              className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="email"
             />
             {errors.email && (
@@ -78,7 +77,7 @@ const ContactFormSection = () => {
 
         <div className="space-y-5">
           <div className="space-y-1">
-            <label htmlFor="phone" className="block text-sm font-bold text-white">
+            <label htmlFor="phone" className="block text-sm font-semibold text-white mb-1">
               Teléfono*
             </label>
             <Input
@@ -86,7 +85,7 @@ const ContactFormSection = () => {
               {...register("phone")}
               placeholder="+54 11 1234-5678"
               aria-invalid={!!errors.phone}
-              className="w-full bg-white border-gray-300 focus:border-gray-900 text-gray-800"
+              className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="tel"
             />
             {errors.phone && (
@@ -95,7 +94,7 @@ const ContactFormSection = () => {
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="project" className="block text-sm font-bold text-white">
+            <label htmlFor="project" className="block text-sm font-semibold text-white mb-1">
               Empresa/Proyecto*
             </label>
             <Input
@@ -103,7 +102,7 @@ const ContactFormSection = () => {
               {...register("project")}
               placeholder="Nombre de tu empresa/proyecto"
               aria-invalid={!!errors.project}
-              className="w-full bg-white border-gray-300 focus:border-gray-900 text-gray-800"
+              className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="organization"
             />
             {errors.project && (
@@ -113,27 +112,27 @@ const ContactFormSection = () => {
         </div>
       </div>
 
-      <div className="mt-6 space-y-1">
-        <label htmlFor="message" className="block text-sm font-bold text-white">
+      <div className="mt-4 space-y-1 md:col-span-2">
+        <label htmlFor="message" className="block text-sm font-semibold text-white mb-1">
           Mensaje*
         </label>
         <Textarea
           id="message"
           {...register("message")}
-          placeholder="Describe tu consulta o proyecto..."
+          placeholder="Escribe tu mensaje"
           aria-invalid={!!errors.message}
-          className="min-h-[150px] w-full bg-white border-gray-300 focus:border-gray-900 text-gray-800"
+          className="min-h-[100px] w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
         )}
       </div>
 
-      <div className="mt-8 flex justify-center">
+      <div className="mt-6 flex justify-center md:col-span-2">
         <Button
           type="submit"
-          className="bg-black text-inverse font-bold rounded-lg transition-colors duration-200 shadow-md flex items-center justify-center border-2 border-white w-full max-w-xs h-16 text-lg"
-          style={{ fontSize: '1.25rem' }}
+          className="bg-black text-inverse font-bold rounded-lg transition-colors duration-200 shadow-md flex items-center justify-center border border-black w-full h-12 text-base"
+          style={{ fontSize: '1rem' }}
           disabled={!isValid}
         >
           Enviar mensaje
