@@ -1,53 +1,63 @@
-'use client';
-import { motion } from 'framer-motion';
-import Button from "@/components/Button";
-import heroImage from '@/assets/images/heroimage.png';
+'use client'
+
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Button from "@/components/Button"
+import heroImage from '@/assets/images/heroimage.png'
 
 export default function HeroSection() {
+  const [navHeight, setNavHeight] = useState(0)
+
+  useEffect(() => {
+    const navbar = document.getElementById('main-navbar')
+    if (navbar) {
+      setNavHeight(navbar.offsetHeight)
+    }
+  }, [])
+
   return (
-    <>
-      {/* Espaciador para el navbar fijo */}
-      <div className="w-full h-20" />
+    <section
+      className="relative w-full flex flex-col items-start justify-center"
+      style={{ paddingTop: navHeight }}
+    >
+      <div className="relative w-full">
+        <motion.img
+          src={heroImage.src}
+          alt="Hero"
+          className="w-full h-auto object-contain"
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
 
-      {/* Imagen de fondo animada con zoom-out */}
-      <motion.section
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="
-          relative flex flex-col justify-center text-left w-full px-6
-          min-h-[calc(100vh-80px)]
-        "
-        style={{
-          backgroundImage: `url(${heroImage.src})`,
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="relative z-10 text-white ml-4 md:ml-[10%] lg:ml-[15%] space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, x: '100vw' }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl font-bold"
-          >
-            Bienvenidos a FolkodeGroup
-          </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, x: '100vw' }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute top-1/2 left-10 transform -translate-y-1/2 px-6 max-w-xl text-white"
+          style={{ maxWidth: '400px' }}
+        >
+          {/* Título en un solo renglón */}
+          <h1 className="text-4xl md:text-6xl font-bold whitespace-nowrap">
+            Bienvenidos a Folkode Group
+          </h1>
 
+          {/* Párrafo debajo del título, sin quiebre de línea */}
           <motion.p
             initial={{ opacity: 0, x: '100vw' }}
             animate={{ opacity: 1, x: 40 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="mt-4 text-lg md:text-xl text-gray-200"
+            className="mt-4 text-lg md:text-xl text-gray-200 whitespace-nowrap"
           >
             Creamos soluciones digitales modernas y escalables.
           </motion.p>
 
+          {/* Botón alineado a la derecha */}
           <motion.div
             initial={{ opacity: 0, x: '-100vw' }}
             animate={{ opacity: 1, x: 60 }}
             transition={{ delay: 0.6, duration: 1 }}
+            className="mt-6 flex justify-end"
           >
             <Button
               size="lg"
@@ -56,8 +66,8 @@ export default function HeroSection() {
               Contáctanos
             </Button>
           </motion.div>
-        </div>
-      </motion.section>
-    </>
-  );
+        </motion.div>
+      </div>
+    </section>
+  )
 }

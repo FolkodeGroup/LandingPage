@@ -12,7 +12,9 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="navbar fixed top-0 left-0 w-full z-50 bg-secondary shadow-lg">
+    <nav
+    id="main-navbar"
+    className="navbar fixed top-0 left-0 w-full z-50 bg-secondary shadow-lg">
       {/* Contenedor principal */}
       <div className="navbar-main">
         {/* Sección superior (negra + verde) */}

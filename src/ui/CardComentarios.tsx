@@ -3,13 +3,14 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import gabrielImg from '@/assets/images/gabriel.jpg'
 
 const personas = [
   {
     nombre: 'Gabriel Sosa',
     puesto: 'Frontend Developer',
     comentario: 'Siempre buscamos mejorar cada detalle del diseño.',
-    imagen: '/fotos/gabriel.jpg',
+    imagen: gabrielImg.src,
   },
   {
     nombre: 'Celina Pereyra',
@@ -24,7 +25,6 @@ export default function CardComentariosClient() {
   const [animando, setAnimando] = useState(false)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
-
   const [direction, setDirection] = useState(1)
 
   const siguiente = () => {
@@ -78,41 +78,49 @@ export default function CardComentariosClient() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 3, ease: 'easeOut' }}
-      className="w-[432px] h-[454px] border-2 rounded-xl flex flex-col items-center justify-between p-6"
+      className="
+        w-full max-w-[432px] aspect-[432/454]
+        border-2 rounded-xl flex flex-col items-center justify-between
+        p-3 sm:p-4 md:p-6
+      "
       style={{ borderColor: '#01454F' }}
     >
-      <div className="relative w-full flex items-center justify-center mb-2" style={{ height: '250px' }}>
-        {/* Flecha izquierda */}
+      {/* Imagen + flechas */}
+      <div className="relative w-full flex items-center justify-center mb-2 flex-shrink-0" style={{ height: '40%' }}>
         <button
           onClick={anterior}
           className="absolute left-0 z-30 p-2 hover:text-[#01454F] text-[#01454F]"
           aria-label="Anterior"
           style={{ top: '50%', transform: 'translateY(-50%)' }}
         >
-          <FaChevronLeft size={24} />
+          <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         </button>
 
-        {/* Imagen */}
-        <div className="z-20">
+        <div className="z-20 flex justify-center items-center h-full">
           <img
             src={actual.imagen}
             alt={actual.nombre}
-            className="w-28 h-28 rounded-full object-cover border border-[#01454F]"
+            className="
+              h-[65%] sm:h-[70%] md:h-[75%]
+              max-h-[200px]
+              rounded-full object-cover
+              border border-[#01454F]
+            "
           />
         </div>
 
-        {/* Flecha derecha */}
         <button
           onClick={siguiente}
           className="absolute right-0 z-30 p-2 hover:text-[#01454F] text-[#01454F]"
           aria-label="Siguiente"
           style={{ top: '50%', transform: 'translateY(-50%)' }}
         >
-          <FaChevronRight size={24} />
+          <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         </button>
       </div>
 
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+      {/* Texto animado */}
+      <div className="relative w-full flex-grow flex items-center justify-center overflow-hidden">
         <AnimatePresence custom={direction} mode="wait" initial={false}>
           <motion.div
             key={index}
@@ -122,18 +130,18 @@ export default function CardComentariosClient() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.7, ease: 'easeInOut' }}
-            className="absolute flex flex-col items-center mt-2 px-4"
+            className="absolute flex flex-col items-center mt-1 sm:mt-2 px-2 sm:px-4"
             style={{ maxWidth: '90%' }}
           >
-            <p className="text-[20px] text-[#343434] dark:text-[#D0D0D0] text-center mt-4">
+            <p className="text-[13px] xs:text-[15px] sm:text-[17px] md:text-[20px] text-[#343434] dark:text-[#D0D0D0] text-center mt-2 sm:mt-4 leading-snug">
               {actual.comentario}
             </p>
 
-            <div className="text-center mt-4">
-              <p className="text-[14px] font-bold text-black dark:text-white">
+            <div className="text-center mt-2 sm:mt-4">
+              <p className="text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] font-bold text-black dark:text-white">
                 {actual.nombre}
               </p>
-              <p className="text-[12px] text-[#696969] dark:text-[#A3A3A3]">
+              <p className="text-[9px] xs:text-[10px] sm:text-[11px] md:text-[12px] text-[#696969] dark:text-[#A3A3A3]">
                 {actual.puesto}
               </p>
             </div>
