@@ -277,6 +277,17 @@
     cursor: pointer;
   }
 
+  .text-body-desplegable{
+    font-size: 0.9rem;
+  }
+
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: left;
+  }
+
   .btn-desplegable-abierto {
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
@@ -284,7 +295,9 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
 
@@ -333,6 +346,7 @@
   .btn-accent:hover {
     background-color: var(--color-accent-hover);
   }
+
 
   /* Tamaños para botones personalizados */
 .btn-size-xs {
