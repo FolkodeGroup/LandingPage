@@ -44,7 +44,7 @@ export default function Home() {
           comment="El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel."
           author="Juan Pérez"
           role="CEO de Empresa X"
-          avatarUrl="/images/avatars/juan.jpg"
+          avatarUrl="/images/avatars/juan.jpeg"
         />
         
         <hr className="border-t border-secondary my-4" />
