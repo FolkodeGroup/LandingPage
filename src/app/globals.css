@@ -437,13 +437,20 @@
     object-fit: contain;
     margin-bottom: 8px;
     display: block;
+    width: 150px;
+    height: 150px;
+    transition: width 0.3s, height 0.3s;
   }
 
   @media (max-width: 768px) {
     .navbar-logo-img {
-      width: 36px;
-      height: 36px;
+      width: 150px;
+      height: 150px;
       margin-bottom: 4px;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      padding: 0;
     }
   }
 
@@ -527,7 +534,6 @@
   font-size: 1.1rem;
 }
 
-/* Ajuste de la tarjeta para centrar el contenido y evitar protrusión */
 .li-tecnologias {
   display: flex;
   flex-direction: column;
@@ -594,6 +600,16 @@
 }
 
 /* CSS para Componenete "Proyectos Clientes" */
+.section-proy-clientes{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+.section-proy-clientes h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
 .div-clientes{
   background-color: var(--color-secondary);
   border-radius: 15px;
@@ -614,54 +630,44 @@
   align-items: center;
   justify-content: flex-end;
   background-color: var(--color-primary);
-  border: 3px solid var(--color-black);
+  border: 5px solid var(--color-black);
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
   padding: 0;
-  margin: 1rem;
+  margin: 2rem;
   width: 100%;
-  max-width: 240px;
-  min-width: 160px;
+  max-width: 480px;
+  min-width: 320px;
   flex: 1 1 45%; /* permite que se reduzca y se acomode */
-  height: 18.125rem;
+  height: 36.250rem;
   overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .card-clientes {
-    flex: 1 1 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .text-clientes {
-    padding: 2rem 1rem 1rem 1rem;
-    margin-top: 55%;
-  }
 }
 
 .text-clientes{
   text-align: left;
-  padding: 3rem 1rem 0rem 1rem;
+  padding: 3rem 1rem 8rem 1rem;
   background-color: var(--color-primary);
   width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   margin-top: 65%;
+  font-size: 1.25rem;
   color: var(--color-text-inverse);
 }
 
 .button-clientes {
   background-color: var(--color-tertiary-hover);
   color: var(--color-text-inverse);
-  padding: 0.25rem 0.65rem;
+  padding: 0.5rem 1.30rem;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
   align-self: flex-end;
   margin: 0.3rem 0;
+  margin-top: 5rem;
+  margin-bottom: -6rem;
 }
 
 .img-clientes {
@@ -669,30 +675,61 @@
   top: 0;
   left: 0;
   width: 100%;
-  border-left: #000 solid 1px;
+  border-left: #000 solid 3px;
   border-bottom: #000 solid 3px;
   height: 55%;
+  max-height: 55%;
   object-fit: cover;
   border-top-right-radius: 37px;
   border-bottom-left-radius: 37px;
   z-index: 2;
 }
 
-/* Footer Reveal Effect - SOLO UNA DEFINICIÓN */
-.footer-folkode-dark {
-  width: 100vw;
-  opacity: 0;
-  transform: translateY(60px);
-  transition:
-    opacity 0.9s cubic-bezier(0.77,0,0.175,1),
-    transform 0.9s cubic-bezier(0.77,0,0.175,1);
-  will-change: opacity, transform;
-  pointer-events: none;
-  position: relative; /* <-- Importante: no fixed */
-  z-index: 10;
-}
-.footer-folkode-dark.footer-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+@media (max-width: 768px) {
+  .section-proy-clientes h1{
+    font-size: 1.75rem; /* 32px */
+    margin: 1rem;
+  }
+
+  .div-clientes {
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+  }
+
+  .card-clientes {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 75vw;
+    width: 50vw;
+    margin: auto;
+    max-width: 240px;
+    min-width: 160px;
+  }
+
+  .text-clientes {
+    padding: 0rem 1rem 0rem 1rem;
+    margin-top: 65%;
+    font-size: 0.25rem;
+  }
+
+  .text-clientes h3 {
+    font-size: 1.25rem;
+  }
+
+  .text-clientes p {
+    font-size: 0.75rem;
+  }
+
+  .img-clientes {
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .button-clientes{
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
 }
