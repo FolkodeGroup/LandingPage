@@ -504,6 +504,7 @@
   width: 100%;
   height: auto;
   align-items: center;
+  border-radius: 16px;
 }
 
 .li-tecnologias {
@@ -616,7 +617,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
@@ -683,6 +684,7 @@
   border-top-right-radius: 37px;
   border-bottom-left-radius: 37px;
   z-index: 2;
+  overflow: hidden
 }
 
 @media (max-width: 768px) {
