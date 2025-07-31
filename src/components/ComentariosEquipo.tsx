@@ -14,7 +14,6 @@ export default function ComentariosEquipo() {
   const isInView = useInView(ref, { once: true })
   const [index, setIndex] = useState(0)
 
-  // Rotación automática
   useEffect(() => {
     if (!isInView) return
     const interval = setInterval(() => {
@@ -31,7 +30,6 @@ export default function ComentariosEquipo() {
       <div
         className="
           w-full max-w-[1152px]
-          aspect-[1152/528] sm:aspect-[1152/528] md:aspect-auto
           flex flex-row items-stretch justify-between
           gap-4 sm:gap-6 md:gap-8
         "
@@ -41,7 +39,7 @@ export default function ComentariosEquipo() {
           initial={{ opacity: 0, x: -150 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="w-1/2 h-full flex items-center justify-center"
+          className="w-1/2 aspect-square flex items-center justify-center"
         >
           <motion.img
             key={index}
@@ -56,8 +54,7 @@ export default function ComentariosEquipo() {
         </motion.div>
 
         {/* Columna derecha */}
-        <div className="w-1/2 h-full min-h-0 flex flex-col items-center justify-center gap-4 md:gap-6 text-center px-2 sm:px-4">
-
+        <div className="w-1/2 aspect-square flex items-center justify-center">
           <CardComentarios />
         </div>
       </div>
