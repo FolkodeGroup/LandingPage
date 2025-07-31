@@ -56,7 +56,7 @@ const CoverParticles = () => {
                     },
                     particles: {
                         color: {
-                            value: "#025159",
+                            value: "#86A869",
                         },
                         links: {
                             color: "#025159",
