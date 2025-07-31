@@ -11,6 +11,7 @@ import ContactFormSection from "@/components/ContactFormSection";
 import ContactDatos from "@/components/ContactDatos";
 import ClientComent from "@/components/ClientComent";
 import CoverParticles from "@/components/cover-particles";
+import ComentariosEquipo from "@/components/ComentariosEquipo";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         <Unirte />
         <hr className="border-t border-secondary my-4" />
         <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
+        <ComentariosEquipo/>
         <hr className="border-t border-secondary my-4" />
         <Tecnologias />
         <IconosTecnologias />
