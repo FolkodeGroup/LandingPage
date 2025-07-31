@@ -19,7 +19,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: "member-1",
-    avatar: "/celi.jpg",
+    avatar: "/celi.png",
     name: "Celina Pereyra",
     role: "FrontEnd Developer",
     description: "Construyendo soluciones con pasión por la tecnología.",
@@ -90,7 +90,7 @@ const teamMembers: TeamMember[] = [
     {
     
     id: "member-6", 
-    avatar: "/Ovejero.png",
+    avatar: "/cuqui.png",
     name: "Lucas Echavarria",
     role: "Backend Developer",
     description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
@@ -104,7 +104,7 @@ const teamMembers: TeamMember[] = [
       {
     
     id: "member-7", 
-    avatar: "/Ovejero.png",
+    avatar: "/fede.png",
     name: "Fede Paal",
     role: "Aca va el Rol",
     description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
@@ -120,7 +120,7 @@ const teamMembers: TeamMember[] = [
 
 export default function TeamMemberSection() {
   return (
-   <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-black transition-colors">
+   <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-10 text-center text-white">
           Nuestro Equipo de desarrolladores
