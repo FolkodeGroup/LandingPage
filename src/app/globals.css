@@ -79,14 +79,14 @@
       color: var(--color-text-inverse);
       font-size: 1.5rem !important; /* 24px */
       font-weight: 600;
-      
+
     }
 
     .contactos h3 {
       color: var(--color-text-inverse);
       font-size: 3rem !important; /* 18px */
       font-weight: 400;
-      
+
     }
 
     .contactate {
@@ -210,14 +210,6 @@
     color: var(--color-text-primary);
   }
 
-  .text-body-desplegable {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 1rem; /* 16px */
-    font-weight: 350;
-    line-height: 1.5;
-    color: var(--color-text-inverse);
-  }
-
   /* Clases utilitarias de color */
   .bg-primary {
     background-color: var(--color-primary);
@@ -296,6 +288,22 @@
     cursor: pointer;
   }
 
+  /* CSS para componente Desplegable*/
+  .text-body-desplegable {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 0.9rem;
+    font-weight: 350;
+    line-height: 1.5;
+    color: var(--color-text-inverse);
+  }
+
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: left;
+  }
+
   .btn-desplegable-abierto {
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
@@ -303,7 +311,9 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
 
@@ -320,6 +330,13 @@
     margin: 0.16rem;
 
 }
+
+@media (max-width: 768px){
+  .btn-desplegable-abierto{
+    color: #000;
+  }
+}
+
 
   .btn-secondary {
     background-color: var(--color-secondary);
@@ -352,6 +369,7 @@
   .btn-accent:hover {
     background-color: var(--color-accent-hover);
   }
+
 
   /* Tamaños para botones personalizados */
 .btn-size-xs {
@@ -523,6 +541,7 @@
   width: 100%;
   height: auto;
   align-items: center;
+  border-radius: 16px;
 }
 
 .li-tecnologias {
@@ -635,7 +654,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
@@ -702,6 +721,7 @@
   border-top-right-radius: 37px;
   border-bottom-left-radius: 37px;
   z-index: 2;
+  overflow: hidden
 }
 
 @media (max-width: 768px) {
