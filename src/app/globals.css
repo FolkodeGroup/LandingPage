@@ -79,14 +79,14 @@
       color: var(--color-text-inverse);
       font-size: 1.5rem !important; /* 24px */
       font-weight: 600;
-      
+
     }
 
     .contactos h3 {
       color: var(--color-text-inverse);
       font-size: 3rem !important; /* 18px */
       font-weight: 400;
-      
+
     }
 
     .contactate {
@@ -210,14 +210,6 @@
     color: var(--color-text-primary);
   }
 
-  .text-body-desplegable {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 1rem; /* 16px */
-    font-weight: 350;
-    line-height: 1.5;
-    color: var(--color-text-inverse);
-  }
-
   /* Clases utilitarias de color */
   .bg-primary {
     background-color: var(--color-primary);
@@ -296,8 +288,13 @@
     cursor: pointer;
   }
 
-  .text-body-desplegable{
+  /* CSS para componente Desplegable*/
+  .text-body-desplegable {
+    font-family: var(--font-roboto), sans-serif;
     font-size: 0.9rem;
+    font-weight: 350;
+    line-height: 1.5;
+    color: var(--color-text-inverse);
   }
 
   .btn-desplegable{
@@ -333,6 +330,13 @@
     margin: 0.16rem;
 
 }
+
+@media (max-width: 768px){
+  .btn-desplegable-abierto{
+    color: #000;
+  }
+}
+
 
   .btn-secondary {
     background-color: var(--color-secondary);
@@ -767,4 +771,14 @@
     margin-top: 2rem;
     margin-bottom: 0.75rem;
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 25s linear infinite;
 }

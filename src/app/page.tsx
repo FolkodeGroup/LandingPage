@@ -10,6 +10,7 @@ import FactoryCard from "@/components/FactoryCard";
 import ContactateSection from "@/components/sections/ContactateSection";
 import ClientComent from "@/components/ClientComent";
 import CoverParticles from "@/components/cover-particles";
+import ComentariosEquipo from "@/components/ComentariosEquipo";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <Unirte />
         <hr className="border-t border-secondary my-4" />
         <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
+        <ComentariosEquipo/>
         <hr className="border-t border-secondary my-4" />
         <Tecnologias />
         <IconosTecnologias />
