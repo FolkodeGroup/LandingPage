@@ -730,11 +730,35 @@
 }
 
 @media (max-width: 768px) {
+  .contenedor-imagenes {
+    height: 300px;
+  }
+
+  .green-img{
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .blue-img{
+    width: 9rem;
+    height: 7rem;
+  }
+
+  .imagen-codigo {
+    width: 16rem;
+    height: 12rem;
+  }
+
+  .imagen-persona {
+    width: 16rem;
+    height: 12rem;
+  }
+
   .div-equipo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 17rem;
+    min-height: 20rem;
   }
 
   .card-equipo{
@@ -796,11 +820,40 @@
 }
 
 @media (max-width: 420px) {
+  .contenedor-imagenes {
+    height: 200px;
+  }
+
+  .green-img{
+    width: 5rem;
+    height: 5rem;
+    left: 75;
+  }
+
+  .blue-img{
+    width: 6rem;
+    height: 5rem;
+    right: 65;
+    top: 15;
+  }
+
+  .imagen-codigo {
+    width: 13rem;
+    height: 9rem;
+    left: 15;
+  }
+
+  .imagen-persona {
+    width: 13rem;
+    height: 9rem;
+    right: 15;
+  }
+
   .div-equipo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 18rem;
+    min-height: 24rem;
   }
 
   .section-proy-clientes h1{

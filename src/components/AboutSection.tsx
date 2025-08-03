@@ -7,29 +7,30 @@ export default function AboutSection() {
     <section className="py-20 bg-black lg:py-32">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-16">
         {/* Imágenes y cuadrados de colores a la izquierda */}
-        <div className="w-full md:w-1/2 flex items-center justify-center relative h-[420px] md:h-[300px] mb-20 md:mb-0">
-          {/* Cuadrado azul detrás arriba */}
-          <div className="static md:absolute left-20 md:left-40 lg:left-0 -top-1 w-40 h-16 xl:left-160 md:w-30 md:h-30 lg:w-64 lg:h-24 xl:w-20 xl:h-32 bg-[#01454F] z-0" />
-          {/* Cuadrado verde detrás abajo */}
-          <div className="static md:absolute left-20 top-10 w-20 h-20 md:w-20 md:h-70 bg-[#5E8D6B] z-0" />
+        <div className="w-full md:w-1/2 flex items-center justify-center relative h-[420px] md:h-[300px] mb-20 md:mb-0 contenedor-imagenes">
+          {/* Cuadro verde inferior izquierda */}
+          <div className="absolute -bottom-5 left-50 w-25 h-24 bg-[#5E8D6B] z-0 green-img" />
+
+          {/* Cuadro azul superior derecha */}
+          <div className="absolute top-0 right-45 w-36 h-28 bg-[#01454F] z-0 blue-img" />
+
+          {/* Imagen de código (detrás) */}
           <Image
             src="/Compu.png"
             alt="Código"
             width={384}
-            height={192}
-            className="static md:absolute md:left-10 md:top-5 w-24 h-32 md:w-60 md:h-56 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black"
+            height={256}
+            className="absolute top-8 left-30 w-64 h-48 object-cover shadow-lg z-10 border-4 border-black imagen-codigo"
             priority
           />
-          {/*  className="static md:absolute left-0 top-4 w-24 h-32 md:w-60 md:h-52 lg:w-160 lg:h-65 object-cover rounded-lg shadow-lg z-20 border-4 border-black" */}
 
-
-          {/* Imagen principal (ChicoOficina) */}
+          {/* Imagen de persona (adelante) */}
           <Image
             src="/ChicoOficina.png"
             alt="Trabajo en equipo"
             width={384}
-            height={192}
-            className="static md:absolute md:left-30 md:top-20 w-32 h-32 md:w-60 md:h-56 lg:w-64 lg:h-32 xl:w-80 xl:h-40 2xl:w-96 2xl:h-48 object-cover rounded-lg shadow-lg z-20 border-4 border-black"
+            height={256}
+            className="absolute bottom-0 right-20 w-64 h-48 object-cover shadow-lg z-20 border-4 border-black imagen-persona"
             priority
           />
         </div>
