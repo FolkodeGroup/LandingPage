@@ -33,6 +33,7 @@ export default function ComentariosEquipo() {
           flex flex-row items-stretch justify-between
           gap-4 sm:gap-6 md:gap-8
         "
+        style={{ minWidth: 0 }}
       >
         {/* Columna izquierda (imagen) */}
         <motion.div

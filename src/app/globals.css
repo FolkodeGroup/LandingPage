@@ -149,6 +149,7 @@
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
+    overflow-x: hidden;
   }
 
   /* Clases tipográficas personalizadas usando Roboto según Figma */
@@ -251,7 +252,7 @@
 
 /* Footer Reveal Effect - SOLO UNA DEFINICIÓN */
 .footer-folkode-dark {
-  width: 100vw;
+  width: 100%;
   opacity: 0;
   transform: translateY(60px);
   transition:
