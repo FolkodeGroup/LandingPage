@@ -43,15 +43,16 @@ export default function Unirte() {
   return (
     <section className="unirte-section mb-16">
       <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center px-4 py-4 mt-6">¿Por qué unirte al equipo?</h2>
-        <div className="flex flex-nowrap justify-center gap-8 max-w-6xl mx-auto overflow-x-auto">
+        <div className="flex flex-nowrap justify-center gap-8 max-w-6xl mx-auto overflow-x-auto div-equipo">
         {motivos.map((motivo) => (
-          <ActividadCard
-            key={motivo.id}
-            mode={motivo.mode}
-            iconClass={motivo.iconClass}
-            title={motivo.title}
-            items={motivo.items}
-          />
+          <div className="min-w-0" key={motivo.id}>
+            <ActividadCard
+              mode={motivo.mode}
+              iconClass={motivo.iconClass}
+              title={motivo.title}
+              items={motivo.items}
+            />
+          </div>
         ))}
       </div>
     </section>
