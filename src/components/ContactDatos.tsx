@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaEnvelope, FaFacebook, FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from 'react-icons/fa6';
 
 export default function ContactDatos() {
   return (
@@ -32,7 +33,7 @@ export default function ContactDatos() {
         <div className="flex items-center gap-3 text-base">
           <FaFacebook className="text-2xl text-blue-600" />
           <a
-            href="https://www.facebook.com/profile.php?id=61578733043220"
+            href="https://www.facebook.com/folkode"
             target="_blank"
             rel="noopener noreferrer"
             className="truncate font-medium hover:underline"
@@ -51,6 +52,18 @@ export default function ContactDatos() {
             Instagram
           </a>
         </div>
+        <div className="flex items-center gap-3 text-base">
+          <FaLinkedin className="text-2xl text-blue-600" />
+          <a
+            href="https://www.linkedin.com/folkode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="truncate font-medium hover:underline"
+          >
+            Linkedin
+          </a>
+        </div>
+
       </div>
     </div>
   );

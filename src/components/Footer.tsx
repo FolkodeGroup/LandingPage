@@ -2,6 +2,7 @@
 import { FaGithub, FaDiscord, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { FaLinkedin } from "react-icons/fa6";
 
 export default function Footer() {
   // Fallback a HTMLElement si HTMLFooterElement no está disponible
@@ -92,11 +93,15 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <FaFacebook className="text-2xl text-blue-600" />
-              <a href="https://www.facebook.com/profile.php?id=61578733043220" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Facebook</a>
+              <a href="https://www.facebook.com/folkode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Facebook</a>
             </li>
             <li className="flex items-center gap-3">
               <FaInstagram className="text-2xl text-pink-500" />
               <a href="https://www.instagram.com/fol.kode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Instagram</a>
+            </li>
+            <li className="flex items-center gap-3">
+              <FaLinkedin className="text-2xl text-blue-600" />
+              <a href="https://www.linkedin.com/in/folkode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">LinkedIn</a>
             </li>
           </ul>
         </div>
