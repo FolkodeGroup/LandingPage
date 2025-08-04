@@ -726,7 +726,25 @@
 }
 
 .div-equipo{
-  min-height: 20rem;
+  min-height: 15rem;
+}
+
+.title-equipo{
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text-equipo{
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .titulo-about{
@@ -782,8 +800,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 20rem;
+    min-height: 14rem;
   }
+
+  .title-equipo{
+  font-size: 18px;
+  font-weight: bold;
+  }
+
+  .text-equipo{
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
 
   .card-equipo{
     padding: 1rem;
@@ -804,6 +839,33 @@
     padding: 2.5rem;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .div-tamaño{
+  max-width: 20rem;
+  min-height: 12rem;
+  }
+
+  .title-equipo{
+  font-size: large;
+  font-weight: bold;
+  }
+
+  .text-equipo{
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  }
+
+  .card-equipo{
+    padding: 1rem;
+    max-height: auto;
   }
 
   .card-clientes {
@@ -875,7 +937,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 24rem;
+    min-height: 14rem;
+  }
+
+  .div-tamaño{
+    max-width: 16rem;
+    min-height: 14rem;
   }
 
   .section-proy-clientes h1{
