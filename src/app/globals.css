@@ -455,6 +455,13 @@
     background-color: var(--color-secondary-hover);
   }
 
+  @media (max-width: 768px) {
+    .navbar-left {
+      min-width: 0;
+      width: 40%;
+    }
+  }
+
   .navbar-left-diagonal {
     position: absolute;
     top: 0;
