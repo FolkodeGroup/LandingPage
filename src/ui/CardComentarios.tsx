@@ -9,7 +9,7 @@ const personas = [
     nombre: 'Celina Pereyra',
     puesto: 'FrontEnd Developer',
     comentario: 'Construyendo soluciones con pasión por la tecnología.',
-    imagen: '/celi.jpg',
+    imagen: '/celi.png',
   },
   {
     nombre: 'Darío Giménez',
