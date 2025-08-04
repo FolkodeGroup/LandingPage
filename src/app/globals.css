@@ -115,7 +115,31 @@
     color: var(--color-text-inverse);
   }
 
+
+  @media (min-width: 768px) {
+    .terminos-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+    }
+    .terminos-footer .footer-left {
+      text-align: left;
+      flex: 1;
+    }
+    .terminos-footer .footer-center {
+      text-align: center;
+      flex: 1;
+      display: block;
+    }
+    .terminos-footer .footer-right {
+      text-align: right;
+      flex: 1;
+      display: block;
+    }
   }
+}
 
   body {
     background-color: var(--color-background);
@@ -307,6 +331,7 @@
 
 }
 
+
   .btn-secondary {
     background-color: var(--color-secondary);
     color: var(--color-text-inverse);
@@ -431,6 +456,21 @@
     height: 150px;
     transition: width 0.3s, height 0.3s;
   }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 20px;
+    background-color: var(--color-secondary);
+  }
+}
 
 
 @keyframes scroll {
@@ -694,49 +734,67 @@ min-height: 12rem;
     font-size: large;
   }
 
-
-  @media (max-width: 768px) {
-    .text-h1 {
-      font-size: 2.5rem; /* 40px */
-    }
-
-    .text-h2 {
-      font-size: 2rem; /* 32px */
-    }
-
-    .text-h3 {
-      font-size: 1.5rem; /* 24px */
-    }
-
-    .btn-desplegable-abierto{
-    color: #000;
-    }
-
-    .navbar-logo-img {
-      width: 150px;
-      height: 150px;
-      margin-bottom: 4px;
-      border-radius: 0;
-      box-shadow: none;
-      background: none;
-      padding: 0;
-    }
+@media (min-width: 768px) {
+  /* ActividadCard - (QueHacemos/ Unirte) */
+  .title-equipo{
+  font-size: large;
+  font-weight: bold;
   }
 
-  .navbar-right {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-left: 20px;
-    background-color: var(--color-secondary-hover);
+  .text-equipo{
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
   }
 
-  .navbar-bottom {
-    height: 20px;
-    background-color: var(--color-secondary);
+  .div-equipo{
+    max-width: 20rem;
+    min-height: 15rem;
   }
 
+  .div-tamaño{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Titulos */
+  .text-h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .text-h2 {
+    font-size: 2rem; /* 32px */
+  }
+
+  .text-h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  /* Botones */
+  .btn-desplegable-abierto{
+  color: #000;
+  }
+
+  /* Navbar */
+  .navbar-logo-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 4px;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+  }
+
+  /* AboutSection */
   .titulo-about{
     font-size: medium;
     font-weight:500;
@@ -765,56 +823,7 @@ min-height: 12rem;
 
   }
 
-
-  .div-equipo{
-    max-width: 20rem;
-    min-height: 14rem;
-  }
-
-  .title-equipo{
-  font-size: 18px;
-  font-weight: bold;
-  }
-
-  .text-equipo{
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 3;
-  margin-top: 2;
-  text-align: left;
-  width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-  .card-equipo{
-    padding: 1rem;
-    max-height: auto;
-  }
-
-  .section-proy-clientes h1{
-    font-size: 1.75rem; /* 32px */
-    margin: 1rem;
-  }
-
-  .div-clientes {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    padding: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .div-tamaño{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  }
-
+  /* ActividadCard - (QueHacemos/ Unirte) */
   .title-equipo{
   font-size: large;
   font-weight: bold;
@@ -833,8 +842,36 @@ min-height: 12rem;
   }
 
   .card-equipo{
-    padding: 1rem;
-    max-height: auto;
+  padding: 1rem;
+  max-height: auto;
+  }
+
+  .div-equipo{
+    max-width: 20rem;
+    min-height: 14rem;
+  }
+
+  .div-tamaño{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  /* ProyectoClientes */
+  .section-proy-clientes h1{
+    font-size: 1.75rem; /* 32px */
+    margin: 1rem;
+  }
+
+  .div-clientes {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .card-clientes {
@@ -874,32 +911,8 @@ min-height: 12rem;
   }
 }
 
-  @media (min-width: 768px) {
-    .terminos-footer {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      text-align: left;
-    }
-    .terminos-footer .footer-left {
-      text-align: left;
-      flex: 1;
-    }
-    .terminos-footer .footer-center {
-      text-align: center;
-      flex: 1;
-      display: block;
-    }
-    .terminos-footer .footer-right {
-      text-align: right;
-      flex: 1;
-      display: block;
-    }
-  }
-
-@media (min-width: 420px) {
-
+@media (max-width: 420px) {
+  /* AboutSection */
   .titulo-about{
     font-size: large;
     font-weight:500;
@@ -926,18 +939,20 @@ min-height: 12rem;
     width: 15.625rem;
   }
 
+  /* ActividadCard - (QueHacemos/ Unirte) */
   .div-equipo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 14rem;
+    min-height: 16rem;
   }
 
   .div-tamaño{
     max-width: 16rem;
-    min-height: 14rem;
+    min-height: 16rem;
   }
 
+  /* ProyectoClientes */
   .section-proy-clientes h1{
     font-size: 1.75rem; /* 32px */
     margin: 1rem;
