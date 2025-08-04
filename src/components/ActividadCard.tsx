@@ -22,7 +22,7 @@ export default function ActividadCard({
 
   return (
     <div className="max-w-sm w-full font-['Roboto'] ">
-      <Card className={`${bgColor} ${textColor} div-equipo div-tamaño`}>
+      <Card className={`${bgColor} ${textColor} div-equipo`}>
         <div className="flex flex-col items-center text-center gap-4">
           {/* Ícono principal superior */}
           <i className={`${iconClass} ${iconColor}`} style={{ fontSize: 60 }} />
