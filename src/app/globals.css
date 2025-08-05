@@ -414,80 +414,7 @@
   font-size: 3rem;           /* text-5xl */
 }
 
-  /* Navbar styles */
-  .navbar {
-    display: flex;
-    height: 196px;
-    border: 1px solid var(--color-black);
-    background-color: var(--color-surface);
-  }
 
-  .navbar-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
-
-  .navbar-top {
-    display: flex;
-    flex: 1;
-    min-height: 100px;
-  }
-
-  .navbar-left {
-    position: relative;
-    width: 30%;
-    min-width: 250px;
-    height: 100%;
-    background-color: var(--color-secondary-hover);
-  }
-
-  @media (max-width: 768px) {
-    .navbar-left {
-      min-width: 0;
-      width: 40%;
-    }
-  }
-
-  .navbar-left-diagonal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-black);
-    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
-    border-right: 1px solid var(--color-black);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  .navbar-logo-img {
-    object-fit: contain;
-    margin-bottom: 8px;
-    display: block;
-    width: 150px;
-    height: 150px;
-    transition: width 0.3s, height 0.3s;
-  }
-
-  .navbar-right {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-left: 20px;
-    background-color: var(--color-secondary-hover);
-  }
-
-  .navbar-bottom {
-    height: 20px;
-    background-color: var(--color-secondary);
-  }
 }
 
 
@@ -712,6 +639,79 @@
 
 
 @media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    height: 196px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .navbar-logo-img {
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 150px;
+    height: 150px;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 20px;
+    background-color: var(--color-secondary);
+  }
+
+
   /* ActividadCard - (QueHacemos/ Unirte) */
   .title-equipo{
   font-size: x-large;
@@ -865,6 +865,79 @@
 }
 
 @media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    display: flex;
+    height: 136px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .navbar-logo-img {
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 125px !important;
+    height: 125px !important;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 20px;
+    background-color: var(--color-secondary);
+  }
+
   /* Titulos */
   .text-h1 {
     font-size: 2.5rem; /* 40px */
@@ -1029,6 +1102,80 @@
 }
 
 @media (max-width: 420px) {
+  /* Navbar */
+  .navbar {
+    display: flex;
+    height: 110px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-logo-img {
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 100px !important;
+    height: 100px !important;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 15px;
+    background-color: var(--color-secondary);
+    margin-top: -5px;
+    position: relative;
+  }
+
   /* AboutSection */
   .titulo-about{
     font-size: large;
