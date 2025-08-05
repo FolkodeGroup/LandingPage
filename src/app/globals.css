@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import 'tailwindcss';
+
 .footer-anim-item {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  transform: translateY(60px) scale(0.98);
+  filter: blur(8px);
+  transition:
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .footer-folkode-dark.footer-visible .footer-anim-item {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
+
+/* Delays secuenciales para columnas del footer */
+.footer-anim-delay-1 { transition-delay: 0.2s; }
+.footer-anim-delay-2 { transition-delay: 0.4s; }
+.footer-anim-delay-3 { transition-delay: 0.6s; }
 
 
 @layer base {
@@ -430,6 +441,13 @@
     min-width: 250px;
     height: 100%;
     background-color: var(--color-secondary-hover);
+  }
+
+  @media (max-width: 768px) {
+    .navbar-left {
+      min-width: 0;
+      width: 40%;
+    }
   }
 
   .navbar-left-diagonal {
@@ -941,11 +959,19 @@
     padding: 2.5rem;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .card-clientes {
     flex: 1 1 100%;
     max-width: 100%;
+    height: 45vw;
+    width: 25vw;
     height: 45vw;
     width: 25vw;
     margin: auto;
@@ -960,6 +986,7 @@
   }
 
   .text-clientes h3 {
+    font-size: 1.5rem;
     font-size: 1.5rem;
   }
 

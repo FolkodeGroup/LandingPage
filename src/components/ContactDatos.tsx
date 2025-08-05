@@ -1,16 +1,17 @@
 import React from 'react';
 import { FaEnvelope, FaFacebook, FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from 'react-icons/fa6';
 
 export default function ContactDatos() {
   return (
     <div className="w-full max-w-md dark rounded-xl p-8 flex flex-col h-full contactos aling-items-c">
-      <h2 className="font-light tracking-wide">CONTÁCTANOS</h2>
-      <h3 style={{ fontFamily: 'Roboto, sans-serif', fontStyle: 'italic' }}>
+      <h2 style={{ fontSize: '0.875rem', fontWeight: '400' }} className="font-light tracking-wide text-sm md:text-base lg:text-lg">CONTÁCTANOS</h2>
+      <h3 style={{ fontSize: '0.75rem', fontWeight: '400', fontFamily: 'Roboto, sans-serif', fontStyle: 'italic' }} className="text-xs md:text-sm lg:text-base">
         Contactate<br />con nuestros<br />profesionales
       </h3>
       <div className="flex flex-col gap-4 mt-2 contactate">
-        <div className="flex items-center gap-3 text-base">
-          <FaEnvelope className="text-2xl text-primary" />
+        <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
+          <FaEnvelope className="text-lg md:text-xl lg:text-2xl text-primary" />
           <a
             href="mailto:contactofolkode@gmail.com"
             className="truncate font-medium hover:underline"
@@ -18,8 +19,8 @@ export default function ContactDatos() {
             contactofolkode@gmail.com
           </a>
         </div>
-        <div className="flex items-center gap-3 text-base">
-          <FaWhatsapp className="text-2xl text-green-600" />
+        <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
+          <FaWhatsapp className="text-lg md:text-xl lg:text-2xl text-green-600" />
           <a
             href="https://wa.me/541131078008"
             target="_blank"
@@ -29,10 +30,10 @@ export default function ContactDatos() {
             WhatsApp Cuqui
           </a>
         </div>
-        <div className="flex items-center gap-3 text-base">
-          <FaFacebook className="text-2xl text-blue-600" />
+        <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
+          <FaFacebook className="text-lg md:text-xl lg:text-2xl text-blue-600" />
           <a
-            href="https://www.facebook.com/profile.php?id=61578733043220"
+            href="https://www.facebook.com/folkode"
             target="_blank"
             rel="noopener noreferrer"
             className="truncate font-medium hover:underline"
@@ -40,8 +41,8 @@ export default function ContactDatos() {
             Facebook
           </a>
         </div>
-        <div className="flex items-center gap-3 text-base">
-          <FaInstagram className="text-2xl text-pink-500" />
+        <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
+          <FaInstagram className="text-lg md:text-xl lg:text-2xl text-pink-500" />
           <a
             href="https://www.instagram.com/fol.kode"
             target="_blank"
@@ -49,6 +50,17 @@ export default function ContactDatos() {
             className="truncate font-medium hover:underline"
           >
             Instagram
+          </a>
+        </div>
+        <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
+          <FaLinkedin className="text-lg md:text-xl lg:text-2xl text-blue-600" />
+          <a
+            href="https://www.linkedin.com/folkode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="truncate font-medium hover:underline"
+          >
+            Linkedin
           </a>
         </div>
       </div>

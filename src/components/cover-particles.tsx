@@ -1,8 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, Engine } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 const CoverParticles = () => {
@@ -22,9 +21,10 @@ const CoverParticles = () => {
             <div style={{
                 position: 'fixed',
                 top: 0,
-                left: 0,
-                width: '100%',
+                left: '50%',
+                width: '100vw',
                 height: '100%',
+                transform: 'translateX(-50%)',
                 zIndex: -1, // ← Esto es clave para enviarlo al fondo
                 pointerEvents: 'none' // Permite interactuar con el contenido encima
             }}>
