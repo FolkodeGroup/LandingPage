@@ -41,11 +41,11 @@ const motivos: Motivo[] = [
 
 export default function Unirte() {
   return (
-    <section className="unirte-section mb-16">
+    <section className="unirte-section mb-8">
       <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center px-4 py-4 mt-6">¿Por qué unirte al equipo?</h2>
         <div className="flex flex-nowrap justify-center gap-8 max-w-6xl mx-auto overflow-x-auto div-tamaño">
         {motivos.map((motivo) => (
-          <div className="min-w-0" key={motivo.id}>
+          <div className="min-w-0 card-equipo" key={motivo.id}>
             <ActividadCard
               mode={motivo.mode}
               iconClass={motivo.iconClass}
