@@ -1,63 +1,86 @@
-'use client';
-import { motion } from 'framer-motion';
-import Button from "@/components/Button";
-import heroImage from '@/assets/images/heroimage.png';
+'use client'
+
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Button from "@/components/Button"
+import heroImage from '@/assets/images/heroimage.png'
 
 export default function HeroSection() {
-  return (
-    <>
-      {/* Espaciador para el navbar fijo */}
-      <div className="w-full h-20" />
+  const [navHeight, setNavHeight] = useState(0)
 
-      {/* Imagen de fondo animada con zoom-out */}
-      <motion.section
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="
-          relative flex flex-col justify-center text-left w-full px-6
-          min-h-[calc(100vh-80px)]
-        "
-        style={{
-          backgroundImage: `url(${heroImage.src})`,
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="relative z-10 text-white ml-4 md:ml-[10%] lg:ml-[15%] space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, x: '100vw' }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl font-bold"
-          >
-            Bienvenidos a FolkodeGroup
-          </motion.h1>
+  useEffect(() => {
+    const navbar = document.querySelector('nav.navbar') as HTMLElement | null
+    if (!navbar) return
+
+    const updateHeight = () => setNavHeight(navbar.offsetHeight)
+    updateHeight()
+
+    const observer = new ResizeObserver(updateHeight)
+    observer.observe(navbar)
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section
+      className="relative w-full flex items-center justify-center bg-black overflow-x-auto"
+      style={{ marginTop: navHeight }}
+    >
+      <div className="w-full flex flex-col items-center justify-center">
+        {/* Imagen hero completa */}
+        <motion.img
+          src={heroImage.src}
+          alt="Hero"
+          className="w-full h-auto max-h-[90vh] object-contain"
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
+
+        {/* Textos alineados a la izquierda */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="
+            absolute top-1/2 left-0 -translate-y-1/2 
+            text-left px-6 sm:px-10 md:px-16
+            max-w-none
+          "
+        >
+          <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white whitespace-nowrap">
+            Bienvenidos a Folkode Group
+          </h1>
 
           <motion.p
-            initial={{ opacity: 0, x: '100vw' }}
-            animate={{ opacity: 1, x: 40 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="mt-4 text-lg md:text-xl text-gray-200"
+            className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 whitespace-nowrap"
           >
             Creamos soluciones digitales modernas y escalables.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, x: '-100vw' }}
-            animate={{ opacity: 1, x: 60 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 1 }}
+            className="mt-5 flex justify-start"
           >
             <Button
               size="lg"
-              className="px-10 py-6 text-2xl md:px-16 md:py-8 md:text-3xl"
+              className="
+                px-6 py-3 text-sm 
+                sm:px-10 sm:py-5 sm:text-lg 
+                md:px-12 md:py-6 md:text-xl
+                whitespace-nowrap text-white
+              "
             >
               Contáctanos
             </Button>
           </motion.div>
-        </div>
-      </motion.section>
-    </>
-  );
+        </motion.div>
+      </div>
+    </section>
+  )
 }

@@ -29,12 +29,6 @@ export default function Desplegable() {
                 type="button"
                 className="btn-desplegable"
                 onClick={toggleDropdown}
-                style={{
-                    textAlign: "left", // Alinea el texto igual que los links
-                    paddingLeft: "1.5rem", // Igual que el menú desplegable
-                    paddingRight: "1.5rem",
-                    width: "11rem"
-                }}
             >
                 Sobre Nosotros
             </button>
@@ -56,7 +50,7 @@ export default function Desplegable() {
                         padding: 0
                     }}
                 >
-                    <ul className="btn-desplegable-abierto" style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem" }}>
+                    <ul className="btn-desplegable-abierto">
                         <li className="mb-2 text-body-desplegable"><a href="#">Casos de Estudio</a></li>
                         <li className="mb-2 text-body-desplegable"><a href="#">Que Ofrecemos</a></li>
                         <li className="mb-2 text-body-desplegable"><a href="#">Beneficios</a></li>

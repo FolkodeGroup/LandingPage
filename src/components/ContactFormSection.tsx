@@ -8,18 +8,18 @@ import Textarea from "@/ui/Textarea";
 import Button from "@/components/Button";
 
 const contactSchema = z.object({
-  name: z.string().min(1, "Nombre es requerido"),
-  email: z.string().email("Email inválido").min(1, "Email es requerido"),
-  phone: z.string().min(1, "Teléfono es requerido"),
-  project: z.string().min(1, "Proyecto es requerido"),
-  message: z.string().min(1, "Mensaje es requerido")
+  name: z.string().min(1, "El nombre es obligatorio"),
+  email: z.string().email("El email no es válido").min(1, "El email es obligatorio"),
+  phone: z.string().optional(),
+  project: z.string().optional(),
+  message: z.string().min(1, "El mensaje es obligatorio")
 });
 
 const ContactFormSection = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors},
   } = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     mode: "onChange"
@@ -33,15 +33,16 @@ const ContactFormSection = () => {
   return (
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="w-full max-w-md bg-[#5a6f3a] rounded-xl shadow-lg p-8 flex flex-col justify-center h-full"
+      className="w-full max-w-md bg-[#transparent] rounded-xl shadow-lg p-8 flex flex-col justify-center h-full"
       autoComplete="off"
       noValidate
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-5">
+          {/* Nombre */}
           <div className="space-y-1">
             <label htmlFor="name" className="block text-sm font-semibold text-white mb-1">
-              Nombre*
+              Nombre
             </label>
             <Input
               id="name"
@@ -51,14 +52,16 @@ const ContactFormSection = () => {
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="name"
             />
-            {errors.name && (
-              <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-            )}
+            <div className="min-h-[20px]">
+              {errors.name && (
+                <p className="text-sm text-red-600">{errors.name.message}</p>
+              )}
+            </div>
           </div>
-
+          {/* Email */}
           <div className="space-y-1">
             <label htmlFor="email" className="block text-sm font-semibold text-white mb-1">
-              Email*
+              Email
             </label>
             <Input
               id="email"
@@ -69,16 +72,18 @@ const ContactFormSection = () => {
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="email"
             />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-            )}
+            <div className="min-h-[20px]">
+              {errors.email && (
+                <p className="text-sm text-red-600">{errors.email.message}</p>
+              )}
+            </div>
           </div>
         </div>
-
         <div className="space-y-5">
+          {/* Teléfono */}
           <div className="space-y-1">
             <label htmlFor="phone" className="block text-sm font-semibold text-white mb-1">
-              Teléfono*
+              Teléfono
             </label>
             <Input
               id="phone"
@@ -88,14 +93,16 @@ const ContactFormSection = () => {
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="tel"
             />
-            {errors.phone && (
-              <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-            )}
+            <div className="min-h-[20px]">
+              {errors.phone && (
+                <p className="text-sm text-red-600">{errors.phone.message}</p>
+              )}
+            </div>
           </div>
-
+          {/* Empresa/Proyecto */}
           <div className="space-y-1">
             <label htmlFor="project" className="block text-sm font-semibold text-white mb-1">
-              Empresa/Proyecto*
+              Empresa/Proyecto
             </label>
             <Input
               id="project"
@@ -105,16 +112,18 @@ const ContactFormSection = () => {
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="organization"
             />
-            {errors.project && (
-              <p className="mt-1 text-sm text-red-600">{errors.project.message}</p>
-            )}
+            <div className="min-h-[20px]">
+              {errors.project && (
+                <p className="text-sm text-red-600">{errors.project.message}</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       <div className="mt-4 space-y-1 md:col-span-2">
         <label htmlFor="message" className="block text-sm font-semibold text-white mb-1">
-          Mensaje*
+          Mensaje
         </label>
         <Textarea
           id="message"
@@ -123,17 +132,18 @@ const ContactFormSection = () => {
           aria-invalid={!!errors.message}
           className="min-h-[100px] w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
         />
-        {errors.message && (
-          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-        )}
+        <div className="min-h-[20px]">
+          {errors.message && (
+            <p className="text-sm text-red-600">{errors.message.message}</p>
+          )}
+        </div>
       </div>
 
       <div className="mt-6 flex justify-center md:col-span-2">
         <Button
           type="submit"
-          className="bg-black text-inverse font-bold rounded-lg transition-colors duration-200 shadow-md flex items-center justify-center border border-black w-full h-12 text-base"
+          className="bg-[#000000] text-white font-bold rounded-lg transition-colors duration-200 shadow-md flex items-center justify-center border border-primary w-full h-12 text-base cursor-pointer hover:bg-[#025159] hover:text-amber-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-80"
           style={{ fontSize: '1rem' }}
-          disabled={!isValid}
         >
           Enviar mensaje
         </Button>

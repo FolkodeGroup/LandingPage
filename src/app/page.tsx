@@ -7,10 +7,10 @@ import IconosTecnologias from "@/components/IconosTecnologias";
 import Unirte from "@/components/Unirte";
 import TeamMemberSection from "@/components/TeamMemberSection";
 import FactoryCard from "@/components/FactoryCard";
-import ContactFormSection from "@/components/ContactFormSection";
-import ContactDatos from "@/components/ContactDatos";
+import ContactateSection from "@/components/sections/ContactateSection";
 import ClientComent from "@/components/ClientComent";
 import CoverParticles from "@/components/cover-particles";
+import ComentariosEquipo from "@/components/ComentariosEquipo";
 
 export default function Home() {
   return (
@@ -33,6 +33,7 @@ export default function Home() {
         <Unirte />
         <hr className="border-t border-secondary my-4" />
         <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
+        <ComentariosEquipo/>
         <hr className="border-t border-secondary my-4" />
         <Tecnologias />
         <IconosTecnologias />
@@ -48,14 +49,7 @@ export default function Home() {
         />
 
         <hr className="border-t border-secondary my-4" />
-        <section className="w-full flex flex-col md:flex-row gap-8 items-start justify-center py-8">
-          <div className="w-full md:w-1/2 flex justify-center">
-            <ContactDatos />
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center">
-            <ContactFormSection />
-          </div>
-        </section>
+        <ContactateSection />
         <hr className="border-t border-secondary my-4" />
 
       </div>
