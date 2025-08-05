@@ -213,14 +213,6 @@
     letter-spacing: 0.025em;
   }
 
-  .text-nav-link {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 1rem; /* 16px */
-    font-weight: 500;
-    line-height: 1;
-    color: var(--color-text-primary);
-  }
-
   /* Clases utilitarias de color */
   .bg-primary {
     background-color: var(--color-primary);
@@ -298,50 +290,6 @@
     border: none;
     cursor: pointer;
   }
-
-  /* CSS para componente Desplegable*/
-  .text-body-desplegable {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 0.9rem;
-    font-weight: 350;
-    line-height: 1.5;
-    color: var(--color-text-inverse);
-  }
-
-  .btn-desplegable{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    width: 11rem;
-    text-align: left;
-  }
-
-  .btn-desplegable-abierto {
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
-    width: 11rem;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  .btn-desplegable-abierto li:hover {
-    background-color: var(--color-primary-hover);
-    border-radius: 8px;
-  }
-
-  .btn-desplegable-abierto a:hover {
-    color: var(--color-text-inverse);
-    text-decoration: solid;
-    padding: 0.05rem;
-    border-radius: 4px;
-    margin: 0.16rem;
-
-}
-
 
   .btn-secondary {
     background-color: var(--color-secondary);
@@ -639,6 +587,7 @@
 
 
 @media (min-width: 768px) {
+  /* Navbar */
   .navbar {
     display: flex;
     height: 196px;
@@ -711,6 +660,55 @@
     background-color: var(--color-secondary);
   }
 
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .text-body-desplegable {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 0.9rem;
+    font-weight: 350;
+    line-height: 1.5;
+    color: var(--color-text-inverse);
+  }
+
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: left;
+  }
+
+  .btn-desplegable-abierto {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    width: 11rem;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .btn-desplegable-abierto li:hover {
+    background-color: var(--color-primary-hover);
+    border-radius: 8px;
+  }
+
+  .btn-desplegable-abierto a:hover {
+    color: var(--color-text-inverse);
+    text-decoration: solid;
+    padding: 0.05rem;
+    border-radius: 4px;
+    margin: 0.16rem;
+}
 
   /* ActividadCard - (QueHacemos/ Unirte) */
   .title-equipo{
@@ -914,13 +912,12 @@
     align-items: center;
   }
 
-
   .navbar-logo-img {
     object-fit: contain;
     margin-bottom: 8px;
     display: block;
-    width: 125px !important;
-    height: 125px !important;
+    width: 125px;
+    height: 125px;
     transition: width 0.3s, height 0.3s;
   }
 
@@ -938,6 +935,22 @@
     background-color: var(--color-secondary);
   }
 
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: center;
+  }
+
   /* Titulos */
   .text-h1 {
     font-size: 2.5rem; /* 40px */
@@ -953,17 +966,6 @@
   /* Botones */
   .btn-desplegable-abierto{
   color: #000;
-  }
-
-  /* Navbar */
-  .navbar-logo-img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 4px;
-    border-radius: 0;
-    box-shadow: none;
-    background: none;
-    padding: 0;
   }
 
   /* AboutSection */
@@ -1155,8 +1157,8 @@
     object-fit: contain;
     margin-bottom: 8px;
     display: block;
-    width: 100px !important;
-    height: 100px !important;
+    width: 100px;
+    height: 100px;
     transition: width 0.3s, height 0.3s;
   }
 
@@ -1174,6 +1176,22 @@
     background-color: var(--color-secondary);
     margin-top: -5px;
     position: relative;
+  }
+
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: small;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: center;
   }
 
   /* AboutSection */

@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
 
         {/* Menú móvil desplegable, solo visible en móvil */}
         {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-4 gap-4">
+          <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-2 gap-4">
             {navItems.map((item) => (
               <span
                 key={item.id}
