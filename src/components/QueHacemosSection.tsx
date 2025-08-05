@@ -81,7 +81,7 @@ export default function QueHacemosSection() {
           {listaInfinita.map((actividad, idx) => (
             <div
               key={actividad.id + '-' + idx}
-              className="flex-shrink-0 w-[85%] sm:w-[60%] md:w-[40%] lg:w-[30%] mx-4"
+              className="flex-shrink-0 "
             >
               <ActividadCard {...actividad} />
             </div>

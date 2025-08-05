@@ -719,7 +719,7 @@
   }
 
   .text-equipo{
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   gap: 3;
@@ -730,13 +730,11 @@
   padding-right: 8px;
   }
 
-  .card-equipo{
-  min-width: 20rem;
-  }
 
   .div-equipo{
     max-width: 20rem;
-    min-height: 22rem;
+    min-height: 21rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
@@ -919,7 +917,7 @@
   }
 
   .text-equipo{
-  font-size: 17px;
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   gap: 3;
@@ -930,13 +928,10 @@
   padding-right: 8px;
   }
 
-  .card-equipo{
-  max-width: 20rem;
-  }
-
   .div-equipo{
     max-width: 20rem;
-    min-height: 18rem;
+    min-height: 16rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
@@ -1041,12 +1036,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 20rem;
+    min-height: 16rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
     max-width: 18rem;
+  }
 
+  .title-equipo{
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .text-equipo{
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    gap: 3;
+    margin-top: 2;
+    text-align: left;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   /* ProyectoClientes */
