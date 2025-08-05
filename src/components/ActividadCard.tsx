@@ -21,17 +21,17 @@ export default function ActividadCard({
   const textColor = '!text-white';
 
   return (
-    <div className="max-w-sm w-full font-['Roboto'] div-">
+    <div className="max-w-sm w-full font-['Roboto'] ">
       <Card className={`${bgColor} ${textColor} div-equipo`}>
         <div className="flex flex-col items-center text-center gap-4">
           {/* Ícono principal superior */}
           <i className={`${iconClass} ${iconColor}`} style={{ fontSize: 60 }} />
 
           {/* Título */}
-          <h3 className="text-[22px] font-bold text-center">{title}</h3>
+          <h3 className="title-equipo">{title}</h3>
 
           {/* Lista de ítems con chevron */}
-          <div className="flex flex-col gap-3 text-[18px] mt-2 font-extralight text-left w-full px-2 font-['Roboto']">
+          <div className="font-extralight font-['Roboto'] text-equipo">
             {items.map((item, index) => (
               <div key={index} className="flex items-start gap-2">
                 <i className="bi bi-chevron-right mt-1 text-lg" />

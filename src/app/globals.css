@@ -150,8 +150,7 @@
       display: block;
     }
   }
-
-  }
+}
 
   body {
     background-color: var(--color-background);
@@ -343,12 +342,6 @@
 
 }
 
-@media (max-width: 768px){
-  .btn-desplegable-abierto{
-    color: #000;
-  }
-}
-
 
   .btn-secondary {
     background-color: var(--color-secondary);
@@ -421,22 +414,6 @@
   font-size: 3rem;           /* text-5xl */
 }
 
-
-/* Responsivo para títulos */
-  @media (max-width: 768px) {
-    .text-h1 {
-      font-size: 2.5rem; /* 40px */
-    }
-
-    .text-h2 {
-      font-size: 2rem; /* 32px */
-    }
-
-    .text-h3 {
-      font-size: 1.5rem; /* 24px */
-    }
-  }
-
   /* Navbar styles */
   .navbar {
     display: flex;
@@ -498,18 +475,6 @@
     transition: width 0.3s, height 0.3s;
   }
 
-  @media (max-width: 768px) {
-    .navbar-logo-img {
-      width: 150px;
-      height: 150px;
-      margin-bottom: 4px;
-      border-radius: 0;
-      box-shadow: none;
-      background: none;
-      padding: 0;
-    }
-  }
-
   .navbar-right {
     flex: 1;
     display: flex;
@@ -535,7 +500,7 @@
   }
 }
 
-/* Estilos para Tecnologias - logos centrados y sobresaliendo sobre el borde superior */
+/* Tecnologias */
 .animate-scroll {
   display: flex;
   gap: 24px;
@@ -656,7 +621,7 @@
   overflow: hidden;
 }
 
-/* CSS para Componenete "Proyectos Clientes" */
+/* Proyectos Clientes -> TIENE QUE QUEDAR EN EL GLOBAL PARA QUE FUNCIONE EN TODOS LOS RESPONSIVE*/
 .section-proy-clientes{
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -743,23 +708,243 @@
   overflow: hidden
 }
 
-.div-equipo{
-  min-height: 20rem;
-}
 
-@media (max-width: 768px) {
-  .div-equipo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 17rem;
+
+
+@media (min-width: 768px) {
+  /* ActividadCard - (QueHacemos/ Unirte) */
+  .title-equipo{
+  font-size: x-large;
+  font-weight: bold;
+  }
+
+  .text-equipo{
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
   }
 
   .card-equipo{
-    padding: 1rem;
-    max-height: auto;
+  min-width: 20rem;
   }
 
+  .div-equipo{
+    max-width: 20rem;
+    min-height: 22rem;
+  }
+
+  .div-tamaño{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* AboutSection */
+  .titulo-about{
+    font-size: x-large;
+    font-weight:500;
+    margin-bottom: 8;
+    color: #5E8D6B;
+    text-align: left;
+  }
+
+  .titulo-about-h3{
+      font-size: xx-large;
+      font-weight: bold;
+      margin-bottom: 6;
+    }
+
+  .text-about{
+      font-size: large;
+    }
+
+  /* Proyectos Clientes */
+  .section-proy-clientes{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+  .section-proy-clientes h1{
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+  .div-clientes{
+    background-color: var(--color-secondary);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .card-clientes {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: var(--color-primary);
+    border: 5px solid var(--color-black);
+    border-top-right-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+    padding: 0;
+    margin: 2rem;
+    width: 100%;
+    max-width: 480px;
+    min-width: 320px;
+    flex: 1 1 45%; /* permite que se reduzca y se acomode */
+    height: 36.250rem;
+    overflow: hidden;
+  }
+
+  .text-clientes{
+    text-align: left;
+    padding: 3rem 1rem 8rem 1rem;
+    background-color: var(--color-primary);
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 65%;
+    font-size: 1.25rem;
+    color: var(--color-text-inverse);
+  }
+
+  .button-clientes {
+    background-color: var(--color-tertiary-hover);
+    color: var(--color-text-inverse);
+    padding: 0.5rem 1.30rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    margin: 0.3rem 0;
+    margin-top: 5rem;
+    margin-bottom: -6rem;
+  }
+
+  .img-clientes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-left: #000 solid 3px;
+    border-bottom: #000 solid 3px;
+    height: 55%;
+    max-height: 55%;
+    object-fit: cover;
+    border-top-right-radius: 37px;
+    border-bottom-left-radius: 37px;
+    z-index: 2;
+    overflow: hidden
+  }
+
+}
+
+@media (max-width: 768px) {
+  /* Titulos */
+  .text-h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .text-h2 {
+    font-size: 2rem; /* 32px */
+  }
+
+  .text-h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  /* Botones */
+  .btn-desplegable-abierto{
+  color: #000;
+  }
+
+  /* Navbar */
+  .navbar-logo-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 4px;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+  }
+
+  /* AboutSection */
+  .titulo-about{
+    font-size: medium;
+    font-weight:500;
+    margin-bottom: 8;
+    color: #5E8D6B;
+    text-align: left;
+  }
+
+  .titulo-about-h3{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6;
+  }
+
+  .text-about{
+    font-size: medium;
+  }
+
+  .contenedor-imagenes {
+    height: 12.5rem;
+    width: 18.75rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+
+  }
+
+  /* ActividadCard - (QueHacemos/ Unirte) */
+  .title-equipo{
+  font-size: large;
+  font-weight: bold;
+  }
+
+  .text-equipo{
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 3;
+  margin-top: 2;
+  text-align: left;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  }
+
+  .card-equipo{
+  max-width: 20rem;
+  }
+
+  .div-equipo{
+    max-width: 20rem;
+    min-height: 18rem;
+  }
+
+  .div-tamaño{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  /* ProyectoClientes */
   .section-proy-clientes h1{
     font-size: 1.75rem; /* 32px */
     margin: 1rem;
@@ -774,11 +959,19 @@
     padding: 2.5rem;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .card-clientes {
     flex: 1 1 100%;
     max-width: 100%;
+    height: 45vw;
+    width: 25vw;
     height: 45vw;
     width: 25vw;
     margin: auto;
@@ -793,6 +986,7 @@
   }
 
   .text-clientes h3 {
+    font-size: 1.5rem;
     font-size: 1.5rem;
   }
 
@@ -814,13 +1008,47 @@
 }
 
 @media (max-width: 420px) {
+  /* AboutSection */
+  .titulo-about{
+    font-size: large;
+    font-weight:500;
+    margin-bottom: 8;
+    color: #5E8D6B;
+    text-align: left;
+  }
+
+  .titulo-about-h3{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6;
+  }
+
+  .text-about{
+    font-size: small;
+  }
+
+  .contenedor-imagenes {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 15.625rem;
+    width: 15.625rem;
+  }
+
+  /* ActividadCard - (QueHacemos/ Unirte) */
   .div-equipo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 18rem;
+    min-height: 20rem;
   }
 
+  .div-tamaño{
+    max-width: 18rem;
+
+  }
+
+  /* ProyectoClientes */
   .section-proy-clientes h1{
     font-size: 1.75rem; /* 32px */
     margin: 1rem;
@@ -876,7 +1104,7 @@
 
 @keyframes marquee {
   0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-275%); }
 }
 
 .animate-marquee {
