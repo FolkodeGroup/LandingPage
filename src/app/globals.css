@@ -763,6 +763,18 @@
       font-size: large;
     }
 
+  /* FactoryCard */
+  .title-factory{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .text-factory{
+    font-size: large;
+    line-height: 1.5rem;
+  }
+
   /* Proyectos Clientes */
   .section-proy-clientes{
       margin-top: 2rem;
@@ -940,6 +952,19 @@
   align-items: center;
   }
 
+  /* FactoryCard */
+  .title-factory{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .text-factory{
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
+
   /* ProyectoClientes */
   .section-proy-clientes h1{
     font-size: 1.75rem; /* 32px */
@@ -1059,6 +1084,19 @@
     width: 100%;
     padding-left: 8px;
     padding-right: 8px;
+  }
+
+  /* FactoryCard */
+  .title-factory{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .text-factory{
+    font-size: 0.75rem;
+    line-height: 1.5rem;
   }
 
   /* ProyectoClientes */
