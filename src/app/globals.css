@@ -711,42 +711,51 @@
 }
 
   /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
+
   .hero-title{
     font-size: 48px;
     font-weight: bold;
     margin-bottom: -10px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-text{
     font-size: large;
     margin-top: 3px;
     color: #e5e7eb;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-button{
     padding: 1.25rem 1rem 1.25rem 1rem;
     font-size: 20px;
     margin-left: 6rem;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-img{
     width: 100%;
-    height: auto;
-    max-height: 90vh;
+    height: 100%;
     object-fit: contain;
-    z-index: 0;
+    display: block;
   }
 
   .hero-triangles{
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 25rem;
-    height: 27.5rem;
-    z-index: 2;
+    width: 320px;
+    height: auto;
+    max-height: 100%; /* Ajustable según diseño */
+    z-index: 1;
   }
 
   /* ActividadCard - (QueHacemos/ Unirte) */
@@ -1007,8 +1016,12 @@
     text-align: center;
   }
 
-      /* HeroSection*/
-/*   .hero-section{} */
+  /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
 
   .hero-title{
     font-size: x-large;
@@ -1035,17 +1048,18 @@
 
   .hero-img{
     width: 100%;
-    max-height: 100vh;
-    object-fit: contain;
-    z-index: 0;
+    height: 230px;
+    object-fit: cover;
+    display: block;
   }
 
   .hero-triangles{
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 130px;
-    height: 170px;
+    width: 220px;
+    height: auto;
+    max-height: 100%; /* Ajustable según diseño */
     z-index: 2;
   }
 
@@ -1275,8 +1289,12 @@
     text-align: center;
   }
 
-    /* HeroSection*/
-/*   .hero-section{} */
+  /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
 
   .hero-title{
     font-size: large;
@@ -1303,17 +1321,18 @@
 
   .hero-img{
     width: 100%;
-    max-height: 100vh;
-    object-fit: contain;
-    z-index: 0;
+    height: 230px;
+    object-fit: cover;
+    display: block;
   }
 
   .hero-triangles{
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 80px;
-    height: 120px;
+    width: 160px;
+    height: auto;
+    max-height: 80%; /* Ajustable según diseño */
     z-index: 2;
   }
 
