@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from "@/components/Button"
 import heroImage from '@/assets/images/heroimage.png'
+import TrianglesImage from '@/assets/images/trianglesoscuro.png'
 
 export default function HeroSection() {
   const [navHeight, setNavHeight] = useState(0)
@@ -23,15 +24,25 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full flex items-center justify-center bg-black overflow-x-auto"
+      className="relative w-full flex items-center justify-center bg-black overflow-x-hidden hero-section"
       style={{ marginTop: navHeight }}
     >
       <div className="w-full flex flex-col items-center justify-center">
+        {/* Imagen del triángulo decorativo */}
+        <motion.img
+          src={TrianglesImage.src}
+          alt="HeroTriangles"
+          className="hero-triangles"
+          initial={{ scale: 0.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
+
         {/* Imagen hero completa */}
         <motion.img
           src={heroImage.src}
           alt="Hero"
-          className="w-full h-auto max-h-[90vh] object-contain"
+          className="hero-img"
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
@@ -43,12 +54,12 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="
-            absolute top-1/2 left-0 -translate-y-1/2 
+            absolute top-1/2 left-0 -translate-y-1/2
             text-left px-6 sm:px-10 md:px-16
             max-w-none
           "
         >
-          <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white whitespace-nowrap">
+          <h1 className="text-white whitespace-nowrap hero-title">
             Bienvenidos a Folkode Group
           </h1>
 
@@ -56,7 +67,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 whitespace-nowrap"
+            className="whitespace-nowrap hero-text"
           >
             Creamos soluciones digitales modernas y escalables.
           </motion.p>
@@ -68,18 +79,14 @@ export default function HeroSection() {
             className="mt-5 flex justify-start"
           >
             <Button
-              size="lg"
               className="
-                px-6 py-3 text-sm 
-                sm:px-10 sm:py-5 sm:text-lg 
-                md:px-12 md:py-6 md:text-xl
-                whitespace-nowrap text-white
+                whitespace-nowrap btn-primary hero-button
               "
             >
               Contáctanos
             </Button>
           </motion.div>
-        </motion.div>
+          </motion.div>
       </div>
     </section>
   )

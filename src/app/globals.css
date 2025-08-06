@@ -710,6 +710,45 @@
     margin: 0.16rem;
 }
 
+  /* HeroSection*/
+  .hero-title{
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 1;
+  }
+
+  .hero-text{
+    font-size: large;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 1;
+  }
+
+  .hero-button{
+    padding: 1.25rem 1rem 1.25rem 1rem;
+    font-size: 20px;
+    margin-left: 6rem;
+    z-index: 1;
+  }
+
+  .hero-img{
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+    z-index: 0;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25rem;
+    height: 27.5rem;
+    z-index: 2;
+  }
+
   /* ActividadCard - (QueHacemos/ Unirte) */
   .title-equipo{
   font-size: x-large;
@@ -863,6 +902,23 @@
 }
 
 @media (max-width: 768px) {
+  /* Titulos */
+  .text-h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .text-h2 {
+    font-size: 2rem; /* 32px */
+  }
+
+  .text-h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  /* Botones */
+  .btn-desplegable-abierto{
+  color: #000;
+  }
+
   /* Navbar */
   .navbar {
     display: flex;
@@ -951,21 +1007,46 @@
     text-align: center;
   }
 
-  /* Titulos */
-  .text-h1 {
-    font-size: 2.5rem; /* 40px */
+      /* HeroSection*/
+/*   .hero-section{} */
+
+  .hero-title{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 1;
   }
 
-  .text-h2 {
-    font-size: 2rem; /* 32px */
+  .hero-text{
+    font-size: 12px;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 1;
   }
 
-  .text-h3 {
-    font-size: 1.5rem; /* 24px */
+  .hero-button{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 12px;
+    margin-left: 6rem;
+    width: 40%;
+    border-radius: 4px;
+    z-index: 1;
   }
-  /* Botones */
-  .btn-desplegable-abierto{
-  color: #000;
+
+  .hero-img{
+    width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+    z-index: 0;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 130px;
+    height: 170px;
+    z-index: 2;
   }
 
   /* AboutSection */
@@ -1192,6 +1273,48 @@
     padding-right: 1.5rem;
     width: 11rem;
     text-align: center;
+  }
+
+    /* HeroSection*/
+/*   .hero-section{} */
+
+  .hero-title{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 1;
+  }
+
+  .hero-text{
+    font-size: 10px;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 1;
+  }
+
+  .hero-button{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 10px;
+    margin-left: 6rem;
+    width: 40%;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .hero-img{
+    width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+    z-index: 0;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 120px;
+    z-index: 2;
   }
 
   /* AboutSection */
