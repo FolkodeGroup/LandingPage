@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from "@/components/Button"
 import heroImage from '@/assets/images/heroimage.png'
+import TrianglesImage from '@/assets/images/trianglesoscuro.png'
 
 export default function HeroSection() {
   const [navHeight, setNavHeight] = useState(0)
@@ -23,64 +24,66 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full flex items-center justify-center bg-black overflow-x-auto"
-      style={{ marginTop: navHeight }}
+  className="relative w-full flex items-center justify-center bg-black overflow-x-hidden hero-section"
+  style={{ marginTop: navHeight }}
+>
+  {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
+  <motion.img
+    src={TrianglesImage.src}
+    alt="HeroTriangles"
+    className="hero-triangles absolute bottom-0 right-0 z-[1]"
+    initial={{ scale: 0.2, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ duration: 1.5, ease: 'easeOut' }}
+  />
+
+  <div className="w-full flex flex-col items-center justify-center">
+    {/* Imagen hero completa */}
+    <motion.img
+      src={heroImage.src}
+      alt="Hero"
+      className="hero-img"
+      initial={{ scale: 1.2, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1.5, ease: 'easeOut' }}
+    />
+
+    {/* Textos alineados a la izquierda */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="
+        absolute top-1/2 left-0 -translate-y-1/2
+        text-left px-6 sm:px-10 md:px-16
+        max-w-none z-[2]
+      "
     >
-      <div className="w-full flex flex-col items-center justify-center">
-        {/* Imagen hero completa */}
-        <motion.img
-          src={heroImage.src}
-          alt="Hero"
-          className="w-full h-auto max-h-[90vh] object-contain"
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
-        />
+      <h1 className="text-white whitespace-nowrap hero-title">
+        Bienvenidos a Folkode Group
+      </h1>
 
-        {/* Textos alineados a la izquierda */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="
-            absolute top-1/2 left-0 -translate-y-1/2 
-            text-left px-6 sm:px-10 md:px-16
-            max-w-none
-          "
-        >
-          <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white whitespace-nowrap">
-            Bienvenidos a Folkode Group
-          </h1>
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 1 }}
+        className="whitespace-nowrap hero-text"
+      >
+        Creamos soluciones digitales modernas y escalables.
+      </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 whitespace-nowrap"
-          >
-            Creamos soluciones digitales modernas y escalables.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1 }}
-            className="mt-5 flex justify-start"
-          >
-            <Button
-              size="lg"
-              className="
-                px-6 py-3 text-sm 
-                sm:px-10 sm:py-5 sm:text-lg 
-                md:px-12 md:py-6 md:text-xl
-                whitespace-nowrap text-white
-              "
-            >
-              Contáctanos
-            </Button>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 1 }}
+        className="mt-5 flex justify-start"
+      >
+        <Button className="whitespace-nowrap btn-primary hero-button">
+          Contáctanos
+        </Button>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
   )
 }

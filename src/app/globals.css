@@ -213,14 +213,6 @@
     letter-spacing: 0.025em;
   }
 
-  .text-nav-link {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 1rem; /* 16px */
-    font-weight: 500;
-    line-height: 1;
-    color: var(--color-text-primary);
-  }
-
   /* Clases utilitarias de color */
   .bg-primary {
     background-color: var(--color-primary);
@@ -299,50 +291,6 @@
     cursor: pointer;
   }
 
-  /* CSS para componente Desplegable*/
-  .text-body-desplegable {
-    font-family: var(--font-roboto), sans-serif;
-    font-size: 0.9rem;
-    font-weight: 350;
-    line-height: 1.5;
-    color: var(--color-text-inverse);
-  }
-
-  .btn-desplegable{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    width: 11rem;
-    text-align: left;
-  }
-
-  .btn-desplegable-abierto {
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
-    width: 11rem;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  .btn-desplegable-abierto li:hover {
-    background-color: var(--color-primary-hover);
-    border-radius: 8px;
-  }
-
-  .btn-desplegable-abierto a:hover {
-    color: var(--color-text-inverse);
-    text-decoration: solid;
-    padding: 0.05rem;
-    border-radius: 4px;
-    margin: 0.16rem;
-
-}
-
-
   .btn-secondary {
     background-color: var(--color-secondary);
     color: var(--color-text-inverse);
@@ -414,80 +362,7 @@
   font-size: 3rem;           /* text-5xl */
 }
 
-  /* Navbar styles */
-  .navbar {
-    display: flex;
-    height: 196px;
-    border: 1px solid var(--color-black);
-    background-color: var(--color-surface);
-  }
 
-  .navbar-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
-
-  .navbar-top {
-    display: flex;
-    flex: 1;
-    min-height: 100px;
-  }
-
-  .navbar-left {
-    position: relative;
-    width: 30%;
-    min-width: 250px;
-    height: 100%;
-    background-color: var(--color-secondary-hover);
-  }
-
-  @media (max-width: 768px) {
-    .navbar-left {
-      min-width: 0;
-      width: 40%;
-    }
-  }
-
-  .navbar-left-diagonal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-black);
-    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
-    border-right: 1px solid var(--color-black);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  .navbar-logo-img {
-    object-fit: contain;
-    margin-bottom: 8px;
-    display: block;
-    width: 150px;
-    height: 150px;
-    transition: width 0.3s, height 0.3s;
-  }
-
-  .navbar-right {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-left: 20px;
-    background-color: var(--color-secondary-hover);
-  }
-
-  .navbar-bottom {
-    height: 20px;
-    background-color: var(--color-secondary);
-  }
 }
 
 
@@ -712,6 +587,177 @@
 
 
 @media (min-width: 768px) {
+  /* Navbar */
+  .navbar {
+    display: flex;
+    height: 196px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .navbar-logo-img {
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 150px;
+    height: 150px;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 20px;
+    background-color: var(--color-secondary);
+  }
+
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .text-body-desplegable {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 0.9rem;
+    font-weight: 350;
+    line-height: 1.5;
+    color: var(--color-text-inverse);
+  }
+
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: left;
+  }
+
+  .btn-desplegable-abierto {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    width: 11rem;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .btn-desplegable-abierto li:hover {
+    background-color: var(--color-primary-hover);
+    border-radius: 8px;
+  }
+
+  .btn-desplegable-abierto a:hover {
+    color: var(--color-text-inverse);
+    text-decoration: solid;
+    padding: 0.05rem;
+    border-radius: 4px;
+    margin: 0.16rem;
+}
+
+  /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .hero-title{
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero-text{
+    font-size: large;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero-button{
+    padding: 1.25rem 1rem 1.25rem 1rem;
+    font-size: 20px;
+    margin-left: 6rem;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    height: auto;
+    max-height: 100%; /* Ajustable según diseño */
+    z-index: 1;
+  }
+
   /* ActividadCard - (QueHacemos/ Unirte) */
   .title-equipo{
   font-size: x-large;
@@ -719,7 +765,7 @@
   }
 
   .text-equipo{
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   gap: 3;
@@ -730,16 +776,15 @@
   padding-right: 8px;
   }
 
-  .card-equipo{
-  min-width: 20rem;
-  }
 
   .div-equipo{
     max-width: 20rem;
-    min-height: 22rem;
+    min-height: 21rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -763,6 +808,18 @@
   .text-about{
       font-size: large;
     }
+
+  /* FactoryCard */
+  .title-factory{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .text-factory{
+    font-size: large;
+    line-height: 1.5rem;
+  }
 
   /* Proyectos Clientes */
   .section-proy-clientes{
@@ -872,14 +929,138 @@
   }
 
   /* Navbar */
+  .navbar {
+    display: flex;
+    height: 136px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .navbar-logo-img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 4px;
-    border-radius: 0;
-    box-shadow: none;
-    background: none;
-    padding: 0;
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 125px;
+    height: 125px;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 20px;
+    background-color: var(--color-secondary);
+  }
+
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: center;
+  }
+
+  /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .hero-title{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 1;
+  }
+
+  .hero-text{
+    font-size: 12px;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 1;
+  }
+
+  .hero-button{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 12px;
+    margin-left: 6rem;
+    width: 40%;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .hero-img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 220px;
+    height: auto;
+    max-height: 100%; /* Ajustable según diseño */
+    z-index: 2;
   }
 
   /* AboutSection */
@@ -918,7 +1099,7 @@
   }
 
   .text-equipo{
-  font-size: 17px;
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   gap: 3;
@@ -929,19 +1110,29 @@
   padding-right: 8px;
   }
 
-  .card-equipo{
-  max-width: 20rem;
-  }
-
   .div-equipo{
     max-width: 20rem;
-    min-height: 18rem;
+    min-height: 16rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
   display: flex;
   flex-direction: column;
   align-items: center;
+  }
+
+  /* FactoryCard */
+  .title-factory{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .text-factory{
+    font-size: 0.9rem;
+    line-height: 1.5rem;
   }
 
   /* ProyectoClientes */
@@ -1008,6 +1199,143 @@
 }
 
 @media (max-width: 420px) {
+  /* Navbar */
+  .navbar {
+    display: flex;
+    height: 110px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-surface);
+  }
+
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar-top {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .navbar-left {
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 100%;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-left {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .navbar-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+    border-right: 1px solid var(--color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-logo-img {
+    object-fit: contain;
+    margin-bottom: 8px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    background-color: var(--color-secondary-hover);
+  }
+
+  .navbar-bottom {
+    height: 15px;
+    background-color: var(--color-secondary);
+    margin-top: -5px;
+    position: relative;
+  }
+
+  .text-nav-link {
+    font-family: var(--font-roboto), sans-serif;
+    font-size: small;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  /* Desplegable*/
+  .btn-desplegable{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 11rem;
+    text-align: center;
+  }
+
+  /* HeroSection*/
+  .hero-section{
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .hero-title{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: -10px;
+    z-index: 1;
+  }
+
+  .hero-text{
+    font-size: 10px;
+    margin-top: 3px;
+    color: #e5e7eb;
+    z-index: 1;
+  }
+
+  .hero-button{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 10px;
+    margin-left: 6rem;
+    width: 40%;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .hero-img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-triangles{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 160px;
+    height: auto;
+    max-height: 80%; /* Ajustable según diseño */
+    z-index: 2;
+  }
+
   /* AboutSection */
   .titulo-about{
     font-size: large;
@@ -1040,12 +1368,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 20rem;
+    min-height: 16rem;
+    margin: 1rem;
   }
 
   .div-tamaño{
     max-width: 18rem;
+  }
 
+  .title-equipo{
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .text-equipo{
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    gap: 3;
+    margin-top: 2;
+    text-align: left;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  /* FactoryCard */
+  .title-factory{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .text-factory{
+    font-size: 0.75rem;
+    line-height: 1.5rem;
   }
 
   /* ProyectoClientes */
