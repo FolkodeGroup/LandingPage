@@ -45,8 +45,8 @@ const teamMembers: TeamMember[] = [
     mode: "dark",
   },
   {
-    
-    id: "member-3", 
+
+    id: "member-3",
     avatar: "gabrielsosa.png",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
@@ -59,8 +59,8 @@ const teamMembers: TeamMember[] = [
   },
 
   {
-    
-    id: "member-4", 
+
+    id: "member-4",
     avatar: "/matias.png",
     name: "Matias Daniel Alessandrello",
     role: "Full Stack Developer",
@@ -73,8 +73,8 @@ const teamMembers: TeamMember[] = [
   },
 
   {
-    
-    id: "member-5", 
+
+    id: "member-5",
     avatar: "/Ovejero.png",
     name: "Agustin Ovejero",
     role: "Aca va el Rol",
@@ -88,8 +88,8 @@ const teamMembers: TeamMember[] = [
 
 
     {
-    
-    id: "member-6", 
+
+    id: "member-6",
     avatar: "/cuqui.png",
     name: "Lucas Echavarria",
     role: "Backend Developer",
@@ -102,8 +102,8 @@ const teamMembers: TeamMember[] = [
   },
 
       {
-    
-    id: "member-7", 
+
+    id: "member-7",
     avatar: "/fede.png",
     name: "Fede Paal",
     role: "Aca va el Rol",
@@ -125,11 +125,11 @@ export default function TeamMemberSection() {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-10 text-center text-white">
           Nuestro Equipo de desarrolladores
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 orden-cards-member justify-items-center">
           {teamMembers.map((member) => (
-           <div key={member.id} className="flex justify-center"> 
-            <TeamMemberCard 
-            {...member} 
+           <div key={member.id} className="h-full flex flex-col justify-between div-member">
+            <TeamMemberCard
+            {...member}
 
             />
           </div>

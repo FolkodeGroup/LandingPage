@@ -30,26 +30,26 @@ function TeamMemberCard({
     <div className="max-w-sm w-full font-['Roboto'] transition-all">
       <Card className={`${bgColor} border-[10px] ${borderColor} ${textColor}`}>
         <div className="flex flex-col items-center text-center">
-          <div className={`w-28 h-28 rounded-full border-[4px] ${borderColor} ${bgColor} p-1 mb-6 overflow-hidden`}>
+          <div className={`rounded-full ${borderColor} ${bgColor} card-member`}>
             <img
               src={avatar}
               alt={`${name} avatar`}
-              className="w-full h-full rounded-full object-cover object-top"
+              className="rounded-full avatar-member"
             />
           </div>
 
-          <h3 className={`text-2xl font-bold ${textColor}`}>{name}</h3>
+          <h3 className={`${textColor} name-member`}>{name}</h3>
 
 
-          <h4 className="text-4xl font-extrabold mb-2" style={{ color: highlightColor }}>
+          <h4 className="text-3xl mb-2 rol-member" style={{ color: highlightColor }}>
             {role}
           </h4>
 
-          <p className={`text-2sm ${descriptionOpacity} mb-6 max-w-xs`}>{description}</p>
+          <p className={`text-2sm ${descriptionOpacity} max-w-xs text-member`}>{description}</p>
 
 
 
-          <div className="flex gap-4 mb-6 text-xl">
+          <div className="gap-4 icon-member">
             {links?.github && (
               <a href={links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FaGithub className={iconColor} />
@@ -68,7 +68,7 @@ function TeamMemberCard({
           </div>
 
           <button
-            className={`${buttonBg} text-white font-bold py-2 px-6 rounded-full text-sm transition`}
+            className={`${buttonBg} rounded-full text-sm transition button-member`}
           >
             VIEW PROFILE
           </button>
