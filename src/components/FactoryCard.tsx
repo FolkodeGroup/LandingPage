@@ -1,7 +1,7 @@
 import React from "react";
 
 const FactoryCard: React.FC = () => (
-  <div className="bg-secondary rounded-xl p-8 text-white max-w-3xl mx-auto shadow-lg mb-12">
+  <div id="que-ofrecemos" className="bg-secondary rounded-xl p-8 text-white max-w-3xl mx-auto shadow-lg mb-12">
     <h2 className="md:text-3xl title-factory">
       ¿Qué es una software factory colaborativa?
     </h2>

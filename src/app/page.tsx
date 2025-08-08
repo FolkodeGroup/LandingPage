@@ -20,16 +20,9 @@ export default function Home() {
       <div className="container mx-auto px-6 py-24">
         <hr className="border-t border-secondary my-4" />
         <QueHacemosSection />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Sobre Folkode</h1>
-        <hr className="border-t border-secondary my-4" />
         <AboutSection />
-        <hr className="border-t border-secondary my-4" />
-        <FactoryCard />
-        <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Nuestro Equipo de Desarrolladores</h1>
-        <hr className="border-t border-secondary my-4" />
         <TeamMemberSection />
-        <hr className="border-t border-secondary my-4" />
+        <FactoryCard />
         <Unirte />
         <hr className="border-t border-secondary my-4" />
         <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>

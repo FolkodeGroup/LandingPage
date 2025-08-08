@@ -13,7 +13,7 @@ export default function ProyClientes(){
         { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics'}
     ];
     return (
-            <section className="text-inverse section-proy-clientes">
+            <section id="proyectos" className="text-inverse section-proy-clientes">
                 <h1 className="text-h1 mb-8 text-center">
                     Proyectos de Nuestros Clientes
                 </h1>

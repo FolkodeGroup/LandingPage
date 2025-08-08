@@ -8,6 +8,30 @@ export default function Desplegable() {
 
     const menuRef = useRef<HTMLDivElement>(null);
 
+    // Función para manejar el scroll suave con offset (igual que en Navbar)
+    const handleScrollTo = (targetId: string) => {
+        const element = document.getElementById(targetId);
+        if (!element) return;
+
+        // Obtener la altura del navbar según el viewport
+        const getNavbarHeight = () => {
+            const width = window.innerWidth;
+            if (width >= 768) return 196; // Desktop
+            if (width >= 421) return 136; // Tablet
+            return 110; // Móvil
+        };
+
+        const navbarHeight = getNavbarHeight();
+        const elementPosition = element.offsetTop - navbarHeight;
+
+        window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+
+        setIsOpen(false); // Cerrar el dropdown después del click
+    };
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -30,7 +54,7 @@ export default function Desplegable() {
                 className="btn-desplegable"
                 onClick={toggleDropdown}
             >
-                Sobre Nosotros
+                Sobre Folkode
             </button>
             {isOpen && (
                 <motion.div
@@ -51,9 +75,39 @@ export default function Desplegable() {
                     }}
                 >
                     <ul className="btn-desplegable-abierto">
-                        <li className="mb-2 text-body-desplegable"><a href="#">Casos de Estudio</a></li>
-                        <li className="mb-2 text-body-desplegable"><a href="#">Que Ofrecemos</a></li>
-                        <li className="mb-2 text-body-desplegable"><a href="#">Beneficios</a></li>
+                        <li className="mb-2 text-body-desplegable">
+                            <button 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleScrollTo('sobre-folkode');
+                                }}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                            >
+                                Nosotros
+                            </button>
+                        </li>
+                        <li className="mb-2 text-body-desplegable">
+                            <button 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleScrollTo('nuestro-equipo');
+                                }}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                            >
+                                Nuestro Equipo
+                            </button>
+                        </li>
+                        <li className="mb-2 text-body-desplegable">
+                            <button 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleScrollTo('que-ofrecemos');
+                                }}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                            >
+                                Que Ofrecemos
+                            </button>
+                        </li>
                     </ul>
                 </motion.div>
             )}

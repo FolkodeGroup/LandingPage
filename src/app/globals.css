@@ -1,5 +1,47 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import 'tailwindcss';
+/* Compensar navbar fijo solo en secciones que no tienen margin dinámico */
+#servicios,
+#sobre-folkode,
+#nuestro-equipo,
+#que-ofrecemos,
+#unirte,
+#proyectos,
+#contacto {
+  scroll-margin-top: 110px; /* Móvil: altura navbar + margen */
+}
+
+/* Compensar navbar fijo para tablet */
+@media (min-width: 421px) and (max-width: 767px) {
+  #servicios,
+  #sobre-folkode,
+  #nuestro-equipo,
+  #que-ofrecemos,
+  #unirte,
+  #proyectos,
+  #contacto {
+    scroll-margin-top: 136px; /* Tablet: altura navbar */
+  }
+}
+
+/* Compensar navbar fijo para desktop */
+@media (min-width: 768px) {
+  #servicios,
+  #sobre-folkode,
+  #nuestro-equipo,
+  #que-ofrecemos,
+  #unirte,
+  #proyectos,
+  #contacto {
+    scroll-margin-top: 196px; /* Desktop: altura navbar */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 .footer-anim-item {
   opacity: 0;
@@ -666,6 +708,16 @@
     font-weight: 500;
     line-height: 1;
     color: var(--color-text-primary);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+  }
+
+  .text-nav-link:hover {
+    color: var(--color-text-secondary);
   }
 
   /* Desplegable*/
@@ -682,6 +734,7 @@
     padding-right: 1.5rem;
     width: 11rem;
     text-align: left;
+    color: #fff;
   }
 
   .btn-desplegable-abierto {
@@ -1006,6 +1059,16 @@
     font-weight: 500;
     line-height: 1;
     color: var(--color-text-primary);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+  }
+
+  .text-nav-link:hover {
+    color: var(--color-text-secondary);
   }
 
   /* Desplegable*/

@@ -193,7 +193,7 @@ export default function TeamMemberSection() {
   }, []);
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
+    <section id="nuestro-equipo" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-10 text-center text-white">
           Nuestro Equipo de desarrolladores

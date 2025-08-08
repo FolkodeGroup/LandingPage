@@ -69,7 +69,7 @@ export default function QueHacemosSection() {
   const listaInfinita = [...actividades, ...actividades]
 
   return (
-    <section className="py-16 w-full overflow-hidden">
+    <section id="servicios" className="py-16 w-full overflow-hidden">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center">
         ¿Qué hacemos?
       </h2>
