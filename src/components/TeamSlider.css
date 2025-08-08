@@ -1,0 +1,98 @@
+.team-slider {
+  position: relative;
+}
+
+.team-slider .slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.team-slider .slick-slide {
+  height: auto;
+}
+
+.team-slider .slick-slide > div {
+  height: 100%;
+}
+
+.team-slider .slick-slide .team-card-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-slider .slick-dots {
+  bottom: -50px;
+}
+
+.team-slider .slick-dots li button:before {
+  color: #025159;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.team-slider .slick-dots li.slick-active button:before {
+  color: #025159;
+  opacity: 1;
+}
+
+.team-slider .slick-arrow {
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: #025159;
+  border-radius: 50%;
+}
+
+.team-slider .slick-arrow:before {
+  font-size: 20px;
+  color: white;
+}
+
+.team-slider .slick-arrow:hover {
+  background: #013f49;
+}
+
+.team-slider .slick-prev {
+  left: -60px;
+}
+
+.team-slider .slick-next {
+  right: -60px;
+}
+
+@media (max-width: 1280px) {
+  .team-slider .slick-prev {
+    left: -40px;
+  }
+  
+  .team-slider .slick-next {
+    right: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-slider .slick-prev {
+    left: -30px;
+  }
+  
+  .team-slider .slick-next {
+    right: -30px;
+  }
+  
+  .team-slider .slick-arrow {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .team-slider .slick-arrow:before {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .team-slider .slick-prev,
+  .team-slider .slick-next {
+    display: none !important;
+  }
+}
