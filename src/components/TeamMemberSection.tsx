@@ -50,8 +50,8 @@ const teamMembers: TeamMember[] = [
     mode: "dark",
   },
   {
-    
-    id: "member-3", 
+
+    id: "member-3",
     avatar: "gabrielsosa.png",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
@@ -64,8 +64,8 @@ const teamMembers: TeamMember[] = [
   },
 
   {
-    
-    id: "member-4", 
+
+    id: "member-4",
     avatar: "/matias.png",
     name: "Matias Daniel Alessandrello",
     role: "Full Stack Developer",
@@ -78,8 +78,8 @@ const teamMembers: TeamMember[] = [
   },
 
   {
-    
-    id: "member-5", 
+
+    id: "member-5",
     avatar: "/Ovejero.png",
     name: "Agustin Ovejero",
     role: "Aca va el Rol",
@@ -93,8 +93,8 @@ const teamMembers: TeamMember[] = [
 
 
     {
-    
-    id: "member-6", 
+
+    id: "member-6",
     avatar: "/cuqui.png",
     name: "Lucas Echavarria",
     role: "Backend Developer",
@@ -107,8 +107,8 @@ const teamMembers: TeamMember[] = [
   },
 
       {
-    
-    id: "member-7", 
+
+    id: "member-7",
     avatar: "/fede.png",
     name: "Fede Paal",
     role: "Aca va el Rol",
@@ -159,12 +159,12 @@ export default function TeamMemberSection() {
       if (sliderRef.current) {
         const cards = sliderRef.current.querySelectorAll('.team-card-wrapper');
         let maxHeight = 0;
-        
+
         // Resetear alturas
         cards.forEach((card) => {
           (card as HTMLElement).style.height = 'auto';
         });
-        
+
         // Encontrar la altura máxima
         cards.forEach((card) => {
           const height = (card as HTMLElement).offsetHeight;
@@ -172,7 +172,7 @@ export default function TeamMemberSection() {
             maxHeight = height;
           }
         });
-        
+
         // Aplicar la altura máxima a todas las tarjetas
         cards.forEach((card) => {
           (card as HTMLElement).style.height = `${maxHeight}px`;
@@ -182,10 +182,10 @@ export default function TeamMemberSection() {
 
     // Ejecutar después de que el slider se haya renderizado
     const timer = setTimeout(equalizeCardHeights, 100);
-    
+
     // También ejecutar cuando cambie el tamaño de ventana
     window.addEventListener('resize', equalizeCardHeights);
-    
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener('resize', equalizeCardHeights);
@@ -203,8 +203,8 @@ export default function TeamMemberSection() {
             {teamMembers.map((member) => (
               <div key={member.id} className="px-2">
                 <div className="team-card-wrapper">
-                  <TeamMemberCard 
-                    {...member} 
+                  <TeamMemberCard
+                    {...member}
                     className="h-full mx-auto"
                   />
                 </div>
