@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
           {/* Sección izquierda negra con forma diagonal */}
           <div className="navbar-left">
             <div className="navbar-left-diagonal">
-              <Image 
+              <Image
                 className="navbar-logo-img"
                 src="/folkode-oscuro-no-bg.png"
                 alt="Folkode Logo"
@@ -43,9 +43,9 @@ const Navbar: React.FC = () => {
                 <span
                   key={item.id}
                   className="text-nav-link"
-                  style={{ 
-                    color: 'var(--color-text-inverse)', 
-                    transition: 'color 0.2s ease' 
+                  style={{
+                    color: 'var(--color-text-inverse)',
+                    transition: 'color 0.2s ease'
                   }}
                 >
                   {item.type === 'component' ? <Desplegable /> : item.label}
@@ -55,14 +55,14 @@ const Navbar: React.FC = () => {
             {/* Botón hamburguesa solo visible en móvil, alineado a la derecha */}
             <div className="flex md:hidden items-center h-full pr-4">
               <button
-                className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                className="flex flex-col justify-center items-center w-10 h-10 ml-30 focus:outline-none"
                 onClick={toggleMenu}
                 aria-label="Abrir menú"
                 style={{ background: 'transparent', border: 'none', padding: 0 }}
               >
-                <span className={`block w-7 h-1 bg-white rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`block w-7 h-1 bg-white rounded my-1 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-7 h-1 bg-white rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                <span className={`block w-7 h-0.75 bg-white rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                <span className={`block w-7 h-0.75 bg-white rounded my-1 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`block w-7 h-0.75 bg-white rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
               </button>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
 
         {/* Menú móvil desplegable, solo visible en móvil */}
         {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-4 gap-4">
+          <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-2 gap-4">
             {navItems.map((item) => (
               <span
                 key={item.id}

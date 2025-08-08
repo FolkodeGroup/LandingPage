@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Folkde Group - Landing Page",
+  title: "Folkode Group - Landing Page",
   description: "Somos un grupo de desarrolladores apasionados por la tecnología y la innovación. Creamos soluciones digitales que transforman ideas en realidades.",
 };
 
