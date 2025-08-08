@@ -31,7 +31,7 @@ function TeamMemberCard({
     <div className={`max-w-sm w-full font-['Roboto'] transition-all h-full flex flex-col ${className}`}>
       <Card className={`${bgColor} border-[10px] ${borderColor} ${textColor} h-full flex flex-col`}>
         <div className="flex flex-col items-center text-center h-full justify-between">
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center flex-grow">
             <div className={`w-28 h-28 rounded-full border-[4px] ${borderColor} ${bgColor} p-1 mb-6 overflow-hidden`}>
               <img
                 src={avatar}
@@ -46,10 +46,10 @@ function TeamMemberCard({
               {role}
             </h4>
 
-            <p className={`text-2sm ${descriptionOpacity} mb-6 max-w-xs flex-grow`}>{description}</p>
+            <p className={`text-2sm ${descriptionOpacity} mb-6 max-w-xs flex-1 flex items-center justify-center`}>{description}</p>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-auto">
             <div className="flex gap-4 mb-6 text-xl">
               {links?.github && (
                 <a href={links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
