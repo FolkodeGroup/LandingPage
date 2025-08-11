@@ -1552,3 +1552,8 @@ html {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* Pausar al hover en cualquier elemento del carrusel */
+.qh-marquee:hover .qh-track {
+  animation-play-state: paused;
+}
