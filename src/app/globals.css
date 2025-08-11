@@ -1532,3 +1532,23 @@ html {
   display: flex;
   animation: marquee 25s linear infinite;
 }
+
+/* QueHacemos - carrusel infinito continuo */
+.qh-marquee {
+  position: relative;
+}
+.qh-track {
+  display: flex;
+  gap: 24px;
+  width: max-content; /* que crezca según contenido */
+  animation: qh-scroll 15s linear infinite;
+}
+.qh-item {
+  flex: 0 0 auto;
+}
+
+/* La animación recorre exactamente la mitad del contenido, suponiendo duplicación del array */
+@keyframes qh-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

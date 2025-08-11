@@ -74,15 +74,10 @@ export default function QueHacemosSection() {
         ¿Qué hacemos?
       </h2>
 
-      <div className="relative w-full mx-auto overflow-hidden">
-        <div
-          className="flex animate-marquee hover:[animation-play-state:paused]"
-        >
+      <div className="relative w-full overflow-hidden qh-marquee">
+        <div className="qh-track hover:[animation-play-state:paused] will-change-transform">
           {listaInfinita.map((actividad, idx) => (
-            <div
-              key={actividad.id + '-' + idx}
-              className="flex-shrink-0 "
-            >
+            <div key={actividad.id + '-' + idx} className="qh-item flex-shrink-0">
               <ActividadCard {...actividad} />
             </div>
           ))}
