@@ -134,27 +134,27 @@ export default function Footer() {
                 <a href="https://github.com/FolkodeGroup" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">GitHub</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaDiscord className="text-2xl text-blue-600" />
+                <FaDiscord className="text-2xl text-black" />
                 <a href="https://discord.gg/6Q2WrVtfHj" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Discord</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaEnvelope className="text-2xl text-primary" />
+                <FaEnvelope className="text-2xl text-black" />
                 <a href="mailto:contactofolkode@gmail.com" className="text-nav-link hover:underline">contactofolkode@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaWhatsapp className="text-2xl text-green-600" />
+                <FaWhatsapp className="text-2xl text-black" />
                 <a href="https://wa.me/541131078008" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">WhatsApp</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaFacebook className="text-2xl text-blue-600" />
+                <FaFacebook className="text-2xl text-black" />
                 <a href="https://www.facebook.com/folkode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Facebook</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaInstagram className="text-2xl text-pink-500" />
+                <FaInstagram className="text-2xl text-black" />
                 <a href="https://www.instagram.com/fol.kode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">Instagram</a>
               </li>
               <li className="flex items-center gap-3">
-                <FaLinkedin className="text-2xl text-blue-600" />
+                <FaLinkedin className="text-2xl text-black" />
                 <a href="https://www.linkedin.com/in/folkode" target="_blank" rel="noopener noreferrer" className="text-nav-link hover:underline">LinkedIn</a>
               </li>
             </ul>

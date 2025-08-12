@@ -36,7 +36,7 @@ function TeamMemberCard({
               <img
                 src={avatar}
                 alt={`${name} avatar`}
-                className="w-full h-full rounded-full object-cover object-top"
+                className="w-full h-full rounded-full object-cover object-top "
               />
             </div>
 
@@ -69,7 +69,7 @@ function TeamMemberCard({
             </div>
 
             <button
-              className={`${buttonBg} text-white font-bold py-2 px-6 rounded-full text-sm transition`}
+              className={`${buttonBg} text-white font-bold py-2 px-6 rounded-full text-sm transition pointer`}
             >
               VIEW PROFILE
             </button>
