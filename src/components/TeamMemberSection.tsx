@@ -126,7 +126,7 @@ const teamMembers: TeamMember[] = [
     description: "La seguridad no es un extra en backend, es el cimiento.",
     links: {
       github: 'https://github.com/PaulaBigorra',
-      linkedin: 'https://linkedin.com/in/paula-bigorra',
+      linkedin: 'https://www.linkedin.com/in/paula-bigorra-722079260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
     mode: "dark",
   },
@@ -139,7 +139,7 @@ const teamMembers: TeamMember[] = [
     description: "Un diseño consistente es la base de la confianza del usuario",
     links: {
       github: 'https://github.com/MauricioBarreras',
-      linkedin: 'https://linkedin.com/in/mauricio-barreras',
+      linkedin: 'https://www.linkedin.com/in/mauricio-barreras-235b8128a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
     mode: "dark",
   },
