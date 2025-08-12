@@ -1541,7 +1541,8 @@ html {
   display: flex;
   gap: 24px;
   width: max-content; /* que crezca según contenido */
-  animation: qh-scroll 15s linear infinite;
+  /* Velocidad por defecto (móvil) */
+  animation: qh-scroll 18s linear infinite;
 }
 .qh-item {
   flex: 0 0 auto;
@@ -1556,4 +1557,18 @@ html {
 /* Pausar al hover en cualquier elemento del carrusel */
 .qh-marquee:hover .qh-track {
   animation-play-state: paused;
+}
+
+/* Tablet: 421px a 767px */
+@media (min-width: 421px) and (max-width: 767px) {
+  .qh-track {
+    animation-duration: 24s; /* un poco más lento en tablet */
+  }
+}
+
+/* Desktop: 768px en adelante */
+@media (min-width: 768px) {
+  .qh-track {
+    animation-duration: 15s; /* más lento para pantallas grandes */
+  }
 }
