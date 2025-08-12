@@ -1532,3 +1532,43 @@ html {
   display: flex;
   animation: marquee 25s linear infinite;
 }
+
+/* QueHacemos - carrusel infinito continuo */
+.qh-marquee {
+  position: relative;
+}
+.qh-track {
+  display: flex;
+  gap: 24px;
+  width: max-content; /* que crezca según contenido */
+  /* Velocidad por defecto (móvil) */
+  animation: qh-scroll 18s linear infinite;
+}
+.qh-item {
+  flex: 0 0 auto;
+}
+
+/* La animación recorre exactamente la mitad del contenido, suponiendo duplicación del array */
+@keyframes qh-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pausar al hover en cualquier elemento del carrusel */
+.qh-marquee:hover .qh-track {
+  animation-play-state: paused;
+}
+
+/* Tablet: 421px a 767px */
+@media (min-width: 421px) and (max-width: 767px) {
+  .qh-track {
+    animation-duration: 24s; /* un poco más lento en tablet */
+  }
+}
+
+/* Desktop: 768px en adelante */
+@media (min-width: 768px) {
+  .qh-track {
+    animation-duration: 15s; /* más lento para pantallas grandes */
+  }
+}
