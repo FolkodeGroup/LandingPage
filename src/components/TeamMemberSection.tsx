@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     avatar: "gabrielsosa.png",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
-    description: "Lo que diga Daro.",
+    description: "Programar es construir puentes entre ideas y realidad usando lógica y creatividad.",
     links: {
       github: 'https://github.com/carlos',
       linkedin: 'https://linkedin.com/in/carlos',
@@ -82,7 +82,7 @@ const teamMembers: TeamMember[] = [
     id: "member-5",
     avatar: "/Ovejero.png",
     name: "Agustin Ovejero",
-    role: "Aca va el Rol",
+    role: "BackEnd Developer",
     description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
     links: {
       github: 'https://github.com/carlos',
@@ -98,7 +98,7 @@ const teamMembers: TeamMember[] = [
     avatar: "/cuqui.png",
     name: "Lucas Echavarria",
     role: "Backend Developer",
-    description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
+    description: "El mejor código no es el que funciona, sino el que otros pueden entender y mantener.",
     links: {
       github: 'https://github.com/carlos',
       linkedin: 'https://linkedin.com/in/carlos',
@@ -111,8 +111,8 @@ const teamMembers: TeamMember[] = [
     id: "member-7",
     avatar: "/fede.png",
     name: "Fede Paal",
-    role: "Aca va el Rol",
-    description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
+    role: "FrontEnd Developer",
+    description: "Cada decisión en el frontend es una decisión sobre la experiencia del usuario",
     links: {
       github: 'https://github.com/carlos',
       linkedin: 'https://linkedin.com/in/carlos',

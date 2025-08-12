@@ -69,7 +69,7 @@ function TeamMemberCard({
             </div>
 
             <button
-              className={`${buttonBg} text-white font-bold py-2 px-6 rounded-full text-sm transition`}
+              className={`${buttonBg} text-white font-bold py-2 px-6 rounded-full text-sm transition pointer`}
             >
               VIEW PROFILE
             </button>

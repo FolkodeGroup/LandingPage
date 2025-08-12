@@ -365,6 +365,9 @@
 
 }
 
+.pointer{
+  cursor: pointer;
+}
 
 @keyframes scroll {
   0% {
