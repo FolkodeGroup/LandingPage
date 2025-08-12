@@ -20,7 +20,7 @@ const personas = [
   {
     nombre: 'Gabriel Sosa',
     puesto: 'Full Stack Developer',
-    comentario: 'Lo que diga Daro.',
+    comentario: 'Programar es construir puentes entre ideas y realidad usando lógica y creatividad.',
     imagen: '/gabrielsosa.png',
   },
   {
@@ -32,21 +32,39 @@ const personas = [
   },
   {
     nombre: 'Agustin Ovejero',
-    puesto: 'Aca va el Rol',
+    puesto: 'BackEnd Developer',
     comentario: 'Desarrollando soluciones innovadoras con un enfoque en la usabilidad.',
     imagen: '/Ovejero.png',
   },
   {
     nombre: 'Lucas Echavarria',
     puesto: 'Backend Developer',
-    comentario: 'Desarrollando soluciones innovadoras con un enfoque en la usabilidad.',
-    imagen: '/Ovejero.png',
+    comentario: 'El mejor código no es el que funciona, sino el que otros pueden entender y mantener.',
+    imagen: '/cuqui.png',
   },
   {
     nombre: 'Fede Paal',
-    puesto: 'Aca va el Rol',
-    comentario: 'Desarrollando soluciones innovadoras con un enfoque en la usabilidad.',
-    imagen: '/Ovejero.png',
+    puesto: 'FrontEnd Developer',
+    comentario: 'Cada decisión en el frontend es una decisión sobre la experiencia del usuario',
+    imagen: '/fede.png',
+  },
+  {
+    nombre: 'Paula Bigorra',
+    puesto: 'BackEnd Developer',
+    comentario: 'La seguridad no es un extra en backend, es el cimiento.',
+    imagen: '/pau.png',
+  },
+  {
+    nombre: 'Mauricio Barreras',
+    puesto: 'FrontEnd Developer',
+    comentario: 'Un diseño consistente es la base de la confianza del usuario',
+    imagen: '/mauri.png',
+  },
+  {
+    nombre: 'Sasha Porchia',
+    puesto: 'FrontEnd Developer',
+    comentario: 'La calidad de un producto se percibe primero en su interfaz.',
+    imagen: '/fede.png',
   },
 ]
 
@@ -72,7 +90,7 @@ export default function CardComentarios() {
         <div className="contenedor-flechas-imagen flex items-center justify-center w-full">
           <button
             onClick={anterior}
-            className="mr-3 flex items-center justify-center shrink-0"
+            className="mr-3 flex items-center justify-center shrink-0 pointer"
             aria-label="Anterior"
           >
             <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
@@ -91,7 +109,7 @@ export default function CardComentarios() {
 
           <button
             onClick={siguiente}
-            className="ml-3 flex items-center justify-center shrink-0"
+            className="ml-3 flex items-center justify-center shrink-0 pointer"
             aria-label="Siguiente"
           >
             <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />

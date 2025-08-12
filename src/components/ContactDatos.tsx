@@ -27,7 +27,7 @@ export default function ContactDatos() {
             rel="noopener noreferrer"
             className="truncate font-medium hover:underline"
           >
-            WhatsApp Cuqui
+            WhatsApp
           </a>
         </div>
         <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">

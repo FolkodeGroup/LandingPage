@@ -729,12 +729,17 @@ html {
     color: var(--color-text-inverse);
   }
 
+  .pointer {
+    cursor: pointer;
+  }
+
   .btn-desplegable{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 11rem;
     text-align: left;
     color: #fff;
+    cursor: pointer;
   }
 
   .btn-desplegable-abierto {

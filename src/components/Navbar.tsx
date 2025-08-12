@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
             <div className="hidden md:flex w-full justify-around items-center">
               {navItems.map((item) => (
                 item.type === 'component' ? (
-                  <span key={item.id}><Desplegable /></span>
+                  <span key={item.id}  ><Desplegable /></span>
                 ) : (
                   <button
                     key={item.id}
