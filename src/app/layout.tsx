@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "../chatbot/ChatbotWidget";
 
 export const metadata: Metadata = {
   title: "Folkode Group - Landing Page",
@@ -21,6 +22,7 @@ export default function RootLayout({
           <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>{children}</main>
         </div>
         <Footer />
+        <ChatbotWidget />
       </body>
     </html>
   );
