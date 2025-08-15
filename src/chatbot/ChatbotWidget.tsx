@@ -11,50 +11,52 @@ const ChatbotWidget: React.FC = () => {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen((v) => !v)}
-        style={{
-          position: 'fixed',
-          bottom: 24,
-          right: 24,
-          zIndex: 1000,
-          borderRadius: '50%',
-          width: 56,
-          height: 56,
-          background: '#0D9488',
-          color: 'white',
-          border: 'none',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-          fontSize: 28,
-          cursor: 'pointer',
-        }}
+        className="fixed bottom-6 right-6 z-[1000] flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-br from-brand to-teal-700 text-white shadow-xl hover:scale-110 transition-transform duration-200 border-4 border-white/80 focus:outline-none focus:ring-4 focus:ring-brand/40"
         aria-label={open ? 'Cerrar chatbot' : 'Abrir chatbot'}
+        style={{ boxShadow: '0 6px 32px 0 rgba(13,148,136,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10)' }}
       >
-        💬
+        <span className="text-3xl">💬</span>
       </button>
 
       {/* Widget flotante */}
       {open && (
         <div
-          style={{
-            position: 'fixed',
-            bottom: 90,
-            right: 24,
-            zIndex: 1000,
-            width: 370,
-            maxWidth: '95vw',
-            height: 540,
-            maxHeight: '80vh',
-            background: 'white',
-            borderRadius: 16,
-            boxShadow: '0 4px 32px rgba(0,0,0,0.18)',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
+          className="fixed bottom-28 right-6 z-[1000] w-[380px] max-w-[98vw] h-[600px] max-h-[90vh] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border"
         >
-          {/* Bot real embebido */}
           <App />
         </div>
       )}
+
+      {/* Animación fade-in-up */}
+      <style>{`
+        .animate-fade-in-up { animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .chatbot-gradient-bg {
+          background: linear-gradient(135deg, #18243a 0%, #22314d 60%, #0d9488 100%) !important;
+        }
+        @media (prefers-color-scheme: light) {
+          .chatbot-gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2f1 60%, #0d9488 100%) !important;
+          }
+        }
+        .chatbot-shadow {
+          box-shadow: 0 12px 48px 0 rgba(13, 148, 136, 0.18), 0 2px 16px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.08) !important;
+        }
+        .chatbot-border {
+          border: 1.5px solid rgba(255,255,255,0.22) !important;
+          box-shadow: 0 0 0 2.5px rgba(13,148,136,0.10) inset !important;
+        }
+        @media (prefers-color-scheme: dark) {
+          .chatbot-border {
+            border: 1.5px solid rgba(255,255,255,0.10) !important;
+            box-shadow: 0 0 0 2.5px rgba(13,148,136,0.13) inset !important;
+          }
+        }
+        /* Forzar prioridad sobre Tailwind y dark: */
+        .chatbot-gradient-bg, .chatbot-gradient-bg * {
+          background-blend-mode: normal !important;
+        }
+      `}</style>
     </>
   );
 };

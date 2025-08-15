@@ -52,7 +52,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const selectedOption = contactMethod && contactOptions.find(o => o.id === contactMethod);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-4 sm:p-8 text-center bg-white dark:bg-[#111827]">
+  <div className="flex flex-col items-center justify-center h-full p-4 sm:p-8 text-center bg-transparent" style={{background: 'transparent'}}>
       <div className="w-full max-w-md">
         <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">{title}</h2>
         <p className="text-gray-500 dark:text-gray-400 mb-8">{subtitle}</p>

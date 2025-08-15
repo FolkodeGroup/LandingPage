@@ -2,8 +2,15 @@
 import React from 'react';
 import { Language } from '../types';
 
+type Locales = {
+  goodbyeTitle: Record<Language, string>;
+  goodbyeMessage: Record<Language, string>;
+  goodbyeBackToConversation: Record<Language, string>;
+  goodbyeRestartChat: Record<Language, string>;
+};
+
 interface GoodbyeScreenProps {
-  locales: any;
+  locales: Locales;
   language: Language | null;
   onBackToConversation: () => void;
   onRestartChat: () => void;
@@ -13,7 +20,7 @@ const GoodbyeScreen: React.FC<GoodbyeScreenProps> = ({ locales, language, onBack
   if (!language) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-white dark:bg-[#111827] animate-fade-in">
+    <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-transparent animate-fade-in" style={{background: 'transparent'}}>
         <div className="w-32 h-32 mb-6" aria-label="Folk Logo">
             <svg viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg" className="w-full h-full rounded-md" shape-rendering="crispEdges">
                 <rect width="19" height="19" fill="black"/>
