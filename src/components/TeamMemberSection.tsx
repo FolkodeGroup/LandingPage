@@ -1,9 +1,6 @@
 'use client';
 import TeamMemberCard from './TeamMemberCard';
-import Slider from 'react-slick';
-import { useEffect, useRef } from 'react';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useRef, useState } from 'react';
 import './TeamSlider.css';
 
 interface TeamMember {
@@ -50,7 +47,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-3",
-    avatar: "gabrielsosa.png",
+  avatar: "/gabrielsosa.png",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
     description: "Programar es construir puentes entre ideas y realidad usando lógica y creatividad.",
@@ -119,7 +116,7 @@ const teamMembers: TeamMember[] = [
   },
       {
 
-    id: "member-7",
+    id: "member-8",
     avatar: "/pau.png",
     name: "Paula Bigorra",
     role: "BackEnd Developer",
@@ -132,7 +129,7 @@ const teamMembers: TeamMember[] = [
   },
       {
 
-    id: "member-7",
+    id: "member-9",
     avatar: "/mauri.png",
     name: "Mauricio Barreras",
     role: "FrontEnd Developer",
@@ -145,7 +142,7 @@ const teamMembers: TeamMember[] = [
   },
       {
 
-    id: "member-7",
+    id: "member-10",
     avatar: "/sasha.png",
     name: "Sasha Porchia",
     role: "FrontEnd Developer",
@@ -161,73 +158,180 @@ const teamMembers: TeamMember[] = [
 ];
 
 export default function TeamMemberSection() {
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isInstant, setIsInstant] = useState(false); // para saltos sin animación
+  const isResettingRef = useRef(false); // pausar autoplay durante reset
+  const [dragOffsetPercent, setDragOffsetPercent] = useState(0); // offset en % durante drag
+  const dragRef = useRef<{ startX: number; deltaX: number; dragging: boolean; startIndex: number; startTime: number }>({
+    startX: 0,
+    deltaX: 0,
+    dragging: false,
+    startIndex: 0,
+    startTime: 0,
+  });
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
-    ]
+  const totalSlides = teamMembers.length;
+
+  // Responsivo: 3/2/1
+  useEffect(() => {
+    const calcSlidesToShow = () => {
+      const w = window.innerWidth;
+      if (w < 768) return 1;
+      if (w < 1024) return 2;
+      return 3;
+    };
+    const apply = () => {
+      setSlidesToShow((prev) => {
+        const next = calcSlidesToShow();
+        return next;
+      });
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, []);
+
+  // Preparar índice inicial (segmento del medio)
+  useEffect(() => {
+    const base = totalSlides; // comienzo del segmento medio
+    setIsInstant(true);
+    setCurrentIndex(base);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setIsInstant(false));
+    });
+  }, [slidesToShow, totalSlides]);
+
+  // Autoplay
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (isHovering || isResettingRef.current) return;
+      setCurrentIndex((i) => i + 1);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [slidesToShow, totalSlides, isHovering]);
+
+  const handlePrev = () => {
+    setCurrentIndex((i) => i - 1);
   };
 
-  useEffect(() => {
-    const equalizeCardHeights = () => {
-      if (sliderRef.current) {
-        const cards = sliderRef.current.querySelectorAll('.team-card-wrapper');
-        let maxHeight = 0;
+  const handleNext = () => {
+    setCurrentIndex((i) => i + 1);
+  };
 
-        // Resetear alturas
-        cards.forEach((card) => {
-          (card as HTMLElement).style.height = 'auto';
-        });
+  // Swipe táctil (mobile)
+  const onTouchStart = (e: React.TouchEvent) => {
+    const x = e.touches[0]?.clientX ?? 0;
+    dragRef.current = {
+      startX: x,
+      deltaX: 0,
+      dragging: true,
+      startIndex: currentIndex,
+      startTime: Date.now(),
+    };
+    isResettingRef.current = true; // pausar autoplay
+    setIsInstant(true); // drag sin transición
+    setDragOffsetPercent(0);
+  };
 
-        // Encontrar la altura máxima
-        cards.forEach((card) => {
-          const height = (card as HTMLElement).offsetHeight;
-          if (height > maxHeight) {
-            maxHeight = height;
-          }
-        });
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!dragRef.current.dragging || !viewportRef.current) return;
+    const x = e.touches[0]?.clientX ?? 0;
+    const deltaX = x - dragRef.current.startX;
+    dragRef.current.deltaX = deltaX;
+    const width = viewportRef.current.clientWidth || 1;
+    const percent = (deltaX / width) * (100 / Math.max(1, slidesToShow));
+    setDragOffsetPercent(percent);
+  };
 
-        // Aplicar la altura máxima a todas las tarjetas
-        cards.forEach((card) => {
-          (card as HTMLElement).style.height = `${maxHeight}px`;
-        });
+  const onTouchEnd = () => {
+    if (!dragRef.current.dragging || !viewportRef.current) return;
+    const { deltaX, startTime } = dragRef.current;
+    const width = viewportRef.current.clientWidth || 1;
+    const elapsed = Date.now() - startTime;
+    const thresholdPx = Math.max(40, width * 0.15);
+    const isFlick = elapsed < 250 && Math.abs(deltaX) > 20;
+    const shouldSlide = Math.abs(deltaX) > thresholdPx || isFlick;
+
+    setIsInstant(false); // animar al destino
+    setDragOffsetPercent(0);
+    dragRef.current.dragging = false;
+    isResettingRef.current = false;
+
+    if (shouldSlide) {
+      if (deltaX < 0) {
+        // swipe izquierda -> siguiente
+        setCurrentIndex((i) => i + 1);
+      } else if (deltaX > 0) {
+        // swipe derecha -> anterior
+        setCurrentIndex((i) => i - 1);
       }
+    } // si no, vuelve al índice actual con transición
+  };
+
+  // Altura adaptativa: medir visibles reales
+  useEffect(() => {
+    const updateHeight = () => {
+      const viewport = viewportRef.current;
+      const track = trackRef.current;
+      if (!viewport || !track) return;
+      const children = Array.from(track.children) as HTMLElement[];
+      const clones = Math.min(slidesToShow, totalSlides);
+      const start = currentIndex;
+      const end = Math.min(currentIndex + slidesToShow, clones + totalSlides + clones);
+      let maxH = 0;
+      for (let i = start; i < end; i++) {
+        const el = children[i];
+        if (!el) continue;
+        // reset para medir
+        el.style.height = 'auto';
+        const h = el.offsetHeight;
+        if (h > maxH) maxH = h;
+      }
+      // set altura del viewport
+      viewport.style.height = maxH ? `${maxH}px` : 'auto';
     };
+    const id = window.setTimeout(updateHeight, 50);
+    return () => window.clearTimeout(id);
+  }, [currentIndex, slidesToShow, totalSlides]);
 
-    // Ejecutar después de que el slider se haya renderizado
-    const timer = setTimeout(equalizeCardHeights, 100);
+  // Construir triple lista para loop fluido: [...items, ...items, ...items]
+  const extendedSlides = [...teamMembers, ...teamMembers, ...teamMembers];
 
-    // También ejecutar cuando cambie el tamaño de ventana
-    window.addEventListener('resize', equalizeCardHeights);
+  // Lógica de normalización al cruzar bordes del segmento medio
+  const maxIndex = Math.max(0, totalSlides - slidesToShow);
+  const base = totalSlides; // inicio del segmento medio
+  const rightBoundary = 2 * totalSlides; // final del segmento medio (exclusivo)
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', equalizeCardHeights);
-    };
-  }, []);
+  const handleTransitionEnd = () => {
+    if (totalSlides <= slidesToShow) return;
+    if (currentIndex >= rightBoundary) {
+      // cruzó al segmento derecho: mover igual hacia atrás totalSlides
+      isResettingRef.current = true;
+      setIsInstant(true);
+      setCurrentIndex((i) => i - totalSlides);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsInstant(false);
+          isResettingRef.current = false;
+        });
+      });
+    } else if (currentIndex < base) {
+      // cruzó al segmento izquierdo: mover hacia adelante totalSlides
+      isResettingRef.current = true;
+      setIsInstant(true);
+      setCurrentIndex((i) => i + totalSlides);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsInstant(false);
+          isResettingRef.current = false;
+        });
+      });
+    }
+  };
 
   return (
     <section id="nuestro-equipo" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
@@ -235,19 +339,62 @@ export default function TeamMemberSection() {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-10 text-center text-white">
           Nuestro Equipo de desarrolladores
         </h2>
-        <div className="team-slider" ref={sliderRef}>
-          <Slider {...settings}>
-            {teamMembers.map((member) => (
-              <div key={member.id} className="px-2">
-                <div className="team-card-wrapper">
-                  <TeamMemberCard
-                    {...member}
-                    className="h-full mx-auto"
-                  />
+        <div
+          className="custom-slider"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          <div className="slider-viewport" ref={viewportRef}>
+            <div
+              className="slider-track"
+              ref={trackRef}
+              style={{
+                transform: `translate3d(-${(currentIndex * 100) / slidesToShow - dragOffsetPercent}%, 0, 0)`,
+                transition: isInstant ? 'none' : 'transform 500ms ease',
+                willChange: 'transform',
+              }}
+              onTransitionEnd={handleTransitionEnd}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              {extendedSlides.map((member, idx) => (
+                <div
+                  key={`${member.id}-${idx}`}
+                  className="slide px-2"
+                  style={{ width: `${100 / slidesToShow}%` }}
+                >
+                  <div className="team-card-wrapper h-full">
+                    <TeamMemberCard {...member} className="h-full mx-auto" />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </div>
+          </div>
+          {/* Arrows (ocultas en mobile vía CSS) */}
+          {totalSlides > slidesToShow && (
+            <>
+              <button className="arrow prev" onClick={handlePrev} aria-label="Anterior" />
+              <button className="arrow next" onClick={handleNext} aria-label="Siguiente" />
+            </>
+          )}
+          {/* Dots */}
+          <ul className="dots">
+            {Array.from({ length: Math.max(1, maxIndex + 1) }).map((_, page) => {
+              // Índice real dentro de [0..totalSlides-1]
+              const realIndex = ((currentIndex - base) % totalSlides + totalSlides) % totalSlides;
+              const activePage = Math.min(maxIndex, realIndex);
+              return (
+                <li key={page}>
+                  <button
+                    aria-label={`Ir a página ${page + 1}`}
+                    className={page === activePage ? 'active' : ''}
+                    onClick={() => setCurrentIndex(base + page)}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>

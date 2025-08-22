@@ -47,12 +47,7 @@ export default function Home() {
         </section>
         <Reveal><h1 className="text-3xl font-bold text-center mb-8 mt-8 text-white">Comentarios De los Clientes</h1></Reveal>
         <Reveal>
-          <ClientComent
-            comment="El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel."
-            author="Juan Pérez"
-            role="CEO de Empresa X"
-            avatarUrl="/images/avatars/juan.jpeg"
-          />
+            <ClientComent />
         </Reveal>
         <section id="contacto" className="mt-12 -mb-16">
           <Reveal><ContactateSection /></Reveal>
