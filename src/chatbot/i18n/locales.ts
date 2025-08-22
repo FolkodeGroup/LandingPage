@@ -1,12 +1,26 @@
 import { Language } from '../types';
 
-type LocaleStrings = {
-  [key: string]: {
-    [lang in Language]: string | any; // Use `any` for complex nested objects
-  };
+export type WizardProjectType = {
+  id: string;
+  label: string;
+  icon: string;
 };
-
-export const locales: LocaleStrings = {
+export type Locales = typeof locales & {
+  wizardProjectTypes: Record<Language, WizardProjectType[]>;
+  wizardFeatures: Record<Language, Record<string, string[]>>;
+  wizardStep1Title: Record<Language, string>;
+  wizardStep2Title: Record<Language, string>;
+  wizardStep2Placeholder: Record<Language, string>;
+  wizardStep3Title: Record<Language, string>;
+  wizardStep4Title: Record<Language, string>;
+  wizardStep4Placeholder: Record<Language, string>;
+  wizardTitle: Record<Language, string>;
+  wizardBack: Record<Language, string>;
+  wizardNext: Record<Language, string>;
+  wizardFinish: Record<Language, string>;
+};
+// ...existing code...
+export const locales = {
   // App Header
   headerTitle: {
     en: 'FolKode',

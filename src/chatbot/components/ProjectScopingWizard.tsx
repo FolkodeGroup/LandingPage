@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { ProjectScope, Language } from '../types';
 
+import { Locales, WizardProjectType } from '../i18n/locales';
 interface ProjectScopingWizardProps {
   onConfirm: (scope: ProjectScope) => void;
-  locales: any;
+  locales: Locales;
   language: Language;
 }
 
@@ -16,14 +17,12 @@ const ProjectScopingWizard: React.FC<ProjectScopingWizardProps> = ({ onConfirm, 
     extraDetails: '',
   });
 
-  const projectTypes = useMemo(() => locales.wizardProjectTypes[language], [locales, language]);
+  const projectTypes: WizardProjectType[] = useMemo(() => locales.wizardProjectTypes[language], [locales, language]);
 
-  const featuresForSelectedType = useMemo(() => {
+  const featuresForSelectedType: string[] = useMemo(() => {
     if (!scope.projectType) return [];
-    
-    const selectedType = projectTypes.find((pt: any) => pt.label === scope.projectType);
+    const selectedType = projectTypes.find((pt: WizardProjectType) => pt.label === scope.projectType);
     if (!selectedType) return [];
-    
     return locales.wizardFeatures[language][selectedType.id] || [];
   }, [scope.projectType, projectTypes, locales, language]);
 
@@ -48,7 +47,7 @@ const ProjectScopingWizard: React.FC<ProjectScopingWizardProps> = ({ onConfirm, 
           <div>
             <h4 className="font-bold text-lg mb-4 text-center">{locales.wizardStep1Title[language]}</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {projectTypes.map((pt: any) => (
+              {projectTypes.map((pt: WizardProjectType) => (
                 <button
                   key={pt.id}
                   onClick={() => { setScope({ ...scope, projectType: pt.label, features: [] }); handleNext(); }}

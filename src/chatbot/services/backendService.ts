@@ -60,9 +60,9 @@ export const backendService = {
     console.log('SENDING FULL CHAT REPORT TO WEBHOOK for:', contactIdentifier);
 
     const cleanTranscript = messages.map(msg => {
-      const timestamp = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      let content = msg.text || (msg.component ? `[${msg.component}]` : '');
-      return `[${timestamp}] ${msg.sender === 'bot' ? 'FolKode' : user.name}: ${content}`;
+  const timestamp = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const content = msg.text || (msg.component ? `[${msg.component}]` : '');
+  return `[${timestamp}] ${msg.sender === 'bot' ? 'FolKode' : user.name}: ${content}`;
     }).join('\n');
 
     const formData = {

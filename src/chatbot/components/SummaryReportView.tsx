@@ -2,9 +2,10 @@
 import React from 'react';
 import { SummaryReport, Language } from '../types';
 
+import { Locales } from '../i18n/locales';
 interface SummaryReportViewProps {
   summaryReport: SummaryReport;
-  locales: any;
+  locales: Locales;
   language: Language;
 }
 
@@ -28,7 +29,7 @@ const SummaryReportView: React.FC<SummaryReportViewProps> = ({ summaryReport, lo
       {summaryReport.painPoint && (
          <div>
             <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 tracking-wider">{locales.painPointLabel[language]}</p>
-            <p className="italic text-gray-700 dark:text-gray-300">"{summaryReport.painPoint}"</p>
+            <p className="italic text-gray-700 dark:text-gray-300">&quot;{summaryReport.painPoint}&quot;</p>
          </div>
       )}
       

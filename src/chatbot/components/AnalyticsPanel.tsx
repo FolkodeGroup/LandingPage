@@ -1,11 +1,12 @@
 import React from 'react';
 import { AnalyticsData, Theme, Language } from '../types';
 
+import { Locales } from '../i18n/locales';
 interface AnalyticsPanelProps {
   data: AnalyticsData;
   onClose: () => void;
   theme: Theme;
-  locales: any;
+  locales: Locales;
   language: Language;
 }
 
