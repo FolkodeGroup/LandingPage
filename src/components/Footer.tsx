@@ -106,7 +106,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-xl text-inverse font-bold">{'›'}</span>
-                  <a href="#nosotros" className="text-nav-link hover:underline">Sobre nosotros</a>
+                  <a href="#sobre-folkode" className="text-nav-link hover:underline">Sobre nosotros</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-xl text-inverse font-bold">{'›'}</span>
