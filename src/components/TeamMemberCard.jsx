@@ -29,7 +29,7 @@ function TeamMemberCard({
 
   return (
     <div
-      className={`max-w-sm w-full font-['Roboto'] transition-all h-full flex flex-col ${className} px-2`}
+      className={`w-full sm:max-w-sm font-['Roboto'] transition-all h-full flex flex-col ${className} px-2`}
     >
       <Card className={`${bgColor} border-[10px] ${borderColor} ${textColor} h-full flex flex-col`}>
         <div className="flex flex-col items-center text-center h-full justify-between">

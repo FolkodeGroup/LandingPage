@@ -25,7 +25,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative w-full flex items-center justify-center bg-black overflow-x-hidden hero-section"
+      className="relative w-full flex items-center justify-center bg-white hero-section"
       style={{ marginTop: navHeight }}
     >
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
@@ -38,16 +38,19 @@ export default function HeroSection() {
         transition={{ duration: 1.5, ease: 'easeOut' }}
       />
 
-      <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full h-full relative">
     {/* Imagen hero completa */}
-    <motion.img
-      src={heroImage.src}
-      alt="Hero"
-      className="hero-img"
-      initial={{ scale: 1.2, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 1.5, ease: 'easeOut' }}
-    />
+    <picture className="w-full h-full">
+      <source media="(max-width: 768px)" srcSet="/PC-Hero-img.png" />
+      <motion.img
+        src={heroImage.src}
+        alt="Hero"
+        className="hero-img"
+        initial={{ scale: 1.2, opacity: 0, scaleX: -1 }}
+        animate={{ scale: 1, opacity: 1, scaleX: -1 }}
+        transition={{ duration: 1.5, ease: 'easeOut' }}
+      />
+    </picture>
 
     {/* Textos alineados a la izquierda */}
     <motion.div

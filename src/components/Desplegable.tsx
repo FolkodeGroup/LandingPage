@@ -61,49 +61,53 @@ export default function Desplegable() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.85 }}
+                    transition={{ duration: 0.35 }}
                     style={{
                         position: "absolute",
                         top: "100%",
                         left: 0,
                         zIndex: 10,
                         width: "11rem",
-                        background: "#86A869",
+                        background: "#025159",
                         borderRadius: "0 0 8px 8px",
                         boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
-                        padding: 0
+                        padding: "1vh",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center"
                     }}
                 >
-                    <ul className="btn-desplegable-abierto">
-                        <li className="mb-2 text-body-desplegable">
+                    <ul className="btn-desplegable-abierto" style={{ width: "100%", textAlign: "center", margin: 0, padding: 0 }}>
+                        <li className="mb-2 text-body-desplegable" style={{ width: "100%" }}>
                             <button 
                                 onClick={(e) => {
                                     e.preventDefault();
                                     handleScrollTo('sobre-folkode');
                                 }}
-                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#fff'}}
                             >
                                 Nosotros
                             </button>
                         </li>
-                        <li className="mb-2 text-body-desplegable">
+                        <li className="mb-2 text-body-desplegable" style={{ width: "100%" }}>
                             <button 
                                 onClick={(e) => {
                                     e.preventDefault();
                                     handleScrollTo('nuestro-equipo');
                                 }}
-                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#fff'}}
                             >
                                 Nuestro Equipo
                             </button>
                         </li>
-                        <li className="mb-2 text-body-desplegable">
+                        <li className="mb-2 text-body-desplegable" style={{ width: "100%" }}>
                             <button 
                                 onClick={(e) => {
                                     e.preventDefault();
                                     handleScrollTo('que-ofrecemos');
                                 }}
-                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit'}}
+                                style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#fff'}}
                             >
                                 Que Ofrecemos
                             </button>
@@ -112,5 +116,5 @@ export default function Desplegable() {
                 </motion.div>
             )}
         </div>
-    )
+    );
 }

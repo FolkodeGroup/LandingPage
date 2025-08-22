@@ -298,6 +298,42 @@ html {
 .footer-folkode-dark {
   width: 100%;
   opacity: 0;
+
+/* Estilos base para la imagen del Hero - Desktop por defecto */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Asegurar que el elemento picture ocupe todo el espacio */
+picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+/* Ajustes específicos para la imagen del Hero en dispositivos pequeños */
+@media (max-width: 768px) {
+  .hero-img {
+    width: 100%;
+    height: 100vh; 
+    max-height: none;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-img {
+    height: 100vh; 
+  }
+}
   transform: translateY(60px);
   transition:
     opacity 0.9s cubic-bezier(0.77,0,0.175,1),
@@ -632,7 +668,7 @@ html {
   /* Navbar */
   .navbar {
     display: flex;
-    height: 196px;
+    height: 0vh;
     border: 1px solid var(--color-black);
     background-color: var(--color-surface);
   }
@@ -697,10 +733,7 @@ html {
     background-color: var(--color-secondary-hover);
   }
 
-  .navbar-bottom {
-    height: 20px;
-    background-color: var(--color-secondary);
-  }
+
 
   .text-nav-link {
     font-family: var(--font-roboto), sans-serif;
@@ -768,11 +801,12 @@ html {
     margin: 0.16rem;
 }
 
-  /* HeroSection*/
+  /* HeroSection - Desktop */
   .hero-section{
     position: relative;
     width: 100%;
-    max-height: 100vh;
+    height: calc(100vh - 70px);
+    min-height: 600px;
   }
 
   .hero-title{
@@ -802,8 +836,11 @@ html {
   .hero-img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .hero-triangles{
@@ -1084,41 +1121,48 @@ html {
     text-align: center;
   }
 
-  /* HeroSection*/
+  /* HeroSection - Tablet */
   .hero-section{
     position: relative;
     width: 100%;
-    max-height: 100vh;
+    height: calc(100vh - 136px);
+    min-height: 500px;
   }
 
   .hero-title{
     font-size: x-large;
     font-weight: bold;
     margin-bottom: -10px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-text{
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 3px;
     color: #e5e7eb;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-button{
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    font-size: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 14px;
     margin-left: 6rem;
     width: 40%;
     border-radius: 4px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-img{
     width: 100%;
-    height: 230px;
+    height: 100%;
     object-fit: cover;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .hero-triangles{
@@ -1357,41 +1401,48 @@ html {
     text-align: center;
   }
 
-  /* HeroSection*/
+  /* HeroSection - Mobile */
   .hero-section{
     position: relative;
     width: 100%;
-    max-height: 100vh;
+    height: calc(100vh - 110px);
+    min-height: 600px;
   }
 
   .hero-title{
     font-size: large;
     font-weight: bold;
     margin-bottom: -10px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-text{
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 3px;
     color: #e5e7eb;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-button{
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    font-size: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
     margin-left: 6rem;
     width: 40%;
     border-radius: 4px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
   }
 
   .hero-img{
     width: 100%;
-    height: 230px;
+    height: 100%;
     object-fit: cover;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .hero-triangles{
