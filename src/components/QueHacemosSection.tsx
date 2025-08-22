@@ -69,20 +69,15 @@ export default function QueHacemosSection() {
   const listaInfinita = [...actividades, ...actividades]
 
   return (
-    <section className="py-16 w-full overflow-hidden">
+    <section id="servicios" className="py-16 w-full overflow-hidden">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center">
         ¿Qué hacemos?
       </h2>
 
-      <div className="relative w-full mx-auto overflow-hidden">
-        <div
-          className="flex animate-marquee hover:[animation-play-state:paused]"
-        >
+      <div className="relative w-full overflow-hidden qh-marquee">
+        <div className="qh-track hover:[animation-play-state:paused] will-change-transform">
           {listaInfinita.map((actividad, idx) => (
-            <div
-              key={actividad.id + '-' + idx}
-              className="flex-shrink-0 "
-            >
+            <div key={actividad.id + '-' + idx} className="qh-item flex-shrink-0">
               <ActividadCard {...actividad} />
             </div>
           ))}

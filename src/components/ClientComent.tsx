@@ -20,7 +20,6 @@ const ClientComment: React.FC<ClientCommentProps> = ({
     <div className={`w-full max-w-6xl mx-auto px-4 ${className}`}>
       {/* Título simple como texto - Ahora en blanco */}
       <div className="text-right mb-4">
-        <span className="text-h3 text-white">Comments del Cliente</span> {/* Cambiado a text-white */}
       </div>
 
       {/* Contenedor principal con tarjeta - fondo blanco y bordes verdes */}

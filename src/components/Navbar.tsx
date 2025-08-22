@@ -4,13 +4,45 @@ import Image from 'next/image';
 import Desplegable from "@/components/Desplegable";
 
 const Navbar: React.FC = () => {
+  // Función para manejar el scroll suave con offset
+  const handleScrollTo = (targetId: string) => {
+    // Para "inicio", ir al top de la página
+    if (targetId === 'inicio') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+
+    const element = document.getElementById(targetId);
+    if (!element) return;
+
+    // Obtener la altura del navbar según el viewport
+    const getNavbarHeight = () => {
+      const width = window.innerWidth;
+      if (width >= 768) return 196; // Desktop
+      if (width >= 421) return 136; // Tablet
+      return 110; // Móvil
+    };
+
+    const navbarHeight = getNavbarHeight();
+    const elementPosition = element.offsetTop - navbarHeight;
+
+    window.scrollTo({
+      top: elementPosition,
+      behavior: 'smooth'
+    });
+  };
+
   // Definir elementos de navegación de manera más estructurada
   const navItems = [
-    { id: 'inicio', label: 'Inicio', type: 'link' },
-    { id: 'contactanos', label: 'Contáctanos', type: 'link' },
+    { id: 'inicio', label: 'Inicio', type: 'link', href: '#inicio', target: 'inicio' },
+    { id: 'servicios', label: 'Servicios', type: 'link', href: '#servicios', target: 'servicios' },
     { id: 'desplegable', label: '', type: 'component' }, // Para el componente Desplegable
-    { id: 'servicios', label: 'Servicios', type: 'link' }
-  ];
+    { id: 'proyectos', label: 'Proyectos', type: 'link', href: '#proyectos', target: 'proyectos' },
+    { id: 'contactanos', label: 'Contáctanos', type: 'link', href: '#contacto', target: 'contacto' },
+  ] as const;
 
   // Estado para el menú hamburguesa (solo móvil)
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,16 +72,26 @@ const Navbar: React.FC = () => {
             {/* Menú de navegación normal, oculto en móvil */}
             <div className="hidden md:flex w-full justify-around items-center">
               {navItems.map((item) => (
-                <span
-                  key={item.id}
-                  className="text-nav-link"
-                  style={{
-                    color: 'var(--color-text-inverse)',
-                    transition: 'color 0.2s ease'
-                  }}
-                >
-                  {item.type === 'component' ? <Desplegable /> : item.label}
-                </span>
+                item.type === 'component' ? (
+                  <span key={item.id}  ><Desplegable /></span>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.type === 'link' && item.target) {
+                        handleScrollTo(item.target);
+                      }
+                    }}
+                    className="text-nav-link cursor-pointer bg-transparent border-none"
+                    style={{
+                      color: 'var(--color-text-inverse)',
+                      transition: 'color 0.2s ease'
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </div>
             {/* Botón hamburguesa solo visible en móvil, alineado a la derecha */}
@@ -72,14 +114,24 @@ const Navbar: React.FC = () => {
         {menuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-2 gap-4">
             {navItems.map((item) => (
-              <span
-                key={item.id}
-                className="text-nav-link text-lg"
-                style={{ color: 'var(--color-text-inverse)' }}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.type === 'component' ? <Desplegable /> : item.label}
-              </span>
+              item.type === 'component' ? (
+                <span key={item.id} ><Desplegable /></span>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.type === 'link' && item.target) {
+                      handleScrollTo(item.target);
+                    }
+                    setMenuOpen(false);
+                  }}
+                  className="text-nav-link text-lg cursor-pointer bg-transparent border-none"
+                  style={{ color: 'var(--color-text-inverse)' }}
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </div>
         )}

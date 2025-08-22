@@ -11,47 +11,52 @@ import ContactateSection from "@/components/sections/ContactateSection";
 import ClientComent from "@/components/ClientComent";
 import CoverParticles from "@/components/cover-particles";
 import ComentariosEquipo from "@/components/ComentariosEquipo";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col gap-6 items-start">
+    <main className="min-h-screen flex flex-col gap-6 items-start" id="inicio">
         <CoverParticles />
-        <HeroSection />
+          <HeroSection />
       <div className="container mx-auto px-6 py-24">
-        <hr className="border-t border-secondary my-4" />
-        <QueHacemosSection />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Sobre Folkode</h1>
-        <hr className="border-t border-secondary my-4" />
-        <AboutSection />
-        <hr className="border-t border-secondary my-4" />
-        <FactoryCard />
-        <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Nuestro Equipo de Desarrolladores</h1>
-        <hr className="border-t border-secondary my-4" />
-        <TeamMemberSection />
-        <hr className="border-t border-secondary my-4" />
-        <Unirte />
-        <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1>
-        <ComentariosEquipo/>
-        <hr className="border-t border-secondary my-4" />
-        <Tecnologias />
-        <IconosTecnologias />
-        <hr className="border-t border-secondary my-4" />
-        <ProyClientes />
-        <hr className="border-t border-secondary my-4" />
-        <h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios De los Clientes</h1>
-        <ClientComent
-          comment="El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel."
-          author="Juan Pérez"
-          role="CEO de Empresa X"
-          avatarUrl="/images/avatars/juan.jpeg"
-        />
-
-        <hr className="border-t border-secondary my-4" />
-        <ContactateSection />
-        <hr className="border-t border-secondary my-4" />
-
+        <section id="servicios">
+          <Reveal><QueHacemosSection /></Reveal>
+        </section>
+        <section id="sobre-folkode">
+          <Reveal><AboutSection /></Reveal>
+        </section>
+        <section id="nuestro-equipo">
+          <Reveal><TeamMemberSection /></Reveal>
+        </section>
+        <section id="que-ofrecemos">
+          <Reveal><FactoryCard /></Reveal>
+        </section>
+        <section id="unirte">
+          <Reveal><Unirte /></Reveal>
+        </section>
+        <Reveal><h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1></Reveal>
+        <Reveal><ComentariosEquipo/></Reveal>
+        <section id="tecnologias">
+          <Reveal><Tecnologias /></Reveal>
+        </section>
+        <section id="iconos-tecnologias">
+          <Reveal><IconosTecnologias /></Reveal>
+        </section>
+        <section id="proyectos">
+          <Reveal><ProyClientes /></Reveal>
+        </section>
+        <Reveal><h1 className="text-3xl font-bold text-center mb-8 mt-8 text-white">Comentarios De los Clientes</h1></Reveal>
+        <Reveal>
+          <ClientComent
+            comment="El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel."
+            author="Juan Pérez"
+            role="CEO de Empresa X"
+            avatarUrl="/images/avatars/juan.jpeg"
+          />
+        </Reveal>
+        <section id="contacto">
+          <Reveal><ContactateSection /></Reveal>
+        </section>
       </div>
     </main>
   );

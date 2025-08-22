@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function AboutSection() {
   return (
-    <section className="py-10 bg-black lg:py-32">
+    <section id="sobre-folkode" className="py-10 bg-black lg:py-32">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-16">
         {/* Imágenes y cuadrados de colores a la izquierda */}
         <div className="w-full md:w-1/2 flex items-center justify-center relative h-[420px] md:h-[300px] mb-20 md:mb-0 contenedor-imagenes">

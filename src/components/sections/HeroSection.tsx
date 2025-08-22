@@ -24,20 +24,21 @@ export default function HeroSection() {
 
   return (
     <section
-  className="relative w-full flex items-center justify-center bg-black overflow-x-hidden hero-section"
-  style={{ marginTop: navHeight }}
->
-  {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
-  <motion.img
-    src={TrianglesImage.src}
-    alt="HeroTriangles"
-    className="hero-triangles absolute bottom-0 right-0 z-[1]"
-    initial={{ scale: 0.2, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 1.5, ease: 'easeOut' }}
-  />
+      id="inicio"
+      className="relative w-full flex items-center justify-center bg-black overflow-x-hidden hero-section"
+      style={{ marginTop: navHeight }}
+    >
+      {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
+      <motion.img
+        src={TrianglesImage.src}
+        alt="HeroTriangles"
+        className="hero-triangles absolute bottom-0 right-0 z-[1]"
+        initial={{ scale: 0.2, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.5, ease: 'easeOut' }}
+      />
 
-  <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center">
     {/* Imagen hero completa */}
     <motion.img
       src={heroImage.src}
