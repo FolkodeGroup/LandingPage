@@ -4,7 +4,13 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-const personas = [
+interface Persona {
+	comment: string
+	author: string
+	avatarUrl: string
+}
+
+const personas: Persona[] = [
 	{
 		comment:
 			'Laburan con prolijidad que da gusto. Se nota que les gusta lo que hacen, y eso hoy es difícil de encontrar.',
@@ -19,14 +25,7 @@ const personas = [
 	},
 ]
 
-interface ClientComentProps {
-	comment: string
-	author: string
-	role: string
-	avatarUrl: string
-}
-
-const ClientComent: React.FC<any> = ({ comment, author, role, avatarUrl }) => {
+const ClientComent: React.FC = () => {
 	const [index, setIndex] = useState(0)
 
 	const siguiente = () => setIndex((prev) => (prev + 1) % personas.length)
