@@ -54,7 +54,7 @@ export default function Home() {
             avatarUrl="/images/avatars/juan.jpeg"
           />
         </Reveal>
-        <section id="contacto">
+        <section id="contacto" className="mt-12 -mb-16">
           <Reveal><ContactateSection /></Reveal>
         </section>
       </div>
