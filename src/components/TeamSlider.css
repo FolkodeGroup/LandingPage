@@ -1,123 +1,66 @@
-.team-slider {
+.custom-slider {
   position: relative;
 }
 
-.team-slider .slick-track {
-  display: flex;
-  align-items: stretch;
-}
-
-.team-slider .slick-slide {
-  height: auto;
-}
-
-.team-slider .slick-slide > div {
-  height: 100%;
-}
-
-.team-slider .slick-slide .team-card-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
+.slider-viewport {
+  overflow: hidden;
   width: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.slider-track {
+  display: flex;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 auto;
   box-sizing: border-box;
 }
 
-@media (max-width: 640px) {
-  .team-slider .slick-slide {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    box-sizing: border-box;
-  }
-  .team-slider .slick-slide > div {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    box-sizing: border-box;
-  }
-  .team-slider .team-card-wrapper {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    margin: 0 auto !important;
-    box-sizing: border-box;
-  }
-}
-
-.team-slider .slick-dots {
-  bottom: -50px;
-}
-
-.team-slider .slick-dots li button:before {
-  color: #025159;
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.team-slider .slick-dots li.slick-active button:before {
-  color: #025159;
-  opacity: 1;
-}
-
-.team-slider .slick-arrow {
-  z-index: 1;
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 40px;
   height: 40px;
   background: #025159;
   border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
 }
+.arrow.prev { left: -60px; }
+.arrow.next { right: -60px; }
+.arrow:hover { background: #013f49; }
 
-.team-slider .slick-arrow:before {
-  font-size: 20px;
-  color: white;
-}
-
-.team-slider .slick-arrow:hover {
-  background: #013f49;
-}
-
-.team-slider .slick-prev {
-  left: -60px;
-}
-
-.team-slider .slick-next {
-  right: -60px;
-}
-
-@media (max-width: 1280px) {
-  .team-slider .slick-prev {
-    left: -40px;
-  }
-  
-  .team-slider .slick-next {
-    right: -40px;
-  }
-}
-
+/* esto te esconde las arrow */
 @media (max-width: 768px) {
-  .team-slider .slick-prev {
-    left: -30px;
-  }
-  
-  .team-slider .slick-next {
-    right: -30px;
-  }
-  
-  .team-slider .slick-arrow {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .team-slider .slick-arrow:before {
-    font-size: 16px;
-  }
+  .arrow { display: none; }
 }
 
-@media (max-width: 640px) {
-  .team-slider .slick-prev,
-  .team-slider .slick-next {
-    display: none !important;
-  }
+/* Dots */
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+.dots li { list-style: none; }
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(2, 81, 89, 0.5);
+  border: none;
+  cursor: pointer;
+}
+.dots button.active { background: #025159; }
+
+/* que la card ocupe todo el alto disponible */
+.team-card-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

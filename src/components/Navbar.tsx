@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
         )}
 
         {/* Sección inferior verde SIN borde */}
-        <div className="navbar-bottom" />
+        {/* <div className="navbar-bottom" /> */}
       </div>
     </nav>
   );
