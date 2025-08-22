@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin, FaTelegram, FaEnvelope } from 'react-icons/fa';
 import { User, MeetingDetails, Language, ContactMethod } from '../types';
 import { contactOptions } from '../constants/contactOptions';
 import { locales } from '../i18n/locales';
@@ -55,35 +56,61 @@ const MeetingScheduler: React.FC<MeetingSchedulerProps> = ({ user, onConfirm, lo
                 {/* Contact Method Selection */}
                 <div>
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 block mb-2">{locales.formContactPrompt[language]}</label>
-                    <div className="flex flex-wrap gap-2">
-                        {contactOptions.map(option => (
-                        <button
-                            key={option.id}
-                            type="button"
-                            style={{ '--brand-color': option.hexColor } as React.CSSProperties}
-                            onClick={() => { setContactMethod(option.id); setContactInfo(option.id === user.contactMethod ? user.contactInfo : ''); setError(''); }}
-                            aria-label={`Select ${option.name}`}
-                            className={`group flex flex-col items-center justify-center p-2 rounded-lg border-2 transition-all duration-200 focus:outline-none w-14 h-14
-                                ${contactMethod === option.id ? 'grayscale-0 border-[var(--brand-color)] scale-105' : 'grayscale bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 hover:grayscale-0 hover:border-[var(--brand-color)]'}`}
-                        >
-                            <div className={`transition-colors duration-300 ${contactMethod === option.id ? 'text-[var(--brand-color)]' : 'text-gray-400 group-hover:text-[var(--brand-color)]'}`}>
-                                <i className={`${option.icon} text-2xl`}></i>
-                            </div>
-                        </button>
-                        ))}
-                    </div>
+                                        <div className="flex flex-wrap gap-4 justify-center w-full">
+                                                {contactOptions.map(option => {
+                                                    let IconComponent = null;
+                                                    switch(option.id) {
+                                                        case 'whatsapp': IconComponent = FaWhatsapp; break;
+                                                        case 'facebook': IconComponent = FaFacebook; break;
+                                                        case 'instagram': IconComponent = FaInstagram; break;
+                                                        case 'linkedin': IconComponent = FaLinkedin; break;
+                                                        case 'telegram': IconComponent = FaTelegram; break;
+                                                        case 'email': IconComponent = FaEnvelope; break;
+                                                        default: IconComponent = FaEnvelope;
+                                                    }
+                                                    return (
+                                                        <button
+                                                            key={option.id}
+                                                            type="button"
+                                                            style={{ '--brand-color': option.hexColor } as React.CSSProperties}
+                                                            onClick={() => { setContactMethod(option.id); setContactInfo(option.id === user.contactMethod ? user.contactInfo : ''); setError(''); }}
+                                                            aria-label={`Select ${option.name}`}
+                                                            disabled={false}
+                                                            className={`group flex flex-col items-center justify-center p-2 rounded-lg border-2 border-[var(--brand-color)] bg-white dark:bg-gray-800 shadow-md transition-all duration-200 focus:outline-none w-16 h-16 sm:w-20 sm:h-20 grayscale hover:grayscale-0 hover:border-[var(--brand-color)] transform hover:scale-105 cursor-pointer ${contactMethod === option.id ? 'grayscale-0 border-[var(--brand-color)] scale-105' : ''}`}
+                                                        >
+                                                            <div className={`transition-colors duration-300 flex flex-col items-center justify-center w-full h-full group-hover:text-[var(--brand-color)]`} style={{color: 'var(--brand-color)'}}>
+                                                                {IconComponent && <IconComponent size={28} />}
+                                                                <span className="text-xs mt-1 font-semibold text-[var(--brand-color)]" style={{fontSize:'0.7rem'}}>{option.name}</span>
+                                                            </div>
+                                                        </button>
+                                                    );
+                                                })}
+                                        </div>
                 </div>
 
                 {/* Contact Info Input */}
-                <div>
-                     <input
-                        type={contactMethod === 'email' ? 'email' : (contactMethod === 'phone' || contactMethod === 'whatsapp' ? 'tel' : 'text')}
-                        value={contactInfo}
-                        onChange={(e) => setContactInfo(e.target.value)}
-                        placeholder={locales[`formPlaceholder${contactMethod.charAt(0).toUpperCase() + contactMethod.slice(1)}`]?.[language]}
-                        className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand text-gray-900 dark:text-gray-100"
-                    />
-                </div>
+                                <div>
+                                    {(() => {
+                                        const contactPlaceholders: Record<ContactMethod, { [lang in Language]: string }> = {
+                                            email: locales.formPlaceholderEmail,
+                                            whatsapp: locales.formPlaceholderWhatsapp,
+                                            linkedin: locales.formPlaceholderLinkedin,
+                                            instagram: locales.formPlaceholderInstagram,
+                                            facebook: locales.formPlaceholderFacebook,
+                                            telegram: locales.formPlaceholderTelegram,
+                                            phone: locales.formPlaceholderPhone,
+                                        };
+                                        return (
+                                            <input
+                                                type={contactMethod === 'email' ? 'email' : (contactMethod === 'phone' || contactMethod === 'whatsapp' ? 'tel' : 'text')}
+                                                value={contactInfo}
+                                                onChange={(e) => setContactInfo(e.target.value)}
+                                                placeholder={contactPlaceholders[contactMethod]?.[language]}
+                                                className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand text-gray-900 dark:text-gray-100"
+                                            />
+                                        );
+                                    })()}
+                                </div>
 
                 {/* Time Slot Selection */}
                 <div>

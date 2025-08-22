@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin, FaTelegram, FaEnvelope } from 'react-icons/fa';
 import { ContactMethod } from '../types';
 import { contactOptions } from '../constants/contactOptions';
 
@@ -73,7 +74,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           
           <div>
             <p className="text-gray-600 dark:text-gray-400 text-left mb-3">{contactPrompt}</p>
-            <div className="flex flex-wrap justify-center gap-3 min-h-[100px] items-center">
+            <div className="flex flex-wrap justify-center gap-4 min-h-[100px] items-center w-full">
               {selectedOption ? (
                 <div className="flex items-center gap-4 animate-fade-in w-full justify-center">
                   <div
@@ -85,7 +86,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   <button
                     type="button"
                     onClick={() => { setContactMethod(null); setContactInfo(''); }}
-                    className="text-brand hover:underline font-medium"
+                    className="text-brand hover:underline font-medium cursor-pointer"
                     aria-label="Change contact method"
                     disabled={isLoading}
                   >
@@ -93,28 +94,43 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   </button>
                 </div>
               ) : (
-                contactOptions.map(option => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    style={{ '--brand-color': option.hexColor } as React.CSSProperties}
-                    onClick={() => { setContactMethod(option.id); setContactInfo(''); setError(''); }}
-                    aria-label={`Select ${option.name} as contact method`}
-                    disabled={isLoading}
-                    className="group flex flex-col items-center justify-center p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 focus:outline-none w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 grayscale hover:grayscale-0 hover:border-[var(--brand-color)] transform hover:scale-105"
-                  >
-                    <div className="text-gray-400 transition-colors duration-300 group-hover:text-[var(--brand-color)]">
-                      <i className={`${option.icon} text-2xl sm:text-3xl`}></i>
-                    </div>
-                  </button>
-                ))
+                contactOptions.map(option => {
+                  let IconComponent = null;
+                  switch(option.id) {
+                    case 'whatsapp': IconComponent = FaWhatsapp; break;
+                    case 'facebook': IconComponent = FaFacebook; break;
+                    case 'instagram': IconComponent = FaInstagram; break;
+                    case 'linkedin': IconComponent = FaLinkedin; break;
+                    case 'telegram': IconComponent = FaTelegram; break;
+                    case 'email': IconComponent = FaEnvelope; break;
+                    default: IconComponent = FaEnvelope;
+                  }
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      style={{ '--brand-color': option.hexColor } as React.CSSProperties}
+                      onClick={() => { setContactMethod(option.id); setContactInfo(''); setError(''); }}
+                      aria-label={`Select ${option.name} as contact method`}
+                      disabled={isLoading}
+                      className="group flex flex-col items-center justify-center p-2 sm:p-3 rounded-lg border-2 border-[var(--brand-color)] bg-white dark:bg-gray-800 shadow-md transition-all duration-300 focus:outline-none w-16 h-16 sm:w-20 sm:h-20 grayscale hover:grayscale-0 hover:border-[var(--brand-color)] transform hover:scale-105 cursor-pointer"
+                    >
+                      <div className="transition-colors duration-300 flex flex-col items-center justify-center w-full h-full group-hover:text-[var(--brand-color)]" style={{color: 'var(--brand-color)'}}>
+                        {IconComponent && <IconComponent size={28} />}
+                        <span className="text-xs mt-1 font-semibold text-[var(--brand-color)]" style={{fontSize:'0.7rem'}}>{option.name}</span>
+                      </div>
+                    </button>
+                  );
+                })
               )}
             </div>
           </div>
 
           {contactMethod && (
-            <div className="animate-fade-in">
-              <label htmlFor="contactInfo" className="sr-only">{contactPlaceholders[contactMethod]}</label>
+            <div className="animate-fade-in w-full flex flex-col items-center">
+              <label htmlFor="contactInfo" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1 text-left w-full max-w-md">
+                {contactPlaceholders[contactMethod]}
+              </label>
               <input
                 id="contactInfo"
                 type={contactMethod === 'email' ? 'email' : (contactMethod === 'phone' || contactMethod === 'whatsapp' ? 'tel' : 'text')}
@@ -122,7 +138,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 onChange={(e) => setContactInfo(e.target.value)}
                 placeholder={contactPlaceholders[contactMethod]}
                 aria-label={contactPlaceholders[contactMethod]}
-                className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 transition"
+                className="w-full max-w-md px-4 py-3 bg-white dark:bg-gray-800 border border-[var(--brand-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-brand text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 transition"
                 disabled={isLoading}
               />
             </div>
@@ -131,7 +147,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full px-4 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:ring-brand transition-all duration-200 transform hover:scale-105 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+            className="w-full px-4 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:ring-brand transition-all duration-200 transform hover:scale-105 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center cursor-pointer"
             disabled={isLoading || !name || !contactMethod || !contactInfo}
           >
             {isLoading ? (
