@@ -97,13 +97,13 @@ const App: React.FC = () => {
       return <LanguageSelector onSelectLanguage={handleSelectLanguage} />;
     }
     
-    if (!user) {
-        const contactPlaceholders = Object.keys(locales)
+    if (!user && language) {
+      const contactPlaceholders = Object.keys(locales)
         .filter(key => key.startsWith('formPlaceholder'))
         .reduce((acc, key) => {
-            const method = key.replace('formPlaceholder', '').toLowerCase() as ContactMethod;
-            acc[method] = locales[key][language];
-            return acc;
+          const method = key.replace('formPlaceholder', '').toLowerCase() as ContactMethod;
+          acc[method] = (locales as any)[key][language];
+          return acc;
         }, {} as { [key in ContactMethod]: string });
 
       const errorMessages = {
@@ -125,7 +125,7 @@ const App: React.FC = () => {
         connectingText={locales.formConnectingText[language]}
         changeButtonText={locales.formChangeButtonText[language]}
         errorMessages={errorMessages}
-      />
+      />;
     }
     
     if (showGoodbyeScreen) {
@@ -140,25 +140,27 @@ const App: React.FC = () => {
     }
     
     return (
-      <ChatInterface 
-        messages={messages}
-        user={user}
-        onSendMessage={handleSendMessage}
-        onSuggestionClick={handleSuggestionClick}
-        onMeetingScheduled={handleMeetingScheduled}
-        isLoading={isLoading}
-        isSummarizing={isSummarizing}
-        isChatEnded={isChatEnded}
-        onFeedback={handleFeedback}
-        onListen={startListening}
-        isListening={isListening}
-        inputPlaceholder={locales.chatInputPlaceholder[language]}
-        summaryGeneratingText={locales.chatSummaryGenerating[language]}
-        chatEndedText={locales.chatEndedMessage[language]}
-        fileUploadTooltip={locales.fileUploadTooltip[language]}
-        locales={locales}
-        language={language}
-      />
+      language && user && (
+        <ChatInterface 
+          messages={messages}
+          user={user}
+          onSendMessage={handleSendMessage}
+          onSuggestionClick={handleSuggestionClick}
+          onMeetingScheduled={handleMeetingScheduled}
+          isLoading={isLoading}
+          isSummarizing={isSummarizing}
+          isChatEnded={isChatEnded}
+          onFeedback={handleFeedback}
+          onListen={startListening}
+          isListening={isListening}
+          inputPlaceholder={locales.chatInputPlaceholder[language]}
+          summaryGeneratingText={locales.chatSummaryGenerating[language]}
+          chatEndedText={locales.chatEndedMessage[language]}
+          fileUploadTooltip={locales.fileUploadTooltip[language]}
+          locales={locales}
+          language={language}
+        />
+      )
     );
   };
 
