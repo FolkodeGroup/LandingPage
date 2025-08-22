@@ -171,14 +171,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
             disabled={isInterfaceDisabled}
           />
 
-          <button type="button" onClick={onListen} title={isListening ? locales.micTooltipListening[language] : locales.micTooltipIdle[language]} className={`p-3 rounded-full transition ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'}`} disabled={isLoading || isSummarizing}>
+          <button type="button" onClick={onListen} title={isListening ? locales.micTooltipListening[language] : locales.micTooltipIdle[language]} className={`p-3 rounded-full transition cursor-pointer ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'}`} disabled={isLoading || isSummarizing}>
             <i className="bi bi-mic-fill text-xl"></i>
           </button>
 
           <button
             type="submit"
             aria-label="Send message"
-            className="bg-brand text-white rounded-full p-3 hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#111827] focus:ring-brand transition-transform transform hover:scale-110 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none"
+            className="bg-brand text-white rounded-full p-3 hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#111827] focus:ring-brand transition-transform transform hover:scale-110 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
             disabled={isInterfaceDisabled || !input.trim()}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
