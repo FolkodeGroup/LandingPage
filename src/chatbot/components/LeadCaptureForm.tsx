@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin, FaTelegram, FaEnvelope } from 'react-icons/fa';
+import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin, FaTelegram, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { ContactMethod } from '../types';
 import { contactOptions } from '../constants/contactOptions';
 
@@ -76,24 +76,44 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             <p className="text-gray-600 dark:text-gray-400 text-left mb-3">{contactPrompt}</p>
             <div className="flex flex-wrap justify-center gap-4 min-h-[100px] items-center w-full">
               {selectedOption ? (
-                <div className="flex items-center gap-4 animate-fade-in w-full justify-center">
-                  <div
-                    style={{ '--brand-color': selectedOption.hexColor } as React.CSSProperties}
-                    className="flex flex-col items-center justify-center p-3 rounded-lg border-2 border-[var(--brand-color)] bg-gray-100 dark:bg-gray-700 w-20 h-20 transform scale-110"
-                  >
-                    <i className={`${selectedOption.icon} text-3xl text-[var(--brand-color)]`}></i>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => { setContactMethod(null); setContactInfo(''); }}
-                    className="text-brand hover:underline font-medium cursor-pointer"
-                    aria-label="Change contact method"
-                    disabled={isLoading}
-                  >
-                    {changeButtonText}
-                  </button>
-                </div>
-              ) : (
+                    <div className="flex items-center gap-4 animate-fade-in w-full justify-center">
+                      <div
+                        style={{ '--brand-color': selectedOption.hexColor } as React.CSSProperties}
+                        className="flex flex-col items-center justify-center p-3 rounded-lg border-2 border-[var(--brand-color)] bg-gray-100 dark:bg-gray-700 w-20 h-20 transform scale-110"
+                      >
+                        {/* Render selected option using react-icons instead of icon class */}
+                        {(() => {
+                          type IconType = React.ComponentType<{
+                            size?: number | string;
+                            style?: React.CSSProperties;
+                            'aria-hidden'?: boolean;
+                          }>;
+                          let IconComponent: IconType = FaEnvelope;
+                          switch (selectedOption.id) {
+                            case 'whatsapp': IconComponent = FaWhatsapp; break;
+                            case 'facebook': IconComponent = FaFacebook; break;
+                            case 'instagram': IconComponent = FaInstagram; break;
+                            case 'linkedin': IconComponent = FaLinkedin; break;
+                            case 'telegram': IconComponent = FaTelegram; break;
+                            case 'phone': IconComponent = FaPhone; break;
+                            case 'email':
+                            default:
+                              IconComponent = FaEnvelope; break;
+                          }
+                          return <IconComponent size={32} style={{ color: 'var(--brand-color)' }} aria-hidden />;
+                        })()}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => { setContactMethod(null); setContactInfo(''); }}
+                        className="text-brand hover:underline font-medium cursor-pointer"
+                        aria-label="Change contact method"
+                        disabled={isLoading}
+                      >
+                        {changeButtonText}
+                      </button>
+                    </div>
+                  ) : (
                 contactOptions.map(option => {
                   let IconComponent = null;
                   switch(option.id) {

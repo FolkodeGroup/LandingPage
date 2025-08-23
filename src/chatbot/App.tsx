@@ -165,8 +165,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-[#0B1120] text-gray-800 dark:text-gray-200 font-sans min-h-screen flex flex-col items-center justify-center md:p-4 selection:bg-brand/70 selection:text-white">
-      <div className="w-full max-w-2xl h-screen md:h-[95vh] md:max-h-[800px] bg-white dark:bg-[#111827] md:rounded-2xl shadow-2xl flex flex-col border-gray-200 dark:border-gray-700">
+    // Use h-full/min-h-0 so App fits when embedded inside a fixed-size widget.
+    <div className="bg-gray-100 dark:bg-[#0B1120] text-gray-800 dark:text-gray-200 font-sans h-full min-h-0 flex flex-col md:p-4 selection:bg-brand/70 selection:text-white">
+      <div className="w-full h-full bg-white dark:bg-[#111827] md:rounded-2xl shadow-2xl flex flex-col border-gray-200 dark:border-gray-700">
         {language && user && !showGoodbyeScreen && (
             <AppHeader
                 language={language}
@@ -186,7 +187,7 @@ const App: React.FC = () => {
             />
         )}
         
-        <div className="flex-1 flex flex-col overflow-hidden bg-white dark:bg-[#111827]">
+  <div className="flex-1 flex flex-col overflow-auto bg-white dark:bg-[#111827]">
           {renderAppContent()}
         </div>
 

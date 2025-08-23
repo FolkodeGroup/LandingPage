@@ -21,9 +21,20 @@ const ChatbotWidget: React.FC = () => {
       {/* Widget flotante */}
       {open && (
         <div
-          className="fixed bottom-28 right-6 z-[1000] w-[380px] max-w-[98vw] h-[600px] max-h-[90vh] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border"
+          className="fixed right-6 z-[1000] w-[380px] max-w-[98vw] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border"
+          style={{
+            // keep the widget from overflowing the viewport: use the smaller of 600px or the available viewport height minus header/footer space
+            height: 'min(600px, calc(100vh - 96px))',
+            maxHeight: 'calc(100vh - 96px)',
+            // ensure it sits above the floating button and device safe areas
+            bottom: '6rem',
+            paddingBottom: 'env(safe-area-inset-bottom)',
+          }}
         >
-          <App />
+          {/* allow the inner app area to scroll if its content exceeds available space */}
+          <div className="flex-1 overflow-auto">
+            <App />
+          </div>
         </div>
       )}
 

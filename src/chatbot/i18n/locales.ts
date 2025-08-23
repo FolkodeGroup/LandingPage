@@ -382,4 +382,25 @@ export const locales = {
     es: "Por favor, selecciona un horario.",
     pt: "Por favor, selecione um horário."
   },
+  // Wizard placeholders (required by the Locales type)
+  wizardProjectTypes: {
+    en: [{ id: 'web', label: 'Web App', icon: 'bi-window' }],
+    es: [{ id: 'web', label: 'Aplicación Web', icon: 'bi-window' }],
+    pt: [{ id: 'web', label: 'Aplicativo Web', icon: 'bi-window' }],
+  },
+  wizardFeatures: {
+    en: { web: ['Responsive design', 'SEO', 'Deployment'] },
+    es: { web: ['Diseño responsivo', 'SEO', 'Despliegue'] },
+    pt: { web: ['Design responsivo', 'SEO', 'Deploy'] },
+  },
+  wizardStep1Title: { en: 'Project basics', es: 'Datos del proyecto', pt: 'Dados do projeto' },
+  wizardStep2Title: { en: 'Select features', es: 'Selecciona características', pt: 'Selecione recursos' },
+  wizardStep2Placeholder: { en: 'Choose features', es: 'Elige características', pt: 'Escolha recursos' },
+  wizardStep3Title: { en: 'Timeline & Budget', es: 'Tiempo y presupuesto', pt: 'Prazo e orçamento' },
+  wizardStep4Title: { en: 'Review & Submit', es: 'Revisar y enviar', pt: 'Revisar e enviar' },
+  wizardStep4Placeholder: { en: 'Any additional notes', es: 'Notas adicionales', pt: 'Notas adicionais' },
+  wizardTitle: { en: 'Project Scoping', es: 'Definición del proyecto', pt: 'Escopo do projeto' },
+  wizardBack: { en: 'Back', es: 'Volver', pt: 'Voltar' },
+  wizardNext: { en: 'Next', es: 'Siguiente', pt: 'Próximo' },
+  wizardFinish: { en: 'Finish', es: 'Finalizar', pt: 'Concluir' },
 };
