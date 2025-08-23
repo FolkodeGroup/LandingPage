@@ -2,6 +2,7 @@
 
 import { Language, Theme, User } from '../types';
 import { locales } from '../i18n/locales';
+import { FiMail } from 'react-icons/fi';
 
 type AppHeaderProps = {
     language: Language | null;
@@ -78,8 +79,9 @@ const AppHeader: React.FC<AppHeaderProps> = ({
                                         disabled={isLoading || isSummarizing}
                                         className="w-10 h-10 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#111827] focus:ring-red-500 transition-all transform hover:scale-110 disabled:bg-gray-500 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:transform-none"
                                         title={language && locales.chatEndButton[language] ? locales.chatEndButton[language] : ''}
+                                        aria-label={language && locales.chatEndButton[language] ? locales.chatEndButton[language] : 'Enviar resumen por mail'}
                                     >
-                                        <i className="bi bi-power text-xl"></i>
+                                        <FiMail size={22} />
                                     </button>
                                 )}
                 </nav>
