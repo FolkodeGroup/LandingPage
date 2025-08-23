@@ -1,4 +1,22 @@
 "use client";
+// Tipos mínimos para PDF.js
+type PdfjsPage = {
+  getTextContent: () => Promise<{ items: { str: string }[] }>
+};
+type PdfjsDocument = {
+  numPages: number;
+  getPage: (pageNum: number) => Promise<PdfjsPage>;
+};
+type PdfjsLib = {
+  getDocument: (data: ArrayBuffer) => { promise: Promise<PdfjsDocument> };
+};
+
+// Extensión de la interfaz Window para pdfjsLib como unknown
+declare global {
+  interface Window {
+    pdfjsLib: unknown;
+  }
+}
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Message, Language, User, MeetingDetails } from '../types';
 import ChatMessage from './ChatMessage';
@@ -68,7 +86,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       ) {
         let extractedText = '';
         if (selectedFile.type === 'application/pdf') {
-          const pdf = await window.pdfjsLib.getDocument(await selectedFile.arrayBuffer()).promise;
+          const pdfjsLib = window.pdfjsLib as PdfjsLib;
+          const pdf = await pdfjsLib.getDocument(await selectedFile.arrayBuffer()).promise;
           const textItems = await Promise.all(
             Array.from({ length: pdf.numPages }, (_, i) => i + 1).map(async (pageNum) => {
               const page = await pdf.getPage(pageNum);
