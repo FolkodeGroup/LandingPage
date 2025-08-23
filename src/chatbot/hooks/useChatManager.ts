@@ -17,6 +17,19 @@ interface UseChatManagerProps {
 }
 
 export const useChatManager = ({ language, user, isConversationMode, onAnalyticsUpdate, onSessionRestart }: UseChatManagerProps) => {
+  // Limpiar estado si no hay usuario al montar (evita quedarse en pantalla de despedida tras recargar)
+  useEffect(() => {
+    if (!user) {
+      setMessages([]);
+      setChatSession(null);
+      setIsLoading(false);
+      setIsSummarizing(false);
+      setIsChatEnded(false);
+      setShowGoodbyeScreen(false);
+      setChatStartDate(null);
+      localStorage.removeItem('chatSession');
+    }
+  }, [user]);
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatSession, setChatSession] = useState<Chat | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -74,7 +87,7 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
 
     } catch (error) {
       console.error("Failed to generate summary or send report:", error);
-      await backendService.sendFullChatReport(userForReport, messages, {
+      await backendService.sendFullChatReport(userForReport, messagesRef.current, {
         summary: `Error generating summary: ${error instanceof Error ? error.message : 'Unknown Error'}`,
         tags: ["Error"],
         temperature: "Cold"
@@ -87,9 +100,13 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
   }, [user, language, chatStartDate, onAnalyticsUpdate]);
 
 
+
+  // Referencia para speak, para romper la dependencia circular
+  const speakRef = useRef<((text: string) => void) | null>(null);
+
   const handleSendMessage = useCallback(async (text: string, file?: {name: string, dataUrl: string, mimeType: string}) => {
     if (!chatSession || !language || !user || isLoadingRef.current || isChatEndedRef.current) return;
-    
+
     const userMessage: Message = {
       id: `user-${Date.now()}`,
       sender: 'user',
@@ -97,13 +114,13 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
       timestamp: Date.now(),
       file,
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
     const botMessageId = `bot-${Date.now()}`;
     let firstChunkReceived = false;
-    
+
     const personalityPrefix = personalityService.getPersonalityPrefix(text);
 
     const handleMessageCompletion = (fullText: string) => {
@@ -112,47 +129,59 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         const componentMessage: Message = {
           id: `bot-component-${Date.now()}`,
           sender: 'bot',
-          text: '', 
+          text: '',
           component: 'MeetingScheduler',
           timestamp: Date.now(),
         };
         setMessages(prev => [...prev, componentMessage]);
       } else {
-        speak(fullText.replace(/👉\s*\[[^\]]+\]/g, ''));
+        if (speakRef.current) speakRef.current(fullText.replace(/👉\s*\[[^\]]+\]/g, ''));
       }
     };
 
-    await geminiService.sendMessageStream(chatSession, userMessage, personalityPrefix, (chunk) => {
+    await geminiService.sendMessageStream(
+      chatSession,
+      userMessage,
+      personalityPrefix,
+      (chunk: string) => {
         if (!firstChunkReceived) {
-            const newBotMessage: Message = {
-                id: botMessageId,
-                sender: 'bot',
-                text: chunk,
-                timestamp: Date.now(),
-            };
-            setMessages(prev => [...prev, newBotMessage]);
-            firstChunkReceived = true;
+          const newBotMessage: Message = {
+            id: botMessageId,
+            sender: 'bot',
+            text: chunk,
+            timestamp: Date.now(),
+          };
+          setMessages(prev => [...prev, newBotMessage]);
+          firstChunkReceived = true;
         } else {
-            setMessages(prev => prev.map(msg => 
-                msg.id === botMessageId ? { ...msg, text: (msg.text || '') + chunk } : msg
-            ));
+          setMessages(prev => prev.map(msg =>
+            msg.id === botMessageId ? { ...msg, text: (msg.text || '') + chunk } : msg
+          ));
         }
-    }, (fullText) => {
+      },
+      (fullText: string) => {
         setIsLoading(false);
         setMessages(prev => prev.filter(msg => msg.id !== botMessageId));
         const finalBotMessage: Message = {
-            id: botMessageId,
-            sender: 'bot',
-            text: fullText,
-            timestamp: Date.now(),
+          id: botMessageId,
+          sender: 'bot',
+          text: fullText,
+          timestamp: Date.now(),
         };
         setMessages(prev => [...prev, finalBotMessage]);
         handleMessageCompletion(fullText);
-    });
+      }
+    );
 
   }, [chatSession, language, user]);
-  
+
+  // Ahora sí, inicializamos useSpeech y guardamos speak en la ref
   const { isListening, startListening, speak } = useSpeech(language, handleSendMessage, isConversationMode);
+  useEffect(() => {
+    speakRef.current = speak;
+  }, [speak]);
+  
+  // ...eliminado, ya está arriba...
 
   const handleMeetingScheduled = useCallback((details: MeetingDetails) => {
     if (!user || !language) return;
@@ -164,22 +193,22 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
     const botResponseText = locales.schedulerBotConfirmation[language]
       .replace('{timeSlot}', details.timeSlot)
       .replace('{contactMethod}', details.contactMethod);
-      
+
     const botResponse: Message = {
       id: `bot-confirm-${Date.now()}`,
       sender: 'bot',
       text: botResponseText,
       timestamp: Date.now(),
     };
-    
+
     setMessages(prev => [...prev.filter(m => !m.component), botResponse]);
     speak(botResponseText);
 
     setTimeout(() => {
-        handleEndChat(details, updatedUser);
+      handleEndChat(details, updatedUser);
     }, 1500);
 
-  }, [user, language, locales, speak, handleEndChat, onAnalyticsUpdate]);
+  }, [user, language, speak, handleEndChat, onAnalyticsUpdate]);
 
   // --- Effects for Initialization and Session Management ---
 
@@ -222,7 +251,7 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         speak(initialMessageText.replace(/👉\s*\[[^\]]+\]/g, ''));
       }
     }
-  }, [user, language, chatSession]);
+  }, [user, language, chatSession, speak]);
 
   const resetInactivityTimer = useCallback(() => {
     if (inactivityTimerRef.current) window.clearTimeout(inactivityTimerRef.current);
@@ -240,8 +269,8 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         setMessages(prev => [...prev, proactiveMessage]);
         speak(locales.proactivePrompt[language]);
       }
-    }, 60000); 
-  }, [isListening, language, locales, speak]);
+    }, 60000);
+  }, [isListening, language, speak]);
 
   useEffect(() => {
     resetInactivityTimer();
