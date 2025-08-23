@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Language } from '../types';
 
 type Locales = {
@@ -22,11 +23,13 @@ const GoodbyeScreen: React.FC<GoodbyeScreenProps> = ({ locales, language, onBack
   return (
     <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-transparent animate-fade-in" style={{background: 'transparent'}}>
         <div className="w-32 h-32 mb-6 flex items-center justify-center" aria-label="Folkode Logo">
-            <img
+            <Image
                 src="/folkode-oscuro.png"
                 alt="Logo Folkode"
+                width={128}
+                height={128}
                 className="w-full h-full object-contain rounded-md shadow-lg"
-                draggable="false"
+                priority
             />
         </div>
         <h2 className="text-4xl font-bold mb-2 text-gray-900 dark:text-gray-100">{locales.goodbyeTitle[language]}</h2>
@@ -35,13 +38,13 @@ const GoodbyeScreen: React.FC<GoodbyeScreenProps> = ({ locales, language, onBack
         <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs">
             <button 
                 onClick={onBackToConversation} 
-                className="w-full px-4 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">
+                className="w-full px-4 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all border-2 border-gray-400 dark:border-gray-500">
                 {locales.goodbyeBackToConversation[language]}
             </button>
             <button 
                 onClick={onRestartChat} 
-                className="w-full px-4 py-3 bg-brand text-white font-bold rounded-lg hover:bg-brand-dark transition-all">
-                {locales.goodbyeRestartChat[language]}
+                className="w-full px-4 py-3 bg-green-600 text-white font-extrabold rounded-lg shadow-lg hover:bg-green-700 transition-all border-4 border-green-400 animate-pulse focus:outline-none focus:ring-4 focus:ring-green-300">
+                <span className="text-lg">🔄 {locales.goodbyeRestartChat[language] || 'Iniciar nuevo chat'}</span>
             </button>
         </div>
         
