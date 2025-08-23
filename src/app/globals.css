@@ -191,9 +191,15 @@ html {
       flex: 1;
       display: block;
     }
-    .name-client {
-      width: 9rem !important;
-      text-align: center !important;
+
+    .avatar-cm-client {
+     gap: 8px;
+    }
+
+    .name-cm-client {
+      width: 9rem;
+      text-align: center;
+      font-size: smaller;
     }
   }
 }
@@ -1345,6 +1351,22 @@ picture {
     margin-top: 2rem;
     margin-bottom: 0.75rem;
   }
+
+  .avatar-cm-client {
+    gap: 4px;
+  }
+
+  .name-cm-client {
+      width: 9rem !important;
+      text-align: center !important;
+      font-size: small;
+    }
+
+  .text-cm-client {
+      font-size: small;
+      text-align: start;
+      align-items: start;
+    }
 }
 
 @media (max-width: 420px) {
@@ -1626,6 +1648,19 @@ picture {
     padding: 0.25rem 0.5rem;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+  }
+
+  .name-cm-client {
+      font-size: small;
+    }
+
+  .text-cm-client {
+      font-size: small;
+      text-align: start;
+    }
+
+  .avatar-cm-client {
+    gap: 0;
   }
 }
 

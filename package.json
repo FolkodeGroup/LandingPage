@@ -10,7 +10,7 @@
     "test": "jest --watchAll=false --passWithNoTests"
   },
   "dependencies": {
-    "@google/genai": "^1.14.0",
+    "@google/genai": "^1.15.0",
     "@hookform/resolvers": "^5.1.1",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
