@@ -137,7 +137,7 @@ html {
 
     .contactos h3 {
       color: var(--color-text-inverse);
-      font-size: 3rem !important; /* 18px */
+      font-size: 2rem !important; /* 18px */
       font-weight: 400;
 
     }

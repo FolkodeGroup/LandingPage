@@ -51,6 +51,9 @@ export default function ClientesComentarios() {
 
   return (
   <>
+  <div>
+    <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Comentarios De los Clientes</h1>
+  </div>
     <div
       className="w-full max-w-4xl h-full border-0 p-6 flex flex-col lg:flex-row items-center lg:items-center justify-center justify-self-center transition-all duration-300"
       style={{ backgroundColor: '#fff', minHeight: '13rem'}}
