@@ -7,6 +7,7 @@ declare module 'react-slick' {
     speed?: number;
     slidesToShow?: number;
     slidesToScroll?: number;
+  adaptiveHeight?: boolean;
     autoplay?: boolean;
     autoplaySpeed?: number;
     pauseOnHover?: boolean;
