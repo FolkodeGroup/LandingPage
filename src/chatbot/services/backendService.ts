@@ -89,6 +89,15 @@ export const backendService = {
         },
         body: JSON.stringify(formData),
       });
+
+      // También enviar el resumen al endpoint interno para Resend
+      await fetch('/api/send-chat-summary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ summary: `Resumen: ${summaryReport.summary}\n\nTranscripción:\n${cleanTranscript}` }),
+      });
     } catch (error) {
       console.error('Failed to send chat report via webhook:', error);
     }
