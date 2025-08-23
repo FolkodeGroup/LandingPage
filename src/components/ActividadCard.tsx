@@ -16,8 +16,8 @@ export default function ActividadCard({
 }: ActividadCardProps) {
   const isDark = mode === 'dark';
 
-  const bgColor = isDark ? '!bg-[#01454F]' : '!bg-[#86A869]';
-  const iconColor = isDark ? 'text-[#86A869]' : 'text-[#496332]';
+  const bgColor = '!bg-[#01454F]';
+  const iconColor = isDark ? 'text-[#86A869]' : 'text-[#86A869]'; 
   const textColor = '!text-white';
 
   return (
