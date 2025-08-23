@@ -272,7 +272,7 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         }
       }
     }, 60000);
-  }, [isListening, language, speak]);
+  }, [isListening, language, speak, isConversationMode]);
 
   useEffect(() => {
     resetInactivityTimer();
