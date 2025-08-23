@@ -14,6 +14,8 @@ export default function Desplegable() {
 
     // Configuración de offset para react-scroll según viewport
     const getScrollOffset = () => {
+        if (typeof window === 'undefined') return 196; 
+        
         const width = window.innerWidth;
         if (width >= 768) return 196; // Desktop
         if (width >= 421) return 136; // Tablet

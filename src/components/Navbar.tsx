@@ -16,6 +16,9 @@ const Navbar: React.FC = () => {
 
   // Configuración de offset para react-scroll según viewport
   const getScrollOffset = () => {
+    // Verificar si estamos en el cliente antes de acceder a window
+    if (typeof window === 'undefined') return 196; // Valor por defecto para SSR
+    
     const width = window.innerWidth;
     if (width >= 768) return 196; // Desktop
     if (width >= 421) return 136; // Tablet
