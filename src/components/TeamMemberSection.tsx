@@ -185,7 +185,7 @@ export default function TeamMemberSection() {
       return 3;
     };
     const apply = () => {
-      setSlidesToShow((prev) => {
+      setSlidesToShow(() => {
         const next = calcSlidesToShow();
         return next;
       });

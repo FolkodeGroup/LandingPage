@@ -10,6 +10,7 @@ import GoodbyeScreen from './components/GoodbyeScreen';
 import { useAppLogic } from './hooks/useAppLogic';
 import { useChatManager } from './hooks/useChatManager';
 import { locales } from './i18n/locales';
+import { Language } from './types';
 import { ContactMethod } from './types';
 import AppHeader from './components/AppHeader';
 
@@ -102,7 +103,18 @@ const App: React.FC = () => {
         .filter(key => key.startsWith('formPlaceholder'))
         .reduce((acc, key) => {
           const method = key.replace('formPlaceholder', '').toLowerCase() as ContactMethod;
-          acc[method] = (locales as any)[key][language];
+          const value = locales[key as keyof typeof locales];
+          if (
+            value &&
+            typeof value === 'object' &&
+            'en' in value &&
+            'es' in value &&
+            'pt' in value
+          ) {
+            acc[method] = (value as Record<Language, string>)[language];
+          } else {
+            acc[method] = '';
+          }
           return acc;
         }, {} as { [key in ContactMethod]: string });
 
