@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Button from "@/components/Button"
 import heroImage from '@/assets/images/heroimage.png'
 import TrianglesImage from '@/assets/images/trianglesoscuro.png'
+import Link from "next/link";
 
 export default function HeroSection() {
   const [navHeight, setNavHeight] = useState(0)
@@ -82,9 +83,11 @@ export default function HeroSection() {
         transition={{ delay: 0.6, duration: 1 }}
         className="mt-5 flex justify-start"
       >
+      <Link href="#contacto">
         <Button className="whitespace-nowrap btn-primary hero-button">
           Contáctanos
         </Button>
+      </Link>
       </motion.div>
     </motion.div>
   </div>

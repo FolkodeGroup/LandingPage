@@ -55,7 +55,7 @@ export default function ContactDatos() {
         <div className="flex items-center gap-3 text-xs md:text-sm lg:text-base">
           <FaLinkedin className="text-lg md:text-xl lg:text-2xl text-blue-600" />
           <a
-            href="https://www.linkedin.com/folkode"
+            href="https://www.linkedin.com/in/folkode"
             target="_blank"
             rel="noopener noreferrer"
             className="truncate font-medium hover:underline"

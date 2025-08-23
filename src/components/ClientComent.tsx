@@ -1,54 +1,115 @@
+'use client'
+
 import Image from 'next/image'
-import React from 'react';
+import React, { useEffect, useState } from 'react'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-interface ClientCommentProps {
-  comment: string;
-  author: string;
-  role: string;
-  avatarUrl: string; // Ruta de la imagen
-  className?: string;
-}
+const personas = [
+  {
+    comment: 'Laburan con prolijidad que da gusto. Se nota que les gusta lo que hacen, y eso hoy es difícil de encontrar.',
+    author: 'Giuliana Mancuso',
+    avatarUrl: '/images/avatars/giuliana.jpeg',
+  },
+  {
+    comment:"No fue solo desarrollo, me sentí parte de él. estuvieron en cada detalle, explicando sin vueltas y bancando todas nuestras dudas.",
+    author:"Yanina Gomez",
+    avatarUrl:"/images/avatars/yanina.jpeg"
+},
+{
+    comment:"Desde que lanzamos la web nueva, los clientes no paran de elogiarla. ¡Un golazo!",
+    author:"Javier Retamozo",
+    avatarUrl:"/images/avatars/javier.jpeg"
+},
+{
+    comment:"Después de varias decepciones, encontramos gente que cumple. nos escucharon, nos entendieron, y lo que entregaron fue mejor de lo que imaginábamos.",
+    author:"Agustina Ramirez",
+    avatarUrl:"/images/avatars/agustina.jpeg"
+},
+{
+    comment:"El diseño es lo que queríamos y la estructura está pensada para crecer. se nota que saben lo que hacen.",
+    author:"Tomás Ochoa",
+    avatarUrl:"/images/avatars/tomas.jpeg"
+},
+{
+    comment:"Ahora todo funciona como debe ser. y eso, para mí, vale oro.",
+    author:"Axel Diaz",
+    avatarUrl:"/images/avatars/axel.jpeg"
+},
+]
+export default function ClientesComentarios() {
+  const [index, setIndex] = useState(0)
 
-const ClientComment: React.FC<ClientCommentProps> = ({
-  comment,
-  author,
-  role,
-  avatarUrl,
-  className = '',
-}) => {
+  const siguiente = () => setIndex((prev) => (prev + 1) % personas.length)
+  const anterior = () => setIndex((prev) => (prev - 1 + personas.length) % personas.length)
+
+  useEffect(() => {
+    const intervalo = setInterval(siguiente, 5000)
+    return () => clearInterval(intervalo)
+  }, [])
+
+  const actual = personas[index]
+
   return (
-    <div className={`w-full max-w-6xl mx-auto px-4 ${className}`}>
-      {/* Título simple como texto - Ahora en blanco */}
-      <div className="text-right mb-4">
-      </div>
-
-      {/* Contenedor principal con tarjeta - fondo blanco y bordes verdes */}
-      <div className="border-2 border-[#86A869] bg-white pl-10 md:pl-14 lg:pl-16 pr-6 py-6 relative min-h-[180px]">
-        {/* Imagen */}
-        <div className="absolute left-2 top-1/2 transform -translate-y-1/2">
+  <>
+    <div
+      className="w-full max-w-4xl h-full border-0 p-6 flex flex-col lg:flex-row items-center lg:items-center justify-center justify-self-center transition-all duration-300"
+      style={{ backgroundColor: '#fff', minHeight: '13rem'}}
+    >
+      {/* Imagen + Nombre */}
+      <div className="contenedor-flechas-imagen flex items-center justify-center w-full flex-row">
+          <button
+            onClick={anterior}
+            className="mr-3 flex items-center justify-center shrink-0 pointer"
+            aria-label="Anterior"
+          >
+            <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+        </button>
+      <div className="flex flex-col items-center justify-center lg:items-center lg:mr-8">
+        <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center">
           <Image
-            src={avatarUrl} 
-            alt={`${author} avatar`}
-            className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full object-cover"
-            width={96} // Ajusta el tamaño según sea necesario
-            height={96} // Ajusta el tamaño según sea necesario
+            src={actual.avatarUrl}
+            alt={actual.author}
+            width={128}
+            height={128}
+            className="object-cover w-full h-full"
+            priority
           />
         </div>
-
-        {/* Contenido de texto - todo en negro */}
-        <div className="h-full flex flex-col justify-center items-center text-center ml-1">
-          <p className="text-body-lg text-black mb-6 px-4">
-            {comment}
-          </p>
-          
-          <div className="text-center">
-            <h4 className="text-h3 !text-xl !font-bold !mb-1 text-black">{author}</h4>
-            <p className="text-body-md text-black">{role}</p>
-          </div>
+        <div className='name-client'>
+          <p className="font-bold text-black mt-2">{actual.author}</p>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default ClientComment;
+      {/* Texto + Estrellas */}
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl ">
+        <p
+          className="text-black mb-3"
+          style={{
+            fontSize: 'clamp(0.9rem, 1.5vw, 1.25rem)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          {actual.comment}
+        </p>
+
+        {/* Estrellas (ejemplo con 5 fijas, podés mapearlo si es dinámico) */}
+        <div className="flex justify-center lg:justify-start">
+          {Array(5)
+            .fill(0)
+            .map((_, i) => (
+              <span key={i} className="text-yellow-500 text-xl">★</span>
+            ))}
+        </div>
+      </div>
+      <button
+            onClick={siguiente}
+            className="ml-3 flex items-center justify-center shrink-0 pointer"
+            aria-label="Siguiente"
+          >
+            <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+          </button>
+        </div>
+    </div>
+  </>
+);
+};

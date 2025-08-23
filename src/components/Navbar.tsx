@@ -1,38 +1,25 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import Desplegable from "@/components/Desplegable";
 
 const Navbar: React.FC = () => {
-  // Función para manejar el scroll suave con offset
-  const handleScrollTo = (targetId: string) => {
-    // Para "inicio", ir al top de la página
-    if (targetId === 'inicio') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      return;
-    }
-
-    const element = document.getElementById(targetId);
-    if (!element) return;
-
-    // Obtener la altura del navbar según el viewport
-    const getNavbarHeight = () => {
-      const width = window.innerWidth;
-      if (width >= 768) return 196; // Desktop
-      if (width >= 421) return 136; // Tablet
-      return 110; // Móvil
-    };
-
-    const navbarHeight = getNavbarHeight();
-    const elementPosition = element.offsetTop - navbarHeight;
-
-    window.scrollTo({
-      top: elementPosition,
-      behavior: 'smooth'
+  // Función para manejar scroll al inicio usando react-scroll
+  const handleScrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
     });
+  };
+
+  // Configuración de offset para react-scroll según viewport
+  const getScrollOffset = () => {
+    const width = window.innerWidth;
+    if (width >= 768) return 196; // Desktop
+    if (width >= 421) return 136; // Tablet
+    return 110; // Móvil
   };
 
   // Definir elementos de navegación de manera más estructurada
@@ -73,16 +60,11 @@ const Navbar: React.FC = () => {
             <div className="hidden md:flex w-full justify-around items-center">
               {navItems.map((item) => (
                 item.type === 'component' ? (
-                  <span key={item.id}  ><Desplegable /></span>
-                ) : (
+                  <span key={item.id}><Desplegable /></span>
+                ) : item.target === 'inicio' ? (
                   <button
                     key={item.id}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (item.type === 'link' && item.target) {
-                        handleScrollTo(item.target);
-                      }
-                    }}
+                    onClick={handleScrollToTop}
                     className="text-nav-link cursor-pointer bg-transparent border-none"
                     style={{
                       color: 'var(--color-text-inverse)',
@@ -91,6 +73,24 @@ const Navbar: React.FC = () => {
                   >
                     {item.label}
                   </button>
+                ) : (
+                  <ScrollLink
+                    key={item.id}
+                    to={item.target || ''}
+                    spy={true}
+                    smooth={true}
+                    offset={-getScrollOffset()}
+                    duration={800}
+                    activeClass="active"
+                    className="text-nav-link cursor-pointer"
+                    style={{
+                      color: 'var(--color-text-inverse)',
+                      transition: 'color 0.2s ease',
+                      textDecoration: 'none'
+                    }}
+                  >
+                    {item.label}
+                  </ScrollLink>
                 )
               ))}
             </div>
@@ -115,15 +115,12 @@ const Navbar: React.FC = () => {
           <div className="md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg z-50 flex flex-col items-center py-2 gap-4">
             {navItems.map((item) => (
               item.type === 'component' ? (
-                <span key={item.id} ><Desplegable /></span>
-              ) : (
+                <span key={item.id}><Desplegable /></span>
+              ) : item.target === 'inicio' ? (
                 <button
                   key={item.id}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (item.type === 'link' && item.target) {
-                      handleScrollTo(item.target);
-                    }
+                  onClick={() => {
+                    handleScrollToTop();
                     setMenuOpen(false);
                   }}
                   className="text-nav-link text-lg cursor-pointer bg-transparent border-none"
@@ -131,6 +128,24 @@ const Navbar: React.FC = () => {
                 >
                   {item.label}
                 </button>
+              ) : (
+                <ScrollLink
+                  key={item.id}
+                  to={item.target || ''}
+                  spy={true}
+                  smooth={true}
+                  offset={-getScrollOffset()}
+                  duration={800}
+                  activeClass="active"
+                  className="text-nav-link text-lg cursor-pointer"
+                  style={{ 
+                    color: 'var(--color-text-inverse)',
+                    textDecoration: 'none'
+                  }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </ScrollLink>
               )
             ))}
           </div>
