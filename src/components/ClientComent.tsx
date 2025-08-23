@@ -7,13 +7,33 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 const personas = [
   {
     comment: 'Laburan con prolijidad que da gusto. Se nota que les gusta lo que hacen, y eso hoy es difícil de encontrar.',
-    author: 'Giulana Mancuso',
-    avatarUrl: '/images/avatars/giuliana.png',
+    author: 'Giuliana Mancuso',
+    avatarUrl: '/images/avatars/giuliana.jpeg',
   },
   {
-    comment:"El equipo de Folkode ha sido increíble. Su profesionalismo y dedicación nos ayudaron a llevar nuestro proyecto al siguiente nivel.",
-    author:"Juan Pérez",
-    avatarUrl:"/images/avatars/juan.jpeg"
+    comment:"No fue solo desarrollo, me sentí parte de él. estuvieron en cada detalle, explicando sin vueltas y bancando todas nuestras dudas.",
+    author:"Yanina Gomez",
+    avatarUrl:"/images/avatars/yanina.jpeg"
+},
+{
+    comment:"Desde que lanzamos la web nueva, los clientes no paran de elogiarla. ¡Un golazo!",
+    author:"Javier Retamozo",
+    avatarUrl:"/images/avatars/javier.jpeg"
+},
+{
+    comment:"Después de varias decepciones, encontramos gente que cumple. nos escucharon, nos entendieron, y lo que entregaron fue mejor de lo que imaginábamos.",
+    author:"Agustina Ramirez",
+    avatarUrl:"/images/avatars/agustina.jpeg"
+},
+{
+    comment:"El diseño es lo que queríamos y la estructura está pensada para crecer. se nota que saben lo que hacen.",
+    author:"Tomás Ochoa",
+    avatarUrl:"/images/avatars/tomas.jpeg"
+},
+{
+    comment:"Ahora todo funciona como debe ser. y eso, para mí, vale oro.",
+    author:"Axel Diaz",
+    avatarUrl:"/images/avatars/axel.jpeg"
 },
 ]
 export default function ClientesComentarios() {
@@ -44,7 +64,7 @@ export default function ClientesComentarios() {
           >
             <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
         </button>
-      <div className="flex flex-col items-center justify-center lg:items-start lg:mr-8">
+      <div className="flex flex-col items-center justify-center lg:items-center lg:mr-8">
         <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center">
           <Image
             src={actual.avatarUrl}
@@ -55,11 +75,13 @@ export default function ClientesComentarios() {
             priority
           />
         </div>
-        <p className="font-bold text-black mt-2">{actual.author}</p>
+        <div className='name-client'>
+          <p className="font-bold text-black mt-2">{actual.author}</p>
+        </div>
       </div>
 
       {/* Texto + Estrellas */}
-      <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl ">
         <p
           className="text-black mb-3"
           style={{
