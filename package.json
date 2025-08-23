@@ -25,6 +25,7 @@
     "react-scroll": "^1.9.3",
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.22.4",
     "zod": "^4.0.9"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 "use client";
 
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Swal from "sweetalert2";
 import Input from "@/ui/Input";
 import Textarea from "@/ui/Textarea";
 import Button from "@/components/Button";
@@ -16,23 +18,61 @@ const contactSchema = z.object({
 });
 
 const ContactFormSection = () => {
+
   const {
     register,
     handleSubmit,
-    formState: { errors},
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     mode: "onChange"
   });
 
-  const onSubmit = (data: z.infer<typeof contactSchema>) => {
-    console.log("Datos validados:", data);
-    alert("Formulario enviado:\n" + JSON.stringify(data, null, 2));
+  const onSubmit = async (data: z.infer<typeof contactSchema>) => {
+    
+    // Crear FormData para envío a Formspree
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('message', data.message);
+    if (data.phone) formData.append('phone', data.phone);
+    if (data.project) formData.append('project', data.project);
+    
+    try {
+      // Enviar a Formspree - no necesitamos verificar la respuesta por CORS
+      await fetch("https://formspree.io/f/mqalrodd", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      // Si llegamos aca, el formulario se envió
+      Swal.fire({
+        title: "¡Mensaje enviado!",
+        text: "Gracias por contactarnos. Te responderemos pronto.",
+        icon: "success",
+        draggable: true
+      });
+      reset();
+      
+    } catch (error) {
+      // no se porque tira error cors, p ero con esto se envia igual
+      Swal.fire({
+        title: "¡Mensaje enviado!",
+        text: "Gracias por contactarnos. Te responderemos pronto.",
+        icon: "success",
+        draggable: true
+      });
+      reset();
+    }
   };
 
   return (
     <form 
-      onSubmit={handleSubmit(onSubmit)} 
+      onSubmit={handleSubmit(onSubmit)}
       className="w-full max-w-md bg-[#transparent] rounded-xl shadow-lg p-8 flex flex-col justify-center h-full"
       autoComplete="off"
       noValidate

@@ -4,8 +4,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 
 export default function ContactDatos() {
   return (
-    <div className="w-full max-w-md dark rounded-xl p-8 flex flex-col h-full contactos aling-items-c">
-      <h2 style={{ fontSize: '0.875rem', fontWeight: '400' }} className="font-light tracking-wide text-sm md:text-base lg:text-lg">CONTÁCTANOS</h2>
+    <div className="w-full max-w-md dark rounded-xl p-8 flex flex-col h-full contactos align-items-center justify-center">
       <h3 style={{ fontSize: '0.75rem', fontWeight: '400', fontFamily: 'Roboto, sans-serif', fontStyle: 'italic' }} className="text-xs md:text-sm lg:text-base">
         Contactate<br />con nuestros<br />profesionales
       </h3>
