@@ -26,7 +26,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative w-full flex items-center justify-center bg-white hero-section"
+      className="relative w-full flex items-center justify-center hero-section"
       style={{ marginTop: navHeight }}
     >
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
@@ -34,9 +34,9 @@ export default function HeroSection() {
         src={TrianglesImage.src}
         alt="HeroTriangles"
         className="hero-triangles absolute bottom-0 right-0 z-[1]"
-        initial={{ scale: 0.2, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
+        initial={{ x: 200, opacity: 0, scale: 0.8 }}   // Empieza desplazado a la derecha
+        animate={{ x: 0, opacity: 1, scale: 1 }}       // Termina en posición normal
+        transition={{ duration: 1.5, ease: "easeOut" }}
       />
 
       <div className="w-full h-full relative">
