@@ -267,10 +267,12 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
           timestamp: Date.now(),
         };
         setMessages(prev => [...prev, proactiveMessage]);
-        speak(locales.proactivePrompt[language]);
+        if (isConversationMode) {
+          speak(locales.proactivePrompt[language]);
+        }
       }
     }, 60000);
-  }, [isListening, language, speak]);
+  }, [isListening, language, speak, isConversationMode]);
 
   useEffect(() => {
     resetInactivityTimer();

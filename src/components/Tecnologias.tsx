@@ -1,3 +1,4 @@
+
 "use client";
 import { FaGlobe, FaAndroid, FaApple, FaRegClock, FaTv, FaRocket } from "react-icons/fa";
 

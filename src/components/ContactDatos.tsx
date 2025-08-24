@@ -4,6 +4,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 
 export default function ContactDatos() {
   return (
+
     <section>
       <div className="w-full max-w-md dark rounded-xl p-8 flex flex-col h-full contactos aling-items-c">
         <h3 style={{fontWeight: '400', fontFamily: 'Roboto, sans-serif', fontStyle: 'italic' }} className="text-4xl md:text-sm lg:text-base">

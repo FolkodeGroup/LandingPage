@@ -53,13 +53,22 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    scrollToBottom();
+    const container = scrollContainerRef.current;
+    if (container) {
+      const isUserScrolledUp = container.scrollTop + container.clientHeight < container.scrollHeight - 100;
+      if (!isUserScrolledUp) {
+        scrollToBottom();
+      }
+    } else {
+      scrollToBottom();
+    }
   }, [messages, isLoading, isSummarizing]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,7 +156,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
   return (
     <div className="flex flex-col h-full bg-white dark:bg-[#111827]">
-      <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+      <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
         {messages.map((msg, index) => (
           <ChatMessage 
             key={msg.id}
