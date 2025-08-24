@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   const getScrollOffset = () => {
     // Verificar si estamos en el cliente antes de acceder a window
     if (typeof window === 'undefined') return 196; // Valor por defecto para SSR
-    
+
     const width = window.innerWidth;
     if (width >= 768) return 196; // Desktop
     if (width >= 421) return 136; // Tablet
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                   duration={800}
                   activeClass="active"
                   className="text-nav-link text-lg cursor-pointer"
-                  style={{ 
+                  style={{
                     color: 'var(--color-text-inverse)',
                     textDecoration: 'none'
                   }}

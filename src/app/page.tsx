@@ -34,22 +34,23 @@ export default function Home() {
         <section id="unirte">
           <Reveal><Unirte /></Reveal>
         </section>
-        <Reveal><h1 className="text-3xl font-bold text-center mb-8 mt-8">Comentarios Del Equipo</h1></Reveal>
         <Reveal><ComentariosEquipo/></Reveal>
-        <section id="tecnologias">
+        <section id="tecnologias" className="mt-16">
           <Reveal><Tecnologias /></Reveal>
         </section>
         <section id="iconos-tecnologias">
           <Reveal><IconosTecnologias /></Reveal>
         </section>
-        <section id="proyectos">
+        <section id="proyectos" className="mt-16">
           <Reveal><ProyClientes /></Reveal>
         </section>
-        <Reveal><h1 className="text-3xl font-bold text-center mb-8 mt-8 text-white">Comentarios De los Clientes</h1></Reveal>
-        <Reveal>
-            <ClientComent />
-        </Reveal>
+        <section className="mb-16">
+          <Reveal>
+              <ClientComent />
+          </Reveal>
+        </section>
         <section id="contacto" className="mt-12 -mb-16">
+          <Reveal> <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Contactanos</h1></Reveal>
           <Reveal><ContactateSection /></Reveal>
         </section>
       </div>

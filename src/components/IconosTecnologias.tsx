@@ -1,3 +1,4 @@
+
 "use client";
 import {
   SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiGraphql, SiKotlin,
@@ -51,33 +52,42 @@ const techData = [
 
 export default function IconosTecnologias() {
     return(
-        <section className="text-inverse">
-            <div className="pt-20">
-                    <div className="overflow-hidden cards-tecnologias icon-container">
-                        <ul className="animate-scroll">
-                        {/* ✅ Primera repetición con keys únicas */}
-                        {items.map((icon, i) => (
-                            <div key={`first-${techData[i].id}`} className="carousel-item">
-                            {icon}
-                            </div>
-                        ))}
+        <section className="text-inverse px-4 py-8 mt-4">
+          <div className="pt-6">
+            <div className="overflow-hidden cards-tecnologias icon-container mx-auto">
+              <ul className="animate-scroll flex gap-4 sm:gap-6">
+                {/* Primera repetición */}
+                {items.map((icon, i) => (
+                  <div
+                    key={`first-${techData[i].id}`}
+                    className="carousel-item flex flex-col items-center w-12 sm:w-14 md:w-16"
+                  >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">{icon}</div>
+                  </div>
+                ))}
 
-                        {/* ✅ Segunda repetición con keys únicas */}
-                        {items.map((icon, i) => (
-                            <div key={`second-${techData[i].id}`} className="carousel-item">
-                            {icon}
-                            </div>
-                        ))}
+                {/* Segunda repetición */}
+                {items.map((icon, i) => (
+                  <div
+                    key={`second-${techData[i].id}`}
+                    className="carousel-item flex flex-col items-center w-12 sm:w-14 md:w-16"
+                  >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">{icon}</div>
+                  </div>
+                ))}
 
-                        {/* ✅ Tercera repetición con keys únicas */}
-                        {items.map((icon, i) => (
-                            <div key={`third-${techData[i].id}`} className="carousel-item">
-                            {icon}
-                            </div>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+                {/* Tercera repetición */}
+                {items.map((icon, i) => (
+                  <div
+                    key={`third-${techData[i].id}`}
+                    className="carousel-item flex flex-col items-center w-12 sm:w-14 md:w-16"
+                  >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">{icon}</div>
+                  </div>
+                ))}
+              </ul>
+            </div>
+          </div>
         </section>
     )
 }

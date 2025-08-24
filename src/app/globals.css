@@ -137,7 +137,7 @@ html {
 
     .contactos h3 {
       color: var(--color-text-inverse);
-      font-size: 3rem !important; /* 18px */
+      font-size: 2rem !important; /* 18px */
       font-weight: 400;
 
     }
@@ -191,9 +191,15 @@ html {
       flex: 1;
       display: block;
     }
-    .name-client {
-      width: 9rem !important;
-      text-align: center !important;
+
+    .avatar-cm-client {
+     gap: 8px;
+    }
+
+    .name-cm-client {
+      width: 9rem;
+      text-align: center;
+      font-size: smaller;
     }
   }
 }
@@ -470,10 +476,11 @@ picture {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  gap: 24px;
+  align-items: start;
+  gap: 34px;
   position: relative;
   flex-wrap: wrap;
+  color: white;
 }
 
 .section-tecnologias {
@@ -494,8 +501,8 @@ picture {
   background: transparent;
   border: 2px solid #fff;
   border-radius: 16px;
-  min-width: 140px;
-  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   padding-top: 40px;
   margin-bottom: 16px;
   box-sizing: border-box;
@@ -1345,6 +1352,22 @@ picture {
     margin-top: 2rem;
     margin-bottom: 0.75rem;
   }
+
+  .avatar-cm-client {
+    gap: 4px;
+  }
+
+  .name-cm-client {
+      width: 9rem !important;
+      text-align: center !important;
+      font-size: small;
+    }
+
+  .text-cm-client {
+      font-size: small;
+      text-align: start;
+      align-items: start;
+    }
 }
 
 @media (max-width: 420px) {
@@ -1626,6 +1649,19 @@ picture {
     padding: 0.25rem 0.5rem;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+  }
+
+  .name-cm-client {
+      font-size: small;
+    }
+
+  .text-cm-client {
+      font-size: small;
+      text-align: start;
+    }
+
+  .avatar-cm-client {
+    gap: 0;
   }
 }
 
