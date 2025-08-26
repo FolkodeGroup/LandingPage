@@ -618,16 +618,35 @@ picture {
   justify-content: flex-end;
   background-color: var(--color-primary);
   border: 5px solid var(--color-black);
-  border-top-right-radius: 2.5rem;
-  border-bottom-left-radius: 2.5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   padding: 0;
-  margin: 2rem;
+  margin: 1rem auto;
   width: 100%;
-  max-width: 480px;
-  min-width: 320px;
-  flex: 1 1 45%; /* permite que se reduzca y se acomode */
-  height: 36.250rem;
+  max-width: 420px;  /* antes 360px */
+  min-width: 280px;
+  flex: 1 1 auto;
+  min-height: 28rem;  /* 🔹 altura más corta pero adaptable */
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Tablet (máx 768px) → 2 cards por fila */
+@media (max-width: 768px) {
+  .card-clientes {
+    max-width: 280px;
+    min-height: 22rem;
+  }
+}
+
+/* Mobile (máx 420px) → 1 card por fila */
+@media (max-width: 420px) {
+  .card-clientes {
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0.5rem 0;
+    min-height: 21rem;
+  }
 }
 
 .text-clientes{
@@ -638,7 +657,6 @@ picture {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 65%;
   font-size: 1.25rem;
   color: var(--color-text-inverse);
 }
@@ -653,7 +671,6 @@ picture {
   transition: background-color 0.3s ease;
   align-self: flex-end;
   margin: 0.3rem 0;
-  margin-top: 5rem;
   margin-bottom: -6rem;
 }
 
@@ -664,8 +681,8 @@ picture {
   width: 100%;
   border-left: #000 solid 3px;
   border-bottom: #000 solid 3px;
-  height: 55%;
-  max-height: 55%;
+  height: 200px;        /* 🔹 fijo y consistente */
+  max-height: 200px;
   object-fit: cover;
   border-top-right-radius: 37px;
   border-bottom-left-radius: 37px;
@@ -981,25 +998,7 @@ picture {
     padding: 1rem;
   }
 
-  .card-clientes {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: var(--color-primary);
-    border: 5px solid var(--color-black);
-    border-top-right-radius: 2.5rem;
-    border-bottom-left-radius: 2.5rem;
-    padding: 0;
-    margin: 2rem;
-    width: 100%;
-    max-width: 480px;
-    min-width: 320px;
-    flex: 1 1 45%; /* permite que se reduzca y se acomode */
-    height: 36.250rem;
-    overflow: hidden;
-  }
+
 
   .text-clientes{
     text-align: left;
@@ -1009,7 +1008,6 @@ picture {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    margin-top: 65%;
     font-size: 1.25rem;
     color: var(--color-text-inverse);
   }
@@ -1024,7 +1022,7 @@ picture {
     transition: background-color 0.3s ease;
     align-self: flex-end;
     margin: 0.3rem 0;
-    margin-top: 5rem;
+    margin-top: 3rem;
     margin-bottom: -6rem;
   }
 
@@ -1035,8 +1033,8 @@ picture {
     width: 100%;
     border-left: #000 solid 3px;
     border-bottom: #000 solid 3px;
-    height: 55%;
-    max-height: 55%;
+    height: 230px;        /* 🔹 fijo y consistente */
+    max-height: 230px;
     object-fit: cover;
     border-top-right-radius: 37px;
     border-bottom-left-radius: 37px;
@@ -1314,21 +1312,10 @@ picture {
     flex-wrap: wrap;
   }
 
-  .card-clientes {
-    flex: 1 1 100%;
-    max-width: 100%;
-    height: 45vw;
-    width: 25vw;
-    height: 45vw;
-    width: 25vw;
-    margin: auto;
-    max-width: 240px;
-    min-width: 160px;
-  }
+
 
   .text-clientes {
-    padding: 0rem 1rem 0rem 1rem;
-    margin-top: 65%;
+    padding: 0rem 1rem 1rem 1rem;
     font-size: 0.25rem;
   }
 
@@ -1344,6 +1331,8 @@ picture {
   .img-clientes {
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    height: 190px;        /* 🔹 fijo y consistente */
+    max-height: 190px;
   }
 
   .button-clientes{
@@ -1615,33 +1604,26 @@ picture {
     flex-wrap: wrap;
   }
 
-  .card-clientes {
-    flex: 1 1 100%;
-    max-width: 100%;
-    height: 65vw;
-    width: 25vw;
-    margin: auto;
-    max-width: 240px;
-    min-width: 160px;
-  }
+
 
   .text-clientes {
-    padding: 0rem 1rem 0rem 1rem;
-    margin-top: 65%;
+    padding: 0rem 1rem 1rem 1rem;
     font-size: 0.25rem;
   }
 
   .text-clientes h3 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .text-clientes p {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
   }
 
   .img-clientes {
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    height: 180px;        /* 🔹 fijo y consistente */
+    max-height: 180px;
   }
 
   .button-clientes{
