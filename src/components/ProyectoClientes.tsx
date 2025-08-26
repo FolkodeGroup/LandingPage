@@ -1,4 +1,5 @@
 'use client'
+import RadioGo from '@/assets/images/ProyClientes/RadioGo.png';
 import Andet from '@/assets/images/ProyClientes/Andet.png';
 import Autopartes from '@/assets/images/ProyClientes/Autopartes.png';
 import Luminova from '@/assets/images/ProyClientes/Luminova.png';
@@ -90,6 +91,7 @@ function ClienteCard({ image, title, description, url }: ClienteCardProps) {
 
 export default function ProyClientes() {
     const proyectos = [
+        { image: RadioGo, title: 'RadioGo', description: 'Página de entretenimiento de Radio', url: 'https://radio-go.vercel.app/' },
         { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos', url: 'https://demo-andet-ecommerce.onrender.com/' },
         { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes', url: 'https://web-autopartes.vercel.app/' },
         { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias', url: 'https://luminova.pythonanywhere.com/' },
@@ -97,9 +99,9 @@ export default function ProyClientes() {
     ];
     return (
         <section id="proyectos" className="text-inverse section-proy-clientes">
-            <h1 className="text-h1 mb-8 text-center">
-                Proyectos de Nuestros Clientes
-            </h1>
+            <div>
+              <h3 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Proyectos de Nuestros Clientes</h3>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 div-clientes">
                 {proyectos.map((proyecto, index) => (
                     <ClienteCard key={index} {...proyecto} />
