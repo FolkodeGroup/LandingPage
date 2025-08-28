@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "../chatbot/ChatbotWidget";
+import "normalize.css";
 
 export const metadata: Metadata = {
   title: "Folkode Group - Landing Page",
