@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
     { id: 'servicios', label: 'Servicios', type: 'link', href: '#servicios', target: 'servicios' },
     { id: 'desplegable', label: '', type: 'component' }, // Para el componente Desplegable
     { id: 'proyectos', label: 'Proyectos', type: 'link', href: '#proyectos', target: 'proyectos' },
-    { id: 'contactanos', label: 'Contáctanos', type: 'link', href: '#contacto', target: 'contacto' },
+    { id: 'contáctanos', label: 'Contáctanos', type: 'link', href: '#contacto', target: 'contacto' },
   ] as const;
 
   // Estado para el menú hamburguesa (solo móvil)
