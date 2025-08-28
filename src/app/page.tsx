@@ -50,7 +50,6 @@ export default function Home() {
           </Reveal>
         </section>
         <section id="contacto" className="mt-12 -mb-16">
-          <Reveal> <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Contactanos</h1></Reveal>
           <Reveal><ContactateSection /></Reveal>
         </section>
       </div>
