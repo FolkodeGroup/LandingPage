@@ -64,7 +64,7 @@ export default function HeroSection() {
         max-w-none z-[2]
       "
     >
-      <h1 className="text-white whitespace-nowrap hero-title">
+      <h1 className="text-white whitespace-nowrap hero-title py-2">
         Bienvenidos a Folkode Group
       </h1>
 
