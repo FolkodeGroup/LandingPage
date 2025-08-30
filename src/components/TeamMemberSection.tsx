@@ -14,8 +14,9 @@ interface TeamMember {
     github?: string;
     linkedin?: string;
     instagram?: string;
+    portfolio?: string;
   };
-    mode: 'dark' | 'light';
+  mode: 'dark' | 'light';
 }
 
 const teamMembers: TeamMember[] = [
@@ -28,8 +29,9 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/CelinaJP',
       linkedin: 'https://www.linkedin.com/in/celina-pereyra',
+      portfolio: '#',
     },
-     mode: "dark",
+    mode: "dark",
   },
   {
 
@@ -41,19 +43,21 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/dgimenezdeveloper',
       linkedin: 'https://www.linkedin.com/in/daseg/',
+      portfolio: '#',
     },
     mode: "dark",
   },
   {
 
     id: "member-3",
-  avatar: "/gabrielsosa.png",
+    avatar: "/gabrielsosa.png",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
     description: "Programar es construir puentes entre ideas y realidad usando lógica y creatividad.",
     links: {
       github: 'https://github.com/OGabrielSosa',
       linkedin: 'https://linkedin.com/in/carlos',
+      portfolio: '#'
     },
     mode: "dark",
   },
@@ -68,6 +72,7 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/malessan4',
       linkedin: '#',
+      portfolio: '#',
     },
     mode: "dark",
   },
@@ -82,12 +87,13 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/agustin-ovejero',
       linkedin: 'https://www.linkedin.com/in/agustin-ovejero-2a0439344/',
+      portfolio: '#',
     },
     mode: "dark",
   },
 
 
-    {
+  {
 
     id: "member-6",
     avatar: "/cuqui.png",
@@ -97,11 +103,12 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/Lucasechavarria',
       linkedin: 'https://linkedin.com/in/lucas-echavarria',
+      portfolio: '#',
     },
     mode: "dark",
   },
 
-      {
+  {
 
     id: "member-7",
     avatar: "/fede.png",
@@ -111,10 +118,11 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/FedericoPaal',
       linkedin: 'https://linkedin.com/in/federico-paal ',
+      portfolio: '#',
     },
     mode: "dark",
   },
-      {
+  {
 
     id: "member-8",
     avatar: "/pau.png",
@@ -124,10 +132,11 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/PaulaBigorra',
       linkedin: 'https://www.linkedin.com/in/paula-bigorra-722079260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      portfolio: '#',
     },
     mode: "dark",
   },
-      {
+  {
 
     id: "member-9",
     avatar: "/mauri.png",
@@ -137,10 +146,11 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/MauricioBarreras',
       linkedin: 'https://www.linkedin.com/in/mauricio-barreras-235b8128a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      portfolio: '#',
     },
     mode: "dark",
   },
-      {
+  {
 
     id: "member-10",
     avatar: "/sasha.png",
@@ -150,6 +160,35 @@ const teamMembers: TeamMember[] = [
     links: {
       github: 'https://github.com/SashaPorchia',
       linkedin: '#',
+      portfolio: '#',
+    },
+    mode: "dark",
+  },
+    {
+
+    id: "member-11",
+    avatar: "/agusgonzalez.png",
+    name: "Agustin Gonzalez",
+    role: "Full Stack Developer",
+    description: "Los bugs son mis aliados, te obligan a mejorar",
+    links: {
+      github: 'https://github.com/Agusting22',
+      linkedin: 'https://www.linkedin.com/in/agustin-gonzalez2211',
+      portfolio: '#',
+    },
+    mode: "dark",
+  },
+    {
+
+    id: "member-12",
+    avatar: "/kathy.png",
+    name: "Katherine Gomez",
+    role: "Full Stack Developer",
+    description: "El código da vida a las ideas, la experiencia las hace memorables",
+    links: {
+      github: 'https://github.com/KLGomez',
+      linkedin: 'https://www.linkedin.com/in/katherinelujangomez',
+      portfolio: 'https://portfoliokatherinegomez.netlify.app/',
     },
     mode: "dark",
   },

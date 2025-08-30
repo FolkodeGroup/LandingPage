@@ -84,24 +84,24 @@ export default function CardComentarios() {
   return (
     <>
       <div
-        className="w-full max-w-md lg:max-w-none h-full border-2 rounded-xl p-4 flex flex-col items-center justify-between transition-all duration-300"
+        className="w-full h-full border-2 rounded-xl p-2 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 bg-white/80 dark:bg-black/40"
         style={{ borderColor: '#01454F' }}
       >
-        <div className="contenedor-flechas-imagen flex items-center justify-center w-full">
+  <div className="contenedor-flechas-imagen flex items-center justify-center w-full">
           <button
             onClick={anterior}
-            className="mr-3 flex items-center justify-center shrink-0 pointer"
+            className="mr-2 sm:mr-3 flex items-center justify-center shrink-0 pointer"
             aria-label="Anterior"
           >
-            <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+            <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#01454F]" />
           </button>
 
-          <div className="w-12 sm:w-16 md:w-24 lg:w-28 aspect-square rounded-full overflow-hidden border border-secondary flex items-center justify-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 aspect-square rounded-full overflow-hidden border border-secondary flex items-center justify-center bg-white/60 dark:bg-black/30">
             <Image
               src={actual.imagen}
               alt={actual.nombre}
-              width={128}
-              height={128}
+              width={112}
+              height={112}
               className="object-cover w-full h-full"
               priority
             />
@@ -109,17 +109,17 @@ export default function CardComentarios() {
 
           <button
             onClick={siguiente}
-            className="ml-3 flex items-center justify-center shrink-0 pointer"
+            className="ml-2 sm:ml-3 flex items-center justify-center shrink-0 pointer"
             aria-label="Siguiente"
           >
-            <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+            <FaChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#01454F]" />
           </button>
         </div>
 
         <p
-          className="comentario text-center mt-0 mb-2 sm:mb-6 text-primary dark:text-text-tertiary max-w-[90%] sm:max-w-[75%] md:max-w-[80%] mx-auto break-words"
+          className="comentario text-center mt-2 mb-2 sm:mb-6 text-primary dark:text-text-tertiary max-w-[95vw] sm:max-w-[75%] md:max-w-[80%] mx-auto break-words"
           style={{
-            fontSize: 'clamp(0.75rem, 1.5vw, 1.25rem)',
+            fontSize: 'clamp(0.95rem, 2.5vw, 1.25rem)',
             letterSpacing: '0.02em',
           }}
         >
@@ -130,7 +130,7 @@ export default function CardComentarios() {
           <p
             className="font-bold text-primary dark:text-text-inverse mb-1"
             style={{
-              fontSize: 'clamp(0.75rem, 1.2vw, 1.125rem)',
+              fontSize: 'clamp(0.85rem, 2vw, 1.2rem)',
             }}
           >
             {actual.nombre}
@@ -138,7 +138,7 @@ export default function CardComentarios() {
           <p
             className="text-secondary dark:text-text-tertiary"
             style={{
-              fontSize: 'clamp(0.6rem, 1vw, 1rem)',
+              fontSize: 'clamp(0.7rem, 1.5vw, 1.05rem)',
             }}
           >
             {actual.puesto}
@@ -150,48 +150,43 @@ export default function CardComentarios() {
         .comentario {
           line-height: 1.25;
         }
-
         @media (max-width: 767px) {
           .comentario {
             line-height: 1.1 !important;
             margin-bottom: 0.25rem !important;
           }
-          .text-center.mt-2.sm\\:mt-4 {
+          .text-center.mt-2.sm\:mt-4 {
             margin-top: 0.5rem !important;
           }
+          .contenedor-flechas-imagen {
+            margin-bottom: 0.75rem;
+            gap: 0.5rem;
+          }
         }
-
         .contenedor-flechas-imagen {
           margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
           gap: clamp(0.5rem, 1vw, 0.75rem);
-          /* Sin margin-top ni transform acá para no afectar pantallas chicas */
         }
-
         @media (min-width: 1024px) {
           .comentario {
             font-size: 1.5rem !important;
             line-height: 1.6 !important;
             max-width: 70% !important;
           }
-
-          .text-center.mt-2.sm\\:mt-4 > p.font-bold {
+          .text-center.mt-2.sm\:mt-4 > p.font-bold {
             font-size: 1.4rem !important;
           }
-
-          .text-center.mt-2.sm\\:mt-4 > p.text-secondary {
+          .text-center.mt-2.sm\:mt-4 > p.text-secondary {
             font-size: 1.2rem !important;
           }
-
           .contenedor-flechas-imagen {
             margin-top: clamp(1rem, 3vw, 2rem);
             transform: translateY(clamp(0px, 1vw, 10px));
           }
-
           .contenedor-flechas-imagen > button {
             width: 28px;
             height: 28px;
           }
-
           .contenedor-flechas-imagen > div {
             width: 96px !important;
             height: 96px !important;

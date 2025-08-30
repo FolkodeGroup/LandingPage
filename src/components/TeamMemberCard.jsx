@@ -43,21 +43,18 @@ function TeamMemberCard({
                 className="w-full h-full rounded-full object-cover object-top"
               />
             </div>
-
             <h3
               className={`text-lg sm:text-2xl font-bold ${textColor} break-words max-w-[90vw] sm:max-w-xs`}
               style={{ wordBreak: 'break-word' }}
             >
               {name}
             </h3>
-
             <h4
               className="text-xl sm:text-4xl font-extrabold mb-1 sm:mb-2 leading-tight sm:leading-tight break-words max-w-[90vw] sm:max-w-xs"
               style={{ color: highlightColor, wordBreak: 'break-word' }}
             >
               {role}
             </h4>
-
             <p
               className={`text-xs sm:text-sm ${descriptionOpacity} mb-4 sm:mb-6 max-w-[90vw] sm:max-w-xs flex-1 flex items-center justify-center break-words`}
               style={{ wordBreak: 'break-word' }}
@@ -85,11 +82,28 @@ function TeamMemberCard({
               )}
             </div>
 
-            <button
-              className={`${buttonBg} text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition pointer`}
-            >
-              VIEW PROFILE
-            </button>
+            {links?.portfolio ? (
+              <a
+                href={links.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`bg-cyan-900 hover:bg-cyan-950 text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition cursor-pointer flex items-center justify-center`}
+                aria-label="Portfolio"
+                style={{ background: '#025159', color: '#fff', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', textDecoration: 'none', boxSizing: 'border-box' }}
+              >
+                VIEW PROFILE
+              </a>
+            ) : (
+              <button
+                type="button"
+                className={`${buttonBg} text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition pointer flex items-center justify-center`}
+                tabIndex={-1}
+                aria-disabled="true"
+                style={{ pointerEvents: 'none' }}
+              >
+                VIEW PROFILE
+              </button>
+            )}
           </div>
         </div>
       </Card>
