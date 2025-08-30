@@ -50,14 +50,14 @@ export default function ClientesComentarios() {
   const actual = personas[index]
 
   return (
-  <>
-  <div>
-    <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Comentarios De los Clientes</h1>
-  </div>
-    <div
-      className="w-full max-w-4xl h-full border-0 p-6 flex flex-col lg:flex-row items-center lg:items-center justify-center justify-self-center transition-all duration-300"
-      style={{ backgroundColor: '#fff', minHeight: '13rem'}}
-    >
+    <>
+      <div>
+        <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Comentarios De los Clientes</h1>
+      </div>
+      <div
+        className="max-w-4xl w-full h-full border-0 p-6 flex flex-col lg:flex-row items-center lg:items-center justify-center mx-auto transition-all duration-300"
+        style={{ backgroundColor: '#fff', minHeight: '13rem'}}
+      >
       {/* Imagen + Nombre */}
       <div className="contenedor-flechas-imagen flex items-center justify-between w-full flex-row">
         {/* Flecha izquierda */}
@@ -115,7 +115,7 @@ export default function ClientesComentarios() {
           <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
         </button>
       </div>
-    </div>
-  </>
-);
+      </div>
+    </>
+  );
 };
