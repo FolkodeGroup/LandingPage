@@ -26,7 +26,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative w-full flex items-center justify-center hero-section"
+  className="relative w-full flex items-center justify-center hero-section min-h-[300px] !pb-0"
       style={{ marginTop: navHeight }}
     >
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
@@ -65,7 +65,7 @@ export default function HeroSection() {
       "
     >
       <h1 className="text-white whitespace-nowrap hero-title py-2">
-        Bienvenidos a Folkode Group
+        Bienvenidos a Folkode
       </h1>
 
       <motion.p
