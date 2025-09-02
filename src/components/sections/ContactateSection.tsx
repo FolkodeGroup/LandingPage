@@ -6,7 +6,7 @@ import ContactFormSection from "@/components/ContactFormSection";
 export default function ContactateSection() {
   return (
     <section id="contacto" className="w-full flex flex-col justify-center items-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center text-white">
         Contáctanos
       </h2>
       
