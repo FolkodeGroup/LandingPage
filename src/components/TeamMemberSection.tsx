@@ -413,8 +413,27 @@ export default function TeamMemberSection() {
           {/* Arrows (ocultas en mobile vía CSS) */}
           {totalSlides > slidesToShow && (
             <>
-              <button className="arrow prev" onClick={handlePrev} aria-label="Anterior" />
-              <button className="arrow next" onClick={handleNext} aria-label="Siguiente" />
+              <button className="arrow prev" onClick={handlePrev} aria-label="Anterior">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                    className="w-5 h-5 sm:w-5 sm:h-5 text-white"
+                    fill="currentColor"
+                  >
+                  <path d="M34.524 239.03l194.344-194.343c9.373-9.373 24.569-9.373 33.941 0l22.667 22.667c9.357 9.357 9.375 24.522.04 33.901L131.495 256l154.021 154.745c9.335 9.379 9.317 24.544-.04 33.901l-22.667 22.667c-9.373 9.373-24.569 9.373-33.941 0L34.525 272.971c-9.373-9.372-9.373-24.568-.001-33.941z"/>
+              </svg>
+              </button>
+              
+              <button className="arrow next relative" onClick={handleNext} aria-label="Siguiente">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 text-white"
+                  fill="currentColor"
+                >
+                  <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/>
+                </svg>
+              </button>
             </>
           )}
           {/* Dots */}
