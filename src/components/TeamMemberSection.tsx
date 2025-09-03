@@ -192,7 +192,45 @@ const teamMembers: TeamMember[] = [
     },
     mode: "dark",
   },
-
+    {
+    id: "member-13",
+    avatar: "/nahue.png",
+    name: "Nahue Dalesio",
+    role: "Full Stack Developer",
+    description: "El software funcionando es la principal medida de progreso.",
+    links: {
+      github: 'https://github.com/Nahuel-Dalesio',
+      linkedin: 'https://ar.linkedin.com/in/nahuel-dalesio-183498213?trk=people-guest_people_search-card',
+      portfolio: '#',
+    },
+    mode: "dark",
+  },
+    {
+    id: "member-14",
+    avatar: "/MaiAvalos.jpeg",
+    name: "Maia Avalos",
+    role: "Full Stack Developer",
+    description: "",
+    links: {
+      github: 'https://github.com/maiavalos',
+      linkedin: 'https://www.linkedin.com/in/maia-avalos-a37098345',
+      portfolio: 'no tengo',
+    },
+    mode: "dark",
+  },
+    {
+    id: "member-15",
+    avatar: "/facu.jpg",
+    name: "facu apellido",
+    role: "Full Stack Developer",
+    description: "#",
+    links: {
+      github: 'https://github.com/',
+      linkedin: '#',
+      portfolio: '#',
+    },
+    mode: "dark",
+  },
   // Puedes agregar más miembros según necesites
 ];
 
