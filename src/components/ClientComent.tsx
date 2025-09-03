@@ -55,24 +55,49 @@ export default function ClientesComentarios() {
         <h1 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Comentarios De los Clientes</h1>
       </div>
       <div
-        className="max-w-4xl w-full h-full border-0 p-6 flex flex-col lg:flex-row items-center lg:items-center justify-center mx-auto transition-all duration-300"
+  className="max-w-4xl w-full h-full border-0 p-6 flex flex-col items-center justify-center mx-auto transition-all duration-300 relative rounded-lg"
         style={{ backgroundColor: '#fff', minHeight: '13rem'}}
       >
       {/* Imagen + Nombre */}
-      <div className="contenedor-flechas-imagen flex items-center justify-between w-full flex-row">
+      <button
+        onClick={anterior}
+    className="absolute left-2 z-10 flex items-center justify-center shrink-0 pointer flecha-comentario"
+        aria-label="Anterior"
+        style={{
+          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+          top: 'calc(50% - 3.5rem)',
+          transform: 'none',
+        }}
+      >
+        <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+      </button>
+      <button
+        onClick={siguiente}
+    className="absolute right-2 z-10 flex items-center justify-center shrink-0 pointer flecha-comentario"
+        aria-label="Siguiente"
+        style={{
+          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+          top: 'calc(50% - 3.5rem)',
+          transform: 'none',
+        }}
+      >
+        <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
+      </button>
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .flecha-comentario {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+          }
+        }
+      `}</style>
+      <div className="flex flex-col items-center w-full">
         {/* Flecha izquierda */}
-        <button
-          onClick={anterior}
-          className="mr-3 flex items-center justify-center shrink-0 pointer"
-          aria-label="Anterior"
-        >
-          <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
-        </button>
 
         {/* Avatar + Texto */}
-        <div className="flex flex-row items-center gap-8 justify-center w-full avatar-cm-client">
+  <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 justify-center w-full avatar-cm-client">
           {/* Avatar + Nombre */}
-          <div className="flex flex-col items-center min-w-[120px] name-cm-client">
+          <div className="flex flex-col items-center min-w-[90px] sm:min-w-[120px] name-cm-client">
             <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300">
               <Image
                 src={actual.avatarUrl}
@@ -87,34 +112,30 @@ export default function ClientesComentarios() {
           </div>
 
           {/* Texto + Estrellas */}
-          <div className="flex flex-col text-left text-cm-client">
-            <p
-              className="text-black mb-3"
-              style={{
-                fontSize: 'clamp(0.9rem, 1.5vw, 1.25rem)',
-                letterSpacing: '0.02em',
-              }}
-            >
-              {actual.comment}
-            </p>
-            <div className="flex">
-              {Array(5)
-                .fill(0)
-                .map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
+          <div className="flex flex-1 flex-col justify-center min-h-[100px] text-left text-cm-client" style={{height: '100%'}}>
+            <div className="flex flex-col justify-center h-full flex-1">
+              <p
+                className="text-black mb-3"
+                style={{
+                  fontSize: 'clamp(0.9rem, 1.5vw, 1.25rem)',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {actual.comment}
+              </p>
+              <div className="flex justify-center sm:justify-start self-center sm:self-auto">
+                {Array(5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <span key={i} className="text-yellow-500 text-xl">★</span>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
         {/* Flecha derecha */}
-        <button
-          onClick={siguiente}
-          className="ml-3 flex items-center justify-center shrink-0 pointer"
-          aria-label="Siguiente"
-        >
-          <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#01454F]" />
-        </button>
-      </div>
+  {/* Las flechas ahora están posicionadas absolutamente */}
+  </div>
       </div>
     </>
   );
