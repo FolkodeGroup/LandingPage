@@ -55,7 +55,7 @@ export default function ComentariosEquipo() {
 
           {/* Columna derecha */}
           <div className="w-full sm:w-1/2 aspect-square flex items-center justify-center">
-            <div className="w-full h-full flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center equipo-text">
               <CardComentarios />
             </div>
           </div>

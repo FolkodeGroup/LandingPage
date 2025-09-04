@@ -64,7 +64,7 @@ const personas = [
     nombre: 'Sasha Porchia',
     puesto: 'FrontEnd Developer',
     comentario: 'La calidad de un producto se percibe primero en su interfaz.',
-    imagen: '/fede.png',
+    imagen: '/sasha.png',
   },
     {
     nombre: 'Maia Avalos',
@@ -102,7 +102,7 @@ export default function CardComentarios() {
   return (
     <>
       <div
-        className="w-full h-full border-2 rounded-xl p-2 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 bg-white/80 dark:bg-black/40"
+        className="w-full h-full border-2 rounded-xl p-2 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 bg-white/80 dark:bg-black/40 card-comentarios-equipo"
         style={{ borderColor: '#01454F' }}
       >
   <div className="contenedor-flechas-imagen flex items-center justify-center w-full">
@@ -114,7 +114,7 @@ export default function CardComentarios() {
             <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#01454F]" />
           </button>
 
-          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 aspect-square rounded-full overflow-hidden border border-secondary flex items-center justify-center bg-white/60 dark:bg-black/30">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 aspect-square rounded-full overflow-hidden border border-secondary flex items-center justify-center bg-white/60 dark:bg-black/30 img-com-equipo">
             <Image
               src={actual.imagen}
               alt={actual.nombre}
@@ -135,7 +135,7 @@ export default function CardComentarios() {
         </div>
 
         <p
-          className="comentario text-center mt-2 mb-2 sm:mb-6 text-primary dark:text-text-tertiary max-w-[95vw] sm:max-w-[75%] md:max-w-[80%] mx-auto break-words"
+          className="comentario text-center mt-2 mb-2 sm:mb-6 text-primary dark:text-text-tertiary max-w-[95vw] sm:max-w-[75%] md:max-w-[80%] mx-auto break-words text-com-equipo"
           style={{
             fontSize: 'clamp(0.95rem, 2.5vw, 1.25rem)',
             letterSpacing: '0.02em',
