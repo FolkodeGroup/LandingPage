@@ -66,6 +66,24 @@ const personas = [
     comentario: 'La calidad de un producto se percibe primero en su interfaz.',
     imagen: '/fede.png',
   },
+    {
+    nombre: 'Maia Avalos',
+    puesto: 'FullStack Developer',
+    comentario: 'Nunca me conformo; el progreso constante es la clave del éxito.',
+    imagen: '/Mai.png',
+  },
+      {
+    nombre: 'Facundo Carrizo',
+    puesto: 'Backend Developer',
+    comentario: 'El buen código resuelve problemas, el excelente los previene.',
+    imagen: '/Facu.png',
+  },
+  {
+    nombre: 'Nahuel Dalesio',
+    puesto: 'FullStack Developer',
+    comentario: 'El software funcionando es la principal medida de progreso.',
+    imagen: '/nahue.png',
+  },
 ]
 
 export default function CardComentarios() {
