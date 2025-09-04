@@ -1690,3 +1690,33 @@ picture {
     animation-duration: 15s; /* más lento para pantallas grandes */
   }
 }
+
+@media (max-width: 640px) and (min-width: 450px) {
+  .card-comentarios-equipo {
+    max-width: 80% !important;
+    max-height: 80% !important;
+    padding: 1rem !important;
+
+  }
+
+  .img-com-equipo {
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+  .text-com-equipo {
+    font-size: 0.95rem !important;
+  }
+
+@media (max-width: 450px) {
+
+.img-com-equipo {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+.text-com-equipo {
+    font-size: 1rem !important;
+  }
+}
