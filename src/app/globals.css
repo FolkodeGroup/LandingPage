@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap');
 @import 'tailwindcss';
 /* Compensar navbar fijo solo en secciones que no tienen margin dinámico */
  #servicios,
@@ -38,8 +38,20 @@
   }
 }
 
+
 html {
   scroll-behavior: smooth;
+  font-family: 'Inter', 'Montserrat', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #01454F 0%, #025159 60%, #86A869 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+body {
+  font-family: 'Inter', 'Montserrat', 'Roboto', sans-serif;
+  color: var(--color-text-primary);
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(2px);
 }
 
 
@@ -67,12 +79,12 @@ html {
 
 @layer base {
   :root {
-    /* Paleta de Colores - MODO CLARO */
-    --color-primary: #86A869; /* Verde Oliva según Figma */
+  /* Paleta de Colores - MODO CLARO */
+  --color-primary: #86A869; /* Verde Oliva según Figma */
     --color-primary-hover: #4a6f55; /* Verde oscuro */
-    --color-secondary: #01454F; /* Azul Petróleo Oscuro para secciones */
+  --color-secondary: #01454F; /* Azul Petróleo Oscuro para secciones */
     --color-secondary-hover: #025159; /* Azul Petróleo */
-    --color-accent: #3383b7; /* Celeste para CTAs */
+  --color-accent: #3383b7; /* Celeste para CTAs */
     --color-accent-hover: #2563eb;
 
     /* Grises y neutros */
@@ -81,30 +93,30 @@ html {
     --color-black: #000000; /* Negro */
 
     /* Backgrounds según Figma */
-    --color-background: #f9fafb;
+  --color-background: #f9fafb;
     --color-surface: #ffffff;
     --color-surface-secondary: #f3f4f6;
 
     /* Textos según Figma */
-    --color-text-primary: #1f2937;
+  --color-text-primary: #1f2937;
     --color-text-secondary: #6b7280;
     --color-text-tertiary: #9ca3af;
     --color-text-inverse: #ffffff;
 
     /* Bordes según Figma */
-    --color-border-subtle: #e5e7eb;
+  --color-border-subtle: #e5e7eb;
     --color-border: #d1d5db;
   }
 
   .dark {
-    /* Paleta de Colores - MODO OSCURO según Figma */
-    --color-primary: #025159; /* Verde más brillante */
+  /* Paleta de Colores - MODO OSCURO según Figma */
+  --color-primary: #025159; /* Verde más brillante */
     --color-primary-hover: #5e8d6b; /* Verde Oliva */
-    --color-secondary: #01454F; /* Azul Petróleo más claro para contraste */
+  --color-secondary: #01454F; /* Azul Petróleo más claro para contraste */
     --color-secondary-hover: #025159;
     --color-tertiary: #496332;
     --color-tertiary-hover: #86A869;
-    --color-accent: #3383b7; /* Celeste */
+  --color-accent: #3383b7; /* Celeste */
     --color-accent-hover: #2563eb;
 
     /* Grises y neutros adaptados */
@@ -113,12 +125,12 @@ html {
     --color-black: #000000;
 
     /* Backgrounds según Figma */
-    --color-background: #0d1117;
+  --color-background: #0d1117;
     --color-surface: #161b22;
     --color-surface-secondary: #21262d;
 
     /* Textos según Figma */
-    --color-text-primary: #e6edf3;
+  --color-text-primary: #e6edf3;
     --color-text-secondary: #8b949e;
     --color-text-tertiary: #656d76;
 
@@ -127,19 +139,21 @@ html {
     --color-border-subtle: #30363d;
     --color-border: #21262d;
 
-    /* Estilos Tarjeta Contactos */
+  /* Estilos Tarjeta Contactos */
     .contactos h2 {
       color: var(--color-text-inverse);
       font-size: 1.5rem !important; /* 24px */
-      font-weight: 600;
-
+      font-weight: 700;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      letter-spacing: 0.02em;
     }
 
     .contactos h3 {
       color: var(--color-text-inverse);
-      font-size: 2rem !important; /* 18px */
-      font-weight: 400;
-
+      font-size: 2rem !important; /* 32px */
+      font-weight: 600;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      letter-spacing: 0.01em;
     }
 
     .contactate {
@@ -147,16 +161,20 @@ html {
       font-size: 1rem; /* 16px */
       font-weight: 400;
       line-height: 1.5;
+      font-family: 'Inter', 'Montserrat', sans-serif;
     }
 
-    /* Estilos Footer */
+  /* Estilos Footer */
   .terminos-footer {
-    background-color: var(--color-secondary-hover);
+    background: linear-gradient(90deg, #01454F 0%, #025159 100%);
     color: var(--color-text-inverse);
     padding: 2rem 1rem;
     text-align: center;
     font-size: 0.875rem;
     min-height: 8.125rem; /* 130px */
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+    border-radius: 18px 18px 0 0;
+    backdrop-filter: blur(3px);
   }
 
   .footer-folkode-dark .text-primary {
@@ -164,8 +182,9 @@ html {
   }
 
   .terminos-footer:hover {
-    background-color: var(--color-secondary) !important;
+    background: linear-gradient(90deg, #025159 0%, #86A869 100%) !important;
     color: var(--color-text-inverse);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
   }
 
 
@@ -176,6 +195,8 @@ html {
       justify-content: space-between;
       align-items: center;
       text-align: left;
+      border-radius: 24px 24px 0 0;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
     }
     .terminos-footer .footer-left {
       text-align: left;
@@ -198,6 +219,56 @@ html {
 
     .name-cm-client {
       width: 9rem;
+/* Tarjetas y botones modernos */
+.card, .div-equipo, .actividad-card, .team-card, .comentario-card {
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  background: linear-gradient(135deg, #01454F 0%, #025159 60%, #86A869 100%);
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card:hover, .div-equipo:hover, .actividad-card:hover, .team-card:hover, .comentario-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.button, .btn, button {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  background: linear-gradient(90deg, #3383b7 0%, #86A869 100%);
+  color: var(--color-text-inverse);
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 600;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.3s;
+}
+.button:hover, .btn:hover, button:hover {
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #86A869 0%, #3383b7 100%);
+}
+
+/* Animaciones base para secciones y componentes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slide-in {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideInLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
       text-align: center;
       font-size: smaller;
     }
