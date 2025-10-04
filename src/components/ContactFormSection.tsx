@@ -23,7 +23,7 @@ const ContactFormSection = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     mode: "onChange"
@@ -48,23 +48,19 @@ const ContactFormSection = () => {
           'Accept': 'application/json'
         }
       });
-      
       // Si llegamos aca, el formulario se envió
       Swal.fire({
         title: "¡Mensaje enviado!",
         text: "Gracias por contactarnos. Te responderemos pronto.",
-        icon: "success",
-        draggable: true
+        icon: "success"
       });
       reset();
-      
-    } catch (error) {
-      // no se porque tira error cors, p ero con esto se envia igual
+  } catch {
+      // no se porque tira error cors, pero con esto se envia igual
       Swal.fire({
         title: "¡Mensaje enviado!",
         text: "Gracias por contactarnos. Te responderemos pronto.",
-        icon: "success",
-        draggable: true
+        icon: "success"
       });
       reset();
     }
@@ -88,7 +84,7 @@ const ContactFormSection = () => {
               id="name"
               {...register("name")}
               placeholder="Tu nombre completo"
-              aria-invalid={!!errors.name}
+              aria-invalid={errors.name ? "true" : "false"}
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="name"
             />
@@ -108,7 +104,7 @@ const ContactFormSection = () => {
               type="email"
               {...register("email")}
               placeholder="tucorreo@ejemplo.com"
-              aria-invalid={!!errors.email}
+              aria-invalid={errors.email ? "true" : "false"}
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="email"
             />
@@ -129,7 +125,7 @@ const ContactFormSection = () => {
               id="phone"
               {...register("phone")}
               placeholder="+54 11 1234-5678"
-              aria-invalid={!!errors.phone}
+              aria-invalid={errors.phone ? "true" : "false"}
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="tel"
             />
@@ -148,7 +144,7 @@ const ContactFormSection = () => {
               id="project"
               {...register("project")}
               placeholder="Nombre de tu empresa/proyecto"
-              aria-invalid={!!errors.project}
+              aria-invalid={errors.project ? "true" : "false"}
               className="w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
               autoComplete="organization"
             />
@@ -169,7 +165,7 @@ const ContactFormSection = () => {
           id="message"
           {...register("message")}
           placeholder="Escribe tu mensaje"
-          aria-invalid={!!errors.message}
+          aria-invalid={errors.message ? "true" : "false"}
           className="min-h-[100px] w-full bg-white border border-gray-300 focus:border-gray-900 text-gray-800"
         />
         <div className="min-h-[20px]">
