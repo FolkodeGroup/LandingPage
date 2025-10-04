@@ -2,6 +2,12 @@
 @import 'tailwindcss';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+
 .card-proy-ref {
   background: #161b22;
   border-radius: 28px !important;
@@ -122,8 +128,8 @@
 
 @media (max-width: 768px) {
   .card-proy-ref {
-    min-width: 90vw; /* Ajuste para pantallas pequeñas */
-    max-width: 95vw;
+    min-width: 0 !important;
+    max-width: 100vw !important;
     min-height: 22rem;
     border-radius: 18px !important;
     margin: 1rem auto;

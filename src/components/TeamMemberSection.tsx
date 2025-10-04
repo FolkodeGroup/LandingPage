@@ -221,7 +221,7 @@ const teamMembers: TeamMember[] = [
     {
     id: "member-15",
     avatar: "/Facu.png",
-    name: "facu apellido",
+    name: "Facu Carrizo",
     role: "Full Stack Developer",
     description: "El buen código resuelve problemas, el excelente los previene.",
     links: {
