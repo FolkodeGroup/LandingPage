@@ -3,7 +3,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 html, body {
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
   max-width: 100vw;
 }
 
@@ -2349,16 +2349,16 @@ picture {
   .proyectos-seccion {
     padding: 2rem 1rem;
   }
-  
+
   .proyectos-titulo-principal {
     font-size: 2rem;
   }
-  
+
   .proyectos-contenedor {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .proyecto-card {
     height: auto;
     min-height: 400px;
@@ -2369,15 +2369,15 @@ picture {
   .proyectos-titulo-principal {
     font-size: 1.75rem;
   }
-  
+
   .proyectos-descripcion {
     font-size: 0.95rem;
   }
-  
+
   .proyecto-titulo {
     font-size: 1.3rem;
   }
-  
+
   .proyecto-desc {
     font-size: 0.9rem;
   }
