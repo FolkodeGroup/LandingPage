@@ -6,35 +6,41 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 const personas = [
   {
-    comment: 'Laburan con prolijidad que da gusto. Se nota que les gusta lo que hacen, y eso hoy es difícil de encontrar.',
+    comment: 'Con Folkode logramos que RadioGo se convirtiera en una plataforma moderna y dinámica. Nos acompañaron en cada etapa, entendiendo la esencia de nuestro proyecto y potenciando la experiencia de nuestros oyentes.',
     author: 'Giuliana Mancuso',
     avatarUrl: '/images/avatars/giuliana.jpeg',
+    proyecto: 'RadioGo',
   },
   {
-    comment:"No fue solo desarrollo, me sentí parte de él. Estuvieron en cada detalle, explicando sin vueltas y bancando todas nuestras dudas.",
-    author:"Yanina Gomez",
-    avatarUrl:"/images/avatars/yanina.jpeg"
-},
-{
-    comment:"Desde que lanzamos la web nueva, los clientes no paran de elogiarla. ¡Un golazo!",
-    author:"Javier Retamozo",
-    avatarUrl:"/images/avatars/javier.jpeg"
-},
-{
-    comment:"Después de varias decepciones, encontramos gente que cumple. nos escucharon, nos entendieron, y lo que entregaron fue mejor de lo que imaginábamos.",
-    author:"Agustina Ramirez",
-    avatarUrl:"/images/avatars/agustina.jpeg"
-},
-{
-    comment:"El diseño es lo que queríamos y la estructura está pensada para crecer. se nota que saben lo que hacen.",
-    author:"Tomás Ochoa",
-    avatarUrl:"/images/avatars/tomas.jpeg"
-},
-{
-    comment:"Ahora todo funciona como debe ser. Y eso, para mí, vale oro.",
-    author:"Axel Diaz",
-    avatarUrl:"/images/avatars/axel.jpeg"
-},
+    comment: 'El equipo de Folkode hizo posible que nuestro e-commerce Andet fuera intuitivo y robusto. Nos guiaron en todo momento y resolvieron cada desafío con profesionalismo y cercanía.',
+    author: 'Yanina Gomez',
+    avatarUrl: '/images/avatars/yanina.jpeg',
+    proyecto: 'Andet',
+  },
+  {
+    comment: 'La solución empresarial que desarrollaron para Autopartes superó nuestras expectativas. La comunicación fue constante y el resultado, un software que realmente facilita nuestro trabajo diario.',
+    author: 'Javier Retamozo',
+    avatarUrl: '/images/avatars/javier.jpeg',
+    proyecto: 'Autopartes',
+  },
+  {
+    comment: 'Folkode entendió perfectamente las necesidades de nuestro negocio. El software de luminarias Luminova que crearon es eficiente y fácil de usar, y el proceso fue transparente y colaborativo.',
+    author: 'Agustina Ramirez',
+    avatarUrl: '/images/avatars/agustina.jpeg',
+    proyecto: 'Luminova',
+  },
+  {
+    comment: 'Transformaron nuestra tienda en línea La Revisteria en una experiencia ágil y atractiva para los clientes. Nos explicaron cada paso y estuvieron atentos a todos los detalles, logrando un resultado excelente.',
+    author: 'Tomás Ochoa',
+    avatarUrl: '/images/avatars/tomas.jpeg',
+    proyecto: 'La Revisteria',
+  },
+  {
+    comment: 'Ahora en la radio todo funciona como debe ser. Y eso, para nosotros, vale oro.',
+    author: 'Axel Diaz',
+    avatarUrl: '/images/avatars/axel.jpeg',
+    proyecto: 'RadioGo',
+  },
 ]
 export default function ClientesComentarios() {
   const [index, setIndex] = useState(0)
@@ -109,6 +115,15 @@ export default function ClientesComentarios() {
               />
             </div>
             <p className="font-bold text-black mt-2">{actual.author}</p>
+            {actual.proyecto && (
+              <button
+                className="px-3 py-1 mt-2 rounded-full text-xs font-semibold bg-[#01454F] text-white shadow-sm border-none cursor-default"
+                style={{ letterSpacing: '0.04em' }}
+                tabIndex={-1}
+              >
+                {actual.proyecto}
+              </button>
+            )}
           </div>
 
           {/* Texto + Estrellas */}
