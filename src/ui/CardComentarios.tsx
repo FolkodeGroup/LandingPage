@@ -8,80 +8,79 @@ const personas = [
   {
     nombre: 'Celina Pereyra',
     puesto: 'FrontEnd Developer',
-    comentario: 'Construyendo soluciones con pasión por la tecnología.',
+    comentario: 'Trabajar en Folkode me hizo sentir parte de algo más grande. Aprendí a confiar en el equipo y a disfrutar el proceso creativo compartido.',
     imagen: '/celi.png',
   },
   {
-    nombre: 'Darío Giménez',
+    nombre: 'Daro Giménez',
     puesto: 'Full Stack Developer',
-    comentario: 'Creando experiencias de usuario memorables y funcionales.',
+    comentario: 'La colaboración en Folkode me impulsó a salir de mi zona de confort y descubrir nuevas formas de resolver problemas junto a personas increíbles.',
     imagen: '/Daro.png',
   },
   {
     nombre: 'Gabriel Sosa',
     puesto: 'Full Stack Developer',
-    comentario: 'Programar es construir puentes entre ideas y realidad usando lógica y creatividad.',
+    comentario: 'En Folkode encontré un ambiente donde cada idea suma. Aprendí que juntos podemos transformar cualquier reto en una oportunidad.',
     imagen: '/gabrielsosa.png',
   },
   {
     nombre: 'Matias Daniel Alessandrello',
     puesto: 'Full Stack Developer',
-    comentario:
-      'Los detalles importan. Cada línea de código cuenta para lograr un producto excepcional.',
+    comentario: 'El trabajo en equipo en Folkode me enseñó a valorar la diversidad de perspectivas. Ahora cada proyecto se siente más enriquecedor.',
     imagen: '/matias.png',
   },
   {
     nombre: 'Agustin Ovejero',
     puesto: 'BackEnd Developer',
-    comentario: 'Desarrollando soluciones innovadoras con un enfoque en la usabilidad.',
+    comentario: 'Unirme a Folkode me permitió crecer profesionalmente y personalmente. El apoyo constante del equipo hace que cada día sea motivador.',
     imagen: '/Ovejero.png',
   },
   {
     nombre: 'Lucas Echavarria',
     puesto: 'Backend Developer',
-    comentario: 'El mejor código no es el que funciona, sino el que otros pueden entender y mantener.',
+    comentario: 'Colaborar en Folkode me ayudó a mejorar mi comunicación y a entender que el éxito se construye entre todos, paso a paso.',
     imagen: '/cuqui.png',
   },
   {
     nombre: 'Fede Paal',
     puesto: 'FrontEnd Developer',
-    comentario: 'Cada decisión en el frontend es una decisión sobre la experiencia del usuario',
+    comentario: 'En Folkode aprendí que la creatividad florece cuando se comparte. El trabajo colaborativo me inspira a dar lo mejor de mí.',
     imagen: '/fede.png',
   },
-  {
+  /* {
     nombre: 'Paula Bigorra',
     puesto: 'BackEnd Developer',
-    comentario: 'La seguridad no es un extra en backend, es el cimiento.',
+    comentario: 'Ser parte de Folkode me mostró el valor de la confianza y el respeto. Juntos logramos resultados que superan cualquier expectativa.',
     imagen: '/pau.png',
-  },
+  }, */
   {
     nombre: 'Mauricio Barreras',
     puesto: 'FrontEnd Developer',
-    comentario: 'Un diseño consistente es la base de la confianza del usuario',
+    comentario: 'La experiencia en Folkode me enseñó que el aprendizaje nunca termina. Cada integrante aporta algo único y eso nos hace crecer.',
     imagen: '/mauri.png',
   },
   {
     nombre: 'Sasha Porchia',
     puesto: 'FrontEnd Developer',
-    comentario: 'La calidad de un producto se percibe primero en su interfaz.',
+    comentario: 'Trabajar en equipo en Folkode me dio la libertad de experimentar y aprender de los demás. Hoy disfruto más cada desafío.',
     imagen: '/sasha.png',
   },
-    {
+  {
     nombre: 'Maia Avalos',
     puesto: 'FullStack Developer',
-    comentario: 'Nunca me conformo; el progreso constante es la clave del éxito.',
+    comentario: 'En Folkode descubrí que la colaboración es la clave para avanzar. El ambiente de apoyo me motiva a seguir mejorando.',
     imagen: '/Mai.png',
   },
-      {
+  {
     nombre: 'Facundo Carrizo',
     puesto: 'Backend Developer',
-    comentario: 'El buen código resuelve problemas, el excelente los previene.',
+    comentario: 'Folkode me enseñó que los logros compartidos son los más gratificantes. El trabajo en equipo potencia nuestras capacidades.',
     imagen: '/Facu.png',
   },
   {
     nombre: 'Nahuel Dalesio',
     puesto: 'FullStack Developer',
-    comentario: 'El software funcionando es la principal medida de progreso.',
+    comentario: 'La cultura colaborativa de Folkode me ayudó a crecer y a confiar en mis ideas. Juntos logramos resultados sorprendentes.',
     imagen: '/nahue.png',
   },
 ]

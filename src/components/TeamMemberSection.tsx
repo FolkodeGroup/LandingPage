@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
 
     id: "member-2",
     avatar: "/Daro.png",
-    name: "Darío Giménez",
+    name: "Daro Giménez",
     role: "Full Stack Developer",
     description: "Creando experiencias de usuario memorables y funcionales.",
     links: {
