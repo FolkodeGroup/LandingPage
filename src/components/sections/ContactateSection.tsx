@@ -7,7 +7,7 @@ export default function ContactateSection() {
   return (
     <section
       id="contacto"
-      className="w-full flex flex-col justify-center items-center relative overflow-hidden"
+      className="w-full flex flex-col justify-center items-center relative overflow-hidden rounded-xl"
       style={{
         background: "linear-gradient(135deg, #01454F 60%, #0a2327 100%)",
         minHeight: "650px",

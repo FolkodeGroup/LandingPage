@@ -6,7 +6,7 @@ import { FaGlobe, FaAndroid, FaApple, FaRegClock, FaTv, FaRocket } from "react-i
 export default function Tecnologias() {
 
   return (
-    <section className="tecnologias-section relative py-12 px-4 overflow-hidden">
+    <section className="tecnologias-section relative py-12 px-4 overflow-hidden rounded-xl">
       {/* Fondo degradado y partículas */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0f2027] via-[#2c5364] to-[#00c6ff] opacity-90 pointer-events-none z-0" />
       {/* Puedes agregar aquí un componente de partículas si lo deseas */}

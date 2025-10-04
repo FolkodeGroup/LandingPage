@@ -1385,7 +1385,7 @@ picture {
 
   /* Evitar overflow horizontal no deseado en móviles causado por elementos absolutos */
   html, body, #__next {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     width: 100%;
   }
 
