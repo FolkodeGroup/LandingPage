@@ -2250,11 +2250,11 @@ picture {
 .proyecto-card:hover {
   box-shadow:
     0 20px 60px 0 rgba(51,131,183,0.25),
-    0 0 20px 20px #bfff4f,
-    0 0 20px 20px #86ff00,
-    0 0 20px 20px #bfff4f;
-  transform: translateY(-10px) scale(0.4);
-  filter: drop-shadow(0 0 10px #bfff4f) drop-shadow(0 0 8px #86ff00);
+    0 0 60px 20px #bfff4f,
+    0 0 120px 40px #86ff00,
+    0 0 180px 60px #bfff4f;
+  transform: translateY(-10px) scale(1.5);
+  filter: drop-shadow(0 0 10px #bfff4f) drop-shadow(0 0 16px #86ff00);
 }
 
 @keyframes fadeInProyecto {
@@ -2279,7 +2279,7 @@ picture {
 }
 
 .proyecto-card:hover .proyecto-img {
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 .proyecto-etiqueta {
