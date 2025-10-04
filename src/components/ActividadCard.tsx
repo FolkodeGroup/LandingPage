@@ -21,11 +21,11 @@ export default function ActividadCard({
   const textColor = '!text-white';
 
   return (
-    <div className="max-w-sm w-full font-['Roboto'] ">
-      <Card className={`${bgColor} ${textColor} div-equipo`}>
+    <div className="max-w-sm w-full font-['Roboto'] h-[400px] flex flex-col justify-between">
+      <Card className={`${bgColor} ${textColor} div-equipo h-full`}>
         <div className="flex flex-col items-center text-center gap-4">
           {/* Ícono principal superior */}
-          <i className={`${iconClass} ${iconColor}`} style={{ fontSize: 60 }} />
+          <i className={`${iconClass} ${iconColor}`} style={{ fontSize: 50 }} />
 
           {/* Título */}
           <h3 className="title-equipo">{title}</h3>

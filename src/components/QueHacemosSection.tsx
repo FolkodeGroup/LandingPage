@@ -24,7 +24,7 @@ const actividades: Actividad[] = [
   {
     id: 'auto-product',
     mode: 'light',
-    iconClass: 'bi bi-phone',
+    iconClass: 'bi bi-gear-fill',
     title: 'Automatización y Productividad',
     items: [
       'Sistemas CRM/ERP adaptados a tus procesos.',
@@ -45,7 +45,7 @@ const actividades: Actividad[] = [
   {
     id: 'consu-it',
     mode: 'light',
-    iconClass: 'bi bi-phone',
+    iconClass: 'bi bi-cloud-arrow-up',
     title: 'Consultoría IT',
     items: [
       'Auditoría técnica y modernización de sistemas legacy.',
@@ -55,7 +55,7 @@ const actividades: Actividad[] = [
   {
     id: 'soft-social',
     mode: 'dark',
-    iconClass: 'bi bi-phone',
+    iconClass: 'bi bi-people-fill',
     title: 'Software para Impacto Social',
     items: [
       'Soluciones con propósito para ONGs y emprendimientos sostenibles.',

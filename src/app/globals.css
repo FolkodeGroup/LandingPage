@@ -1,6 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap');
 @import 'tailwindcss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 /* Compensar navbar fijo solo en secciones que no tienen margin dinámico */
  #servicios,
  #sobre-folkode,

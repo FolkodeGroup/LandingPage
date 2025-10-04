@@ -47,7 +47,7 @@ export default function Unirte() {
         className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
         style={{ alignItems: 'stretch' }}
       >
-  {motivos.map((motivo) => (
+        {motivos.map((motivo) => (
           <div
             className="card-equipo fade-in"
             key={motivo.id}
@@ -58,7 +58,7 @@ export default function Unirte() {
               border: '2px solid rgba(134,168,105,0.22)',
               backdropFilter: 'blur(8px)',
               padding: '2rem 1.5rem',
-              minHeight: '320px',
+              minHeight: '400px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -74,6 +74,9 @@ export default function Unirte() {
               e.currentTarget.style.transform = 'scale(1)';
             }}
           >
+            {/* Ícono principal superior */}
+            <i className={`${motivo.iconClass} text-[#86A869]`} style={{ fontSize: 50, marginBottom: '1rem' }} />
+
             <div style={{ width: '100%' }}>
               <h3
                 className="text-xl md:text-2xl font-extrabold text-white mb-4 text-center drop-shadow-lg"
