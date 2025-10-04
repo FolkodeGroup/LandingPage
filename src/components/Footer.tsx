@@ -21,7 +21,12 @@ export default function Footer() {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       const bodyHeight = document.body.offsetHeight;
-      // Si el usuario está a 400px del final, muestra el footer
+      // En móviles, el footer siempre visible
+      if (window.innerWidth < 768) {
+        footerRef.current.classList.add("footer-visible");
+        return;
+      }
+      // En desktop, lógica original
       if (scrollY + windowHeight >= bodyHeight - 400) {
         footerRef.current.classList.add("footer-visible");
       } else {
@@ -29,9 +34,12 @@ export default function Footer() {
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    // Ejecutar una vez al montar para el caso de scroll inicial
+    window.addEventListener("resize", onScroll);
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {

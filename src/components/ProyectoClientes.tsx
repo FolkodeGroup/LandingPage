@@ -11,26 +11,30 @@ import { useRef } from 'react';
 
 
 // Componente hijo para la tarjeta con efecto tilt
+
 type ClienteCardProps = {
   image: StaticImageData;
   title: string;
   description: string;
   url: string;
+  category: string;
 };
 
-function ClienteCard({ image, title, description, url }: ClienteCardProps) {
+
+
+function ClienteCard({ image, title, description, url, category }: ClienteCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
 
-  // Calcula el tilt según el mouse (más leve)
+  // Tilt efecto
   const calcTilt = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, card: HTMLDivElement) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const midX = rect.width / 2;
     const midY = rect.height / 2;
-    const maxTilt = 7; // Ángulo más leve
+    const maxTilt = 7;
     const rotateY = ((x - midX) / midX) * maxTilt;
     const rotateX = -((y - midY) / midY) * maxTilt;
     return { rotateX, rotateY };
@@ -42,6 +46,7 @@ function ClienteCard({ image, title, description, url }: ClienteCardProps) {
     rotateX.set(rx);
     rotateY.set(ry);
   };
+  
   const handleMouseLeave = () => {
     rotateX.set(0);
     rotateY.set(0);
@@ -49,14 +54,13 @@ function ClienteCard({ image, title, description, url }: ClienteCardProps) {
 
   return (
     <motion.div
-      className="card-clientes"
+      className="proyecto-card"
       ref={cardRef}
       style={{
         rotateX,
         rotateY,
         z: 0,
         transition: 'box-shadow 0.3s',
-        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.10)',
         willChange: 'transform',
         perspective: 1000
       }}
@@ -64,49 +68,54 @@ function ClienteCard({ image, title, description, url }: ClienteCardProps) {
       onMouseLeave={handleMouseLeave}
       whileHover={{
         scale: 1.04,
-        boxShadow: '0 0 0 0 rgba(0,0,0,0.10), 0 12px 40px 0 rgba(134,168,105,0.45)',
+        boxShadow: '0 20px 60px 0 rgba(51,131,183,0.25)',
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
-      <div className='img-clientes'>
+      <div className="proyecto-img-wrapper">
+        <span className="proyecto-etiqueta">{category}</span>
         <Image
           src={image}
           alt={title}
           width={image.width}
           height={image.height}
-          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+          className="proyecto-img"
           priority
         />
       </div>
-      <div className='text-clientes '>
-        <h3 className="text-2xl font-bold mt-4">{title}</h3>
-        <p className="text-md">{description}</p>
-        <button className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors button-clientes">
-          <a href={url} target="_blank" rel="noopener noreferrer">Ver Proyecto</a>
-        </button>
+      <div className="proyecto-info">
+        <h3 className="proyecto-titulo">{title}</h3>
+        <p className="proyecto-desc">{description}</p>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="proyecto-btn">
+          Ver Proyecto
+        </a>
       </div>
     </motion.div>
   );
 }
 
+
+// Ajustes en el componente para asegurar legibilidad y diseño responsivo
 export default function ProyClientes() {
-    const proyectos = [
-        { image: RadioGo, title: 'RadioGo', description: 'Página de entretenimiento de Radio', url: 'https://radio-go.vercel.app/' },
-        { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos', url: 'https://demo-andet-ecommerce.onrender.com/' },
-        { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes', url: 'https://web-autopartes.vercel.app/' },
-        { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias', url: 'https://luminova.pythonanywhere.com/' },
-        { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics', url: 'https://revisteria.pythonanywhere.com/' }
-    ];
-    return (
-        <section id="proyectos" className="text-inverse section-proy-clientes">
-            <div>
-              <h3 className="text-4xl font-bold text-center mb-8 mt-16 text-white">Proyectos de Nuestros Clientes</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 div-clientes">
-                {proyectos.map((proyecto, index) => (
-                    <ClienteCard key={index} {...proyecto} />
-                ))}
-            </div>
-        </section>
-    );
+  const proyectos = [
+    { image: RadioGo, title: 'RadioGo', description: 'Página de entretenimiento de Radio', url: 'https://radio-go.vercel.app/', category: 'Web' },
+    { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos', url: 'https://demo-andet-ecommerce.onrender.com/', category: 'E-commerce' },
+    { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
+    { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias', url: 'https://luminova.pythonanywhere.com/', category: 'Software' },
+    { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics', url: 'https://revisteria.pythonanywhere.com/', category: 'E-commerce' }
+  ];
+
+  return (
+    <section id="proyectos" className="proyectos-seccion">
+      <div className="proyectos-cabecera">
+        <h2 className="proyectos-titulo-principal">Proyectos de Nuestros Clientes</h2>
+        <p className="proyectos-descripcion">Soluciones digitales a medida para empresas y emprendedores. Descubre cómo potenciamos negocios con tecnología y diseño.</p>
+      </div>
+      <div className="proyectos-contenedor">
+        {proyectos.map((proyecto, index) => (
+          <ClienteCard key={index} {...proyecto} />
+        ))}
+      </div>
+    </section>
+  );
 }

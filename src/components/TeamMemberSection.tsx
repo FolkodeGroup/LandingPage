@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
 
     id: "member-2",
     avatar: "/Daro.png",
-    name: "Darío Giménez",
+    name: "Daro Giménez",
     role: "Full Stack Developer",
     description: "Creando experiencias de usuario memorables y funcionales.",
     links: {
@@ -121,7 +121,7 @@ const teamMembers: TeamMember[] = [
       portfolio: '#',
     },
     mode: "dark",
-  },
+  }/* ,
   {
 
     id: "member-8",
@@ -135,7 +135,7 @@ const teamMembers: TeamMember[] = [
       portfolio: '#',
     },
     mode: "dark",
-  },
+  } */,
   {
 
     id: "member-9",
@@ -164,7 +164,7 @@ const teamMembers: TeamMember[] = [
     },
     mode: "dark",
   },
-    {
+    /* {
 
     id: "member-11",
     avatar: "/agusgonzalez.png",
@@ -177,7 +177,7 @@ const teamMembers: TeamMember[] = [
       portfolio: '#',
     },
     mode: "dark",
-  },
+  }, */
     {
 
     id: "member-12",
@@ -207,10 +207,10 @@ const teamMembers: TeamMember[] = [
   },
     {
     id: "member-14",
-    avatar: "/MaiAvalos.jpeg",
+    avatar: "/Mai.png",
     name: "Maia Avalos",
     role: "Full Stack Developer",
-    description: "",
+    description: "Nunca me conformo; el progreso constante es la clave del éxito.",
     links: {
       github: 'https://github.com/maiavalos',
       linkedin: 'https://www.linkedin.com/in/maia-avalos-a37098345',
@@ -220,10 +220,10 @@ const teamMembers: TeamMember[] = [
   },
     {
     id: "member-15",
-    avatar: "/facu.jpg",
-    name: "facu apellido",
+    avatar: "/Facu.png",
+    name: "Facu Carrizo",
     role: "Full Stack Developer",
-    description: "#",
+    description: "El buen código resuelve problemas, el excelente los previene.",
     links: {
       github: 'https://github.com/',
       linkedin: '#',

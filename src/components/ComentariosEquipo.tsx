@@ -6,7 +6,6 @@ import CardComentarios from "../ui/CardComentarios"
 import comentarios1 from "@/assets/images/comentarios1.png"
 import comentarios2 from "@/assets/images/comentarios2.png"
 import comentarios3 from "@/assets/images/comentarios3.png"
-import { div } from "framer-motion/client"
 
 const images = [comentarios1.src, comentarios2.src, comentarios3.src]
 
@@ -24,17 +23,16 @@ export default function ComentariosEquipo() {
   }, [isInView])
 
   return (
-
-    <section
-      ref={ref}
-    >
-      <div><h1 className="text-4xl font-bold text-center text-white mb-8 mt-8">Comentarios Del Equipo</h1></div>
+    <section ref={ref}>
+      <div>
+        <h1 className="text-4xl font-bold text-center text-white mb-8 mt-8">Comentarios Del Equipo</h1>
+      </div>
       <div className="w-full flex justify-center overflow-hidden px-4 py-6">
         <div
           className="w-full max-w-[1152px] flex flex-col sm:flex-row items-stretch justify-between gap-4 sm:gap-6 md:gap-8"
           style={{ minWidth: 0 }}
         >
-          {/* Columna izquierda (imagen) */}
+          {/* Columna izquierda (imagen con efecto de difuminado) */}
           <motion.div
             initial={{ opacity: 0, x: -150 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -46,19 +44,24 @@ export default function ComentariosEquipo() {
               src={images[index]}
               alt={`Equipo ${index + 1}`}
               className="w-full h-full object-contain rounded-xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 2 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
             />
           </motion.div>
 
-          {/* Columna derecha */}
-          <div className="w-full sm:w-1/2 aspect-square flex items-center justify-center">
+          {/* Columna derecha (slider con animación) */}
+          <motion.div
+            initial={{ opacity: 0, x: 150 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="w-full sm:w-1/2 aspect-square flex items-center justify-center"
+          >
             <div className="w-full h-full flex items-center justify-center equipo-text">
               <CardComentarios />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

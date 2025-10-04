@@ -18,14 +18,14 @@ function TeamMemberCard({
   const isDark = mode === 'dark';
 
   const bgColor = isDark ? 'bg-black' : 'bg-white';
-  const textColor = isDark ? 'text-black' : 'text-black';
+  const textColor = 'text-white';
   const borderColor = isDark ? 'border-[#025159]' : 'border-[#86A869]';
-  const highlightColor = isDark ? '#025159' : '#86A869';
+  const highlightColor = '#fff';
   const techBg = isDark ? 'bg-[#B6D3DC] text-[#02414a]'  : 'bg-[#d8e2c3] text-[#4b5734]' ;
   const buttonBg = isDark ? 'bg-[#025159] hover:bg-[#013f49]' : 'bg-[#86A869] hover:bg-[#7a975c]' ;
-  const iconColor = isDark ? 'text-black hover:text-[#025159]' : 'text-black hover:text-[#86A869]' ;
-  const subtitleOpacity = isDark ? 'text-black opacity-70'  : 'text-black opacity-80' ;
-  const descriptionOpacity = isDark ? 'text-black opacity-80' : 'text-black opacity-90' ;
+  const iconColor = isDark ? 'text-white hover:text-[#86A869]' : 'text-black hover:text-[#86A869]' ;
+  const subtitleOpacity = 'text-white opacity-90';
+  const descriptionOpacity = 'text-gray-200 opacity-95';
 
   return (
     <div
@@ -44,20 +44,27 @@ function TeamMemberCard({
               />
             </div>
             <h3
-              className={`text-lg sm:text-2xl font-bold ${textColor} break-words max-w-[90vw] sm:max-w-xs`}
-              style={{ wordBreak: 'break-word' }}
+              className="text-lg sm:text-xl font-bold text-white break-words max-w-[90vw] sm:max-w-xs drop-shadow-lg mb-1"
+              style={{ wordBreak: 'break-word', letterSpacing: '-0.01em' }}
             >
               {name}
             </h3>
             <h4
-              className="text-xl sm:text-4xl font-extrabold mb-1 sm:mb-2 leading-tight sm:leading-tight break-words max-w-[90vw] sm:max-w-xs"
-              style={{ color: highlightColor, wordBreak: 'break-word' }}
+              className="text-2xl sm:text-3xl font-extrabold mb-2 leading-tight break-words max-w-[90vw] sm:max-w-xs drop-shadow-lg uppercase tracking-wide"
+              style={{
+                color: '#86A869',
+                wordBreak: 'break-word',
+                letterSpacing: '0.02em',
+                textShadow: '0 2px 12px #01454F88',
+                borderBottom: '2px solid #3383b7',
+                paddingBottom: '4px',
+              }}
             >
               {role}
             </h4>
             <p
-              className={`text-xs sm:text-sm ${descriptionOpacity} mb-4 sm:mb-6 max-w-[90vw] sm:max-w-xs flex-1 flex items-center justify-center break-words`}
-              style={{ wordBreak: 'break-word' }}
+              className={`text-sm sm:text-base text-gray-200 opacity-95 mb-4 sm:mb-6 max-w-[90vw] sm:max-w-xs flex-1 flex items-center justify-center break-words`}
+              style={{ wordBreak: 'break-word', fontWeight: 400, lineHeight: '1.5' }}
             >
               {description}
             </p>
@@ -82,31 +89,31 @@ function TeamMemberCard({
               )}
             </div>
 
-            {links?.portfolio ? (
+            {/* {links?.portfolio ? (
               <a
-                href={links.portfolio}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`bg-cyan-900 hover:bg-cyan-950 text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition cursor-pointer flex items-center justify-center`}
-                aria-label="Portfolio"
-                style={{ background: '#025159', color: '#fff', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', textDecoration: 'none', boxSizing: 'border-box' }}
-              >
-                VIEW PROFILE
-              </a>
-            ) : (
-              <button
-                type="button"
-                className={`${buttonBg} text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition pointer flex items-center justify-center`}
-                tabIndex={-1}
-                aria-disabled="true"
-                style={{ pointerEvents: 'none' }}
-              >
-                VIEW PROFILE
-              </button>
-            )}
+                  href={links.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`bg-cyan-900 hover:bg-cyan-950 text-white font-bold py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition cursor-pointer flex items-center justify-center`}
+                  aria-label="Portfolio"
+                  style={{ background: '#025159', color: '#fff', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '9999px', textDecoration: 'none', boxSizing: 'border-box' }}
+                >
+                  VIEW PROFILE
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  className="hidden"
+                  tabIndex={-1}
+                  aria-disabled="true"
+                  style={{ display: 'none' }}
+                >
+                  VIEW PROFILE
+                </button>
+              )} */}
+            </div>
           </div>
-        </div>
-      </Card>
+        </Card>
     </div>
   );
 }
