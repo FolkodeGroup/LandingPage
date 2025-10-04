@@ -1383,6 +1383,12 @@ picture {
     left: 0;
   }
 
+  /* Evitar overflow horizontal no deseado en móviles causado por elementos absolutos */
+  html, body, #__next {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   .hero-triangles{
     position: absolute;
     bottom: 0;
