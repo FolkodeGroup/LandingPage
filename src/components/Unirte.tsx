@@ -1,5 +1,5 @@
 'use client'
-import ActividadCard from "./ActividadCard";
+
 
 interface Motivo {
   id: string;
@@ -41,17 +41,54 @@ const motivos: Motivo[] = [
 
 export default function Unirte() {
   return (
-    <section id="unirte" className="unirte-section mb-8">
+    <section id="unirte" className="unirte-section mb-8 w-full">
       <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white text-center px-4 py-4 mt-6">¿Por qué unirte al equipo?</h2>
-        <div className="flex flex-nowrap justify-center gap-8 max-w-6xl mx-auto overflow-x-auto div-tamaño">
-        {motivos.map((motivo) => (
-          <div className="min-w-0 card-equipo" key={motivo.id}>
-            <ActividadCard
-              mode={motivo.mode}
-              iconClass={motivo.iconClass}
-              title={motivo.title}
-              items={motivo.items}
-            />
+      <div
+        className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
+        style={{ alignItems: 'stretch' }}
+      >
+  {motivos.map((motivo) => (
+          <div
+            className="card-equipo fade-in"
+            key={motivo.id}
+            style={{
+              background: 'linear-gradient(135deg, rgba(1,69,79,0.70) 0%, rgba(2,81,89,0.70) 60%, rgba(134,168,105,0.30) 100%)',
+              borderRadius: '20px',
+              boxShadow: '0 8px 32px 0 rgba(2,81,89,0.14)',
+              border: '2px solid rgba(134,168,105,0.22)',
+              backdropFilter: 'blur(8px)',
+              padding: '2rem 1.5rem',
+              minHeight: '320px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              transition: 'box-shadow 0.3s, transform 0.3s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.boxShadow = '0 16px 48px 0 rgba(2,81,89,0.22)';
+              e.currentTarget.style.transform = 'scale(1.04)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.boxShadow = '0 8px 32px 0 rgba(2,81,89,0.14)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            <div style={{ width: '100%' }}>
+              <h3
+                className="text-xl md:text-2xl font-extrabold text-white mb-4 text-center drop-shadow-lg"
+                style={{ letterSpacing: '-0.01em' }}
+              >
+                {motivo.title}
+              </h3>
+              <ul className="list-none px-0 text-white text-base md:text-lg text-center" style={{ color: '#e6edf3', fontWeight: 400, lineHeight: '1.6' }}>
+                {motivo.items.map((item, i) => (
+                  <li key={i} className="mb-2 opacity-90">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
