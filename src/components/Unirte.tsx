@@ -1,5 +1,6 @@
-'use client'
 
+"use client"
+import { motion } from 'framer-motion';
 
 interface Motivo {
   id: string;
@@ -40,6 +41,22 @@ const motivos: Motivo[] = [
 ];
 
 export default function Unirte() {
+  // Variantes de animación para cada tarjeta
+  const variants = [
+    {
+      initial: { opacity: 0, x: -60 },
+      whileInView: { opacity: 1, x: 0, transition: { duration: 1.1 } },
+    },
+    {
+      initial: { opacity: 0, y: 60 },
+      whileInView: { opacity: 1, y: 0, transition: { duration: 1.1 } },
+    },
+    {
+      initial: { opacity: 0, x: 60 },
+      whileInView: { opacity: 1, x: 0, transition: { duration: 1.1 } },
+    },
+  ];
+
   return (
     <section id="unirte" className="unirte-section mb-8 w-full">
       <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white text-center px-4 py-4 mt-6">¿Por qué unirte al equipo?</h2>
@@ -47,10 +64,13 @@ export default function Unirte() {
         className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
         style={{ alignItems: 'stretch' }}
       >
-        {motivos.map((motivo) => (
-          <div
-            className="card-equipo fade-in"
+        {motivos.map((motivo, idx) => (
+          <motion.div
+            className="card-equipo"
             key={motivo.id}
+            initial={variants[idx].initial}
+            whileInView={variants[idx].whileInView}
+            viewport={{ once: true, amount: 0.2 }}
             style={{
               background: 'linear-gradient(135deg, rgba(1,69,79,0.70) 0%, rgba(2,81,89,0.70) 60%, rgba(134,168,105,0.30) 100%)',
               borderRadius: '20px',
@@ -74,25 +94,14 @@ export default function Unirte() {
               e.currentTarget.style.transform = 'scale(1)';
             }}
           >
-            {/* Ícono principal superior */}
-            <i className={`${motivo.iconClass} text-[#86A869]`} style={{ fontSize: 50, marginBottom: '1rem' }} />
-
-            <div style={{ width: '100%' }}>
-              <h3
-                className="text-xl md:text-2xl font-extrabold text-white mb-4 text-center drop-shadow-lg"
-                style={{ letterSpacing: '-0.01em' }}
-              >
-                {motivo.title}
-              </h3>
-              <ul className="list-none px-0 text-white text-base md:text-lg text-center" style={{ color: '#e6edf3', fontWeight: 400, lineHeight: '1.6' }}>
-                {motivo.items.map((item, i) => (
-                  <li key={i} className="mb-2 opacity-90">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+            <i className={`${motivo.iconClass} text-5xl mb-4`} />
+            <h3 className="title-equipo text-white text-xl font-bold mb-2 text-center">{motivo.title}</h3>
+            <ul className="text-equipo text-white text-base list-disc list-inside">
+              {motivo.items.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </motion.div>
         ))}
       </div>
     </section>
