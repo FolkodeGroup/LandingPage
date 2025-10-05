@@ -4,7 +4,7 @@ import Andet from '@/assets/images/ProyClientes/Andet.png';
 import Autopartes from '@/assets/images/ProyClientes/Autopartes.png';
 import Luminova from '@/assets/images/ProyClientes/Luminova.png';
 import Revisteria from '@/assets/images/ProyClientes/Revisteria.png';
-
+import Congreso from '@/assets/images/ProyClientes/congreso.png';
 import Image, { StaticImageData } from 'next/image';
 import { motion, useMotionValue } from 'framer-motion';
 import { useRef } from 'react';
@@ -98,11 +98,12 @@ function ClienteCard({ image, title, description, url, category }: ClienteCardPr
 // Ajustes en el componente para asegurar legibilidad y diseño responsivo
 export default function ProyClientes() {
   const proyectos = [
-    { image: RadioGo, title: 'RadioGo', description: 'Página de entretenimiento de Radio', url: 'https://radio-go.vercel.app/', category: 'Web' },
-    { image: Andet, title: 'Andet', description: 'E-commerce de electrodomésticos', url: 'https://demo-andet-ecommerce.onrender.com/', category: 'E-commerce' },
-    { image: Autopartes, title: 'Autopartes', description: 'Software Empresarial de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
-    { image: Luminova, title: 'Luminova', description: 'Software Empresarial de luminarias', url: 'https://luminova.pythonanywhere.com/', category: 'Software' },
-    { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics', url: 'https://revisteria.pythonanywhere.com/', category: 'E-commerce' }
+    { image: Congreso, title: 'Congreso', description: 'Página oficial del Congreso De Logística y Transporte de la Universidad Nacional Guillermo Brown ', url: 'https://congreso-nacional.vercel.app/', category: 'Web' },
+    { image: RadioGo, title: 'RadioGo', description: 'Página de Streaming de radio y entretenimiento', url: 'https://radiogo.com.ar/', category: 'Web' },
+    { image: Andet, title: 'Andet', description: 'E-commerce de productos industriales de servicios eléctricos', url: 'https://demo-andet-ecommerce.onrender.com/', category: 'E-commerce' },
+    { image: Autopartes, title: 'Autopartes', description: 'E-commerce Empresarial de gestión de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
+    { image: Luminova, title: 'Luminova', description: 'Software ERP de ensamblado de luminarias con productos importados', url: 'https://luminova.pythonanywhere.com/', category: 'Software' },
+    { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics de colección', url: 'https://revisteria.pythonanywhere.com/', category: 'E-commerce' }
   ];
 
   return (
