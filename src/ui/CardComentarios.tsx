@@ -9,79 +9,79 @@ const personas = [
     nombre: 'Celina Pereyra',
     puesto: 'FrontEnd Developer',
     comentario: 'Trabajar en Folkode me hizo sentir parte de algo más grande. Aprendí a confiar en el equipo y a disfrutar el proceso creativo compartido.',
-    imagen: '/celi.png',
+  imagen: '/celi.webp',
   },
   {
     nombre: 'Daro Giménez',
     puesto: 'Full Stack Developer',
     comentario: 'La colaboración en Folkode me impulsó a salir de mi zona de confort y descubrir nuevas formas de resolver problemas junto a personas increíbles.',
-    imagen: '/Daro.png',
+  imagen: '/Daro.webp',
   },
   {
     nombre: 'Gabriel Sosa',
     puesto: 'Full Stack Developer',
     comentario: 'En Folkode encontré un ambiente donde cada idea suma. Aprendí que juntos podemos transformar cualquier reto en una oportunidad.',
-    imagen: '/gabrielsosa.png',
+  imagen: '/gabrielsosa.webp',
   },
   {
     nombre: 'Matias Daniel Alessandrello',
     puesto: 'Full Stack Developer',
     comentario: 'El trabajo en equipo en Folkode me enseñó a valorar la diversidad de perspectivas. Ahora cada proyecto se siente más enriquecedor.',
-    imagen: '/matias.png',
+  imagen: '/matias.webp',
   },
   {
     nombre: 'Agustin Ovejero',
     puesto: 'BackEnd Developer',
     comentario: 'Unirme a Folkode me permitió crecer profesionalmente y personalmente. El apoyo constante del equipo hace que cada día sea motivador.',
-    imagen: '/Ovejero.png',
+  imagen: '/Ovejero.webp',
   },
   {
     nombre: 'Lucas Echavarria',
     puesto: 'Backend Developer',
     comentario: 'Colaborar en Folkode me ayudó a mejorar mi comunicación y a entender que el éxito se construye entre todos, paso a paso.',
-    imagen: '/cuqui.png',
+  imagen: '/cuqui.webp',
   },
   {
     nombre: 'Fede Paal',
     puesto: 'FrontEnd Developer',
     comentario: 'En Folkode aprendí que la creatividad florece cuando se comparte. El trabajo colaborativo me inspira a dar lo mejor de mí.',
-    imagen: '/fede.png',
+  imagen: '/fede.webp',
   },
   /* {
     nombre: 'Paula Bigorra',
     puesto: 'BackEnd Developer',
     comentario: 'Ser parte de Folkode me mostró el valor de la confianza y el respeto. Juntos logramos resultados que superan cualquier expectativa.',
-    imagen: '/pau.png',
+  imagen: '/pau.webp',
   }, */
   {
     nombre: 'Mauricio Barreras',
     puesto: 'FrontEnd Developer',
     comentario: 'La experiencia en Folkode me enseñó que el aprendizaje nunca termina. Cada integrante aporta algo único y eso nos hace crecer.',
-    imagen: '/mauri.png',
+  imagen: '/mauri.webp',
   },
   {
     nombre: 'Sasha Porchia',
     puesto: 'FrontEnd Developer',
     comentario: 'Trabajar en equipo en Folkode me dio la libertad de experimentar y aprender de los demás. Hoy disfruto más cada desafío.',
-    imagen: '/sasha.png',
+  imagen: '/sasha.webp',
   },
   {
     nombre: 'Maia Avalos',
     puesto: 'FullStack Developer',
     comentario: 'En Folkode descubrí que la colaboración es la clave para avanzar. El ambiente de apoyo me motiva a seguir mejorando.',
-    imagen: '/Mai.png',
+  imagen: '/Mai.webp',
   },
   {
     nombre: 'Facundo Carrizo',
     puesto: 'Backend Developer',
     comentario: 'Folkode me enseñó que los logros compartidos son los más gratificantes. El trabajo en equipo potencia nuestras capacidades.',
-    imagen: '/Facu.png',
+  imagen: '/Facu.webp',
   },
   {
     nombre: 'Nahuel Dalesio',
     puesto: 'FullStack Developer',
     comentario: 'La cultura colaborativa de Folkode me ayudó a crecer y a confiar en mis ideas. Juntos logramos resultados sorprendentes.',
-    imagen: '/nahue.png',
+  imagen: '/nahue.webp',
   },
 ]
 
@@ -120,7 +120,7 @@ export default function CardComentarios() {
               width={112}
               height={112}
               className="object-cover w-full h-full"
-              priority
+              sizes="(max-width: 640px) 64px, (max-width: 1024px) 96px, 112px"
             />
           </div>
 

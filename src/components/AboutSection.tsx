@@ -25,7 +25,7 @@ export default function AboutSection() {
           {/* Imágenes y cuadrados de colores a la izquierda */}
           <div className="w-full md:w-1/2 flex items-center justify-center relative h-[320px] md:h-[300px] mb-10 md:mb-0 contenedor-imagenes">
             <Image
-              src="/dark-about-img.png"
+              src="/dark-about-img.webp"
               alt="Trabajo en equipo"
               width={400} // Ajustar el ancho para que coincida con el tamaño de la tarjeta
               height={300} // Ajustar la altura para que coincida con el tamaño de la tarjeta

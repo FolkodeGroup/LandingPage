@@ -22,7 +22,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: "member-1",
-    avatar: "/celi.png",
+  avatar: "/celi.webp",
     name: "Celina Pereyra",
     role: "FrontEnd Developer",
     description: "Construyendo soluciones con pasión por la tecnología.",
@@ -36,7 +36,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-2",
-    avatar: "/Daro.png",
+  avatar: "/Daro.webp",
     name: "Daro Giménez",
     role: "Full Stack Developer",
     description: "Creando experiencias de usuario memorables y funcionales.",
@@ -50,7 +50,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-3",
-    avatar: "/gabrielsosa.png",
+  avatar: "/gabrielsosa.webp",
     name: "Gabriel Sosa",
     role: "Full Stack Developer",
     description: "Programar es construir puentes entre ideas y realidad usando lógica y creatividad.",
@@ -65,7 +65,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-4",
-    avatar: "/matias.png",
+  avatar: "/matias.webp",
     name: "Matias Daniel Alessandrello",
     role: "Full Stack Developer",
     description: "Los detalles importan. Cada línea de código cuenta para lograr un producto excepcional.",
@@ -80,7 +80,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-5",
-    avatar: "/Ovejero.png",
+  avatar: "/Ovejero.webp",
     name: "Agustin Ovejero",
     role: "BackEnd Developer",
     description: "Desarrollando soluciones innovadoras con un enfoque en la usabilidad.",
@@ -96,7 +96,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-6",
-    avatar: "/cuqui.png",
+  avatar: "/cuqui.webp",
     name: "Lucas Echavarria",
     role: "Backend Developer",
     description: "El mejor código no es el que funciona, sino el que otros pueden entender y mantener.",
@@ -111,7 +111,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-7",
-    avatar: "/fede.png",
+  avatar: "/fede.webp",
     name: "Fede Paal",
     role: "FrontEnd Developer",
     description: "Cada decisión en el frontend es una decisión sobre la experiencia del usuario",
@@ -125,7 +125,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-8",
-    avatar: "/pau.png",
+  avatar: "/pau.webp",
     name: "Paula Bigorra",
     role: "BackEnd Developer",
     description: "La seguridad no es un extra en backend, es el cimiento.",
@@ -139,7 +139,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-9",
-    avatar: "/mauri.png",
+  avatar: "/mauri.webp",
     name: "Mauricio Barreras",
     role: "FrontEnd Developer",
     description: "Un diseño consistente es la base de la confianza del usuario",
@@ -153,7 +153,7 @@ const teamMembers: TeamMember[] = [
   {
 
     id: "member-10",
-    avatar: "/sasha.png",
+  avatar: "/sasha.webp",
     name: "Sasha Porchia",
     role: "FrontEnd Developer",
     description: "Cada decisión en el frontend es una decisión sobre la experiencia del usuario",
@@ -167,7 +167,7 @@ const teamMembers: TeamMember[] = [
     /* {
 
     id: "member-11",
-    avatar: "/agusgonzalez.png",
+  avatar: "/agusgonzalez.webp",
     name: "Agustin Gonzalez",
     role: "Full Stack Developer",
     description: "Los bugs son mis aliados, te obligan a mejorar",
@@ -181,7 +181,7 @@ const teamMembers: TeamMember[] = [
     {
 
     id: "member-12",
-    avatar: "/kathy.png",
+  avatar: "/kathy.webp",
     name: "Katherine Gomez",
     role: "Full Stack Developer",
     description: "El código da vida a las ideas, la experiencia las hace memorables",
@@ -194,7 +194,7 @@ const teamMembers: TeamMember[] = [
   },
     {
     id: "member-13",
-    avatar: "/nahue.png",
+  avatar: "/nahue.webp",
     name: "Nahue Dalesio",
     role: "Full Stack Developer",
     description: "El software funcionando es la principal medida de progreso.",
@@ -207,7 +207,7 @@ const teamMembers: TeamMember[] = [
   },
     {
     id: "member-14",
-    avatar: "/Mai.png",
+  avatar: "/Mai.webp",
     name: "Maia Avalos",
     role: "Full Stack Developer",
     description: "Nunca me conformo; el progreso constante es la clave del éxito.",
@@ -220,7 +220,7 @@ const teamMembers: TeamMember[] = [
   },
     {
     id: "member-15",
-    avatar: "/Facu.png",
+  avatar: "/Facu.webp",
     name: "Facu Carrizo",
     role: "Full Stack Developer",
     description: "El buen código resuelve problemas, el excelente los previene.",

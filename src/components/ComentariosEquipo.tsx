@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import { motion, useInView } from "framer-motion"
 import CardComentarios from "../ui/CardComentarios"
-import comentarios1 from "@/assets/images/comentarios1.png"
-import comentarios2 from "@/assets/images/comentarios2.png"
-import comentarios3 from "@/assets/images/comentarios3.png"
+import comentarios1 from "@/assets/images/comentarios1.webp"
+import comentarios2 from "@/assets/images/comentarios2.webp"
+import comentarios3 from "@/assets/images/comentarios3.webp"
 
 const images = [comentarios1.src, comentarios2.src, comentarios3.src]
 
@@ -39,16 +40,23 @@ export default function ComentariosEquipo() {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="hidden sm:flex w-full sm:w-1/2 aspect-square items-center justify-center"
           >
-            <motion.img
+            <motion.div
               key={index}
-              src={images[index]}
-              alt={`Equipo ${index + 1}`}
-              className="w-full h-full object-contain rounded-xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-            />
+              className="w-full h-full"
+            >
+              <Image
+                src={images[index]}
+                alt={`Equipo ${index + 1}`}
+                width={600}
+                height={600}
+                className="w-full h-full object-contain rounded-xl"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Columna derecha (slider con animación) */}

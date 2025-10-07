@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from "@/components/Button"
-import heroImage from '@/assets/images/heroimage.png'
-import TrianglesImage from '@/assets/images/trianglesoscuro.png'
+import Image from 'next/image'
+import heroImage from '@/assets/images/heroimage.webp'
+import TrianglesImage from '@/assets/images/trianglesoscuro.webp'
 import Link from "next/link";
 
 export default function HeroSection() {
@@ -30,28 +31,42 @@ export default function HeroSection() {
       style={{ marginTop: navHeight }}
     >
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
-      <motion.img
-        src={TrianglesImage.src}
-        alt="HeroTriangles"
+      <motion.div
         className="hero-triangles absolute bottom-0 right-0 z-[1]"
         initial={{ x: 200, opacity: 0, scale: 0.8 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-      />
+      >
+        <Image
+          src={TrianglesImage.src}
+          alt="HeroTriangles"
+          width={300}
+          height={300}
+          sizes="(max-width: 768px) 120px, 300px"
+          style={{ width: '100%', height: 'auto' }}
+          priority={false}
+        />
+      </motion.div>
 
       <div className="w-full h-full relative">
         {/* Imagen hero completa */}
-        <picture className="w-full h-full">
-          <source media="(max-width: 768px)" srcSet="/PC-Hero-img.png" />
-          <motion.img
+        <motion.div
+          initial={{ scale: 1.2, opacity: 0, scaleX: -1 }}
+          animate={{ scale: 1, opacity: 1, scaleX: -1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="w-full h-full"
+        >
+          <Image
             src={heroImage.src}
             alt="Hero"
             className="hero-img"
-            initial={{ scale: 1.2, opacity: 0, scaleX: -1 }}
-            animate={{ scale: 1, opacity: 1, scaleX: -1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
+            width={1920}
+            height={1080}
+            priority
+            sizes="(max-width: 768px) 100vw, 100vw"
+            style={{ width: '100%', height: '100%' }}
           />
-        </picture>
+        </motion.div>
 
         {/* Textos alineados a la izquierda */}
         <motion.div

@@ -8,37 +8,37 @@ const personas = [
   {
     comment: 'Con Folkode logramos que RadioGo se convirtiera en una plataforma moderna y dinámica. Nos acompañaron en cada etapa, entendiendo la esencia de nuestro proyecto y potenciando la experiencia de nuestros oyentes.',
     author: 'Giuliana Mancuso',
-    avatarUrl: '/images/avatars/giuliana.jpeg',
+  avatarUrl: '/images/avatars/giuliana.webp',
     proyecto: 'RadioGo',
   },
   {
     comment: 'El equipo de Folkode hizo posible que nuestro e-commerce Andet fuera intuitivo y robusto. Nos guiaron en todo momento y resolvieron cada desafío con profesionalismo y cercanía.',
     author: 'Yanina Gomez',
-    avatarUrl: '/images/avatars/yanina.jpeg',
+  avatarUrl: '/images/avatars/yanina.webp',
     proyecto: 'Andet',
   },
   {
     comment: 'La solución empresarial que desarrollaron para Autopartes superó nuestras expectativas. La comunicación fue constante y el resultado, un software que realmente facilita nuestro trabajo diario.',
     author: 'Javier Retamozo',
-    avatarUrl: '/images/avatars/javier.jpeg',
+    avatarUrl: '/images/avatars/javier.webp',
     proyecto: 'Autopartes',
   },
   {
     comment: 'Folkode entendió perfectamente las necesidades de nuestro negocio. El software de luminarias Luminova que crearon es eficiente y fácil de usar, y el proceso fue transparente y colaborativo.',
     author: 'Agustina Ramirez',
-    avatarUrl: '/images/avatars/agustina.jpeg',
+    avatarUrl: '/images/avatars/agustina.webp',
     proyecto: 'Luminova',
   },
   {
     comment: 'Transformaron nuestra tienda en línea La Revisteria en una experiencia ágil y atractiva para los clientes. Nos explicaron cada paso y estuvieron atentos a todos los detalles, logrando un resultado excelente.',
     author: 'Tomás Ochoa',
-    avatarUrl: '/images/avatars/tomas.jpeg',
+    avatarUrl: '/images/avatars/tomas.webp',
     proyecto: 'La Revisteria',
   },
   {
     comment: 'Ahora en la radio todo funciona como debe ser. Y eso, para nosotros, vale oro.',
     author: 'Axel Diaz',
-    avatarUrl: '/images/avatars/axel.jpeg',
+    avatarUrl: '/images/avatars/axel.webp',
     proyecto: 'RadioGo',
   },
 ]

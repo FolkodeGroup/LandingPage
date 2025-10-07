@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="flex flex-col items-center justify-center w-full gap-2">
               <div className="flex items-center justify-center w-full md:w-auto">
                 <Image
-                  src="/folkode-oscuro-no-bg.png"
+                  src="/folkode-oscuro-no-bg.webp"
                   alt="Folkode Logo"
                   width={120}
                   height={120}

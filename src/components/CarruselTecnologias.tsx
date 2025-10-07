@@ -60,6 +60,7 @@ export default function CarruselTecnologias() {
                   alt={tec.nombre}
                   width={40}
                   height={40}
+                  sizes="40px"
                   className="w-10 h-10 mb-1 transition-transform group-hover:scale-110 group-hover:drop-shadow-lg"
                   style={{ filter: "drop-shadow(0 2px 8px #00c6ff)" }}
                 />

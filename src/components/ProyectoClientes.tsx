@@ -1,10 +1,10 @@
 'use client'
-import RadioGo from '@/assets/images/ProyClientes/RadioGo.png';
-import Andet from '@/assets/images/ProyClientes/Andet.png';
-import Autopartes from '@/assets/images/ProyClientes/Autopartes.png';
-import Luminova from '@/assets/images/ProyClientes/Luminova.png';
-import Revisteria from '@/assets/images/ProyClientes/Revisteria.png';
-import Congreso from '@/assets/images/ProyClientes/congreso.png';
+import RadioGo from '@/assets/images/ProyClientes/RadioGo.webp';
+import Andet from '@/assets/images/ProyClientes/Andet.webp';
+import Autopartes from '@/assets/images/ProyClientes/Autopartes.webp';
+import Luminova from '@/assets/images/ProyClientes/Luminova.webp';
+import Revisteria from '@/assets/images/ProyClientes/Revisteria.webp';
+import Congreso from '@/assets/images/ProyClientes/congreso.webp';
 import Image, { StaticImageData } from 'next/image';
 import { motion, useMotionValue } from 'framer-motion';
 import { useRef, useState } from 'react';
@@ -98,7 +98,7 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
             width={image.width}
             height={image.height}
             className="proyecto-img"
-            priority
+            sizes="(max-width: 768px) 90vw, 400px"
           />
         </div>
         <div className="proyecto-info">
@@ -456,6 +456,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
                 alt={title}
                 width={700}
                 height={420}
+                sizes="(max-width: 900px) 90vw, 700px"
                 style={{ 
                   maxWidth: '95%', 
                   maxHeight: '95%', 
@@ -522,6 +523,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
                       alt={`miniatura-${idx}`}
                       width={60}
                       height={36}
+                      sizes="60px"
                       style={{ 
                         borderRadius: 6, 
                         border: idx === imgIdx ? '2px solid #1e6fa3' : '1px solid rgba(255, 255, 255, 0.3)', 
