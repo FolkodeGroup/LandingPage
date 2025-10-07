@@ -2235,6 +2235,7 @@ picture {
 }
 
 .proyectos-contenedor {
+  grid-auto-rows: 1fr;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
@@ -2242,6 +2243,7 @@ picture {
   background-color: rgba(1, 69, 79, 0.4);
   border-radius: 12px;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+  align-items: stretch;
 }
 
 /* Tarjeta de Proyecto */
@@ -2251,12 +2253,13 @@ picture {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 100%;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInProyecto 0.5s ease forwards;
   transition: box-shadow 0.4s cubic-bezier(.4,2,.3,1), transform 0.3s;
+  align-items: stretch;
 }
 
 .proyecto-card:hover {
@@ -2308,8 +2311,9 @@ picture {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   background-color: #161b22;
+  justify-content: flex-end;
 }
 
 .proyecto-titulo {
@@ -2325,6 +2329,7 @@ picture {
   font-size: 1rem;
   line-height: 1.5;
   flex-grow: 1;
+  min-height: 48px;
 }
 
 .proyecto-btn {
@@ -2338,6 +2343,8 @@ picture {
   transition: all 0.2s ease;
   display: inline-block;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: auto;
+  margin-bottom: 0;
 }
 
 .proyecto-btn:hover {
