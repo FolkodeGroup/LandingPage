@@ -255,6 +255,8 @@ export default function TeamMemberSection() {
 
   // Responsivo: 3/2/1
   useEffect(() => {
+    // Debounce para evitar ejecuciones excesivas
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const calcSlidesToShow = () => {
       const w = window.innerWidth;
       if (w < 768) return 1;
@@ -267,9 +269,16 @@ export default function TeamMemberSection() {
         return next;
       });
     };
+    const debouncedApply = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(apply, 120);
+    };
     apply();
-    window.addEventListener('resize', apply);
-    return () => window.removeEventListener('resize', apply);
+    window.addEventListener('resize', debouncedApply);
+    return () => {
+      window.removeEventListener('resize', debouncedApply);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   // Preparar índice inicial (segmento del medio)

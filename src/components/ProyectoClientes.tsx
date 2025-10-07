@@ -123,8 +123,8 @@ const congresoModalData = {
       title: 'Inicio',
       description: 'Portada principal del sitio, acceso rápido a información clave y bienvenida al Congreso.',
       images: [
-        '/images/proyectos/congreso/home/home-1.png',
-        '/images/proyectos/congreso/home/home-2.png',
+        '/images/proyectos/congreso/home/home-1.webp',
+        '/images/proyectos/congreso/home/home-2.webp',
       ],
     },
     {
@@ -137,8 +137,7 @@ const congresoModalData = {
           title: 'Disertantes',
           description: 'Listado y perfiles de los disertantes del congreso.',
           images: [
-            '/images/proyectos/congreso/sobre-el-congreso/disertantes/disertantes.png',
-            
+            '/images/proyectos/congreso/sobre-el-congreso/disertantes/disertantes.webp',
           ],
         },
         {
@@ -146,7 +145,7 @@ const congresoModalData = {
           title: 'Empresas',
           description: 'Empresas participantes y colaboradoras.',
           images: [
-            '/images/proyectos/congreso/sobre-el-congreso/empresas/empresas-1.png',
+            '/images/proyectos/congreso/sobre-el-congreso/empresas/empresas-1.webp',
           ],
         },
         {
@@ -154,7 +153,7 @@ const congresoModalData = {
           title: 'Información General',
           description: 'Detalles generales sobre el evento y su organización.',
           images: [
-            '/images/proyectos/congreso/sobre-el-congreso/informacion-general/sobre-el-congreso.png',
+            '/images/proyectos/congreso/sobre-el-congreso/informacion-general/sobre-el-congreso.webp',
           ],
         },
         {
@@ -162,8 +161,8 @@ const congresoModalData = {
           title: 'Programa',
           description: 'Programa completo del congreso, cronograma y actividades.',
           images: [
-            '/images/proyectos/congreso/sobre-el-congreso/programa/programa-1.png',
-            '/images/proyectos/congreso/sobre-el-congreso/programa/programa-2.png',
+            '/images/proyectos/congreso/sobre-el-congreso/programa/programa-1.webp',
+            '/images/proyectos/congreso/sobre-el-congreso/programa/programa-2.webp',
           ],
         },
       ],
@@ -173,10 +172,10 @@ const congresoModalData = {
       title: 'Registro',
       description: 'Formulario y proceso de inscripción al evento.',
       images: [
-        '/images/proyectos/congreso/registro/registro.png',
-        '/images/proyectos/congreso/registro/registro-1.png',
-        '/images/proyectos/congreso/registro/registro-2.png',
-        '/images/proyectos/congreso/registro/registro-3.png',
+        '/images/proyectos/congreso/registro/registro.webp',
+        '/images/proyectos/congreso/registro/registro-1.webp',
+        '/images/proyectos/congreso/registro/registro-2.webp',
+        '/images/proyectos/congreso/registro/registro-3.webp',
       ],
     },
     {
@@ -184,7 +183,7 @@ const congresoModalData = {
       title: 'Contacto',
       description: 'Información de contacto y canales de comunicación.',
       images: [
-        '/images/proyectos/congreso/contacto/contacto.png',
+        '/images/proyectos/congreso/contacto/contacto.webp',
       ],
     },
     {
@@ -192,10 +191,10 @@ const congresoModalData = {
       title: 'Historia del Campus',
       description: 'Reseña histórica y galería del campus universitario.',
       images: [
-        '/images/proyectos/congreso/historia/historia-1.png',
-        '/images/proyectos/congreso/historia/historia-2.png',
-        '/images/proyectos/congreso/historia/historia-3.png',
-        '/images/proyectos/congreso/historia/historia-4.png',
+        '/images/proyectos/congreso/historia/historia-1.webp',
+        '/images/proyectos/congreso/historia/historia-2.webp',
+        '/images/proyectos/congreso/historia/historia-3.webp',
+        '/images/proyectos/congreso/historia/historia-4.webp',
       ],
     },
   ],

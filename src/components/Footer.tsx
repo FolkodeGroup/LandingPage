@@ -16,6 +16,8 @@ export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Debounce para evitar ejecuciones excesivas
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const onScroll = () => {
       if (!footerRef.current) return;
       const scrollY = window.scrollY;
@@ -33,12 +35,17 @@ export default function Footer() {
         footerRef.current.classList.remove("footer-visible");
       }
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    const debouncedOnScroll = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(onScroll, 120);
+    };
+    window.addEventListener("scroll", debouncedOnScroll, { passive: true });
+    window.addEventListener("resize", debouncedOnScroll);
     onScroll();
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", debouncedOnScroll);
+      window.removeEventListener("resize", debouncedOnScroll);
+      if (timeoutId) clearTimeout(timeoutId);
     };
   }, []);
 

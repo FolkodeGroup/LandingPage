@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
@@ -85,22 +86,27 @@ const personas = [
   },
 ]
 
+
 export default function CardComentarios() {
   const [index, setIndex] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: false })
 
   const siguiente = () => setIndex((prev) => (prev + 1) % personas.length)
   const anterior = () => setIndex((prev) => (prev - 1 + personas.length) % personas.length)
 
   useEffect(() => {
+    if (!isInView) return;
     const intervalo = setInterval(siguiente, 5000)
     return () => clearInterval(intervalo)
-  }, [])
+  }, [isInView])
 
   const actual = personas[index]
 
   return (
     <>
       <div
+        ref={ref}
         className="w-full h-full border-2 rounded-xl p-2 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 bg-white/80 dark:bg-black/40 card-comentarios-equipo"
         style={{ borderColor: '#01454F' }}
       >
