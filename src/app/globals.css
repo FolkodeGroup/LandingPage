@@ -2260,13 +2260,9 @@ picture {
 }
 
 .proyecto-card:hover {
-  box-shadow:
-    0 20px 60px 0 rgba(51,131,183,0.25),
-    0 0 60px 20px #bfff4f,
-    0 0 120px 40px #86ff00,
-    0 0 180px 60px #bfff4f;
-  transform: translateY(-10px) scale(1.5);
-  filter: drop-shadow(0 0 10px #bfff4f) drop-shadow(0 0 16px #86ff00);
+  box-shadow: 0 20px 60px 0 rgba(64, 243, 40, 0.37), 0 4px 24px rgba(51,131,183,0.15);
+  transform: translateY(10px) scale(1.05);
+  filter: none;
 }
 
 @keyframes fadeInProyecto {
