@@ -56,10 +56,11 @@ const Navbar: React.FC = () => {
             <div className="navbar-left-diagonal">
               <Image
                 className="navbar-logo-img fade-in"
-                src="/folkode-oscuro-no-bg.png"
+                src="/folkode-oscuro-no-bg.webp"
                 alt="Folkode Logo"
                 width={180}
                 height={180}
+                sizes="(max-width: 768px) 120px, 180px"
                 style={{ filter: 'drop-shadow(0 2px 12px #86A86988)' }}
               />
             </div>

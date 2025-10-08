@@ -1,14 +1,16 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import Button from "@/components/Button"
-import heroImage from '@/assets/images/heroimage.png'
-import TrianglesImage from '@/assets/images/trianglesoscuro.png'
-import Link from "next/link";
+"use client";
+import { useState, useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
+import Button from '@/components/Button';
+import Link from 'next/link';
+import heroImage from '@/assets/images/heroimage.webp';
+import TrianglesImage from '@/assets/images/trianglesoscuro.webp';
 
 export default function HeroSection() {
   const [navHeight, setNavHeight] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-10% 0px' })
 
   useEffect(() => {
     const navbar = document.querySelector('nav.navbar') as HTMLElement | null
@@ -28,35 +30,50 @@ export default function HeroSection() {
       id="inicio"
       className="relative w-full flex items-center justify-center hero-section min-h-[300px] !pb-0"
       style={{ marginTop: navHeight }}
+      ref={ref}
     >
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
-      <motion.img
-        src={TrianglesImage.src}
-        alt="HeroTriangles"
+      <motion.div
         className="hero-triangles absolute bottom-0 right-0 z-[1]"
         initial={{ x: 200, opacity: 0, scale: 0.8 }}
-        animate={{ x: 0, opacity: 1, scale: 1 }}
+        animate={isInView ? { x: 0, opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeOut" }}
-      />
+      >
+        <Image
+          src={TrianglesImage.src}
+          alt="HeroTriangles"
+          width={300}
+          height={300}
+          sizes="(max-width: 768px) 120px, 300px"
+          style={{ width: '100%', height: 'auto' }}
+          priority={false}
+        />
+      </motion.div>
 
       <div className="w-full h-full relative">
         {/* Imagen hero completa */}
-        <picture className="w-full h-full">
-          <source media="(max-width: 768px)" srcSet="/PC-Hero-img.png" />
-          <motion.img
+        <motion.div
+          initial={{ scale: 1.5, opacity: 0, scaleX: -1 }}
+          animate={isInView ? { scale: 1, opacity: 1, scaleX: -1 } : {}}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="w-full h-full"
+        >
+          <Image
             src={heroImage.src}
             alt="Hero"
             className="hero-img"
-            initial={{ scale: 1.2, opacity: 0, scaleX: -1 }}
-            animate={{ scale: 1, opacity: 1, scaleX: -1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
+            width={1920}
+            height={1080}
+            priority
+            sizes="(max-width: 768px) 100vw, 100vw"
+            style={{ width: '100%', height: '100%' }}
           />
-        </picture>
+        </motion.div>
 
         {/* Textos alineados a la izquierda */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
           className="absolute top-1/2 left-0 -translate-y-1/2 text-left px-4 sm:px-6 md:px-10 lg:px-16 w-full flex justify-start z-[2]"
         >
@@ -73,13 +90,13 @@ export default function HeroSection() {
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1.2 }}
               className="text-white hero-title py-2 text-h1"
               style={{
                 textShadow: '0 2px 12px #01454F88',
                 letterSpacing: '-0.02em',
-                whiteSpace: 'normal', // allow wrapping on small screens
+                whiteSpace: 'normal',
                 width: '100%',
               }}
             >
@@ -88,7 +105,7 @@ export default function HeroSection() {
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 1 }}
               className="hero-text text-lg md:text-xl text-white"
               style={{
@@ -102,7 +119,7 @@ export default function HeroSection() {
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 1 }}
               className="mt-5 flex justify-start"
             >

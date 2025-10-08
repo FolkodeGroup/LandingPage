@@ -1,8 +1,11 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import Image from 'next/image'
 
 export default function AboutSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-10% 0px' });
   return (
     <section className="mt-20 fade-in">
       <h3 className="text-3xl md:text-4xl font-extrabold text-center text-white drop-shadow-lg tracking-tight mb-2">
@@ -25,7 +28,7 @@ export default function AboutSection() {
           {/* Imágenes y cuadrados de colores a la izquierda */}
           <div className="w-full md:w-1/2 flex items-center justify-center relative h-[320px] md:h-[300px] mb-10 md:mb-0 contenedor-imagenes">
             <Image
-              src="/dark-about-img.png"
+              src="/dark-about-img.webp"
               alt="Trabajo en equipo"
               width={400} // Ajustar el ancho para que coincida con el tamaño de la tarjeta
               height={300} // Ajustar la altura para que coincida con el tamaño de la tarjeta
@@ -34,13 +37,13 @@ export default function AboutSection() {
             />
           </div>
           {/* Texto a la derecha */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center px-2 md:px-4">
+          <div className="w-full md:w-1/2 flex flex-col justify-center px-2 md:px-4" ref={ref}>
             <h3 className="titulo-about text-xl md:text-2xl font-bold text-[#86A869] mb-2 tracking-tight">
               Sobre Folkode
             </h3>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="md:text-xl text-white dark:text-gray-300 max-w-2xl mx-auto text-about"
               style={{
@@ -53,7 +56,7 @@ export default function AboutSection() {
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="md:text-xl text-white dark:text-gray-300 max-w-2xl mx-auto text-about mt-4"
               style={{
@@ -71,7 +74,7 @@ export default function AboutSection() {
             </ul>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
               className="md:text-xl text-white dark:text-gray-300 max-w-2xl mx-auto text-about mt-4"
               style={{
