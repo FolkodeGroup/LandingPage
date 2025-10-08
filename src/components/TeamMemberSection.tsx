@@ -3,6 +3,27 @@ import TeamMemberCard from './TeamMemberCard';
 import { useEffect, useRef, useState } from 'react';
 import './TeamSlider.css';
 
+// Utilidad throttle
+function throttle<T extends (...args: unknown[]) => void>(fn: T, wait: number): T {
+  let last = 0;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let lastArgs: Parameters<T>;
+  return function (this: unknown, ...args: Parameters<T>) {
+    const now = Date.now();
+    lastArgs = args;
+    if (now - last >= wait) {
+      last = now;
+      fn.apply(this, args);
+    } else if (!timeout) {
+      timeout = setTimeout(() => {
+        last = Date.now();
+        timeout = null;
+        fn.apply(this, lastArgs);
+      }, wait - (now - last));
+    }
+  } as T;
+}
+
 interface TeamMember {
 
   id: string;
@@ -237,6 +258,7 @@ const teamMembers: TeamMember[] = [
 export default function TeamMemberSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [isHovering, setIsHovering] = useState(false);
@@ -250,13 +272,14 @@ export default function TeamMemberSection() {
     startIndex: 0,
     startTime: 0,
   });
+  const [isInView, setIsInView] = useState(true);
 
   const totalSlides = teamMembers.length;
 
   // Responsivo: 3/2/1
   useEffect(() => {
-    // Debounce para evitar ejecuciones excesivas
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    if (!isInView) return;
+    // Throttle resize
     const calcSlidesToShow = () => {
       const w = window.innerWidth;
       if (w < 768) return 1;
@@ -269,36 +292,52 @@ export default function TeamMemberSection() {
         return next;
       });
     };
-    const debouncedApply = () => {
-      if (timeoutId) clearTimeout(timeoutId);
-      timeoutId = setTimeout(apply, 120);
-    };
+    const throttledApply = throttle(apply, 200);
     apply();
-    window.addEventListener('resize', debouncedApply);
+    window.addEventListener('resize', throttledApply);
     return () => {
-      window.removeEventListener('resize', debouncedApply);
-      if (timeoutId) clearTimeout(timeoutId);
+      window.removeEventListener('resize', throttledApply);
     };
-  }, []);
+  }, [isInView]);
 
   // Preparar índice inicial (segmento del medio)
   useEffect(() => {
+    if (!isInView) return;
     const base = totalSlides; // comienzo del segmento medio
     setIsInstant(true);
     setCurrentIndex(base);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => setIsInstant(false));
     });
-  }, [slidesToShow, totalSlides]);
+  }, [slidesToShow, totalSlides, isInView]);
 
   // Autoplay
   useEffect(() => {
+    if (!isInView) return;
     const id = setInterval(() => {
       if (isHovering || isResettingRef.current) return;
       setCurrentIndex((i) => i + 1);
     }, 4000);
     return () => clearInterval(id);
-  }, [slidesToShow, totalSlides, isHovering]);
+  }, [slidesToShow, totalSlides, isHovering, isInView]);
+
+  // IntersectionObserver para pausar autoplay y listeners fuera de viewport
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    let observer: IntersectionObserver | null = null;
+    const node = sectionRef.current;
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      setIsInView(entries[0].isIntersecting);
+    };
+    observer = new window.IntersectionObserver(handleIntersect, {
+      root: null,
+      threshold: 0.05,
+    });
+    observer.observe(node);
+    return () => {
+      if (observer && node) observer.unobserve(node);
+    };
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((i) => i - 1);
@@ -420,7 +459,7 @@ export default function TeamMemberSection() {
   };
 
   return (
-    <section id="nuestro-equipo" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
+    <section ref={sectionRef} id="nuestro-equipo" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-10 text-center text-white">
           Nuestro Equipo de desarrolladores
