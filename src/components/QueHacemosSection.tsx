@@ -1,4 +1,5 @@
 'use client'
+import React, { useEffect, useRef, useState } from 'react';
 import ActividadCard from './ActividadCard'
 
 interface Actividad {
@@ -66,16 +67,44 @@ const actividades: Actividad[] = [
 
 export default function QueHacemosSection() {
   // Duplicamos la lista para el efecto infinito
-  const listaInfinita = [...actividades, ...actividades]
+  const listaInfinita = [...actividades, ...actividades];
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(true);
+
+  useEffect(() => {
+    if (!marqueeRef.current) return;
+    let observer: IntersectionObserver | null = null;
+    const node = marqueeRef.current;
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting) {
+        setIsInView(true);
+      } else {
+        setIsInView(false);
+      }
+    };
+    observer = new window.IntersectionObserver(handleIntersect, {
+      root: null,
+      threshold: 0.05,
+    });
+    observer.observe(node);
+    return () => {
+      if (observer && node) observer.unobserve(node);
+    };
+  }, []);
 
   return (
-  <section id="servicios" className="my-4 w-full overflow-hidden">
+    <section id="servicios" className="my-4 w-full overflow-hidden">
       <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-10 text-center">
         ¿Qué hacemos?
       </h2>
 
-      <div className="relative w-full overflow-hidden qh-marquee">
-        <div className="qh-track hover:[animation-play-state:paused] will-change-transform">
+      <div ref={marqueeRef} className="relative w-full overflow-hidden qh-marquee">
+        <div
+          className="qh-track hover:[animation-play-state:paused] will-change-transform"
+          style={{
+            animationPlayState: isInView ? 'running' : 'paused',
+          }}
+        >
           {listaInfinita.map((actividad, idx) => (
             <div key={actividad.id + '-' + idx} className="qh-item flex-shrink-0">
               <ActividadCard {...actividad} />
@@ -84,5 +113,5 @@ export default function QueHacemosSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
