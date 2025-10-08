@@ -6,12 +6,35 @@ import Luminova from '@/assets/images/ProyClientes/Luminova.webp';
 import Revisteria from '@/assets/images/ProyClientes/Revisteria.webp';
 import Congreso from '@/assets/images/ProyClientes/congreso.webp';
 import Image, { StaticImageData } from 'next/image';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+// Utilidad simple de throttle tipada correctamente
+function throttle<Args extends unknown[]>(fn: (...args: Args) => void, wait: number): (...args: Args) => void {
+  let last = 0;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let lastArgs: Args;
+  return function(this: unknown, ...args: Args) {
+    const now = Date.now();
+    lastArgs = args;
+    if (now - last >= wait) {
+      last = now;
+      fn.apply(this, args);
+    } else if (!timeout) {
+      timeout = setTimeout(() => {
+        last = Date.now();
+        timeout = null;
+        fn.apply(this, lastArgs);
+      }, wait - (now - last));
+    }
+  };
+}
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
 
 // Componente hijo para la tarjeta con efecto tilt
+
+
+
 
 type ClienteCardProps = {
   image: StaticImageData;
@@ -22,23 +45,9 @@ type ClienteCardProps = {
   onClick?: () => void;
 };
 
-type ModalSection = {
-  key: string;
-  title: string;
-  description: string;
-  images?: string[];
-  subsections?: ModalSection[];
-};
-
-type ModalData = {
-  title: string;
-  sections: ModalSection[];
-};
-
-
-
 function ClienteCard({ image, title, description, url, category, onClick }: ClienteCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: '-40px' });
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
 
@@ -55,13 +64,19 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
     return { rotateX, rotateY };
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!cardRef.current) return;
-    const { rotateX: rx, rotateY: ry } = calcTilt(e, cardRef.current);
-    rotateX.set(rx);
-    rotateY.set(ry);
-  };
-  
+  // Throttle el movimiento del mouse para tilt
+  const throttledMouseMove = useRef<((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | null>(null);
+
+  if (!throttledMouseMove.current) {
+    throttledMouseMove.current = throttle((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!cardRef.current) return;
+      const { rotateX: rx, rotateY: ry } = calcTilt(e, cardRef.current);
+      rotateX.set(rx);
+      rotateY.set(ry);
+    }, 24);
+  }
+  const handleMouseMove = throttledMouseMove.current as (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+
   const handleMouseLeave = () => {
     rotateX.set(0);
     rotateY.set(0);
@@ -79,6 +94,10 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
         rotateX: `${rotateX.get()}deg`,
         rotateY: `${rotateY.get()}deg`,
         transition: 'box-shadow 0.3s',
+        opacity: isInView ? 1 : 0,
+        transform: isInView
+          ? undefined
+          : 'translateY(40px) scale(0.98)',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -113,6 +132,20 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
   );
 }
 
+
+// Tipos para el modal de proyectos
+type ModalSection = {
+  key: string;
+  title: string;
+  description: string;
+  images?: string[];
+  subsections?: ModalSection[];
+};
+
+type ModalData = {
+  title: string;
+  sections: ModalSection[];
+};
 
 // Estructura de datos para el modal del Congreso
 const congresoModalData = {
@@ -229,40 +262,51 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
   };
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '100%',
-        maxWidth: '1400px',
-        paddingLeft: '2rem',
-        paddingRight: '2rem',
-        zIndex: 9999,
-        background: 'none',
-        boxSizing: 'border-box',
-      }}
-      onClick={e => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        minWidth: 0,
-        height: 'auto',
-        minHeight: '600px',
-        maxHeight: '90vh',
-        background: 'linear-gradient(135deg, #0a2342 0%, #163d5c 100%)',
-        borderRadius: 20,
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
-        overflow: 'hidden',
-        border: '1px solid rgba(30, 111, 163, 0.3)',
-        display: 'flex',
-        boxSizing: 'border-box',
-        padding: '1rem',
-      }}>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.22, ease: 'easeInOut' }}
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100%',
+          maxWidth: '1400px',
+          paddingLeft: '2rem',
+          paddingRight: '2rem',
+          zIndex: 9999,
+          background: 'none',
+          boxSizing: 'border-box',
+        }}
+        onClick={e => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
+        <motion.div
+          initial={{ scale: 0.96, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.96, opacity: 0 }}
+          transition={{ duration: 0.22, ease: 'easeInOut' }}
+          style={{
+            position: 'relative',
+            width: '100%',
+            minWidth: 0,
+            height: 'auto',
+            minHeight: '600px',
+            maxHeight: '90vh',
+            background: 'linear-gradient(135deg, #0a2342 0%, #163d5c 100%)',
+            borderRadius: 20,
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
+            overflow: 'hidden',
+            border: '1px solid rgba(30, 111, 163, 0.3)',
+            display: 'flex',
+            boxSizing: 'border-box',
+            padding: '1rem',
+          }}
+        >
         <button 
           style={{ 
             position: 'absolute', 
@@ -300,7 +344,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
           gap: 8, 
           borderRight: '1px solid rgba(30, 111, 163, 0.3)' 
         }}>
-          {data.sections.map((sec, idx) => (
+          {data.sections.map((sec: ModalSection, idx: number) => (
             <div key={sec.key}>
               <button
                 style={{
@@ -335,7 +379,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
               {/* Subsections */}
               {sec.subsections && idx === sectionIdx && (
                 <div style={{ marginLeft: 16, marginTop: 8 }}>
-                  {sec.subsections?.map((sub, sidx) => (
+                  {sec.subsections?.map((sub: ModalSection, sidx: number) => (
                     <button
                       key={sub.key}
                       style={{
@@ -506,7 +550,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
                 gap: 8, 
                 zIndex: 2 
               }}>
-                {images.map((img, idx) => (
+                {images.map((img: string, idx: number) => (
                   <button 
                     key={idx} 
                     onClick={() => setImgIdx(idx)} 
@@ -538,8 +582,9 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
             )}
           </div>
         </main>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
@@ -576,9 +621,11 @@ export default function ProyClientes() {
           <ClienteCard key={index} {...proyecto} />
         ))}
       </div>
-      {modalOpen && modalData && (
-        <ProyectoModal data={modalData} onClose={() => setModalOpen(false)} />
-      )}
+      <AnimatePresence>
+        {modalOpen && modalData && (
+          <ProyectoModal data={modalData} onClose={() => setModalOpen(false)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

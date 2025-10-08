@@ -1,6 +1,7 @@
 
 "use client"
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 interface Motivo {
   id: string;
@@ -41,19 +42,22 @@ const motivos: Motivo[] = [
 ];
 
 export default function Unirte() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-10% 0px' });
+
   // Variantes de animación para cada tarjeta
   const variants = [
     {
       initial: { opacity: 0, x: -60 },
-      whileInView: { opacity: 1, x: 0, transition: { duration: 1.1 } },
+      animate: isInView ? { opacity: 1, x: 0, transition: { duration: 1.1 } } : {},
     },
     {
       initial: { opacity: 0, y: 60 },
-      whileInView: { opacity: 1, y: 0, transition: { duration: 1.1 } },
+      animate: isInView ? { opacity: 1, y: 0, transition: { duration: 1.1 } } : {},
     },
     {
       initial: { opacity: 0, x: 60 },
-      whileInView: { opacity: 1, x: 0, transition: { duration: 1.1 } },
+      animate: isInView ? { opacity: 1, x: 0, transition: { duration: 1.1 } } : {},
     },
   ];
 
@@ -63,14 +67,14 @@ export default function Unirte() {
       <div
         className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
         style={{ alignItems: 'stretch' }}
+        ref={ref}
       >
         {motivos.map((motivo, idx) => (
           <motion.div
             className="card-equipo"
             key={motivo.id}
             initial={variants[idx].initial}
-            whileInView={variants[idx].whileInView}
-            viewport={{ once: true, amount: 0.2 }}
+            animate={variants[idx].animate}
             style={{
               background: 'linear-gradient(135deg, rgba(1,69,79,0.70) 0%, rgba(2,81,89,0.70) 60%, rgba(134,168,105,0.30) 100%)',
               borderRadius: '20px',

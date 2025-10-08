@@ -12,7 +12,7 @@ const images = [comentarios1.src, comentarios2.src, comentarios3.src]
 
 export default function ComentariosEquipo() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: '-10% 0px' })
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function ComentariosEquipo() {
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
               exit={{ opacity: 0, scale: 1.1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
               className="w-full h-full"
