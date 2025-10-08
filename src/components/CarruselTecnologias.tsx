@@ -1,10 +1,12 @@
 
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from 'swiper/types';
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
+import React, { useRef, useEffect, useState } from "react";
 
 // Ejemplo de tecnologías, puedes expandir o modificar según el branding
 const tecnologias = [
@@ -28,12 +30,48 @@ const tecnologias = [
 ];
 
 export default function CarruselTecnologias() {
+  const swiperRef = useRef<SwiperClass | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(true);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    let observer: IntersectionObserver | null = null;
+    const node = containerRef.current;
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      setIsInView(entries[0].isIntersecting);
+    };
+    observer = new window.IntersectionObserver(handleIntersect, {
+      root: null,
+      threshold: 0.05,
+    });
+    observer.observe(node);
+    return () => {
+      if (observer && node) observer.unobserve(node);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!swiperRef.current) return;
+    if (isInView) {
+      swiperRef.current.autoplay?.start?.();
+    } else {
+      swiperRef.current.autoplay?.stop?.();
+    }
+  }, [isInView]);
+
   return (
-    <div className="carrusel-tecnologias w-full py-4 px-2 rounded-xl shadow-lg relative overflow-hidden" style={{ background: '#01454F' }}>
+    <div
+      ref={containerRef}
+      className="carrusel-tecnologias w-full py-4 px-2 rounded-xl shadow-lg relative overflow-hidden"
+      style={{ background: '#01454F' }}
+    >
       {/* Glow esquina inferior izquierda */}
-      <div className="absolute left-0 bottom-0 w-60 h-60 pointer-events-none z-0"
+      <div
+        className="absolute left-0 bottom-0 w-60 h-60 pointer-events-none z-0"
         style={{
-          background: "radial-gradient(ellipse 60% 40% at 0% 90%, #01454F 0%, #01454F00 80%) bottom-"
+          background:
+            "radial-gradient(ellipse 60% 40% at 0% 90%, #01454F 0%, #01454F00 80%) bottom-",
         }}
       />
       <div className="relative z-10">
@@ -47,6 +85,9 @@ export default function CarruselTecnologias() {
             320: { slidesPerView: 2 },
             640: { slidesPerView: 4 },
             1024: { slidesPerView: 6 },
+          }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
           }}
         >
           {tecnologias.map((tec) => (
@@ -63,6 +104,7 @@ export default function CarruselTecnologias() {
                   sizes="40px"
                   className="w-10 h-10 mb-1 transition-transform group-hover:scale-110 group-hover:drop-shadow-lg"
                   style={{ filter: "drop-shadow(0 2px 8px #00c6ff)" }}
+                  loading="lazy"
                 />
                 <span className="text-white text-xs font-medium group-hover:text-[#00c6ff] transition-colors">
                   {tec.nombre}
