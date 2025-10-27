@@ -8,7 +8,7 @@ const AccordionSection = ({ title, children, defaultOpen = false }: { title: str
   return (
     <div className="mb-2 w-full">
       <button
-        className={`w-full flex justify-between items-center px-3 py-2 md:px-4 md:py-3 rounded-lg bg-[#01454F]/80 text-left font-semibold text-base md:text-lg text-[#86A869] transition-colors focus:outline-none focus:ring-2 focus:ring-[#86A869] ${open ? 'shadow-lg' : ''}`}
+        className={`w-full flex justify-between items-center px-3 py-2 md:px-4 md:py-3 rounded-lg bg-[#01454F]/80 text-left font-semibold text-base md:text-lg text-[#86A869] transition-colors focus:outline-none focus:ring-2 focus:ring-[#86A869] ${open ? 'shadow-lg' : 'cursor-pointer'} cursor-pointer`}
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
