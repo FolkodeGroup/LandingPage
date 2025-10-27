@@ -92,6 +92,27 @@ export default function CardComentarios() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false })
 
+  // Touch swipe refs
+  const touchStartX = useRef<number | null>(null)
+  const touchCurrentX = useRef<number | null>(null)
+  const SWIPE_THRESHOLD = 50 // px
+
+  // Detect mobile to enable swipe only on responsive mobile
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 768)
+      }
+    }
+    // Usar requestAnimationFrame para evitar forzar layout
+    requestAnimationFrame(() => {
+      check()
+    })
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   const siguiente = () => setIndex((prev) => (prev + 1) % personas.length)
   const anterior = () => setIndex((prev) => (prev - 1 + personas.length) % personas.length)
 
@@ -107,6 +128,27 @@ export default function CardComentarios() {
     <>
       <div
         ref={ref}
+        {...(isMobile
+          ? {
+              onTouchStart: (e: React.TouchEvent<HTMLDivElement>) => {
+                touchStartX.current = e.touches[0].clientX
+                touchCurrentX.current = null
+              },
+              onTouchMove: (e: React.TouchEvent<HTMLDivElement>) => {
+                touchCurrentX.current = e.touches[0].clientX
+              },
+              onTouchEnd: () => {
+                if (touchStartX.current === null || touchCurrentX.current === null) return
+                const delta = touchCurrentX.current - touchStartX.current
+                if (Math.abs(delta) > SWIPE_THRESHOLD) {
+                  if (delta < 0) siguiente()
+                  else anterior()
+                }
+                touchStartX.current = null
+                touchCurrentX.current = null
+              },
+            }
+          : {})}
         className="w-full h-full border-2 rounded-xl p-2 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 bg-white/80 dark:bg-black/40 card-comentarios-equipo"
         style={{ borderColor: '#01454F' }}
       >

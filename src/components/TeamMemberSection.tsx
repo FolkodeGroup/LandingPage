@@ -43,6 +43,19 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: "member-1",
+  avatar: "/laura-gimenez.webp",
+    name: "Laura Giménez",
+    role: "FrontEnd Developer",
+    description: "Apasionada por crear experiencias digitales memorables que conectan personas y tecnología.",
+    links: {
+      github: 'https://github.com/Laura-gim',
+      /* linkedin: 'https://www.linkedin.com/in/celina-pereyra', */
+      portfolio: '#',
+    },
+    mode: "dark",
+  },
+  {
+    id: "member-1",
   avatar: "/celi.webp",
     name: "Celina Pereyra",
     role: "FrontEnd Developer",

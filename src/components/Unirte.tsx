@@ -81,8 +81,7 @@ export default function Unirte() {
               boxShadow: '0 8px 32px 0 rgba(2,81,89,0.14)',
               border: '2px solid rgba(134,168,105,0.22)',
               backdropFilter: 'blur(8px)',
-              padding: '2rem 1.5rem',
-              minHeight: '400px',
+              /* padding and minHeight moved to CSS (.card-equipo) for responsive control */
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
