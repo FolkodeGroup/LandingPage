@@ -86,6 +86,47 @@ const ClientComent: React.FC = () => {
 
   const actual = personas[index]
 
+  // Touch swipe handling
+  const touchStartX = useRef<number | null>(null)
+  const touchCurrentX = useRef<number | null>(null)
+  const SWIPE_THRESHOLD = 50
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchCurrentX.current = null
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchCurrentX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchCurrentX.current === null) return
+    const delta = touchCurrentX.current - touchStartX.current
+    if (Math.abs(delta) > SWIPE_THRESHOLD) {
+      if (delta < 0) siguiente()
+      else anterior()
+    }
+    touchStartX.current = null
+    touchCurrentX.current = null
+  }
+
+  // Detect mobile to enable swipe only on responsive mobile
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 768)
+      }
+    }
+    // Usar requestAnimationFrame para evitar forzar layout
+    requestAnimationFrame(() => {
+      check()
+    })
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <>
       <div>
@@ -93,6 +134,13 @@ const ClientComent: React.FC = () => {
       </div>
       <div
         ref={sectionRef}
+        {...(isMobile
+          ? {
+              onTouchStart: handleTouchStart,
+              onTouchMove: handleTouchMove,
+              onTouchEnd: handleTouchEnd,
+            }
+          : {})}
         className="max-w-4xl w-full h-full border-0 p-6 flex flex-col items-center justify-center mx-auto transition-all duration-300 relative rounded-lg"
         style={{ backgroundColor: '#fff', minHeight: '13rem'}}
       >

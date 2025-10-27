@@ -9,9 +9,13 @@ interface RevealProps {
   y?: number;
 }
 
+
 export default function Reveal({ children, delay = 0.15, y = 40 }: RevealProps) {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+  // Detectar si es móvil
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  // triggerOnce solo en desktop
+  const [ref, inView] = useInView({ triggerOnce: !isMobile, threshold: 0.15 });
 
   useEffect(() => {
     if (inView) {
@@ -20,8 +24,11 @@ export default function Reveal({ children, delay = 0.15, y = 40 }: RevealProps) 
         y: 0,
         transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
       });
+    } else if (isMobile) {
+      // Si sale del viewport en mobile, reiniciar animación
+      controls.start({ opacity: 0, y });
     }
-  }, [controls, inView, delay]);
+  }, [controls, inView, delay, y, isMobile]);
 
   return (
     <motion.div

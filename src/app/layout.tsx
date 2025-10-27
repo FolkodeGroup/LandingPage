@@ -22,8 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="dark" style={{ fontFamily: "'Roboto', sans-serif" }}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="dark" style={{ fontFamily: "'Roboto', sans-serif" }} suppressHydrationWarning>
         <div id="main-content" className="main-content-with-footer">
           <Navbar />
           <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>{children}</main>

@@ -190,6 +190,32 @@ html, body {
   }
 }
 
+/* Estilos para las cards de la sección Unirte (card-equipo) */
+.card-equipo {
+  background: linear-gradient(135deg, rgba(1,69,79,0.70) 0%, rgba(2,81,89,0.70) 60%, rgba(134,168,105,0.30) 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(2,81,89,0.14);
+  border: 2px solid rgba(134,168,105,0.22);
+  backdrop-filter: blur(8px);
+  padding: 2rem 1.5rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+@media (max-width: 768px) {
+  .card-equipo {
+    padding: 1rem 0.75rem;
+    min-height: 220px;
+    border-radius: 16px;
+    margin: 0.5rem auto;
+  }
+}
+
+
 /* Animaciones personalizadas para tarjetas de Unirte */
 .slide-in-left {
   opacity: 0;
