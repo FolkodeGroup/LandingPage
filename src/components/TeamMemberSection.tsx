@@ -213,20 +213,6 @@ const teamMembers: TeamMember[] = [
     mode: "dark",
   }, */
     {
-
-    id: "member-12",
-  avatar: "/kathy.webp",
-    name: "Katherine Gomez",
-    role: "Full Stack Developer",
-    description: "El código da vida a las ideas, la experiencia las hace memorables",
-    links: {
-      github: 'https://github.com/KLGomez',
-      linkedin: 'https://www.linkedin.com/in/katherinelujangomez',
-      portfolio: 'https://portfoliokatherinegomez.netlify.app/',
-    },
-    mode: "dark",
-  },
-    {
     id: "member-13",
   avatar: "/nahue.webp",
     name: "Nahue Dalesio",
