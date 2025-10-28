@@ -17,7 +17,7 @@ export default function AboutSection() {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <div
-          className="w-full mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-16 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl p-4 md:p-12"
+          className="w-full mx-auto flex item-strech flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-16 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl p-4 md:p-12"
           style={{
             boxShadow: '0 8px 32px 0 rgba(2,81,89,0.14)',
             border: '2px solid rgba(134,168,105,0.22)',
@@ -26,13 +26,13 @@ export default function AboutSection() {
           }}
         >
           {/* Imagen a la izquierda en desktop, arriba en mobile */}
-          <div className="w-full md:w-1/2 flex items-center justify-center relative h-[220px] md:h-[300px] mb-6 md:mb-0 contenedor-imagenes">
+          <div className="self-center md:w-1/2 flex items-center relative mb-6 md:mb-0" >
             <Image
               src="/dark-about-img.webp"
               alt="Trabajo en equipo"
-              width={340}
+              width={220}
               height={220}
-              className="rounded-xl shadow-lg border border-white/20"
+              className="w-full h-full object-cover max-wrounded-xl shadow-lg border border-white/20"
               style={{ objectFit: 'cover', boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)' }}
             />
           </div>
