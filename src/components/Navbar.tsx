@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <nav className="navbar fixed top-0 left-0 w-full z-50 fade-in"
+    <nav className="navbar sticky top-0 left-0 w-full z-50 fade-in"
       style={{
         background: 'linear-gradient(90deg, rgba(1,69,79,0.92) 0%, rgba(2,81,89,0.92) 100%)',
         backdropFilter: 'blur(8px)',
