@@ -33,7 +33,7 @@ const ChatbotWidget: React.FC = () => {
       <button
         onClick={() => setOpen((v) => !v)}
         ref={floatButtonRef}
-        className="fixed bottom-6 right-6 z-[1000] flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-br from-brand to-teal-700 text-white shadow-xl hover:scale-110 transition-transform duration-200 border-4 border-white/80 focus:outline-none focus:ring-4 focus:ring-brand/40"
+        className=" z-[1000] flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-br from-brand to-teal-700 text-white shadow-xl hover:scale-110 transition-transform duration-200 border-4 border-white/80 focus:outline-none focus:ring-4 focus:ring-brand/40 cursor-pointer"
         aria-label={open ? 'Cerrar chatbot' : 'Abrir chatbot'}
         style={{ boxShadow: '0 6px 32px 0 rgba(13,148,136,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10)' }}
       >
@@ -43,13 +43,13 @@ const ChatbotWidget: React.FC = () => {
       {/* Widget flotante */}
       {open && (
         <div
-          className="fixed right-6 z-[1000] w-[380px] max-w-[98vw] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border"
+          className="z-[1000] w-[380px] max-w-[98vw] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border absolute"
           style={{
             // keep the widget from overflowing the viewport: use the smaller of 600px or the available viewport height minus header/footer space
             height: 'min(600px, calc(100vh - 96px))',
             maxHeight: 'calc(100vh - 96px)',
             // ensure it sits above the floating button and device safe areas
-            bottom: '6rem',
+            bottom: '100px',
             paddingBottom: 'env(safe-area-inset-bottom)',
           }}
         >
@@ -63,7 +63,7 @@ const ChatbotWidget: React.FC = () => {
             }}
             aria-label="Cerrar chat"
             title="Cerrar"
-            className="absolute top-4 right-4 z-[1100] w-9 h-9 flex items-center justify-center rounded-full bg-white/8 dark:bg-black/40 backdrop-blur-sm border border-white/10 dark:border-white/6 text-white hover:scale-105 transform transition shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+            className="z-[1100] w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/8 dark:bg-black/40 backdrop-blur-sm border border-white/10 dark:border-white/6 text-white hover:scale-105 transform transition shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 cursor-pointer"
           >
             <FiX size={18} />
           </button>
