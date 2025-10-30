@@ -28,12 +28,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="dark" style={{ fontFamily: "'Roboto', sans-serif" }} suppressHydrationWarning>
+        <Navbar />
+        <div className="sticky z-[1000] top-270 m-6">
+          <ChatbotWidget/>
+        </div>
         <div id="main-content" className="main-content-with-footer">
-          <Navbar />
+          
           <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>{children}</main>
         </div>
         <Footer />
-        <ChatbotWidget />
+        
       </body>
     </html>
   );
