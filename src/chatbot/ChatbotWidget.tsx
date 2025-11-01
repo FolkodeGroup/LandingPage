@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { FiX } from 'react-icons/fi';
+import Image from 'next/image';
 import App from './App';
 
 const ChatbotWidget: React.FC = () => {
@@ -38,7 +39,14 @@ const ChatbotWidget: React.FC = () => {
           className="chatbot-float-button"
           aria-label={open ? 'Cerrar chatbot' : 'Abrir chatbot'}
         >
-          <span className="text-3xl">💬</span>
+          <Image 
+            src="/images/avatars/petrolito-chat.webp" 
+            alt="Petrolito Chat" 
+            width={60}
+            height={60}
+            className="chatbot-avatar-icon"
+            priority
+          />
         </button>
 
         {/* Widget flotante */}
@@ -88,25 +96,29 @@ const ChatbotWidget: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 64px;
-          height: 64px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
           background: linear-gradient(135deg, #025159 0%, #86A869 100%);
           color: white;
-          border: 4px solid rgba(255, 255, 255, 0.9);
+          border: none;
           box-shadow: 
-            0 8px 24px rgba(2, 81, 89, 0.3),
-            0 4px 12px rgba(0, 0, 0, 0.2);
+            0 8px 24px rgba(2, 81, 89, 0.35),
+            0 4px 12px rgba(0, 0, 0, 0.25),
+            0 0 0 4px rgba(255, 255, 255, 0.15);
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           outline: none;
+          padding: 6px;
+          overflow: hidden;
         }
 
         .chatbot-float-button:hover {
-          transform: scale(1.1);
+          transform: scale(1.1) translateY(-2px);
           box-shadow: 
-            0 12px 32px rgba(2, 81, 89, 0.4),
-            0 6px 16px rgba(0, 0, 0, 0.25);
+            0 12px 32px rgba(2, 81, 89, 0.45),
+            0 6px 16px rgba(0, 0, 0, 0.3),
+            0 0 0 5px rgba(134, 168, 105, 0.25);
         }
 
         .chatbot-float-button:active {
@@ -116,9 +128,22 @@ const ChatbotWidget: React.FC = () => {
         .chatbot-float-button:focus {
           outline: none;
           box-shadow: 
-            0 0 0 4px rgba(2, 81, 89, 0.3),
-            0 8px 24px rgba(2, 81, 89, 0.3),
-            0 4px 12px rgba(0, 0, 0, 0.2);
+            0 0 0 4px rgba(2, 81, 89, 0.5),
+            0 8px 24px rgba(2, 81, 89, 0.35),
+            0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Icono del avatar */
+        :global(.chatbot-avatar-icon) {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .chatbot-float-button:hover :global(.chatbot-avatar-icon) {
+          transform: scale(1.08) rotate(5deg);
         }
 
         /* Ventana del chatbot */
@@ -206,8 +231,8 @@ const ChatbotWidget: React.FC = () => {
           }
 
           .chatbot-float-button {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
           }
 
           .chatbot-widget-window {
@@ -225,9 +250,9 @@ const ChatbotWidget: React.FC = () => {
           }
 
           .chatbot-float-button {
-            width: 52px;
-            height: 52px;
-            border-width: 3px;
+            width: 60px;
+            height: 60px;
+            padding: 5px;
           }
 
           .chatbot-widget-window {
