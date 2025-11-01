@@ -100,7 +100,7 @@ export default function QueHacemosSection() {
 
       <div ref={marqueeRef} className="relative w-full overflow-hidden qh-marquee">
         <div
-          className="qh-track hover:[animation-play-state:paused] will-change-transform"
+          className="qh-track hover:[animation-play-state:paused]"
           style={{
             animationPlayState: isInView ? 'running' : 'paused',
           }}

@@ -11,7 +11,7 @@
 
 .slider-track {
   display: flex;
-  will-change: transform;
+  /* will-change eliminado para evitar advertencias de memoria */
 }
 
 .slide {
