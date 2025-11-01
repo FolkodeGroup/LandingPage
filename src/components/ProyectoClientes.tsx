@@ -226,6 +226,24 @@ const congresoModalData = {
     },
   ],
 };
+
+// Estructura de datos para el modal de RadioGo
+const radioGoModalData = {
+  title: 'RadioGo',
+  sections: [
+    {
+      key: 'galeria',
+      title: 'Galería de Capturas',
+      description: 'Explora la interfaz y funcionalidades de RadioGo a través de estas capturas de pantalla.',
+      images: [
+        '/images/proyectos/radio-go/radio-go-01.webp',
+        '/images/proyectos/radio-go/radio-go-02.webp',
+        '/images/proyectos/radio-go/radio-go-03.webp',
+        '/images/proyectos/radio-go/radio-go-04.webp',
+      ],
+    },
+  ],
+};
 // Modal para mostrar detalles del proyecto
 function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void }) {
   const [sectionIdx, setSectionIdx] = useState<number>(0);
@@ -598,7 +616,17 @@ export default function ProyClientes() {
         setModalOpen(true);
       },
     },
-    { image: RadioGo, title: 'RadioGo', description: 'Página de Streaming de radio y entretenimiento', url: 'https://radiogo.com.ar/', category: 'Web' },
+    {
+      image: RadioGo,
+      title: 'RadioGo',
+      description: 'Página de Streaming de radio y entretenimiento',
+      url: 'https://radiogo.com.ar/',
+      category: 'Web',
+      onClick: () => {
+        setModalData(radioGoModalData);
+        setModalOpen(true);
+      },
+    },
     { image: Andet, title: 'Andet', description: 'E-commerce de productos industriales de servicios eléctricos', url: 'https://demo-andet-ecommerce.onrender.com/', category: 'E-commerce' },
     { image: Autopartes, title: 'Autopartes', description: 'E-commerce Empresarial de gestión de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
     { image: Luminova, title: 'Luminova', description: 'Software ERP de ensamblado de luminarias con productos importados', url: 'https://luminova.pythonanywhere.com/', category: 'Software' },
