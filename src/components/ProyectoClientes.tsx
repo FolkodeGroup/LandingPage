@@ -647,15 +647,17 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
               <Image
                 src={images[imgIdx]}
                 alt={title}
-                width={700}
-                height={420}
-                sizes="(max-width: 900px) 90vw, 700px"
-                style={{ 
-                  maxWidth: '95%', 
-                  maxHeight: '95%', 
-                  borderRadius: 12, 
+                width={1600}
+                height={900}
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '70vh',
+                  borderRadius: 16,
                   objectFit: 'contain',
-                  background: '#000000'
+                  background: '#000000',
+                  boxShadow: '0 8px 32px 0 rgba(2,81,89,0.14)'
                 }}
               />
             ) : (
