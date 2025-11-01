@@ -147,10 +147,10 @@ const ChatbotWidget: React.FC = () => {
 
         /* Ventana del chatbot */
         .chatbot-widget-window {
-          width: 400px;
-          max-width: calc(100vw - 48px);
-          height: 600px;
-          max-height: calc(100vh - 120px);
+          width: 440px;
+          max-width: calc(100vw - 24px);
+          height: 680px;
+          max-height: calc(100vh - 60px);
           border-radius: 24px;
           background: linear-gradient(135deg, #0d1117 0%, #161b22 60%, #025159 100%);
           border: 2px solid rgba(134, 168, 105, 0.3);
@@ -225,40 +225,40 @@ const ChatbotWidget: React.FC = () => {
         /* Responsive - Mobile */
         @media (max-width: 768px) {
           .chatbot-widget-container {
-            bottom: 16px;
-            right: 16px;
-          }
-
-          .chatbot-float-button {
-            width: 68px;
-            height: 68px;
-          }
-
-          .chatbot-widget-window {
-            width: calc(100vw - 32px);
-            height: calc(100vh - 100px);
-            max-height: calc(100vh - 100px);
-            border-radius: 20px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .chatbot-widget-container {
-            bottom: 12px;
-            right: 12px;
+            bottom: 8px;
+            right: 8px;
           }
 
           .chatbot-float-button {
             width: 60px;
             height: 60px;
-            padding: 5px;
           }
 
           .chatbot-widget-window {
-            width: calc(100vw - 24px);
-            height: calc(100vh - 80px);
-            max-height: calc(100vh - 80px);
+            width: calc(100vw - 12px);
+            height: calc(100vh - 40px);
+            max-height: calc(100vh - 40px);
             border-radius: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .chatbot-widget-container {
+            bottom: 4px;
+            right: 4px;
+          }
+
+          .chatbot-float-button {
+            width: 48px;
+            height: 48px;
+            padding: 2px;
+          }
+
+          .chatbot-widget-window {
+            width: calc(100vw - 4px);
+            height: calc(100vh - 8px);
+            max-height: calc(100vh - 8px);
+            border-radius: 12px;
           }
         }
       `}</style>
