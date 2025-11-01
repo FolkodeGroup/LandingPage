@@ -135,7 +135,8 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         };
         setMessages(prev => [...prev, componentMessage]);
       } else {
-        if (speakRef.current) speakRef.current(fullText.replace(/👉\s*\[[^\]]+\]/g, ''));
+        // No speak automático
+        // if (speakRef.current) speakRef.current(fullText.replace(/👉\s*\[[^\]]+\]/g, ''));
       }
     };
 
@@ -202,7 +203,8 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
     };
 
     setMessages(prev => [...prev.filter(m => !m.component), botResponse]);
-    speak(botResponseText);
+    // No speak automático
+    // speak(botResponseText);
 
     setTimeout(() => {
       handleEndChat(details, updatedUser);
@@ -248,7 +250,7 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
           timestamp: Date.now(),
         };
         setMessages([initialMessage]);
-        speak(initialMessageText.replace(/👉\s*\[[^\]]+\]/g, ''));
+        // speak eliminado: solo lectura bajo demanda
       }
     }
   }, [user, language, chatSession, speak]);
@@ -268,7 +270,8 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
         };
         setMessages(prev => [...prev, proactiveMessage]);
         if (isConversationMode) {
-          speak(locales.proactivePrompt[language]);
+          // No speak automático
+          // speak(locales.proactivePrompt[language]);
         }
       }
     }, 60000);
@@ -316,6 +319,34 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
     onSessionRestart();
   };
   
+
+  // Estado para indicar si se está leyendo toda la conversación
+  const [isReadingAll, setIsReadingAll] = useState(false);
+
+  // Nueva función: leer el último mensaje del bot
+  const speakLastBotMessage = () => {
+    const lastBotMsg = [...messages].reverse().find(m => m.sender === 'bot' && m.text);
+    if (lastBotMsg && speakRef.current) {
+      speakRef.current(lastBotMsg.text.replace(/👉\s*\[[^\]]+\]/g, ''));
+    }
+  };
+
+  // Nueva función: leer toda la conversación
+  const speakAllConversation = async () => {
+    if (!speakRef.current || isReadingAll) return;
+    setIsReadingAll(true);
+    // Concatenar todos los mensajes del bot y del usuario, en orden
+    const conversationText = messages
+      .filter(m => m.text && (m.sender === 'bot' || m.sender === 'user'))
+      .map(m => `${m.sender === 'bot' ? (locales.botName[language || 'es']+':') : (user?.name+':')}\n${m.text?.replace(/👉\s*\[[^\]]+\]/g, '')}`)
+      .join('\n\n');
+    try {
+      await speakRef.current(conversationText);
+    } finally {
+      setIsReadingAll(false);
+    }
+  };
+
   return {
     messages,
     isLoading,
@@ -330,5 +361,8 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
     startListening,
     handleViewConversation,
     restartChat,
+    speakLastBotMessage,
+    speakAllConversation,
+    isReadingAll,
   };
 };

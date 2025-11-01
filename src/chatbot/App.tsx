@@ -46,6 +46,9 @@ const App: React.FC = () => {
     startListening,
     handleViewConversation,
     restartChat,
+    speakLastBotMessage,
+    speakAllConversation,
+    isReadingAll,
   } = useChatManager({
     language,
     user,
@@ -180,24 +183,32 @@ const App: React.FC = () => {
     // Use h-full/min-h-0 so App fits when embedded inside a fixed-size widget.
     <div className="bg-gray-100 dark:bg-[#0B1120] text-gray-800 dark:text-gray-200 font-sans h-full min-h-0 flex flex-col md:p-4 selection:bg-brand/70 selection:text-white">
       <div className="w-full h-full bg-white dark:bg-[#111827] md:rounded-2xl shadow-2xl flex flex-col border-gray-200 dark:border-gray-700">
-        {language && user && !showGoodbyeScreen && (
-            <AppHeader
-                language={language}
-                user={user}
-                theme={theme}
-                isAdmin={isAdmin}
-                isChatEnded={isChatEnded}
-                isLoading={isLoading}
-                isSummarizing={isSummarizing}
-                isConversationMode={isConversationMode}
-                locales={locales}
-                onToggleTheme={handleToggleTheme}
-                onToggleConversationMode={handleToggleConversationMode}
-                onExportChat={handleExportChat}
-                onEndChat={() => handleEndChat()}
-                onOpenAnalytics={() => setIsAnalyticsPanelOpen(true)}
-            />
+    {language && user && !showGoodbyeScreen && (
+      <>
+        <AppHeader
+          language={language}
+          user={user}
+          theme={theme}
+          isAdmin={isAdmin}
+          isChatEnded={isChatEnded}
+          isLoading={isLoading}
+          isSummarizing={isSummarizing}
+          isConversationMode={isConversationMode}
+          locales={locales}
+          onToggleTheme={handleToggleTheme}
+          onToggleConversationMode={handleToggleConversationMode}
+          onExportChat={handleExportChat}
+          onEndChat={() => handleEndChat()}
+          onOpenAnalytics={() => setIsAnalyticsPanelOpen(true)}
+          onSpeakAllConversation={speakAllConversation}
+        />
+        {isReadingAll && (
+          <div className="w-full bg-brand text-white text-center py-2 animate-pulse font-bold z-50" style={{position: 'absolute', top: 0, left: 0}}>
+            <span role="status">🔊 Leyendo toda la conversación...</span>
+          </div>
         )}
+      </>
+    )}
         
   <div className="flex-1 flex flex-col overflow-auto bg-white dark:bg-[#111827]">
           {renderAppContent()}

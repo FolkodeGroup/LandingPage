@@ -19,6 +19,7 @@ type AppHeaderProps = {
     onExportChat: () => void;
     onEndChat: () => void;
     onOpenAnalytics: () => void;
+    onSpeakAllConversation?: () => void;
 };
 
 const AppHeader: React.FC<AppHeaderProps> = ({
@@ -36,6 +37,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({
     onExportChat,
     onEndChat,
     onOpenAnalytics,
+    onSpeakAllConversation,
 }) => {
     return (
         <header className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0 bg-transparent backdrop-blur-md/40">
@@ -59,9 +61,13 @@ const AppHeader: React.FC<AppHeaderProps> = ({
                                         <i className="bi bi-bar-chart-line-fill"></i>
                                     </button>
                                 )}
-                                <button onClick={onToggleConversationMode} title={language && locales.conversationModeTooltip[language] ? locales.conversationModeTooltip[language] : ''} className={`p-2 rounded-full transition ${isConversationMode ? 'text-brand bg-brand/20' : 'text-gray-500 dark:text-gray-400 hover:bg-brand/10 dark:hover:bg-brand/20'}`}>
-                                    <i className="bi bi-person-arms-up"></i>
-                                </button>
+                                                                <button
+                                                                    onClick={onSpeakAllConversation}
+                                                                    title={language && locales.conversationModeTooltip[language] ? locales.conversationModeTooltip[language] : ''}
+                                                                    className={`p-2 rounded-full transition ${isConversationMode ? 'text-brand bg-brand/20' : 'text-gray-500 dark:text-gray-400 hover:bg-brand/10 dark:hover:bg-brand/20'}`}
+                                                                >
+                                                                        <i className="bi bi-person-arms-up"></i>
+                                                                </button>
                                 <button onClick={onToggleTheme} title={language && locales.themeToggleTooltip[language] ? locales.themeToggleTooltip[language] : ''} className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-brand/10 dark:hover:bg-brand/20 transition">
                                     <i className={`bi ${theme === 'light' ? 'bi-moon-stars-fill' : 'bi-sun-fill'}`}></i>
                                 </button>
