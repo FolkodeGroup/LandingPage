@@ -23,9 +23,9 @@ export type Locales = typeof locales & {
 export const locales = {
   // App Header
   headerTitle: {
-    en: 'Petrolito',
-    es: 'Petrolito',
-    pt: 'Petrolito',
+    en: 'Folkode',
+    es: 'Folkode',
+    pt: 'Folkode',
   },
   headerSubtitle: {
     en: 'Powered by Gemini',
