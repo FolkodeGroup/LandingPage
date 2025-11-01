@@ -62,7 +62,7 @@ export const backendService = {
     const cleanTranscript = messages.map(msg => {
   const timestamp = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   const content = msg.text || (msg.component ? `[${msg.component}]` : '');
-  return `[${timestamp}] ${msg.sender === 'bot' ? 'FolKode' : user.name}: ${content}`;
+  return `[${timestamp}] ${msg.sender === 'bot' ? 'Petrolito' : user.name}: ${content}`;
     }).join('\n');
 
     const formData = {

@@ -42,8 +42,8 @@ const ChatbotWidget: React.FC = () => {
           <Image 
             src="/images/avatars/petrolito-chat.webp" 
             alt="Petrolito Chat" 
-            width={60}
-            height={60}
+            width={72}
+            height={72}
             className="chatbot-avatar-icon"
             priority
           />
@@ -96,8 +96,8 @@ const ChatbotWidget: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 72px;
-          height: 72px;
+          width: 80px;
+          height: 80px;
           border-radius: 50%;
           background: linear-gradient(135deg, #025159 0%, #86A869 100%);
           color: white;
@@ -109,8 +109,8 @@ const ChatbotWidget: React.FC = () => {
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           outline: none;
-          padding: 6px;
-          overflow: hidden;
+          padding: 0px;
+          overflow: visible;
         }
 
         .chatbot-float-button:hover {
@@ -137,8 +137,7 @@ const ChatbotWidget: React.FC = () => {
         :global(.chatbot-avatar-icon) {
           width: 100% !important;
           height: 100% !important;
-          object-fit: cover;
-          border-radius: 50%;
+          object-fit: contain;
           transition: transform 0.3s ease;
         }
 
@@ -231,8 +230,8 @@ const ChatbotWidget: React.FC = () => {
           }
 
           .chatbot-float-button {
-            width: 64px;
-            height: 64px;
+            width: 68px;
+            height: 68px;
           }
 
           .chatbot-widget-window {

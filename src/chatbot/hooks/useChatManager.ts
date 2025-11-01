@@ -240,7 +240,7 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
 
       if (messagesRef.current.length === 0) {
         setChatStartDate(Date.now());
-        const initialMessageText = locales.initialBotGreeting[language].replace('{name}', user.name);
+        const initialMessageText = locales.chatWelcomeMessage[language].replace('{name}', user.name);
         const initialMessage: Message = {
           id: `bot-${Date.now()}`,
           sender: 'bot',

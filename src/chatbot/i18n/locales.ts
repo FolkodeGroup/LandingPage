@@ -23,9 +23,9 @@ export type Locales = typeof locales & {
 export const locales = {
   // App Header
   headerTitle: {
-    en: 'FolKode',
-    es: 'FolKode',
-    pt: 'FolKode',
+    en: 'Petrolito',
+    es: 'Petrolito',
+    pt: 'Petrolito',
   },
   headerSubtitle: {
     en: 'Powered by Gemini',
@@ -33,9 +33,9 @@ export const locales = {
     pt: 'Desenvolvido com Gemini',
   },
   botName: {
-    en: 'FolKode',
-    es: 'FolKode',
-    pt: 'FolKode',
+    en: 'Petrolito',
+    es: 'Petrolito',
+    pt: 'Petrolito',
   },
   conversationModeTooltip: {
     en: 'Toggle Conversation Mode',
@@ -241,10 +241,10 @@ export const locales = {
     es: 'Ayúdame a definir mi proyecto',
     pt: 'Ajude-me a definir meu projeto'
   },
-  initialBotGreeting: {
-    en: "Hello {name}! I am FolKode, your AI assistant from FolKode. How can I help you plan your digital project today?\n\n👉 [What services do you offer?]\n👉 [Help me define my project]\n👉 [Tell me about your process]",
-    es: "¡Hola {name}! Soy FolKode, tu asistente de IA de FolKode. ¿Cómo puedo ayudarte a planificar tu proyecto digital hoy?\n\n👉 [¿Qué servicios ofrecen?]\n👉 [Ayúdame a definir mi proyecto]\n👉 [Cuéntame sobre su proceso]",
-    pt: "Olá {name}! Eu sou o FolKode, seu assistente de IA da FolKode. Como posso ajudá-lo a planejar seu projeto digital hoje?\n\n👉 [Quais serviços vocês oferecem?]\n👉 [Ajude-me a definir meu projeto]\n👉 [Fale-me sobre o seu processo]",
+  chatWelcomeMessage: {
+    en: "Hello {name}! I am Petrolito, your AI assistant from FolKode. How can I help you plan your digital project today?\n\n👉 [What services do you offer?]\n👉 [Help me define my project]\n👉 [Tell me about your process]",
+    es: "¡Hola {name}! Soy Petrolito, tu asistente de IA de FolKode. ¿Cómo puedo ayudarte a planificar tu proyecto digital hoy?\n\n👉 [¿Qué servicios ofrecen?]\n👉 [Ayúdame a definir mi proyecto]\n👉 [Cuéntame sobre su proceso]",
+    pt: "Olá {name}! Eu sou o Petrolito, seu assistente de IA da FolKode. Como posso ajudá-lo a planejar seu projeto digital hoje?\n\n👉 [Quais serviços vocês oferecem?]\n👉 [Ajude-me a definir meu projeto]\n👉 [Fale-me sobre o seu processo]",
   },
   proactivePrompt: {
     en: "Is there anything else I can help you with?",
