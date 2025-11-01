@@ -62,6 +62,7 @@ const Navbar: React.FC = () => {
                 height={180}
                 sizes="(max-width: 768px) 120px, 180px"
                 style={{ filter: 'drop-shadow(0 2px 12px #86A86988)' }}
+                priority
               />
             </div>
           </div>
