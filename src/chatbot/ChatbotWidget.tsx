@@ -29,80 +29,213 @@ const ChatbotWidget: React.FC = () => {
 
   return (
     <>
-      {/* Botón flotante */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        ref={floatButtonRef}
-        className=" z-[1000] flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-br from-brand to-teal-700 text-white shadow-xl hover:scale-110 transition-transform duration-200 border-4 border-white/80 focus:outline-none focus:ring-4 focus:ring-brand/40 cursor-pointer"
-        aria-label={open ? 'Cerrar chatbot' : 'Abrir chatbot'}
-        style={{ boxShadow: '0 6px 32px 0 rgba(13,148,136,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10)' }}
-      >
-        <span className="text-3xl">💬</span>
-      </button>
-
-      {/* Widget flotante */}
-      {open && (
-        <div
-          className="z-[1000] w-[380px] max-w-[98vw] rounded-3xl flex flex-col overflow-hidden animate-fade-in-up chatbot-gradient-bg chatbot-shadow chatbot-border absolute"
-          style={{
-            // keep the widget from overflowing the viewport: use the smaller of 600px or the available viewport height minus header/footer space
-            height: 'min(600px, calc(100vh - 96px))',
-            maxHeight: 'calc(100vh - 96px)',
-            // ensure it sits above the floating button and device safe areas
-            bottom: '100px',
-            paddingBottom: 'env(safe-area-inset-bottom)',
-          }}
+      {/* Contenedor flotante fijo */}
+      <div className="chatbot-widget-container">
+        {/* Botón flotante */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          ref={floatButtonRef}
+          className="chatbot-float-button"
+          aria-label={open ? 'Cerrar chatbot' : 'Abrir chatbot'}
         >
-          {/* Close button moderno */}
-          <button
-            ref={closeButtonRef}
-            onClick={() => {
-              setOpen(false);
-              // return focus to floating button after close
-              setTimeout(() => floatButtonRef.current?.focus(), 0);
-            }}
-            aria-label="Cerrar chat"
-            title="Cerrar"
-            className="z-[1100] w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/8 dark:bg-black/40 backdrop-blur-sm border border-white/10 dark:border-white/6 text-white hover:scale-105 transform transition shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 cursor-pointer"
-          >
-            <FiX size={18} />
-          </button>
+          <span className="text-3xl">💬</span>
+        </button>
 
-          {/* allow the inner app area to scroll if its content exceeds available space */}
-          <div className="flex-1 overflow-auto">
-            <App />
+        {/* Widget flotante */}
+        {open && (
+          <div className="chatbot-widget-window">
+            {/* Close button moderno */}
+            <div className="chatbot-header">
+              <button
+                ref={closeButtonRef}
+                onClick={() => {
+                  setOpen(false);
+                  // return focus to floating button after close
+                  setTimeout(() => floatButtonRef.current?.focus(), 0);
+                }}
+                aria-label="Cerrar chat"
+                title="Cerrar"
+                className="chatbot-close-button"
+              >
+                <FiX size={18} />
+              </button>
+            </div>
+
+            {/* allow the inner app area to scroll if its content exceeds available space */}
+            <div className="chatbot-content">
+              <App />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* Animación fade-in-up */}
-      <style>{`
-        .animate-fade-in-up { animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .chatbot-gradient-bg {
-          background: linear-gradient(135deg, #18243a 0%, #22314d 60%, #0d9488 100%) !important;
+      {/* Estilos del chatbot */}
+      <style jsx>{`
+        /* Contenedor principal fijo */
+        .chatbot-widget-container {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 99999; /* Aumentado de 9999 a 99999 */
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 16px;
         }
-        @media (prefers-color-scheme: light) {
-          .chatbot-gradient-bg {
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2f1 60%, #0d9488 100%) !important;
+
+        /* Botón flotante */
+        .chatbot-float-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #025159 0%, #86A869 100%);
+          color: white;
+          border: 4px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 
+            0 8px 24px rgba(2, 81, 89, 0.3),
+            0 4px 12px rgba(0, 0, 0, 0.2);
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+          outline: none;
+        }
+
+        .chatbot-float-button:hover {
+          transform: scale(1.1);
+          box-shadow: 
+            0 12px 32px rgba(2, 81, 89, 0.4),
+            0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .chatbot-float-button:active {
+          transform: scale(1.05);
+        }
+
+        .chatbot-float-button:focus {
+          outline: none;
+          box-shadow: 
+            0 0 0 4px rgba(2, 81, 89, 0.3),
+            0 8px 24px rgba(2, 81, 89, 0.3),
+            0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ventana del chatbot */
+        .chatbot-widget-window {
+          width: 400px;
+          max-width: calc(100vw - 48px);
+          height: 600px;
+          max-height: calc(100vh - 120px);
+          border-radius: 24px;
+          background: linear-gradient(135deg, #0d1117 0%, #161b22 60%, #025159 100%);
+          border: 2px solid rgba(134, 168, 105, 0.3);
+          box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 8px 32px rgba(2, 81, 89, 0.3);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          animation: slideInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
           }
         }
-        .chatbot-shadow {
-          box-shadow: 0 12px 48px 0 rgba(13, 148, 136, 0.18), 0 2px 16px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.08) !important;
+
+        /* Header del chatbot */
+        .chatbot-header {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 12px 16px;
+          background: rgba(2, 81, 89, 0.5);
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(134, 168, 105, 0.2);
         }
-        .chatbot-border {
-          border: 1.5px solid rgba(255,255,255,0.22) !important;
-          box-shadow: 0 0 0 2.5px rgba(13,148,136,0.10) inset !important;
+
+        /* Botón de cerrar */
+        .chatbot-close-button {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          outline: none;
         }
-        @media (prefers-color-scheme: dark) {
-          .chatbot-border {
-            border: 1.5px solid rgba(255,255,255,0.10) !important;
-            box-shadow: 0 0 0 2.5px rgba(13,148,136,0.13) inset !important;
+
+        .chatbot-close-button:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: scale(1.1);
+        }
+
+        .chatbot-close-button:active {
+          transform: scale(0.95);
+        }
+
+        .chatbot-close-button:focus {
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(2, 81, 89, 0.4);
+        }
+
+        /* Contenido del chatbot */
+        .chatbot-content {
+          flex: 1;
+          overflow: auto;
+          background: transparent;
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+          .chatbot-widget-container {
+            bottom: 16px;
+            right: 16px;
+          }
+
+          .chatbot-float-button {
+            width: 56px;
+            height: 56px;
+          }
+
+          .chatbot-widget-window {
+            width: calc(100vw - 32px);
+            height: calc(100vh - 100px);
+            max-height: calc(100vh - 100px);
+            border-radius: 20px;
           }
         }
-        /* Forzar prioridad sobre Tailwind y dark: */
-        .chatbot-gradient-bg, .chatbot-gradient-bg * {
-          background-blend-mode: normal !important;
+
+        @media (max-width: 480px) {
+          .chatbot-widget-container {
+            bottom: 12px;
+            right: 12px;
+          }
+
+          .chatbot-float-button {
+            width: 52px;
+            height: 52px;
+            border-width: 3px;
+          }
+
+          .chatbot-widget-window {
+            width: calc(100vw - 24px);
+            height: calc(100vh - 80px);
+            max-height: calc(100vh - 80px);
+            border-radius: 16px;
+          }
         }
       `}</style>
     </>

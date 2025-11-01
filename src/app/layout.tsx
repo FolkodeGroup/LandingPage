@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "@/chatbot/ChatbotWidget";
 import "normalize.css";
 
 export const metadata: Metadata = {
@@ -28,13 +29,11 @@ export default function RootLayout({
       </head>
       <body className="dark" style={{ fontFamily: "'Roboto', sans-serif" }} suppressHydrationWarning>
         <Navbar />
-        {/* ChatbotWidget eliminado completamente */}
         <div id="main-content" className="main-content-with-footer">
-          
           <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>{children}</main>
         </div>
         <Footer />
-        
+        <ChatbotWidget /> {/* Ya está correctamente fuera del main-content */}
       </body>
     </html>
   );
