@@ -117,9 +117,7 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
         <div className="proyecto-info">
           <h3 className="proyecto-titulo">{title}</h3>
           <p className="proyecto-desc">{description}</p>
-          <a href={url} target="_blank" rel="noopener noreferrer" className="proyecto-btn" onClick={e => e.stopPropagation()}>
-            Ver Proyecto
-          </a>
+          {/* El botón se moverá al modal */}
         </div>
       </div>
     </motion.div>
@@ -140,6 +138,50 @@ type ModalData = {
   title: string;
   sections: ModalSection[];
 };
+// Estructura de datos para el modal de Andet
+const andetModalData = {
+  title: 'Andet',
+  sections: [
+    {
+      key: 'galeria',
+      title: 'Galería de Capturas',
+      description: 'Visualiza la experiencia y funcionalidades de Andet a través de estas capturas de pantalla.',
+      images: [
+        '/images/proyectos/andet/andet-01.webp',
+        '/images/proyectos/andet/andet-02.webp',
+        '/images/proyectos/andet/andet-03.webp',
+        '/images/proyectos/andet/andet-04.webp',
+        '/images/proyectos/andet/andet-05.webp',
+        '/images/proyectos/andet/andet-06.webp',
+        '/images/proyectos/andet/andet-07.webp',
+      ],
+    },
+  ],
+};
+
+// Estructura de datos para el modal de La Revisteria
+const revisteriaModalData = {
+  title: 'La Revisteria',
+  sections: [
+    {
+      key: 'galeria',
+      title: 'Galería de Capturas',
+      description: 'Descubre la experiencia de usuario y las funcionalidades de La Revisteria a través de estas capturas de pantalla.',
+      images: [
+        '/images/proyectos/revisteria/revisteria-01.webp',
+        '/images/proyectos/revisteria/revisteria-02.webp',
+        '/images/proyectos/revisteria/revisteria-03.webp',
+        '/images/proyectos/revisteria/revisteria-04.webp',
+        '/images/proyectos/revisteria/revisteria-05.webp',
+        '/images/proyectos/revisteria/revisteria-06.webp',
+        '/images/proyectos/revisteria/revisteria-07.webp',
+        '/images/proyectos/revisteria/revisteria-08.webp',
+        '/images/proyectos/revisteria/revisteria-09.webp',
+      ],
+    },
+  ],
+};
+
 
 // Estructura de datos para el modal del Congreso
 const congresoModalData = {
@@ -256,6 +298,17 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
   const images = isSubsection ? subsection?.images ?? [] : section.images ?? [];
   const description = isSubsection ? subsection?.description ?? '' : section.description;
   const title = isSubsection ? subsection?.title ?? '' : section.title;
+
+  // Obtener el link del proyecto según el título del modal
+  const projectLinks: Record<string, string> = {
+    'Congreso de Logística y Transporte': 'https://www.congresologistica.unab.edu.ar/',
+    'RadioGo': 'https://radiogo.com.ar/',
+    'Andet': 'https://demo-andet-ecommerce.onrender.com/',
+    'Autopartes': 'https://web-autopartes.vercel.app/',
+    'Luminova': 'https://luminova.pythonanywhere.com/',
+    'La Revisteria': 'https://revisteria.pythonanywhere.com/'
+  };
+  const projectUrl = projectLinks[data.title] || '';
 
 
   // Navegación de imágenes
@@ -593,6 +646,34 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
               </div>
             )}
           </div>
+        {/* Botón Ver Proyecto debajo del slider */}
+        {projectUrl && (
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: 24 }}>
+            <a
+              href={projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="proyecto-btn"
+              style={{
+                fontSize: 18,
+                padding: '12px 36px',
+                borderRadius: 8,
+                background: 'linear-gradient(90deg, #3383b7 0%, #86A869 100%)',
+                color: '#fff',
+                fontWeight: 600,
+                boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)',
+                textDecoration: 'none',
+                marginTop: 8,
+                transition: 'background 0.2s, box-shadow 0.2s',
+                letterSpacing: '0.5px',
+                textAlign: 'center',
+                minWidth: 180
+              }}
+            >
+              Ver Proyecto
+            </a>
+          </div>
+        )}
         </main>
         </motion.div>
       </motion.div>
@@ -627,10 +708,30 @@ export default function ProyClientes() {
         setModalOpen(true);
       },
     },
-    { image: Andet, title: 'Andet', description: 'E-commerce de productos industriales de servicios eléctricos', url: 'https://demo-andet-ecommerce.onrender.com/', category: 'E-commerce' },
+    {
+      image: Andet,
+      title: 'Andet',
+      description: 'E-commerce de productos industriales de servicios eléctricos',
+      url: 'https://demo-andet-ecommerce.onrender.com/',
+      category: 'E-commerce',
+      onClick: () => {
+        setModalData(andetModalData);
+        setModalOpen(true);
+      },
+    },
     { image: Autopartes, title: 'Autopartes', description: 'E-commerce Empresarial de gestión de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
     { image: Luminova, title: 'Luminova', description: 'Software ERP de ensamblado de luminarias con productos importados', url: 'https://luminova.pythonanywhere.com/', category: 'Software' },
-    { image: Revisteria, title: 'La Revisteria', description: 'E-commerce de libros y cómics de colección', url: 'https://revisteria.pythonanywhere.com/', category: 'E-commerce' }
+    {
+      image: Revisteria,
+      title: 'La Revisteria',
+      description: 'E-commerce de libros y cómics de colección',
+      url: 'https://revisteria.pythonanywhere.com/',
+      category: 'E-commerce',
+      onClick: () => {
+        setModalData(revisteriaModalData);
+        setModalOpen(true);
+      },
+    }
   ];
   return (
     <section id="proyectos" className="proyectos-seccion">
