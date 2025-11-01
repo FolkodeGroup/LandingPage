@@ -35,9 +35,9 @@ export default function HeroSection() {
       {/* Imagen del triángulo decorativo - ahora FUERA del contenedor */}
       <motion.div
         className="hero-triangles absolute bottom-0 right-0 z-[1]"
-        initial={{ x: 200, opacity: 0, scale: 0.8 }}
-        animate={isInView ? { x: 0, opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         <Image
           src={TrianglesImage.src}
@@ -53,9 +53,9 @@ export default function HeroSection() {
       <div className="w-full h-full relative">
         {/* Imagen hero completa */}
         <motion.div
-          initial={{ scale: 1.5, opacity: 0, scaleX: -1 }}
-          animate={isInView ? { scale: 1, opacity: 1, scaleX: -1 } : {}}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1, ease: 'easeOut' }}
           className="w-full h-full"
         >
           <Image
@@ -72,9 +72,9 @@ export default function HeroSection() {
 
         {/* Textos alineados a la izquierda */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="absolute top-1/2 left-0 -translate-y-1/2 text-left px-4 sm:px-6 md:px-10 lg:px-16 w-full flex justify-start z-[2]"
         >
           <div

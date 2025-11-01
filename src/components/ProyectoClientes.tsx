@@ -88,22 +88,16 @@ function ClienteCard({ image, title, description, url, category, onClick }: Clie
       ref={cardRef}
       style={{
         zIndex: 0,
-        willChange: 'transform',
         perspective: 1000,
         cursor: onClick ? 'pointer' : 'default',
-        rotateX: `${rotateX.get()}deg`,
-        rotateY: `${rotateY.get()}deg`,
-        transition: 'box-shadow 0.3s',
+        transition: 'box-shadow 0.3s, transform 0.3s',
         opacity: isInView ? 1 : 0,
-        transform: isInView
-          ? undefined
-          : 'translateY(40px) scale(0.98)',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       whileHover={{
-        scale: 1.04,
+        scale: 1.02,
         boxShadow: '0 20px 60px 0 rgba(51,131,183,0.25)',
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}

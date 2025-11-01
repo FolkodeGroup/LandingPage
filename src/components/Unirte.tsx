@@ -48,16 +48,16 @@ export default function Unirte() {
   // Variantes de animación para cada tarjeta
   const variants = [
     {
-      initial: { opacity: 0, x: -60 },
-      animate: isInView ? { opacity: 1, x: 0, transition: { duration: 1.1 } } : {},
+      initial: { opacity: 0 },
+      animate: isInView ? { opacity: 1, transition: { duration: 0.8, delay: 0 } } : {},
     },
     {
-      initial: { opacity: 0, y: 60 },
-      animate: isInView ? { opacity: 1, y: 0, transition: { duration: 1.1 } } : {},
+      initial: { opacity: 0 },
+      animate: isInView ? { opacity: 1, transition: { duration: 0.8, delay: 0.1 } } : {},
     },
     {
-      initial: { opacity: 0, x: 60 },
-      animate: isInView ? { opacity: 1, x: 0, transition: { duration: 1.1 } } : {},
+      initial: { opacity: 0 },
+      animate: isInView ? { opacity: 1, transition: { duration: 0.8, delay: 0.2 } } : {},
     },
   ];
 

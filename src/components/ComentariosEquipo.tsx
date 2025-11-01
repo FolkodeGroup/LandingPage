@@ -35,17 +35,17 @@ export default function ComentariosEquipo() {
         >
           {/* Columna izquierda (imagen con efecto de difuminado) */}
           <motion.div
-            initial={{ opacity: 0, x: -150 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="hidden sm:flex w-full sm:w-1/2 aspect-square items-center justify-center"
           >
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              exit={{ opacity: 0, scale: 1.1 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
               className="w-full h-full"
             >
               <Image
@@ -61,9 +61,9 @@ export default function ComentariosEquipo() {
 
           {/* Columna derecha (slider con animación) */}
           <motion.div
-            initial={{ opacity: 0, x: 150 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full sm:w-1/2 aspect-square flex items-center justify-center"
           >
             <div className="w-full h-full flex items-center justify-center equipo-text">

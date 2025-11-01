@@ -43,9 +43,9 @@ export default function AboutSection() {
             </h3>
             <div className="bg-[#1a232b]/80 rounded-xl p-4 md:p-6 flex flex-col gap-4 shadow-inner border border-[#86A869]/20">
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-base md:text-lg text-white dark:text-gray-300 text-center md:text-left"
                 style={{
                   fontWeight: 400,
@@ -73,9 +73,9 @@ export default function AboutSection() {
                 </ul>
               </div>
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.3, duration: 0.5 }}
                 className="text-base md:text-lg text-white dark:text-gray-300 text-center md:text-left mt-2"
                 style={{
                   fontWeight: 400,

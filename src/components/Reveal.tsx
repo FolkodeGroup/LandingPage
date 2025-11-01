@@ -22,7 +22,7 @@ export default function Reveal({ children, delay = 0.15, y = 40 }: RevealProps) 
       controls.start({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
       });
     } else if (isMobile) {
       // Si sale del viewport en mobile, reiniciar animación
@@ -35,7 +35,6 @@ export default function Reveal({ children, delay = 0.15, y = 40 }: RevealProps) 
       ref={ref}
       initial={{ opacity: 0, y }}
       animate={controls}
-      style={{ willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>
