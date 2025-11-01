@@ -475,7 +475,6 @@ export default function TeamMemberSection() {
               style={{
                 transform: `translate3d(-${(currentIndex * 100) / slidesToShow - dragOffsetPercent}%, 0, 0)`,
                 transition: isInstant ? 'none' : 'transform 500ms ease',
-                willChange: 'transform',
               }}
               onTransitionEnd={handleTransitionEnd}
               onTouchStart={onTouchStart}
