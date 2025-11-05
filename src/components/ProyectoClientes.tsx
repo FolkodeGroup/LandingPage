@@ -1037,33 +1037,33 @@ export default function ProyClientes() {
               <SwiperSlide key={index}>
                 <div style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
                   <ClienteCard {...proyecto} />
-                  {/* Botón alineado abajo solo en móvil */}
-                  <div style={{ flexGrow: 1 }} />
-                  <a
-                    href={proyecto.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="proyecto-btn"
-                    style={{
-                      fontSize: 16,
-                      padding: '10px 24px',
-                      borderRadius: 8,
-                      background: 'linear-gradient(90deg, #3383b7 0%, #86A869 100%)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)',
-                      textDecoration: 'none',
-                      marginTop: 12,
-                      marginBottom: 8,
-                      transition: 'background 0.2s, box-shadow 0.2s',
-                      letterSpacing: '0.5px',
-                      textAlign: 'center',
-                      minWidth: 140,
-                      alignSelf: 'flex-end',
-                    }}
-                  >
-                    Ver Proyecto
-                  </a>
+                  {/* Botón centrado debajo de la card en móvil */}
+                  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                    <a
+                      href={proyecto.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="proyecto-btn"
+                      style={{
+                        fontSize: 16,
+                        padding: '10px 24px',
+                        borderRadius: 8,
+                        background: 'linear-gradient(90deg, #3383b7 0%, #86A869 100%)',
+                        color: '#fff',
+                        fontWeight: 600,
+                        boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)',
+                        textDecoration: 'none',
+                        marginTop: 12,
+                        marginBottom: 8,
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        letterSpacing: '0.5px',
+                        textAlign: 'center',
+                        minWidth: 140,
+                      }}
+                    >
+                      Ver Proyecto
+                    </a>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
