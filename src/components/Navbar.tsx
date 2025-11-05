@@ -60,8 +60,8 @@ const Navbar: React.FC = () => {
                 alt="Folkode Logo"
                 width={180}
                 height={180}
-                sizes="(max-width: 768px) 120px, 180px"
-                style={{ filter: 'drop-shadow(0 2px 12px #86A86988)' }}
+                sizes="(max-width: 768px) 160px, 180px"
+                style={{ filter: 'drop-shadow(0 2px 16px #86A869cc)', width: '90px', height: '90px', maxWidth: '120px', maxHeight: '120px', marginTop: 4 }}
                 priority
               />
             </div>
@@ -114,14 +114,44 @@ const Navbar: React.FC = () => {
             {/* Botón hamburguesa solo visible en móvil, alineado a la derecha */}
             <div className="flex md:hidden items-center h-full pr-4">
               <button
-                className="flex flex-col justify-center items-center w-10 h-10 ml-30 focus:outline-none"
+                className="flex flex-col justify-center items-center w-12 h-12 ml-30 focus:outline-none"
                 onClick={toggleMenu}
                 aria-label="Abrir menú"
-                style={{ background: 'rgba(1,69,79,0.92)', border: 'none', padding: 0, borderRadius: '12px', boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)' }}
+                style={{ background: 'rgba(1,69,79,0.92)', border: 'none', padding: 0, borderRadius: '16px', boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)', position: 'relative' }}
               >
-                <span className={`block w-7 h-0.75 bg-white rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`block w-7 h-0.75 bg-white rounded my-1 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-7 h-0.75 bg-white rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                <span style={{
+                  display: 'block',
+                  width: '32px',
+                  height: '4px',
+                  background: '#fff',
+                  borderRadius: '3px',
+                  margin: '4px 0',
+                  transition: 'all 0.3s',
+                  transform: menuOpen ? 'rotate(45deg) translateY(12px)' : 'none',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.10)'
+                }}></span>
+                <span style={{
+                  display: 'block',
+                  width: '32px',
+                  height: '4px',
+                  background: '#fff',
+                  borderRadius: '3px',
+                  margin: '4px 0',
+                  transition: 'all 0.3s',
+                  opacity: menuOpen ? 0 : 1,
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.10)'
+                }}></span>
+                <span style={{
+                  display: 'block',
+                  width: '32px',
+                  height: '4px',
+                  background: '#fff',
+                  borderRadius: '3px',
+                  margin: '4px 0',
+                  transition: 'all 0.3s',
+                  transform: menuOpen ? 'rotate(-45deg) translateY(-12px)' : 'none',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.10)'
+                }}></span>
               </button>
             </div>
           </div>
