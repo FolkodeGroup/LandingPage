@@ -129,53 +129,121 @@ const Navbar: React.FC = () => {
 
         {/* Menú móvil desplegable, solo visible en móvil */}
         {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full fade-in"
+          <div
+            className="md:hidden fade-in"
             style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              zIndex: 9999,
               background: 'linear-gradient(90deg, rgba(1,69,79,0.97) 0%, rgba(2,81,89,0.97) 100%)',
               boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)',
-              borderRadius: '0 0 24px 24px',
-              borderBottom: '1.5px solid rgba(134,168,105,0.18)',
-              padding: '1rem 0',
+              borderRadius: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              paddingTop: '90px', // espacio para logo y botón
+            }}
+          >
+            {/* Botón de cierre arriba a la derecha */}
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="Cerrar menú"
+              style={{
+                position: 'absolute',
+                top: 24,
+                right: 24,
+                zIndex: 10001,
+                background: 'rgba(30, 111, 163, 0.2)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 44,
+                height: 44,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 28,
+                color: '#fff',
+                boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)',
+                cursor: 'pointer',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(30, 111, 163, 0.4)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(30, 111, 163, 0.2)'}
+            >
+              <span style={{fontSize: 32, lineHeight: 1, fontWeight: 700}}>&times;</span>
+            </button>
+            <div style={{
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '2rem',
+              marginTop: '2rem',
             }}>
-            {navItems.map((item) => {
-              if (item.type === 'component') {
-                return <span key={item.id}><Desplegable /></span>;
-              } else if (item.target === 'inicio') {
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      handleScrollToTop();
-                      setMenuOpen(false);
-                    }}
-                    className="text-nav-link text-lg cursor-pointer bg-transparent border-none"
-                    style={{ color: 'var(--color-text-inverse)' }}
-                  >
-                    {item.label}
-                  </button>
-                );
-              } else {
-                return (
-                  <ScrollLink
-                    key={item.id}
-                    to={item.target || ''}
-                    spy={true}
-                    smooth={true}
-                    offset={-getScrollOffset()}
-                    duration={800}
-                    activeClass="active"
-                    className="text-nav-link text-lg cursor-pointer"
-                    style={{
-                      color: 'var(--color-text-inverse)',
-                      textDecoration: 'none'
-                    }}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.label}
-                  </ScrollLink>
-                );
-              }
-            })}
+              {navItems.map((item) => {
+                if (item.type === 'component') {
+                  // Renderizar el desplegable como un link estilizado igual que los demás
+                  return (
+                    <span key={item.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                      <span
+                        className="text-nav-link text-lg cursor-pointer"
+                        style={{
+                          color: 'var(--color-text-inverse)',
+                          fontSize: '1.3rem',
+                          margin: '0.5rem 0',
+                          fontWeight: 500,
+                          textAlign: 'center',
+                          width: '100%'
+                        }}
+                      >
+                        Sobre Folkode
+                      </span>
+                    </span>
+                  );
+                } else if (item.target === 'inicio') {
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        handleScrollToTop();
+                        setMenuOpen(false);
+                      }}
+                      className="text-nav-link text-lg cursor-pointer bg-transparent border-none"
+                      style={{ color: 'var(--color-text-inverse)', fontSize: '1.3rem', margin: '0.5rem 0' }}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                } else {
+                  return (
+                    <ScrollLink
+                      key={item.id}
+                      to={item.target || ''}
+                      spy={true}
+                      smooth={true}
+                      offset={-getScrollOffset()}
+                      duration={800}
+                      activeClass="active"
+                      className="text-nav-link text-lg cursor-pointer"
+                      style={{
+                        color: 'var(--color-text-inverse)',
+                        textDecoration: 'none',
+                        fontSize: '1.3rem',
+                        margin: '0.5rem 0',
+                      }}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.label}
+                    </ScrollLink>
+                  );
+                }
+              })}
+            </div>
           </div>
         )}
 
