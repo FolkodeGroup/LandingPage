@@ -2419,3 +2419,75 @@ picture {
     font-size: 0.9rem;
   }
 }
+
+/* Estilos para Swiper en móvil - Vista Netflix */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.swiper-pagination {
+  bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #3383b7 !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #86A869 !important;
+}
+
+/* Ajustes para cards en swiper móvil */
+@media (max-width: 768px) {
+  .proyecto-card {
+    height: auto;
+    min-height: 420px;
+    width: 100%;
+  }
+  
+  .proyectos-seccion {
+    padding: 2rem 0;
+  }
+}
+
+/* Estilos para mini-slider dentro de cada card */
+.proyecto-img-wrapper .swiper {
+  height: 200px;
+}
+
+.proyecto-img-wrapper .swiper-pagination {
+  bottom: 5px !important;
+}
+
+.proyecto-img-wrapper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.7) !important;
+  opacity: 0.6;
+}
+
+.proyecto-img-wrapper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #86A869 !important;
+}
+
+/* Asegurar que las imágenes del slider se ajusten correctamente */
+.proyecto-img-wrapper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proyecto-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
