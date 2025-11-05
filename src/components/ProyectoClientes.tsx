@@ -1,3 +1,4 @@
+
 'use client'
 import RadioGo from '@/assets/images/ProyClientes/RadioGo.webp';
 import Andet from '@/assets/images/ProyClientes/Andet.webp';
@@ -223,6 +224,31 @@ const luminovaModalData = {
   ],
 };
 
+// Estructura de datos para el modal de Autopartes Deloreans
+const autopartesModalData = {
+  title: 'Autopartes Deloreans',
+  sections: [
+    {
+      key: 'galeria',
+      title: 'Galería de Capturas',
+      description: 'Visualiza la experiencia y funcionalidades de Autopartes Deloreans a través de estas capturas de pantalla.',
+      images: [
+        '/images/proyectos/autopartes-deloreans/autopartes-01.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-02.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-03.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-04.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-05.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-06.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-07.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-08.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-09.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-10.webp',
+        '/images/proyectos/autopartes-deloreans/autopartes-11.webp',
+      ],
+    },
+  ],
+};
+
 // Estructura de datos para el modal de Andet
 const andetModalData = {
   title: 'Andet',
@@ -389,7 +415,7 @@ function ProyectoModal({ data, onClose }: { data: ModalData; onClose: () => void
     'Congreso de Logística y Transporte': 'https://www.congresologistica.unab.edu.ar/',
     'RadioGo': 'https://radiogo.com.ar/',
     'Andet': 'https://demo-andet-ecommerce.onrender.com/',
-    'Autopartes': 'https://web-autopartes.vercel.app/',
+    'Autopartes Deloreans': 'https://web-autopartes.vercel.app/',
     'Luminova': 'https://luminovaerp.pythonanywhere.com/',
     'La Revisteria': 'https://revisteria.pythonanywhere.com/'
   };
@@ -806,7 +832,17 @@ export default function ProyClientes() {
         setModalOpen(true);
       },
     },
-    { image: Autopartes, title: 'Autopartes', description: 'E-commerce Empresarial de gestión de autopartes', url: 'https://web-autopartes.vercel.app/', category: 'Software' },
+    {
+      image: Autopartes,
+      title: 'Autopartes Deloreans',
+      description: 'E-commerce Empresarial de gestión de autopartes',
+      url: 'https://web-autopartes.vercel.app/',
+      category: 'Software',
+      onClick: () => {
+        setModalData(autopartesModalData);
+        setModalOpen(true);
+      },
+    },
     {
       image: Luminova,
       title: 'Luminova',
