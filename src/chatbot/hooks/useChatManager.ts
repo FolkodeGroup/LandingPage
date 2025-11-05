@@ -320,8 +320,11 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
   };
   
 
-  // Estado para indicar si se está leyendo toda la conversación
+  // Estado para indicar si la lectura de toda la conversación está activa
   const [isReadingAll, setIsReadingAll] = useState(false);
+  // Ref para saber si la lectura está activa (para efectos y callbacks)
+  const isReadingAllRef = useRef(isReadingAll);
+  isReadingAllRef.current = isReadingAll;
 
   // Nueva función: leer el último mensaje del bot
   const speakLastBotMessage = () => {
@@ -331,21 +334,42 @@ export const useChatManager = ({ language, user, isConversationMode, onAnalytics
     }
   };
 
-  // Nueva función: leer toda la conversación
+  // Alternar lectura de toda la conversación
   const speakAllConversation = async () => {
-    if (!speakRef.current || isReadingAll) return;
+    if (!speakRef.current) return;
+    if (isReadingAllRef.current) {
+      // Si ya está leyendo, desactivar
+      setIsReadingAll(false);
+      window.speechSynthesis.cancel();
+      return;
+    }
     setIsReadingAll(true);
-    // Concatenar todos los mensajes del bot y del usuario, en orden
+    // Leer toda la conversación actual
     const conversationText = messages
       .filter(m => m.text && (m.sender === 'bot' || m.sender === 'user'))
       .map(m => `${m.sender === 'bot' ? (locales.botName[language || 'es']+':') : (user?.name+':')}\n${m.text?.replace(/👉\s*\[[^\]]+\]/g, '')}`)
       .join('\n\n');
     try {
       await speakRef.current(conversationText);
-    } finally {
-      setIsReadingAll(false);
+    } catch (e) {
+      // ignorar
     }
+    // No desactivar aquí: la lectura queda activa hasta que el usuario la apague
   };
+
+  // Efecto: mientras isReadingAll esté activo, leer automáticamente cada nuevo mensaje del bot
+  const lastReadBotMsgRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!isReadingAll) return;
+    // Buscar el último mensaje del bot leído
+    const lastBotMsg = [...messages].reverse().find(m => m.sender === 'bot' && m.text);
+    if (lastBotMsg && lastBotMsg.id !== lastReadBotMsgRef.current) {
+      if (speakRef.current) {
+        speakRef.current(lastBotMsg.text.replace(/👉\s*\[[^\]]+\]/g, ''));
+        lastReadBotMsgRef.current = lastBotMsg.id;
+      }
+    }
+  }, [messages, isReadingAll]);
 
   return {
     messages,
