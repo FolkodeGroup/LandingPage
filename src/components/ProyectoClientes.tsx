@@ -59,15 +59,16 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Detectar móvil para ajustar estilos y lógica
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Tilt efecto
+  // Tilt efecto solo en desktop
   const calcTilt = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, card: HTMLDivElement) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -79,10 +80,7 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
     const rotateX = -((y - midY) / midY) * maxTilt;
     return { rotateX, rotateY };
   };
-
-  // Throttle el movimiento del mouse para tilt
   const throttledMouseMove = useRef<((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | null>(null);
-
   if (!throttledMouseMove.current) {
     throttledMouseMove.current = throttle((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!cardRef.current) return;
@@ -92,15 +90,12 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
     }, 24);
   }
   const handleMouseMove = throttledMouseMove.current as (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-
   const handleMouseLeave = () => {
     rotateX.set(0);
     rotateY.set(0);
   };
-
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Solo abrir el modal si no es móvil
-    if (!isMobile && onClick) {
+    if (onClick) {
       onClick();
     }
   };
@@ -112,48 +107,77 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
       style={{
         zIndex: 0,
         perspective: 1000,
-        cursor: !isMobile && onClick ? 'pointer' : 'default',
+        cursor: onClick ? 'pointer' : 'default',
         transition: 'box-shadow 0.3s, transform 0.3s',
         opacity: isInView ? 1 : 0,
-        position: 'relative',
+        minHeight: isMobile ? 420 : undefined, // Altura mínima en móvil
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
+        height: '100%',
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      whileHover={{
+      onMouseMove={!isMobile ? handleMouseMove : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+      whileHover={!isMobile ? {
         scale: 1.02,
         boxShadow: '0 20px 60px 0 rgba(51,131,183,0.25)',
-      }}
+      } : undefined}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
-      <div onClick={handleCardClick} style={{ flex: 1 }}>
+      <div onClick={onClick && !isMobile ? handleCardClick : undefined} style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
         <div className="proyecto-img-wrapper">
           <span className="proyecto-etiqueta">{category}</span>
           {/* Mini-slider de imágenes dentro de la card */}
           {previewImages && previewImages.length > 0 ? (
-            <Swiper
-              modules={[Pagination]}
-              spaceBetween={0}
-              slidesPerView={isMobile ? Math.min(previewImages.length, 1.1) : 1}
-              pagination={{ clickable: true, dynamicBullets: true }}
-              loop={false}
-              style={{ width: '100%', height: '200px' }}
+            <div 
+              style={{ position: 'relative', width: '100%', height: '200px' }}
+              onClick={(e) => e.stopPropagation()}
             >
-              {previewImages.map((imgSrc, idx) => (
-                <SwiperSlide key={idx}>
-                  <Image
-                    src={imgSrc}
-                    alt={`${title} - ${idx + 1}`}
-                    fill
-                    className="proyecto-img"
-                    sizes="(max-width: 768px) 90vw, 400px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+              <Swiper
+                modules={[Pagination]}
+                spaceBetween={0}
+                slidesPerView={1}
+                pagination={{ 
+                  clickable: true,
+                  dynamicBullets: true,
+                }}
+                loop={true}
+                onSlideChange={(swiper) => setCurrentImageIndex(swiper.realIndex)}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
+                {previewImages.map((imgSrc, idx) => (
+                  <SwiperSlide key={idx}>
+                    <Image
+                      src={imgSrc}
+                      alt={`${title} - ${idx + 1}`}
+                      fill
+                      className="proyecto-img"
+                      sizes="(max-width: 768px) 90vw, 400px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              {/* Indicador de cantidad de imágenes */}
+              <div style={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                background: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
+                padding: '4px 10px',
+                borderRadius: 12,
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                zIndex: 10,
+                pointerEvents: 'none',
+              }}>
+                {currentImageIndex + 1} / {previewImages.length}
+              </div>
+            </div>
           ) : (
             <Image
               src={image}
@@ -165,40 +189,12 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
             />
           )}
         </div>
-        <div className="proyecto-info" style={{ cursor: !isMobile && onClick ? 'pointer' : 'default' }}>
+        <div className="proyecto-info" style={{ cursor: onClick && !isMobile ? 'pointer' : 'default', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
           <h3 className="proyecto-titulo">{title}</h3>
           <p className="proyecto-desc">{description}</p>
+          {/* El botón solo se muestra en móvil fuera de la card, no aquí */}
         </div>
       </div>
-      {/* Botón de acceso solo en móvil, alineado abajo */}
-      {isMobile && (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: 12, marginBottom: 8 }}>
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="proyecto-btn"
-            style={{
-              fontSize: 16,
-              padding: '10px 28px',
-              borderRadius: 8,
-              background: 'linear-gradient(90deg, #3383b7 0%, #86A869 100%)',
-              color: '#fff',
-              fontWeight: 600,
-              boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)',
-              textDecoration: 'none',
-              transition: 'background 0.2s, box-shadow 0.2s',
-              letterSpacing: '0.5px',
-              textAlign: 'center',
-              minWidth: 140,
-              position: 'relative',
-              bottom: 0,
-            }}
-          >
-            Ver Proyecto
-          </a>
-        </div>
-      )}
     </motion.div>
   );
 }
@@ -888,6 +884,20 @@ export default function ProyClientes() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Utilidad para extraer todas las imágenes de un modalData (incluyendo subsecciones)
+  function getAllModalImages(modalData: ModalData): string[] {
+    let imgs: string[] = [];
+    for (const section of modalData.sections) {
+      if (section.images) imgs = imgs.concat(section.images);
+      if (section.subsections) {
+        for (const sub of section.subsections) {
+          if (sub.images) imgs = imgs.concat(sub.images);
+        }
+      }
+    }
+    return imgs;
+  }
+
   const proyectos = [
     {
       image: Congreso,
@@ -895,13 +905,13 @@ export default function ProyClientes() {
       description: 'Página oficial del Congreso De Logística y Transporte de la Universidad Nacional Guillermo Brown',
       url: 'https://www.congresologistica.unab.edu.ar/',
       category: 'Web',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(congresoModalData) : [
         '/images/proyectos/congreso/home/home-1.webp',
         '/images/proyectos/congreso/home/home-2.webp',
         '/images/proyectos/congreso/registro/registro.webp',
         '/images/proyectos/congreso/contacto/contacto.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(congresoModalData);
         setModalOpen(true);
       },
@@ -912,13 +922,13 @@ export default function ProyClientes() {
       description: 'Página de Streaming de radio y entretenimiento',
       url: 'https://radiogo.com.ar/',
       category: 'Web',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(radioGoModalData) : [
         '/images/proyectos/radio-go/radio-go-01.webp',
         '/images/proyectos/radio-go/radio-go-02.webp',
         '/images/proyectos/radio-go/radio-go-03.webp',
         '/images/proyectos/radio-go/radio-go-04.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(radioGoModalData);
         setModalOpen(true);
       },
@@ -929,13 +939,13 @@ export default function ProyClientes() {
       description: 'E-commerce de productos industriales de servicios eléctricos',
       url: 'https://demo-andet-ecommerce.onrender.com/',
       category: 'E-commerce',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(andetModalData) : [
         '/images/proyectos/andet/andet-01.webp',
         '/images/proyectos/andet/andet-02.webp',
         '/images/proyectos/andet/andet-03.webp',
         '/images/proyectos/andet/andet-04.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(andetModalData);
         setModalOpen(true);
       },
@@ -946,13 +956,13 @@ export default function ProyClientes() {
       description: 'E-commerce Empresarial de gestión de autopartes',
       url: 'https://web-autopartes.vercel.app/',
       category: 'Software',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(autopartesModalData) : [
         '/images/proyectos/autopartes-deloreans/autopartes-01.webp',
         '/images/proyectos/autopartes-deloreans/autopartes-02.webp',
         '/images/proyectos/autopartes-deloreans/autopartes-03.webp',
         '/images/proyectos/autopartes-deloreans/autopartes-04.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(autopartesModalData);
         setModalOpen(true);
       },
@@ -963,13 +973,13 @@ export default function ProyClientes() {
       description: 'Software ERP de ensamblado de luminarias con productos importados',
       url: 'https://luminovaerp.pythonanywhere.com/ ',
       category: 'Software',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(luminovaModalData) : [
         '/images/proyectos/luminova/login/luminova-login.webp',
         '/images/proyectos/luminova/administrador/luminova-admin-01.webp',
         '/images/proyectos/luminova/compras/luminova-compras-01.webp',
         '/images/proyectos/luminova/deposito/luminova-deposito-01.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(luminovaModalData);
         setModalOpen(true);
       },
@@ -980,13 +990,13 @@ export default function ProyClientes() {
       description: 'E-commerce de libros y cómics de colección',
       url: 'https://revisteria.pythonanywhere.com/',
       category: 'E-commerce',
-      previewImages: [
+      previewImages: isMobile ? getAllModalImages(revisteriaModalData) : [
         '/images/proyectos/revisteria/revisteria-01.webp',
         '/images/proyectos/revisteria/revisteria-02.webp',
         '/images/proyectos/revisteria/revisteria-03.webp',
         '/images/proyectos/revisteria/revisteria-04.webp',
       ],
-      onClick: () => {
+      onClick: isMobile ? undefined : () => {
         setModalData(revisteriaModalData);
         setModalOpen(true);
       },
@@ -1025,7 +1035,36 @@ export default function ProyClientes() {
           >
             {proyectos.map((proyecto, index) => (
               <SwiperSlide key={index}>
-                <ClienteCard {...proyecto} />
+                <div style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
+                  <ClienteCard {...proyecto} />
+                  {/* Botón alineado abajo solo en móvil */}
+                  <div style={{ flexGrow: 1 }} />
+                  <a
+                    href={proyecto.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="proyecto-btn"
+                    style={{
+                      fontSize: 16,
+                      padding: '10px 24px',
+                      borderRadius: 8,
+                      background: 'linear-gradient(90deg, #3383b7 0%, #86A869 100%)',
+                      color: '#fff',
+                      fontWeight: 600,
+                      boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)',
+                      textDecoration: 'none',
+                      marginTop: 12,
+                      marginBottom: 8,
+                      transition: 'background 0.2s, box-shadow 0.2s',
+                      letterSpacing: '0.5px',
+                      textAlign: 'center',
+                      minWidth: 140,
+                      alignSelf: 'flex-end',
+                    }}
+                  >
+                    Ver Proyecto
+                  </a>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
