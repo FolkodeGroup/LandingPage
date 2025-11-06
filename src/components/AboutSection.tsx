@@ -28,12 +28,15 @@ export default function AboutSection() {
           {/* Imagen a la izquierda en desktop, arriba en mobile */}
           <div className="self-center md:w-1/2 flex items-center relative mb-6 md:mb-0" >
             <Image
-              src="/dark-about-img.webp"
+              src="/image.png"
               alt="Trabajo en equipo"
-              width={220}
-              height={220}
-              className="w-full h-full object-cover max-wrounded-xl shadow-lg border border-white/20"
+              width={440}
+              height={440}
+              quality={95}
+              sizes="(max-width: 768px) 90vw, 440px"
+              className="w-full h-full object-cover rounded-xl shadow-lg border border-white/20"
               style={{ objectFit: 'cover', boxShadow: '0 4px 24px 0 rgba(2,81,89,0.18)' }}
+              priority
             />
           </div>
           {/* Texto a la derecha o debajo */}
