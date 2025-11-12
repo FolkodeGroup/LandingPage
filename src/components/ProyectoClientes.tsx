@@ -107,7 +107,7 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
       style={{
         zIndex: 0,
         perspective: 1000,
-        cursor: onClick ? 'pointer' : 'default',
+        cursor: onClick && !isMobile ? 'pointer' : 'default',
         transition: 'box-shadow 0.3s, transform 0.3s',
         opacity: isInView ? 1 : 0,
         minHeight: isMobile ? 420 : undefined, // Altura mínima en móvil
@@ -123,15 +123,16 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
         boxShadow: '0 20px 60px 0 rgba(51,131,183,0.25)',
       } : undefined}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      onClick={onClick && !isMobile ? handleCardClick : undefined}
     >
-      <div onClick={onClick && !isMobile ? handleCardClick : undefined} style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
+      <div style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
         <div className="proyecto-img-wrapper">
           <span className="proyecto-etiqueta">{category}</span>
           {/* Mini-slider de imágenes dentro de la card */}
           {previewImages && previewImages.length > 0 ? (
             <div 
-              style={{ position: 'relative', width: '100%', height: '200px' }}
-              onClick={(e) => e.stopPropagation()}
+              style={{ position: 'relative', width: '100%', height: '200px', cursor: onClick && !isMobile ? 'pointer' : 'default' }}
+              onClick={onClick && !isMobile ? handleCardClick : undefined}
             >
               <Swiper
                 modules={[Pagination]}
@@ -156,7 +157,7 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
                       fill
                       className="proyecto-img"
                       sizes="(max-width: 768px) 90vw, 400px"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', cursor: onClick && !isMobile ? 'pointer' : 'default' }}
                     />
                   </SwiperSlide>
                 ))}
@@ -186,6 +187,8 @@ function ClienteCard({ image, title, description, url, category, onClick, previe
               height={image.height}
               className="proyecto-img"
               sizes="(max-width: 768px) 90vw, 400px"
+              style={{ cursor: onClick && !isMobile ? 'pointer' : 'default' }}
+              onClick={onClick && !isMobile ? handleCardClick : undefined}
             />
           )}
         </div>
