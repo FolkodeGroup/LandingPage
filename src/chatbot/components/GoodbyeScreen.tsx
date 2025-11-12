@@ -24,7 +24,7 @@ const GoodbyeScreen: React.FC<GoodbyeScreenProps> = ({ locales, language, onBack
     <div className="flex flex-col items-center justify-center h-full min-h-0 p-4 text-center bg-transparent animate-fade-in" style={{background: 'transparent', width: '100%', height: '100%', minHeight: 0, minWidth: 0}}>
         <div className="w-32 h-32 mb-6 flex items-center justify-center" aria-label="Folkode Logo" style={{maxWidth: '100%', minWidth: 0}}>
             <Image
-                src="/folkode-oscuro.webp"
+                src="/Folkode_Logo_Bold_Black.png"
                 alt="Logo Folkode"
                 width={128}
                 height={128}
